@@ -1,0 +1,67 @@
+---
+import type { HTMLAttributes } from "astro/types";
+import { type VariantProps } from "class-variance-authority";
+
+const id = "status";
+---
+
+<div
+  class="flex w-full max-w-xs p-4 text-neutral-500 bg-white rounded-lg fixed z-50 bottom-5 right-7 border-2 border-neutral-300"
+  role="alert"
+  {id}
+>
+  <div class="text-sm font-normal" id=`message-${id}`></div>
+  <button
+    type="button"
+    class="ms-auto -mx-1.5 -my-1.5 bg-white text-neutral-400 hover:text-neutral-900 rounded-lg focus:ring-2 focus:ring-neutral-300 p-1.5 hover:bg-neutral-100 inline-flex items-center justify-center h-8 w-8"
+    aria-label="Close"
+    id=`close-${id}`
+  >
+    <span class="sr-only">Close</span>
+    <svg
+      class="w-3 h-3"
+      aria-hidden="true"
+      xmlns="http://www.w3.org/2000/svg"
+      fill="none"
+      viewBox="0 0 14 14"
+    >
+      <path
+        stroke="currentColor"
+        stroke-linecap="round"
+        stroke-linejoin="round"
+        stroke-width="2"
+        d="m1 1 6 6m0 0 6 6M7 7l6-6M7 7l-6 6"></path>
+    </svg>
+  </button>
+</div>
+
+<script define:vars={{ id }}>
+  const urlSearchParams = new URLSearchParams(window.location.search);
+  const params = Object.fromEntries(urlSearchParams.entries());
+
+  const btn = document.getElementById(id);
+
+  const content = document.getElementById(`message-${id}`);
+  switch (params["status"]) {
+    case "registered":
+      content.innerText =
+        "Спасибо за вашу заявку. Ваша команда успешно зарегистрирована на отборочный этап APhB 2024!";
+      btn.style.borderColor = "rgba(34, 197, 94, 0.8)";
+      btn.style.borderWidth = "8px";
+      break;
+    case "failed":
+      content.innerText =
+        "Неудачная регистрация, проверьте корректность всех полей, можете написать https://t.me/defescooler";
+      btn.style.borderColor = "rgba(239, 68, 68, 0.8)";
+      btn.style.borderWidth = "8px";
+      break;
+    default:
+      btn.classList.add("hidden");
+      break;
+  }
+
+  const close = document.getElementById(`close-${id}`);
+  close.addEventListener("click", () => {
+    btn.classList.add("hidden");
+  });
+</script>

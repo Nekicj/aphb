@@ -1,0 +1,71 @@
+---
+interface Props {
+  tabs: Array<{
+    value: string;
+    label: string;
+  }>;
+  name: string;
+  type?: "radio" | "checkbox";
+  onChange?: string;
+}
+
+const { tabs, name, type, onChange } = Astro.props;
+console.log(onChange);
+---
+
+<div
+  class="rounded-lg p-1 overflow-clip relative mr-auto border border-neutral-300 bg-white"
+>
+  <div class="flex flex-row first:ml-0 gap-x-1">
+    {
+      tabs.map((tab, index) => (
+        <label
+          id={`${tab.value}-${index}-${name}`}
+          class={`duration-300 px-3 py-1.5 rounded-lg relative  z-10 has-[:checked]:text-secondary text-nowrap ${
+            !index && "text-secondary"
+          }`}
+          style={{
+            boxShadow: "box-shadow: 0 0 0 99999px rgba(0, 0, 0, .8)",
+          }}
+        >
+          {tab.label}
+          <input
+            type={type || "radio"}
+            class="appearance-none "
+            {name}
+            value={tab.value}
+          />
+        </label>
+      ))
+    }
+  </div>
+  <div
+    id={"indicator" + name}
+    class="absolute top-1/2 h-8 w-16 -translate-y-1/2 rounded-lg border bg-primary-700 border-neutral-300 duration-300 ease-in-out"
+  >
+  </div>
+</div>
+
+<script define:vars={{ tabs, id: name, onChange }}>
+  const indicator = document.getElementById("indicator" + id);
+  const tab = document.getElementById(`${tabs[0].value}-${0}-${id}`);
+
+  const fn = new Function("return (" + onChange + ")")();
+
+  indicator.style.width = `${tab.offsetWidth - 4}px`;
+  indicator.style.left = `${tab.offsetLeft + 3}px`;
+
+  tabs.map((tabData, index) => {
+    const tab = document.getElementById(`${tabData.value}-${index}-${id}`);
+    tab.addEventListener("click", () => {
+      onChange && fn(tabData.value);
+      console.log(tabData.value, onChange);
+      document
+        .getElementById(`${tabs[0].value}-${0}-${id}`)
+        .classList.replace("text-secondary", "text-black");
+
+      indicator.style.width = `${tab.offsetWidth - 4}px`;
+      indicator.style.left = `${tab.offsetLeft + 3}px`;
+    });
+  });
+</script>

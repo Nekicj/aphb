@@ -1,0 +1,119 @@
+---
+import type { CollectionEntry } from "astro:content";
+import { cn } from "~/utils/cn";
+
+interface Props {
+  className: string;
+  results: CollectionEntry<"results">["data"]["senior"];
+}
+
+const { className, results } = Astro.props;
+
+const placeStyle = {
+  "1": "text-[#E2B127] border-[#E2B127]",
+  "2": "text-[#AFAFAF] border-[#AFAFAF]",
+  "3": "text-[#FF9270] border-[#FF9270]",
+  "4": "text-black border-neutral-300",
+};
+---
+
+<>
+  <table class={cn("hidden grid-cols-1 gap-6 lg:grid py-6", className)}>
+    <thead>
+      <tr
+        class="uppercase text-neutral-300 py-3 border-b-2 border-neutral-300 grid grid-cols-10 gap-5 place-items-start"
+      >
+        <th>Место</th>
+        <th>Команда</th>
+        <th class="col-span-2">Школа</th>
+        <th class="col-span-2">Капитан</th>
+        <th class="col-span-4">Члены команды</th>
+      </tr>
+    </thead>
+    <tbody class="flex gap-5 flex-col">
+      {
+        results.map((result) => (
+          <tr class="grid grid-cols-10 gap-5">
+            <td
+              class={
+                placeStyle[result.place || "4"] +
+                "-mt-1 rounded-full border-2 leading-6 h-8 w-8  text-2xl grid place-items-center  relative z-10"
+              }
+            >
+              {result.place}
+            </td>
+            <td class="uppercase">{result.team}</td>
+            <td class="col-span-2">
+              {result.schools.map((school) => (
+                <span>
+                  {school} <br />
+                </span>
+              ))}
+            </td>
+            <td class="col-span-2">{result.captain}</td>
+            <td class="col-span-4">
+              {result.members.map((member) => (
+                <span>
+                  {member} <br />
+                </span>
+              ))}
+            </td>
+          </tr>
+        ))
+      }
+    </tbody>
+  </table>
+
+  <div class={cn("flex gap-5 flex-col lg:hidden bg-white", className)}>
+    {
+      results.map((result) => (
+        <table class="border-t border-l border-neutral-300">
+          {result.place && (
+            <tr class="grid grid-cols-2">
+              <th class="border-b border-r uppercase text-neutral-300 text-start p-2 ">
+                Место
+              </th>
+              <td class="border-b border-r p-2 ">{result.place}</td>
+            </tr>
+          )}
+          <tr class="grid grid-cols-2">
+            <th class="border-b border-r uppercase text-neutral-300 text-start p-2">
+              Команда
+            </th>
+            <td class="uppercase border-b border-r p-2">{result.team}</td>
+          </tr>
+          <tr class="grid grid-cols-2">
+            <th class="border-b border-r uppercase text-neutral-300 text-start p-2">
+              Школа
+            </th>
+            <td class="border-b border-r p-2">
+              {result.schools.map((school) => (
+                <span>
+                  {school} <br />
+                </span>
+              ))}
+            </td>
+          </tr>
+          <tr class="grid grid-cols-2">
+            <th class="border-b border-r uppercase text-neutral-300 text-start p-2">
+              Капитан
+            </th>
+            <td class="border-b border-r p-2">{result.captain}</td>
+          </tr>
+          <tr class="grid grid-cols-2">
+            <th class="border-b border-r uppercase text-neutral-300 text-start p-2">
+              Члены команды
+            </th>
+            <td class="border-b border-r p-2">
+              {result.members.map((member) => (
+                <span>
+                  {member} <br />
+                </span>
+              ))}
+            </td>
+          </tr>
+        </table>
+      ))
+    }
+  </div>
+</>

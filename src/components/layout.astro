@@ -1,0 +1,360 @@
+---
+interface Props {
+  title: string;
+  description: string;
+  grid?: boolean;
+}
+
+const { title, grid, description } = Astro.props;
+
+import { getRelativeLocaleUrl } from "astro:i18n";
+import {
+  getLangFromUrl,
+  languages,
+  useTranslatedPath,
+  useTranslations,
+} from "~/utils/i18n";
+import Toast from "~/components/atoms/toast.astro";
+import { Toaster } from "~/components/atoms/sonner";
+import BaseHead from "./base-head.astro";
+
+const lang = getLangFromUrl(Astro.url);
+const t = useTranslations("base", lang);
+const translatePath = useTranslatedPath(lang);
+const url = new URL(Astro.url).pathname;
+
+const regulation =
+  "https://drive.google.com/drive/folders/1J5UYqaUpl_DxOWM4l0taJgvucHTL8_ff?usp=sharing";
+const rules =
+  "https://drive.google.com/drive/folders/1J5UYqaUpl_DxOWM4l0taJgvucHTL8_ff?usp=sharing";
+---
+
+<!doctype html>
+<html lang={lang} class="dark">
+  <head>
+    <BaseHead {title} {description} />
+  </head>
+  <body class="relative">
+    <nav
+      class="inset-x-0 px-4 w-screen overflow-clip md:px-10 flex justify-between md:text-base
+             text-sm h-16 fixed z-40 place-items-center bg-white/5 border-neutral-300"
+    >
+      <a
+        href={translatePath("/", lang)}
+        class="flex gap-2 items-center justify-self-start"
+      >
+        <img src="/logo.svg" alt="logo" class="hidden lg:block" />
+        <img src="/logo-sm.svg" alt="logo" class="md:hidden block" />
+      </a>
+      <div class="md:flex gap-5 text-neutral-400 items-center hidden">
+        <a href="/team">Команда</a>
+        <a href="/results-and-tasks">Результаты</a>
+        <a href="/topics">Темы</a>
+        <a href="/sponsors">Спонсора</a>
+        <ul class="flex gap-2">
+          {
+            Object.entries(languages).map(([lang]) => (
+              <li>
+                <a href={translatePath(url, lang)}>{lang}</a>
+              </li>
+            ))
+          }
+        </ul>
+      </div>
+      <div class="flex gap-3 items-center">
+        <a
+          class="bg-primary-500 text-white px-3 py-1.5 rounded-lg"
+          href={getRelativeLocaleUrl(lang, "apply")}>{t("register")}</a
+        >
+        <button class="md:hidden" id="burger">
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            width="24"
+            height="24"
+            viewBox="0 0 24 24"
+            fill="none"
+            stroke="currentColor"
+            stroke-width="2"
+            stroke-linecap="round"
+            stroke-linejoin="round"
+            class="lucide lucide-menu md:hidden"
+            ><line x1="4" x2="20" y1="12" y2="12"></line><line
+              x1="4"
+              x2="20"
+              y1="6"
+              y2="6"></line><line x1="4" x2="20" y1="18" y2="18"></line></svg
+          >
+        </button>
+      </div>
+    </nav>
+    <div
+      class="fixed -top-[260px] right-0 left-0 z-30 flex-col gap-8
+        border-b border-b-neutral-300 bg-white/80 px-4 pt-8 pb-2
+        backdrop-blur-2xl flex closed"
+      id="mob-nav"
+    >
+      <div
+        class="flex flex-col justify-center gap-1 text-2xl capitalize text-black"
+      >
+        <a href="/team">Команда</a>
+        <a href="/results-and-tasks">Результаты</a>
+        <a href="/topics">Темы</a>
+        <a href="/sponsors">Спонсора</a>
+      </div>
+      <div class="flex h-12 flex-row items-center justify-between">
+        <img src="/logo.svg" alt="logo" class="w-24" />
+        <ul class="flex gap-2 text-sm underline">
+          {
+            Object.entries(languages).map(([lang]) => (
+              <li>
+                <a href={translatePath(url, lang)}>{lang}</a>
+              </li>
+            ))
+          }
+        </ul>
+      </div>
+    </div>
+    <img
+      src="/logo-xl.svg"
+      alt="logo"
+      class="fixed z-50 top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 h-60 md:h-96 logo-big"
+    />
+    <div class="fixed z-40 w-screen flex overflow-hidden">
+      <div
+        class="border-r border-primary-500 w-4 md:w-10 h-screen bg-primary-700 loader"
+      >
+      </div>
+      <div class="grid grid-cols-4 md:grid-cols-6 grow relative">
+        <div class="border-r border-primary-500 loader h-screen bg-primary-700">
+        </div>
+        <div class="border-r border-primary-500 loader h-screen bg-primary-700">
+        </div>
+        <div class="border-r border-primary-500 loader h-screen bg-primary-700">
+        </div>
+        <div class="border-r border-primary-500 loader h-screen bg-primary-700">
+        </div>
+        <div
+          class="border-r border-primary-500 loader h-screen bg-primary-700 md:block hidden"
+        >
+        </div>
+        <div
+          class="border-r border-primary-500 loader h-screen bg-primary-700 md:block hidden"
+        >
+        </div>
+      </div>
+      <div
+        class="border-r border-primary-500 w-4 md:w-10 h-screen bg-primary-700 loader"
+      >
+      </div>
+    </div>
+    <Toast />
+    <Toaster client:load />
+    <div id="smooth-wrapper">
+      <div id="smooth-content">
+        <div id="main" class="md:mx-10 relative">
+          <div
+            class="absolute h-full inset-0 md:-inset-x-10 grid md:grid-cols-6 grid-cols-4 z-10 px-4 md:px-10 bg-white"
+          >
+            {
+              grid !== false && (
+                <>
+                  <div class="border-x border-neutral-300" />
+                  <div class="border-r border-neutral-300" />
+                  <div class="border-r border-neutral-300" />
+                  <div class="border-r border-neutral-300" />
+                  <div class="border-r border-neutral-300 md:block hidden" />
+
+                  <div class="border-r border-neutral-300 md:block hidden" />
+                </>
+              )
+            }
+          </div>
+          <div
+            class="relative z-20 grid grid-cols-4 md:grid-cols-12 gap-5 pt-16 px-4 md:px-0"
+          >
+            <slot />
+          </div>
+        </div>
+        <footer
+          class="bg-primary-700 px-4 pt-16 pb-12 grid gap-y-8 md:gap-5 grid-cols-1 md:grid-cols-12 text-white relative text-xl md:text-2xl -z-10 overflow-hidden"
+        >
+          <svg
+            viewBox="0 0 1512 359"
+            fill="none"
+            xmlns="http://www.w3.org/2000/svg"
+            class="absolute -inset-0 h-full"
+          >
+            <path
+              d="M-52.5633 419.438L1605.5 18.5176L-52.5633 187.288"
+              stroke="#0F2871"
+              stroke-width="128"></path>
+          </svg>
+          <div class="md:col-span-5 grid place-items-center relative z-20">
+            <img src="/logo-md.svg" alt="logo-md" />
+          </div>
+          <div class="flex md:col-span-3 flex-col gap-4 relative z-20">
+            <a href={regulation}>{t("footer.sections.regulations")}</a>
+            <a href={rules}>{t("footer.sections.parliament")}</a><a
+              href="/results-and-tasks">{t("footer.sections.results")}</a
+            ><a
+              href="https://docs.google.com/document/d/1I8nwjE3vdZkJfWb5Cax5RRVbBVBZp6I7zbvoIHIrySY/edit?usp=sharing"
+              >{t("footer.sections.hr.policy")}</a
+            >
+            <a
+              href='https://drive.google.com/drive/folders/1W5sNNEnsnxkwXzGHtQbQPulZS10QC0de?usp=drive_link/"'
+              >{t("footer.sections.sponsors.partners")}</a
+            >
+          </div>
+          <div
+            class="md:col-span-4 grid-cols-2 gap-y-8 gap-x-5 relative grid text-xl z-20"
+          >
+            <span class="col-span-full md:text-2xl">{t("footer")}</span>
+            <a href="mailto:administrator@aphb.kz">administrator@aphb.kz</a>
+            <span> <a href="tel:877752146221">+7 775 214 62 21</a></span>
+            <a href="https://www.instagram.com/aphb.kz/">Instagram</a>
+            <a href="https://t.me/aphbkz">Telegram</a>
+          </div>
+        </footer>
+      </div>
+    </div>
+    <style is:global>
+      @font-face {
+        font-family: "AeonikPro";
+        src: url("/fonts/AeonikPro-Light.otf") format("opentype");
+        font-weight: 300;
+      }
+      @font-face {
+        font-family: "AeonikPro";
+        src: url("/fonts/AeonikPro-Regular.otf") format("opentype");
+        font-weight: normal;
+      }
+
+      @font-face {
+        font-family: "AeonikPro";
+        src: url("/fonts/AeonikPro-Bold.otf") format("opentype");
+        font-weight: bold;
+      }
+
+      th {
+        font-weight: normal;
+      }
+    </style>
+
+    <script>
+      // import { gsap } from "gsap";
+      import { gsap } from "gsap";
+
+      import { ScrollTrigger } from "gsap/ScrollTrigger";
+      import { ScrollSmoother } from "~/utils/scroll";
+      import { SplitText } from "~/utils/text";
+
+      gsap.registerPlugin(ScrollTrigger, ScrollSmoother, SplitText);
+
+      gsap.to(".loader", {
+        height: 0,
+        ease: "power4.inOut",
+        stagger: {
+          amount: 0.5,
+        },
+      });
+
+      gsap.to(".logo-big", {
+        y: window.innerWidth > 900 ? "-200%" : "-400%",
+        delay: 0.25,
+      });
+
+      gsap.to("nav", {
+        scrollTrigger: {
+          start: "+=100px",
+          trigger: "nav",
+          scrub: 1,
+        },
+        borderBottomWidth: "1px",
+        backgroundColor: "rgb(255 255 255)",
+      });
+
+      const minusIcon = `<svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                  <path d="M5 19.1421L19.1421 4.99995" stroke="black" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+                  <path d="M19.1426 19.1421L5.00044 4.99995" stroke="black" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+                 </svg>
+                  `;
+
+      const burgerIcon = `<svg
+          id="burger"
+          xmlns="http://www.w3.org/2000/svg"
+          width="24"
+          height="24"
+          viewBox="0 0 24 24"
+          fill="none"
+          stroke="currentColor"
+          stroke-width="2"
+          stroke-linecap="round"
+          stroke-linejoin="round"
+          class="lucide lucide-menu md:hidden"
+          ><line x1="4" x2="20" y1="12" y2="12"></line><line
+            x1="4"
+            x2="20"
+            y1="6"
+            y2="6"></line><line x1="4" x2="20" y1="18" y2="18"></line></svg
+        >`;
+
+      const burger = document.querySelector("#burger");
+      if (burger) burger.innerHTML = burgerIcon;
+
+      const modNav = document.querySelector("#mob-nav");
+      const nav = document.querySelector("nav");
+
+      burger?.addEventListener("click", () => {
+        if (modNav?.classList.contains("closed")) {
+          burger.innerHTML = minusIcon;
+          nav?.classList.add("border-b");
+          nav?.classList.add("backdrop-blur-2xl");
+          nav?.classList.replace("bg-white/5", "bg-white/90");
+          gsap.to("#mob-nav", { y: 189 + 64, duration: "0.3" });
+          modNav?.classList.replace("closed", "open");
+        } else {
+          burger.innerHTML = burgerIcon;
+          nav?.classList.remove("border-b");
+          nav?.classList.remove("backdrop-blur-2xl");
+          nav?.classList.replace("bg-white/90", "bg-white/5");
+          gsap.to("#mob-nav", { y: -(189 + 64), duration: "0.3" });
+          modNav?.classList.replace("open", "closed");
+        }
+      });
+
+      gsap.from("footer", {
+        scrollTrigger: {
+          trigger: "footer",
+          scrub: 1,
+          start: "top bottom",
+          end: "bottom bottom",
+        },
+        y: -100,
+      });
+
+      ScrollSmoother.create({
+        smooth: 1, // how long (in seconds) it takes to "catch up" to the native scroll position
+        effects: window.innerWidth > 900, // looks for data-speed and data-lag attributes on elements
+      });
+
+      gsap.utils.toArray(".text-animation").forEach((line) => {
+        let split = new SplitText(line as any, {
+          type: "words",
+          wordsClass: "word",
+        });
+        gsap.from(split.words, {
+          scrollTrigger: {
+            trigger: line as any,
+            start: "top 70%", // Adjust this to control when the animation starts
+            toggleActions: "restart none none none", // Defines what happens on enter, leave, enter back, and leave back
+          },
+          y: "100%",
+          ease: "power4.out",
+          stagger: {
+            amount: 0.3,
+          },
+        });
+      });
+    </script>
+  </body>
+</html>

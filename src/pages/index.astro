@@ -1,0 +1,407 @@
+---
+export const prerender = true;
+
+import { getRelativeLocaleUrl } from "astro:i18n";
+import Layout from "~/components/layout.astro";
+import { getLangFromUrl, useTranslations } from "~/utils/i18n";
+import { sponsors } from "~/lib/sponsors";
+
+const lang = getLangFromUrl(Astro.url);
+const t = useTranslations("home", lang);
+---
+
+<Layout title={t("seo.title")} description={t("seo.description")}>
+  <div
+    class="col-span-full md:-mx-10 -mx-4 border-y bg-white border-neutral-300 py-8 px-4 md:px-10 -z-10"
+    data-speed="1.1"
+  >
+    <h1
+      class="font-bold text-3xl md:text-8xl text-primary-500 text-animation overflow-hidden"
+    >
+      <span class="sticky uppercase">{t("collision.minds")}</span>
+    </h1>
+    <h2 class="md:text-5xl text-primary-500 text-animation overflow-hidden">
+      <span class="sticky">{t("participate.battle")}</span>
+    </h2>
+    <div
+      class="h-72 md:h-96 bg-primary-500 rounded-3xl my-4 lg:my-8 overflow-clip relative"
+      id="canvas-container"
+    >
+      {
+        [t("box-1"), t("box-2"), t("box-3"), t("box-4")].map((box) => (
+          <div class="p-3 md:p-6 text-3xl md:text-7xl bg-primary-700 rounded-xl md:rounded-2xl absolute select-none draggable z-10">
+            <span class="text-secondary whitespace-nowrap">{box}</span>
+          </div>
+        ))
+      }
+
+      <svg
+        viewBox="0 0 1432 428"
+        fill="none"
+        xmlns="http://www.w3.org/2000/svg"
+        class="absolute lg:inset-0 lg:h-auto h-full"
+      >
+        <path
+          d="M12 -48C864.5 860 497.5 -393 1524 537.5"
+          class="md:stroke-[256px] stroke-[128px]"
+          stroke="#0F2871"></path>
+      </svg>
+    </div>
+    <div class="grid grid-cols-2 md:grid-cols-4 gap-6">
+      <div class="flex gap-6 col-span-2 lg:text-base text-sm">
+        <a
+          class="bg-primary-500 text-white px-3 py-1.5 rounded-lg mb-auto"
+          href={getRelativeLocaleUrl(lang, "apply")}>{t("register.now")}</a
+        >
+        <a
+          class="px-3 py-1.5 rounded-lg border border-neutral-300 mb-auto"
+          href="/results-and-tasks">{t("results")}</a
+        >
+      </div>
+      <p class="text-neutral-500 text-lg leading-relaxed col-span-2">
+        {t("join.competition.description")}
+      </p>
+    </div>
+  </div>
+  <div
+    class="col-span-full grid-cols-5 md:grid-cols-7 grid place-items-center mt-8 mb-20 gap-5"
+  >
+    {
+      sponsors.map((item) => (
+        <div class="grid place-items-center">
+          <a href={item.url} target="_blank" rel="noopener noreferrer">
+            <img src={`/partners/${item.name}`} alt={item.name} class="logo" />
+          </a>
+        </div>
+      ))
+    }
+  </div>
+  <h3 class="col-span-4 uppercase md:text-xl row-span-3">
+    ■ {t("about.competition")}
+  </h3>
+  <p
+    class="col-span-full md:col-span-8 text-2xl md:text-4xl mb-24"
+    data-speed="1.1"
+  >
+    {t("about.competition.description")}
+    <br />
+    <br />
+    {t("about.competition.fights")}
+  </p>
+
+  <h4
+    class="md:col-span-4 col-span-2 text-neutral-500 md:text-3xl row-span-1"
+    data-speed="1.05"
+  >
+    {t("league.older")}
+  </h4>
+  <p
+    class="md:col-span-4 col-span-2 md:text-3xl mb-32 row-span-1"
+    data-speed="1.05"
+  >
+    {t("league.older.description")}
+    <br />
+  </p>
+  <h4
+    class="md:col-span-4 col-span-2 text-neutral-500 md:text-3xl row-span-1 mb-32"
+    data-speed="1.05"
+  >
+    {t("league.younger")}
+  </h4>
+  <p
+    class="md:col-span-4 col-span-2 md:text-3xl row-span-1 mb-32"
+    data-speed="1.05"
+  >
+    {t("league.younger.description")}
+  </p>
+  <div
+    class="md:h-screen col-span-full bg-primary-900 md:-mx-10 -mx-4 gap-5 grid-cols-subgrid grid px-4 md:px-10 overflow-clip relative text-xl text-white md:py-20 py-10 pb-20 md:pb-32"
+  >
+    <svg
+      id="triangle"
+      viewBox="0 0 864 871"
+      class="absolute h-4/5 top-1/2 -translate-y-1/2 -translate-x-1/3"
+      fill="none"
+      xmlns="http://www.w3.org/2000/svg"
+    >
+      <path
+        d="M832.911 1.63943C850.67 -3.45477 867.284 12.586 862.816 30.5129L657.885 852.793C653.417 870.719 631.218 877.087 617.927 864.255L8.27746 275.639C-5.01376 262.807 0.570965 240.398 18.33 235.304L832.911 1.63943Z"
+        fill="#163BA4"></path>
+    </svg>
+    <h3
+      class="bottom-5 left-4 md:left-10 text-3xl md:text-9xl font-bold uppercase whitespace-nowrap absolute z-10 text-white/20"
+    >
+      {t("participation.stages")}
+    </h3>
+
+    <div
+      class="absolute inset-y-0 inset-x-4 md:inset-x-10 grid grid-cols-4 md:grid-cols-6"
+    >
+      <div class="cell border-x border-primary-700 duration-300"></div>
+      <div class="cell border-r border-primary-700 duration-300 bg-white/20">
+      </div>
+      <div class="cell border-r border-primary-700 duration-300"></div>
+      <div class="cell border-r border-primary-700 duration-300"></div>
+      <div
+        class="cell border-r border-primary-700 duration-300 md:block hidden"
+      >
+      </div>
+      <div
+        class="cell border-r border-primary-700 duration-300 md:block hidden"
+      >
+      </div>
+    </div>
+    <div
+      class="md:justify-self-end md:col-span-1 col-span-4 md:col-start-7 row-span-1 rounded-full border-2 leading-6 h-8 w-8 text-white/20 grid place-items-center border-white/20 relative z-10"
+    >
+      1
+    </div>
+    <h3 class="md:col-span-3 col-span-4 relative h-min">
+      {t("participation.stages.registration")}
+    </h3>
+
+    <div
+      class="md:justify-self-end md:col-span-1 col-span-4 md:col-start-7 row-span-1 rounded-full border-2 leading-6 h-8 w-8 text-white/20 grid place-items-center border-white/20 relative z-10"
+    >
+      2
+    </div>
+    <p class="md:col-span-3 col-span-4 relative">
+      <Fragment set:html={t("participation.stages.online")} />
+    </p>
+    <div
+      class="md:justify-self-end md:col-span-1 col-span-4 md:col-start-7 row-span-1 rounded-full border-2 leading-6 h-8 w-8 text-white/20 grid place-items-center border-white/20 relative z-10"
+    >
+      3
+    </div>
+    <p class="md:col-span-3 col-span-4 relative">
+      <Fragment set:html={t("participation.stages.final")} />
+    </p>
+  </div>
+
+  <div class="grid gap-5 grid-cols-subgrid col-span-full relative">
+    <div
+      class="h-screen w-screen top-0 -inset-x-4 md:-inset-x-10 absolute -z-10 logo-skew-container grid place-items-center"
+    >
+      <svg
+        xmlns="http://www.w3.org/2000/svg"
+        viewBox="0 0 480 310"
+        class="w-[280px] md:w-[480px] logo-skew"
+        fill="none"
+      >
+        <path
+          d="M407.382 83.4463H406.728V74.5187C406.728 34.5281 374.113 1.99752 334.11 1.99752C294.107 1.99752 261.492 34.5281 261.492 74.5187C261.492 83.8132 269.043 91.3548 278.35 91.3548C287.657 91.3548 295.209 83.8132 295.209 74.5187C295.209 53.117 312.68 35.6695 334.11 35.6695C355.54 35.6695 373.011 53.0762 373.011 74.5187V100.282C373.011 109.618 380.563 117.118 389.87 117.118H407.422C428.853 117.118 446.324 134.525 446.324 155.968C446.324 177.369 428.853 194.817 407.422 194.817H389.87C380.563 194.817 373.011 202.358 373.011 211.653V237.416C373.011 258.818 355.54 276.266 334.11 276.266C312.68 276.266 295.209 258.818 295.209 237.416V193.39C295.209 162.408 269.941 137.175 238.918 137.175C226.468 137.175 216.345 127.065 216.345 114.632V72.5212C216.345 32.5306 183.73 0 143.726 0C103.723 0 71.108 32.5306 71.108 72.5212V81.4896C31.7577 82.3049 0 114.509 0 154.011C0 193.471 31.7577 225.676 71.108 226.532V235.5C71.108 275.491 103.723 308.022 143.726 308.022C183.73 308.022 216.345 275.491 216.345 235.5C216.345 226.206 208.793 218.664 199.486 218.664C190.179 218.664 182.628 226.206 182.628 235.5C182.628 256.902 165.157 274.35 143.726 274.35C122.296 274.35 104.825 256.943 104.825 235.5V209.737C104.825 200.402 97.2735 192.901 87.9666 192.901H72.6183C51.1879 192.901 33.7171 175.494 33.7171 154.052C33.7171 132.65 51.1879 115.202 72.6183 115.202H87.9666C97.2735 115.202 104.825 107.661 104.825 98.3664V72.6028C104.825 51.201 122.296 33.7536 143.726 33.7536C165.157 33.7536 182.628 51.201 182.628 72.6028V114.713C182.628 145.695 207.895 170.928 238.918 170.928C251.368 170.928 261.492 181.038 261.492 193.471V237.457C261.492 277.448 294.107 309.978 334.11 309.978C374.113 309.978 406.728 277.407 406.728 237.457V228.53H407.382C447.426 228.53 480 195.958 480 156.008C480 116.058 447.385 83.4871 407.382 83.4871V83.4463Z"
+          fill="#1D4ED8"></path>
+      </svg>
+    </div>
+    <div
+      class="col-span-4 row-span-2 aspect-[2/1] text-primary-500 font-bold text-6xl uppercase flex items-end"
+      data-speed="1.1"
+    >
+      {t("tasks")}
+    </div>
+    <img
+      src="/photos/1.webp"
+      alt="photo1"
+      class="md:col-span-6 col-span-2 row-span-2 aspect-square md:row-span-4 md:aspect-[3/2] md:col-start-1 object-cover"
+      data-speed="1"
+    />
+    <p
+      class="md:col-span-4 md:aspect-[2/1] leading-relaxed text-sm row-span-6 col-span-2 aspect-[1/3] md:row-span-2"
+      data-speed="0.9"
+    >
+      {t("tasks.description")}
+    </p>
+    <img
+      src="/photos/2.webp"
+      alt="photo2"
+      class="col-span-4 row-span-4 aspect-square lg:col-start-9 object-cover"
+      data-speed="0.9"
+    />
+    <div class="col-span-8 row-span-2 aspect-[4/1] md:block hidden"></div>
+    <p
+      class="col-span-4 md:col-start-5 row-span-2 aspect-[2/1] md:row-span-1 md:aspect-[4/1] leading-relaxed text-sm"
+      data-speed="0.9"
+    >
+      {t("teamwork.description")}
+    </p>
+    <h3
+      class="place-content-end grid col-span-4 md:col-span-6 md:col-start-7 aspect-[2/1] md:aspect-[6/1] row-span-2 md:row-span-1 text-primary-500 font-bold text-4xl md:text-6xl uppercase"
+      data-speed="0.9"
+    >
+      {t("teamwork")}
+    </h3>
+    <img
+      src="/photos/3.webp"
+      alt="photo3"
+      class="md:col-span-6 col-span-2 row-span-2 md:row-span-4 aspect-square md:aspect-[3/2] object-cover"
+    />
+    <p
+      class="col-span-2 row-span-2 md:row-span-4 leading-relaxed text-sm aspect-square md:aspect-[1/2] flex items-end"
+      data-speed="1.1"
+    >
+      {t("strategy.description")}
+    </p>
+    <h3
+      class="col-span-4 md:col-span-6 aspect-[4/1] md:aspect-[3/1] row-span-1 md:row-span-2 text-primary-500 font-bold text-4xl md:text-6xl uppercase"
+    >
+      {t("strategy")}
+    </h3>
+    <img
+      src="/photos/4.webp"
+      alt="photo4"
+      class="col-span-full row-span-4 aspect-square md:row-span-5 md:aspect-[12/6] object-cover"
+      data-speed="1"
+    />
+  </div>
+
+  <div
+    class="h-screen grid gap-5 grid-cols-subgrid col-span-full relative pt-10"
+  >
+    <h2
+      class="text-5xl md:text-9xl text-primary-500 uppercase leading-none text-center font-bold col-span-full"
+    >
+      {t("learn.compete.win")}
+    </h2>
+
+    <div
+      class="flex flex-col gap-8 col-span-full relative lg:absolute lg:top-2/3 lg:left-1/2 lg:-translate-x-1/2 lg:-translate-y-1/2 z-10 justify-center"
+      data-speed="0.9"
+    >
+      <img src="/winners.png" alt="" />
+      <a
+        class="bg-primary-500 text-white px-3 py-1.5 rounded-lg mx-auto"
+        href={getRelativeLocaleUrl(lang, "apply")}>{t("participate.battle")}</a
+      >
+    </div>
+
+    <p class="leading-relaxed text-sm col-span-4 md:col-span-3">
+      {t("learn.compete.win.quote")}
+      <span class="mt-2">{t("learn.compete.win.quote.author")}</span>
+    </p>
+
+    <p class="leading-relaxed text-sm col-span-3 col-start-10 hidden md:block">
+      {t("learn.compete.win.description")}
+    </p>
+  </div>
+
+  <style>
+    .logo-skew {
+      transform-style: preserve-3d;
+    }
+  </style>
+
+  <script>
+    // import { Bodies, Engine, Mouse, MouseConstraint, Render, World, Events } from "matter-js";
+    // @ts-ignore
+    import { Bodies, Composite, Engine, MouseConstraint } from "matter-js";
+
+    let engine = Engine.create();
+    const canvas = document.getElementById("canvas-container")!;
+
+    var images = document.querySelectorAll(".logo");
+    images.forEach((image) => {
+      const img = image as HTMLImageElement;
+      var widthBase = 60;
+      var scaleFactor = 0.525;
+      var imageRatio = img.naturalWidth / img.naturalHeight;
+
+      img.width = Math.pow(imageRatio, scaleFactor) * widthBase;
+    });
+
+    const { width, height } = canvas.getBoundingClientRect();
+
+    const createBox = (elem: HTMLElement) => ({
+      w: elem.offsetWidth,
+      h: elem.offsetHeight,
+      body: Bodies.rectangle(
+        elem.offsetWidth / 2 + Math.random() * (width / 2),
+        -200,
+        elem.offsetWidth,
+        elem.offsetHeight
+      ),
+      render() {
+        const { x, y } = this.body.position;
+        elem.style.top = `${y - this.h / 2}px`;
+        elem.style.left = `${x - this.w / 2}px`;
+        elem.style.transform = `rotate(${this.body.angle}rad)`;
+      },
+    });
+
+    const mouseConstraint = MouseConstraint.create(engine, {
+      element: canvas,
+      constraint: {
+        stiffness: 0.1,
+      },
+    });
+
+    const floor = Bodies.rectangle(width / 2, height + 5, width, 10, {
+      isStatic: true,
+    });
+    const ceiling = Bodies.rectangle(width / 2, -height, width, 10, {
+      isStatic: true,
+    });
+    const rightWall = Bodies.rectangle(width + 5, height, 10, height * 2, {
+      isStatic: true,
+    });
+    const leftWall = Bodies.rectangle(-5, height, 10, height * 2, {
+      isStatic: true,
+    });
+
+    const boxes = Array.from(document.getElementsByClassName("draggable")).map(
+      (box) => createBox(box as HTMLElement)
+    );
+
+    // Add all of the bodies to the world
+    Composite.add(
+      engine.world,
+      [floor, rightWall, ceiling, leftWall, mouseConstraint].concat(
+        boxes.map((box) => box.body)
+      )
+    );
+
+    (function rerender() {
+      boxes.forEach((box) => box.render());
+      Engine.update(engine);
+      requestAnimationFrame(rerender);
+    })();
+  </script>
+
+  <script>
+    import { gsap } from "gsap";
+
+    import { ScrollTrigger } from "gsap/ScrollTrigger";
+
+    gsap.registerPlugin(ScrollTrigger);
+
+    gsap.to("#triangle", {
+      scrollTrigger: { trigger: "#triangle", scrub: 2 },
+      rotate: 360,
+    });
+
+    gsap.to(".logo-skew", {
+      scrollTrigger: {
+        trigger: ".logo-skew-container",
+        start: "50% 50%",
+        end: window.innerWidth > 900 ? "+=1700px" : "+=1600px",
+        scrub: 4,
+        pin: true,
+      },
+      rotationX: 180,
+      rotationY: 180,
+      transformPerspective: 300000,
+    });
+  </script>
+
+  <script>
+    document.querySelectorAll(".grid .cell").forEach((cell) => {
+      cell.addEventListener("mouseover", function () {
+        document.querySelectorAll(".grid .cell").forEach((c) => {
+          // c.classList.remove("backdrop-blur-xl");
+          c.classList.remove("bg-white/20");
+        });
+        // cell.classList.add("backdrop-blur-xl");
+        cell.classList.add("bg-white/20");
+      });
+    });
+  </script>
+</Layout>

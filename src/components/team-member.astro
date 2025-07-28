@@ -1,0 +1,58 @@
+---
+import type { CollectionEntry } from "astro:content";
+import { cn } from "~/utils/cn";
+
+interface Props {
+  className?: string;
+  id: string;
+  member: CollectionEntry<"team">["data"];
+}
+
+const {
+  member: { achievements, name, position },
+  id,
+  className,
+} = Astro.props;
+---
+
+<div class={cn(className)}>
+  <div
+    class="border-b border-neutral-300 py-6 overflow-hidden relative member"
+    id={id}
+  >
+    <div
+      class="grid grid-cols-1 lg:grid-cols-6 lg:gap-5 gap-3 text-4xl lg:text-8xl items-baseline sticky"
+    >
+      <span class="col-span-5 leading-tight">{name}</span>
+      <p class="uppercase text-neutral-300 text-base">
+        {position}
+      </p>
+    </div>
+  </div>
+  <div
+    class="grid-cols-1 lg:grid-cols-6 gap-5 border-b border-neutral-300 grid relative max-h-0 overflow-hidden duration-300"
+  >
+    <span class="col-span-3 lg:mt-6 mt-3">Достижения</span>
+    <div class="col-span-3 grid grid-cols-2 lg:grid-cols-3 gap-5 lg:my-6 my-3">
+      {
+        achievements
+          .sort((a, b) => a.length - b.length)
+          .map((achievement) => <span>{achievement}</span>)
+      }
+    </div>
+  </div>
+</div>
+
+<script define:vars={{ id, open: achievements.length > 0 }}>
+  const accordion = document.getElementById(id);
+
+  if (open) {
+    accordion.addEventListener("click", function () {
+      const panel = this.nextElementSibling;
+      console.log(panel.style.maxHeight);
+      panel.style.maxHeight = !!panel.style.maxHeight
+        ? null
+        : panel.scrollHeight + "px";
+    });
+  }
+</script>

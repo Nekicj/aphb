@@ -1,0 +1,85 @@
+---
+import { getCollection } from "astro:content";
+import TeamMember from "~/components/team-member.astro";
+import Layout from "~/components/layout.astro";
+
+const team = await getCollection("team");
+const academics = team.filter((entry) => entry.slug.startsWith("academic/"));
+const executives = team.filter((entry) => entry.slug.startsWith("executive/"));
+---
+
+<Layout
+  title="Команда"
+  grid={false}
+  description="В нашей команде состоит множество бывших и нынешних членов национальной сборной Казахстана по физике, а также студенты MIT, Harvard, МФТИ и NU. "
+>
+  <div
+    class="col-span-full bg-primary-900 p-3 lg:p-6 text-3xl lg:text-8xl font-bold rounded-xl lg:rounded-3xl relative overflow-clip my-5 lg:my-20"
+  >
+    <svg
+      xmlns="http://www.w3.org/2000/svg"
+      viewBox="0 0 1431 157"
+      fill="none"
+      class="absolute inset-0 h-full lg:h-auto"
+    >
+      <path
+        d="M693.47 152.008L-45.5 15.5M693.47 152.008L230.5 -67.5M693.47 152.008L546.001 -33.9992M693.47 152.008L808.001 -33.9992M693.47 152.008L1084.5 -67.5M693.47 152.008L1461.5 15.5M693.47 152.008L1470.5 152.008M693.47 152.008L-134.001 139.5"
+        stroke="#163BA4"
+        stroke-width="64"
+        class=""></path>
+    </svg>
+    <h1 class="relative text-white text-center">Академический комитет</h1>
+  </div>
+  {
+    academics.map((academic) => (
+      <TeamMember
+        member={academic.data}
+        className="col-span-full"
+        id={academic.id}
+      />
+    ))
+  }
+  <div
+    class="col-span-full bg-primary-900 p-3 lg:p-6 text-3xl lg:text-8xl font-bold rounded-xl lg:rounded-3xl relative overflow-clip my-5 lg:my-20 header-executives"
+  >
+    <svg
+      xmlns="http://www.w3.org/2000/svg"
+      viewBox="0 0 1431 157"
+      fill="none"
+      class="absolute inset-0 h-full lg:h-auto"
+    >
+      <path
+        d="M693.47 152.008L-45.5 15.5M693.47 152.008L230.5 -67.5M693.47 152.008L546.001 -33.9992M693.47 152.008L808.001 -33.9992M693.47 152.008L1084.5 -67.5M693.47 152.008L1461.5 15.5M693.47 152.008L1470.5 152.008M693.47 152.008L-134.001 139.5"
+        stroke="#163BA4"
+        stroke-width="64"
+        class="sun"></path>
+    </svg>
+    <h1 class="relative text-secondary text-center">Организационный комитет</h1>
+  </div>
+  <div class="col-span-full flex flex-col gap-5 executives">
+    {
+      executives.map((executive) => (
+        <TeamMember member={executive.data} id={executive.id} />
+      ))
+    }
+  </div>
+  <div class="mb-20"></div>
+</Layout>
+
+<script>
+  // import { gsap } from "gsap";
+  import { gsap } from "gsap";
+  import { ScrollTrigger } from "gsap/all";
+
+  gsap.registerPlugin(ScrollTrigger);
+  gsap.utils.toArray(".member div").forEach((member) => {
+    gsap.from(member as any, {
+      scrollTrigger: {
+        trigger: member as any,
+        toggleActions: "restart none none none",
+      },
+      y: "100%",
+      ease: "power4.out",
+    });
+  });
+</script>

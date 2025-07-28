@@ -1,0 +1,119 @@
+---
+import { cn } from "~/utils/cn";
+import { getLangFromUrl, useTranslations } from "~/utils/i18n";
+import { TooltipForm } from "../../components/ui/tooltip";
+import Input from "./input.astro";
+
+interface Props {
+  prefix: `member${1 | 2 | 3}` | "captain" | "leader";
+  props: any;
+  errors: any;
+  id?: string;
+  className?: string;
+  required?: boolean;
+  tooltip?: string;
+}
+
+const { prefix, props, errors, id, className, required, tooltip } = Astro.props;
+
+const lang = getLangFromUrl(Astro.url);
+const t = useTranslations("apply", lang);
+---
+
+<div class={cn("flex flex-col gap-4 my-3", className)} {id}>
+  <div>
+    <label for=`${prefix}-name` class="mb-1"
+      >{t(`${prefix}Name`)}
+      {tooltip && <TooltipForm content={tooltip} client:load />}</label
+    >
+
+    <Input
+      id=`${prefix}-name`
+      placeholder={t(`${prefix}Name`) +
+        " (ex: Константин Константинов Константинопольский)"}
+      class="md:h-16 h-14 md:p-5 border-neutral-300 rounded-lg lg:text-lg placeholder:text-neutral-400"
+      {...props[`${prefix}Name`]}
+      required={required || false}
+    />
+
+    <p class="text-sm font-medium text-destructive text-red-300">
+      {errors && errors[`${prefix}Name`]}
+    </p>
+  </div>
+
+  <div>
+    <label for=`${prefix}-email` class="mb-1">{t(`${prefix}Email`)}</label>
+
+    <Input
+      id=`${prefix}-email`
+      placeholder={t(`${prefix}Email`)}
+      class="md:h-16 h-14 md:p-5 border-neutral-300 rounded-lg lg:text-lg placeholder:text-neutral-400"
+      {...props[`${prefix}Email`]}
+      required={required || false}
+    />
+
+    <p class="text-sm font-medium text-destructive text-red-300">
+      {errors && errors[`${prefix}Email`]}
+    </p>
+  </div>
+
+  <div>
+    <label for=`${prefix}-phone` class="mb-1">{t(`${prefix}Phone`)}</label>
+
+    <Input
+      id=`${prefix}-phone`
+      placeholder={t(`${prefix}Phone`) + " (ex: +77752146221)"}
+      class="md:h-16 h-14 md:p-5 border-neutral-300 rounded-lg lg:text-lg placeholder:text-neutral-400"
+      {...props[`${prefix}Phone`]}
+      type="tel"
+      required={required || false}
+    />
+
+    <p class="text-sm font-medium text-destructive text-red-300">
+      {errors && errors[`${prefix}Phone`]}
+    </p>
+  </div>
+
+  {
+    prefix !== "leader" && (
+      <>
+        <div>
+          <label for={`${prefix}-grade`} class="mb-1">
+            {t(`${prefix}Grade`)}
+          </label>
+
+          <Input
+            id={`${prefix}-grade`}
+            placeholder={t(`${prefix}Grade`)}
+            class="md:h-16 h-14 md:p-5 border-neutral-300 rounded-lg lg:text-lg placeholder:text-neutral-400"
+            {...props[`${prefix}Grade`]}
+            required={required || false}
+            type="number"
+          />
+
+          <p class="text-sm font-medium text-destructive text-red-300">
+            {errors && errors[`${prefix}Grade`]}
+          </p>
+        </div>
+        <div>
+          <label for={`${prefix}-school`} class="mb-1">
+            {t(`${prefix}School`)}
+          </label>
+
+          <Input
+            id={`${prefix}-school`}
+            placeholder={t(`${prefix}School`) + " (ex: НИШ ФМН г. Тараз)"}
+            class="md:h-16 h-14 md:p-5 border-neutral-300 rounded-lg lg:text-lg placeholder:text-neutral-400"
+            {...props[`${prefix}School`]}
+            required={required || false}
+          />
+
+          <p class="text-sm font-medium text-destructive text-red-300">
+            {errors && errors[`${prefix}School`]}
+          </p>
+        </div>
+      </>
+    )
+  }
+</div>
+./ui/tooltip

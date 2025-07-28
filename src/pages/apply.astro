@@ -1,0 +1,44 @@
+---
+import Layout from "~/components/layout.astro";
+import { getLangFromUrl, useTranslations } from "~/utils/i18n";
+
+import { RegisterForm } from "~/components/register";
+
+const lang = getLangFromUrl(Astro.url);
+const t = useTranslations("apply", lang);
+---
+
+<Layout title={t("seo.title")} description={t("seo.description")}>
+  <div
+    class="bg-primary-900 lg:col-span-5 col-span-4 min-h-64 lg:h-[85vh] rounded-xl p-4 text-secondary font-bold text-3xl lg:text-6xl relative mb-6 overflow-hidden mt-3"
+  >
+    {t("register")}
+
+    <svg
+      xmlns="http://www.w3.org/2000/svg"
+      class="absolute -inset-0"
+      viewBox="0 0 585 712"
+      fill="none"
+    >
+      <path
+        d="M591.343 356.423L-10.1523 356.423M591.343 356.423L-55.8379 588.242M591.343 356.423L368.64 2.63316M591.343 356.423L-27.9194 106.905M591.343 356.423L368.638 756.237M591.343 356.423L131.972 -33.7043M591.343 356.423L131.972 756.237"
+        stroke="url(#paint0_linear_628_1338)"
+        stroke-width="60"></path>
+      <defs>
+        <linearGradient
+          id="paint0_linear_628_1338"
+          x1="-110.404"
+          y1="758.87"
+          x2="266.922"
+          y2="-19.9699"
+          gradientUnits="userSpaceOnUse"
+        >
+          <stop stop-color="#1D4ED8"></stop>
+          <stop offset="1" stop-color="#1D4ED8" stop-opacity="0"></stop>
+        </linearGradient>
+      </defs>
+    </svg>
+  </div>
+
+  <RegisterForm client:load {lang} />
+</Layout>
