@@ -1,5 +1,5 @@
 export const enHome = {
-    'seo.description': 'From July 4 to July 11, the best physicists from across Kazakhstan and beyond will gather at Satbayev University to compete in physics battles - a unique team-based competition in Olympiad physics for grades 8-12.',
+    'seo.description': 'From October 25 to October 27, the best physicists from across Kazakhstan and beyond will gather at Satbayev University to compete in physics battles - a unique team-based competition in Olympiad physics for grades 8-12.',
     'seo.title': 'Almaty Physics Battles - II Tournament of Physics Battles in Central Asia',
     "collision.minds": "COLLISION OF MINDS",
     "participate.battle": "take part in the APhB battle",
@@ -24,11 +24,11 @@ export const enHome = {
     "league.school": "Ученики престижных школ",
     "participation.stages": "STAGES OF PARTICIPATION",
     "participation.stages.registration":
-        "Registration for the selection online stage until 23:59 Astana time, May 1st, 2024",
+        "Registration for the online qualifier until 23:59 Astana time, September 17th, 2025",
     "participation.stages.online":
-        "The qualifying online round in the team olympiad format will be held from 00:00 on May 12 to 23:55 on May 19 inclusive, Almaty time, on the platform <a href='https://app.formative.com' class='underline' target='_blank'>app.formative.com</a><br>You can start at any time, there is a 5-hour limit on solving.<br>Instructions with access to the platform will be sent to all registered participants by May 3.",
+        "The online qualifier will be held from September 19th to September 21st, 2025, on the platform <a href='https://app.formative.com' class='underline' target='_blank'>app.formative.com</a><br>You can start at any time, there is a 5-hour limit on solving.<br>Instructions with access to the platform will be sent to all registered participants by September 18th.",
     "participation.stages.final":
-        "The final in-person stage in July 2024, lasting 4-7 days in the city of Almaty",
+        "The final in-person stage from October 25th to October 27th, 2025 in the city of Almaty",
     tasks: "TASKS",
     "tasks.description":
         "The tournament tasks are compiled by a team from the members of the Kazakhstan national physics and math team: awardees of IPhO, IMO, APhO, EuPhO, IJSO, BPhO, IMChO, IYPT and students from the LPR MIPT, Harvard, Williams College, and Sheffield University. We strive to take the very best from both classical Olympiads, as well as from the less typical ones like the MIPT LPR Cup",
@@ -49,7 +49,7 @@ export const enHome = {
 };
 
 export const ruHome = {
-    'seo.description': '4-11 июля в Satbayev University собертся лучшие физики со всего Казахстана и не только в том, чтобы сразиться в физическом бое - уникальном виде командных соревнований по олимпиадной физике для 8-12 классов',
+    'seo.description': '25-27 октября в Satbayev University собертся лучшие физики со всего Казахстана и не только в том, чтобы сразиться в физическом бое - уникальном виде командных соревнований по олимпиадной физике для 8-12 классов',
     'seo.title': 'Almaty Physics Battles -  II турнир по физическим боям в Центральной Азии',
     "collision.minds": "СТОЛКНОВЕНИЕ УМОВ",
     "participate.battle":
@@ -59,9 +59,9 @@ export const ruHome = {
     "box-3": "150+ команд",
     "box-4": "Сложнейшие задачи",
     "register.now": "Регистрируйся сейчас",
-    results: "Результаты турнира 2023 года",
+    results: "Результаты",
     "join.competition.description":
-        "Присоединяйтесь к командным соревнованиям по физике 4-11 июля 2024 года в Казахском Национальном Исследовательском Техническом Университете им. Сатпаева.",
+        "Присоединяйтесь к командным соревнованиям по физике 25-27 октября 2025 года в Казахском Национальном Исследовательском Техническом Университете им. Сатпаева.",
     "about.competition": "О СОРЕВНОВАНИИ",
     "about.competition.description":
         "АРhВ сочетает в себе уникальный формат командных соревнований школьников в решении олимпиадных задач по физике. Весь турнир организован исключительно старшеклассниками или студентами - первокурсниками.",
@@ -74,11 +74,11 @@ export const ruHome = {
     "league.school": "Ученики престижных школ",
     "participation.stages": "ЭТАПЫ УЧАСТИЯ",
     "participation.stages.registration":
-        "Регистрация на отборочный этап до 19 мая 2024 года, 23:59 по времени г. Алматы",
+        "Регистрация на онлайн отбор до 17 сентября 2025 года, 23:59 по времени г. Алматы",
     "participation.stages.online":
-        `Отборочный онлайн-этап в формате командной олимпиады с 00:00 12 мая по 23:55 19 мая включительно по времени г. Алматы на платформе <a href='https://app.formative.com' class='underline' target='_blank'>app.formative.com</a><br>Начать можно в любой момент, ограничение на решение - 5 часов.<br>Всем зарегистрированным участникам приходят инструкции с доступом к платформе до 3 мая.`, 
+        `Онлайн отбор с 19 по 21 сентября 2025 года на платформе <a href='https://app.formative.com' class='underline' target='_blank'>app.formative.com</a><br>Начать можно в любой момент, ограничение на решение - 5 часов.<br>Всем зарегистрированным участникам приходят инструкции с доступом к платформе до 18 сентября.`, 
     "participation.stages.final":
-        "Финальный очный этап с 4 по 11 июля 2024 года на базе <a href='https://go.2gis.com/xnj2l' class='underline' target='_blank'>Satbayev University в г. Алматы, Республика Казахстан</a>",
+        "Финальный очный этап с 25 по 27 октября 2025 года на базе <a href='https://go.2gis.com/xnj2l' class='underline' target='_blank'>Satbayev University в г. Алматы, Республика Казахстан</a>",
     tasks: "ЗАДАЧИ",
     "tasks.description":
         "Задачи на турнир составляются командой из членов национальной сборной Казахстана по физике: призерами IPhO, IMO, APhO, EuPhO, IJSO, BPhO, IMChO, IYPT и студентами ЛФИ МФТИ, Harvard, Williams College и Sheffield University. Мы стараемся брать все самое лучшее как с классических олимпиад, так и с не очень по типу кубка ЛФИ ",
@@ -92,14 +92,14 @@ export const ruHome = {
 
     "learn.compete.win": "УЧИСЬ. СОРЕВНУЙСЯ. ПОБЕЖДАЙ.",
     "learn.compete.win.quote":
-        "«Математик может говорить всё, что придёт ему в голову, но физик просто обязан сохранять хотя бы крупицу здравого смысла. » ",
+        "«Математик может говорить всё, что придёт ему в голову, но физик просто обязан сохранять хотя бы крупицу здравого смысла. » ",
     "learn.compete.win.quote.author": "Д. Гиббс",
     "learn.compete.win.description":
         "«На APhB каждый вызов является возможностью — возможностью превзойти ожидания, выйти за рамки традиционного обучения и отпраздновать истинное восторг от открытий. Здесь мы не просто решаем уравнения; мы постепенно раскрываем тайны вселенной, теорема за теоремой.» ",
 };
 
 export const kzHome = {
-    'seo.description': "16-22 маусымда Satbayev University-де Қазақстанның түкпір-түкпірінен келген үздік физиктер 8-12 сыныптарға арналған олимпиадалық физикадан командалық жарыстың бірегей түрі - физикалық жекпе-жекте күресу үшін жиналады",
+    'seo.description': "25-27 қазанда Satbayev University-де Қазақстанның түкпір-түкпірінен келген үздік физиктер 8-12 сыныптарға арналған олимпиадалық физикадан командалық жарыстың бірегей түрі - физикалық жекпе-жекте күресу үшін жиналады",
     'seo.title': 'Almaty Physics Battles - Орталық Азиядағы физикалық жекпе-жектен II турнир',
     "collision.minds": "ОЙЛАРДЫҢ СОҚТЫҒЫСУЫ",
     "participate.battle": "APhB шайқасына қатысыңыз",
@@ -122,10 +122,10 @@ export const kzHome = {
     "league.school": "Ученики престижных школ",
     "participation.stages": "ҚАТЫСУ КЕЗЕҢДЕРІ",
     "participation.stages.registration":
-        "2024 жылғы 19 мамырда Астана уақыты бойынша 23:59-ға дейін іріктеу онлайн кезеңіне тіркелу",
+        "2025 жылғы 17 қыркүйекте Астана уақыты бойынша 23:59-ға дейін онлайн іріктеуге тіркелу",
     "participation.stages.online":
-        "Командалық олимпиада форматындағы онлайн іріктеу кезеңі <a href='https://app.formative.com' class='underline' target='_blank'>app.formative.com</a> платформасында Алматы қ. уақыты бойынша, 19-мамырды қоса алғанда сағат 00:00-ден 23:55-ке дейін өткізіледі.<br>Кез келген уақытта бастауға болады, бірақ шешуге арналған уақыт шегі - 5 сағат.<br>Барлық тіркелген қатысушыларға 3-мамырдан кешіктірмей платформаға кіру рұқсаты мен нұсқаулықтар жіберіледі.", "participation.stages.final":
-        "2024 жылғы маусым айында Алматы қаласында 4-7 күн бойы өтетін ақтық оффлайн тур",
+        "Онлайн іріктеу 2025 жылғы 19-21 қыркүйек аралығында <a href='https://app.formative.com' class='underline' target='_blank'>app.formative.com</a> платформасында өткізіледі.<br>Кез келген уақытта бастауға болады, бірақ шешуге арналған уақыт шегі - 5 сағат.<br>Барлық тіркелген қатысушыларға 18-қыркүйектен кешіктірмей платформаға кіру рұқсаты мен нұсқаулықтар жіберіледі.", "participation.stages.final":
+        "2025 жылғы 25-27 қазан аралығында Алматы қаласында өтетін ақтық оффлайн тур",
     tasks: "ТАПСЫРМАЛАР",
     "tasks.description":
         "Турнирдің тапсырмаларын физикадан Қазақстанның ұлттық құрамасы мүшелерінен тұратын команда: IPhO, IMO, APhO, EuPhO, IJSO, BPhO, IMChO, IYPT жүлдегерлері және МФТИ ЛФИ, Harvard, Williams College және Sheffield University студенттері құрайды. Біз классикалық олимпиадалардан да, ЛЛФИ кубогы сияқты әдеттен тыс сайыстардан да ең жақсысын алуға тырысамыз"

@@ -4,7 +4,8 @@ import Layout from "~/components/layout.astro";
 import Table from "~/components/result-table.astro";
 
 const results = await getCollection("results");
-console.log(results);
+const sortedResults = results.sort((a, b) => b.data.year - a.data.year);
+console.log(sortedResults);
 ---
 
 <Layout
@@ -141,7 +142,7 @@ console.log(results);
   </div>
 
   {
-    results.map((table_result) => (
+    sortedResults.map((table_result) => (
       <>
         <div class="col-span-4 pt-6">
           <h2 class="text-neutral-300 text-3xl mb-2">Старшая Лига</h2>
