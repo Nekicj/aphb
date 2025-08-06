@@ -1,12 +1,13 @@
 export const enHome = {
     'seo.description': 'From October 25 to October 27, the best physicists from across Kazakhstan and beyond will gather at Satbayev University to compete in physics battles - a unique team-based competition in Olympiad physics for grades 8-12.',
-    'seo.title': 'Almaty Physics Battles - II Tournament of Physics Battles in Central Asia',
+    'seo.title': 'Almaty Physics Battles - III Tournament of Physics Battles in Central Asia',
     "collision.minds": "COLLISION OF MINDS",
     "participate.battle": "take part in the APhB battle",
     "box-1": "Satbayev University",
     "box-2": "Interactive format",
     "box-3": "150+ teams",
     "box-4": "The most challenging problems",
+    "box-5": "Accommodation for non-resident participants",
     "register.now": "Register now",
     results: "Results",
     "join.competition.description":
@@ -50,7 +51,7 @@ export const enHome = {
 
 export const ruHome = {
     'seo.description': '25-27 октября в Satbayev University собертся лучшие физики со всего Казахстана и не только в том, чтобы сразиться в физическом бое - уникальном виде командных соревнований по олимпиадной физике для 8-12 классов',
-    'seo.title': 'Almaty Physics Battles -  II турнир по физическим боям в Центральной Азии',
+    'seo.title': 'Almaty Physics Battles -  III турнир по физическим боям в Центральной Азии',
     "collision.minds": "СТОЛКНОВЕНИЕ УМОВ",
     "participate.battle":
         "Примите участие в первых в Центральной Азии Физических боях!",
@@ -58,6 +59,7 @@ export const ruHome = {
     "box-2": "Интерактивный формат",
     "box-3": "150+ команд",
     "box-4": "Сложнейшие задачи",
+    "box-5": "Проживание иногородних участников",
     "register.now": "Регистрируйся сейчас",
     results: "Результаты",
     "join.competition.description":
@@ -100,13 +102,14 @@ export const ruHome = {
 
 export const kzHome = {
     'seo.description': "25-27 қазанда Satbayev University-де Қазақстанның түкпір-түкпірінен келген үздік физиктер 8-12 сыныптарға арналған олимпиадалық физикадан командалық жарыстың бірегей түрі - физикалық жекпе-жекте күресу үшін жиналады",
-    'seo.title': 'Almaty Physics Battles - Орталық Азиядағы физикалық жекпе-жектен II турнир',
+    'seo.title': 'Almaty Physics Battles - Орталық Азиядағы физикалық жекпе-жектен III турнир',
     "collision.minds": "ОЙЛАРДЫҢ СОҚТЫҒЫСУЫ",
     "participate.battle": "APhB шайқасына қатысыңыз",
     "box-1": "Сәтбаев Университеті",
     "box-2": "Интерактивті формат",
     "box-3": "150+ команда",
     "box-4": "Ең күрделі есептер",
+    "box-5": "Басқа қалалардан келген қатысушылардың тұруы",
     "register.now": "Қазір тіркеліңіз",
     results: "Нәтижелер",
     "join.competition.description":
