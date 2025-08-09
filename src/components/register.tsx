@@ -62,7 +62,7 @@ export const RegisterForm = ({
     const form = useForm<TeamSchema>({
         resolver: zodResolver(teamSchema),
     });
-    const registrationCloseDate = new Date("2024-05-20T00:00:00+05:00");
+    const registrationCloseDate = new Date("2025-09-03T23:59:00+05:00");
     
     const handleSubmit = async (data: TeamSchema) => {
         // reload the page if the registration is closed
@@ -86,7 +86,7 @@ export const RegisterForm = ({
         })
 
         if (res.ok) {
-            toast.success(`Спасибо за вашу заявку. Ваша команда успешно зарегистрирована на отборочный этап APhB 2024!`, { duration: 100000 })
+            toast.success(`Спасибо за вашу заявку. Ваша команда успешно зарегистрирована на отборочный этап APhB 2025!`, { duration: 100000 })
         }
         else {
             const data = await res.json()

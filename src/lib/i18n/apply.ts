@@ -1,6 +1,6 @@
 export const enApply = {
-  'seo.description': 'Seize the opportunity to be part of APhB 2024! Register now to compete for the title of top physicist in this unique team-based Olympiad for grades 8-12 across Central Asia. Join our community of talented scientists!',
-  'seo.title': 'Apply for APhB 2024 - Join the Physics Battles in Almaty',
+  'seo.description': 'Seize the opportunity to be part of APhB 2025! Register now to compete for the title of top physicist in this unique team-based Olympiad for grades 8-12 across Central Asia. Join our community of talented scientists!',
+'seo.title': 'Apply for APhB 2025 - Join the Physics Battles in Almaty',
 
   "team.name": "Team Name",
   "league.label": "League",
@@ -47,8 +47,8 @@ export const enApply = {
 };
 
 export const ruApply = {
-  "seo.description": "Не упустите шанс стать частью APhB 2024! Регистрируйтесь сейчас, чтобы соревноваться за звание лучшего физика в этой уникальной командной олимпиаде для учащихся 8-12 классов по всей Центральной Азии. Присоединяйтесь к нашему сообществу талантливых ученых!",
-  "seo.title": "Подайте заявку на APhB 2024 - Присоединяйтесь к битвам по физике в Алматы",
+      "seo.description": "Не упустите шанс стать частью APhB 2025! Регистрируйтесь сейчас, чтобы соревноваться за звание лучшего физика в этой уникальной командной олимпиаде для учащихся 8-12 классов по всей Центральной Азии. Присоединяйтесь к нашему сообществу талантливых ученых!",
+    "seo.title": "Подайте заявку на APhB 2025 - Присоединяйтесь к битвам по физике в Алматы",
 
   "team.name": "Название команды",
   "league.label": "Лига",
@@ -95,8 +95,8 @@ export const ruApply = {
 };
 
 export const kzApply = {
-  "seo.description": "APhB 2024-ке қатысу мүмкіндігін қолдан жібермеңіз! Орталық Азиядағы 8-12 сынып оқушылары арасындағы бұл бірегей командалық олимпиадада үздік физик атағы үшін жарысқа тіркеліңіз. Дарынды ғалымдар қауымдастығымызға қосылыңыз!",
-  "seo.title": "APhB 2024-ке қатысыңыз - Алматыдағы Физикалық Жекпе-жектерге Қосылыңыз",
+      "seo.description": "APhB 2025-ке қатысу мүмкіндігін қолдан жібермеңіз! Орталық Азиядағы 8-12 сынып оқушылары арасындағы бұл бірегей командалық олимпиадада үздік физик атағы үшін жарысқа тіркеліңіз. Дарынды ғалымдар қауымдастығымызға қосылыңыз!",
+    "seo.title": "APhB 2025-ке қатысыңыз - Алматыдағы Физикалық Жекпе-жектерге Қосылыңыз",
 
   "team.name": "Команда атауы",
   "leader.email": "Жетекшінің электрондық поштасы",

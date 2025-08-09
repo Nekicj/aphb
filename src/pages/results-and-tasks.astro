@@ -4,15 +4,16 @@ import Layout from "~/components/layout.astro";
 import Table from "~/components/result-table.astro";
 
 const results = await getCollection("results");
-console.log(results);
+const sortedResults = results.sort((a, b) => b.data.year - a.data.year);
+console.log(sortedResults);
 ---
 
 <Layout
-  title="Almaty Physics Battles -  II турнир по физическим боям в Центральной Азии"
+  title="Результаты и задачи"
   description="Результаты и задачи турниров прошлых лет Almaty Physics Battles!"
 >
   <div
-    class="lg:col-start-11 sticky-gsap lg:sticky relative col-span-4 lg:col-span-2 lg:top-24 mb-5 lg:-right-5 lg:w-60 bg-primary-500 rounded-xl overflow-hidden  px-4 py-8 lg:py-14 lg:row-span-3 lg:h-[700px]"
+    class="lg:col-start-11 sticky-gsap lg:sticky relative col-span-4 lg:col-span-2 lg:top-24 mb-5 lg:-right-5 lg:w-60 bg-primary-500 rounded-xl overflow-hidden  px-4 py-8 lg:py-14 lg:row-span-3 lg:h-[700px] overflow-y-auto"
   >
     <svg
       xmlns="http://www.w3.org/2000/svg"
@@ -27,12 +28,76 @@ console.log(results);
     </svg>
     <h2 class="text-3xl text-blue-300 relative">Задачи</h2>
 
-    <div class="flex flex-col gap-4 mt-8 lg:mt-20">
-      <a
-        href="/tasks/junior_qualifier_2024_kz_sols.pdf"
+    <div class="flex flex-col gap-4 mt-8 lg:mt-20 whitespace-nowrap">
+             <a
+         href="/tasks/junior_qualifier_2024_kz_sols.pdf"
+         class="p-2 rounded-lg text-secondary relative bg-primary-700 text-lg"
+       >
+         Отбор Младшая лига
+         <div
+           class="absolute right-2 rounded-md bottom-0 translate-y-1/2 text-xs bg-primary-900 px-1 py-0.5"
+         >
+           2024
+         </div>
+         <div
+           class="absolute right-12 rounded-md bottom-0 translate-y-1/2 text-xs bg-primary-900 px-1 py-0.5"
+         >
+           KAZ
+         </div>
+       </a>
+       <a
+         href="/tasks/junior_final_2024_kaz.pdf"
+         class="p-2 rounded-lg text-secondary relative bg-primary-700 text-lg"
+       >
+         Финал Младшая лига
+         <div
+           class="absolute right-2 rounded-md bottom-0 translate-y-1/2 text-xs bg-primary-900 px-1 py-0.5"
+         >
+           2024
+         </div>
+         <div
+           class="absolute right-12 rounded-md bottom-0 translate-y-1/2 text-xs bg-primary-900 px-1 py-0.5"
+         >
+           KAZ
+         </div>
+       </a>
+              <a
+          href="/tasks/junior_qualifier_2024_ru_sols.pdf"
+         class="p-2 rounded-lg text-secondary relative bg-primary-700 text-lg"
+       >
+         Отбор Младшая лига
+         <div
+           class="absolute right-2 rounded-md bottom-0 translate-y-1/2 text-xs bg-primary-900 px-1 py-0.5"
+         >
+           2024
+         </div>
+         <div
+           class="absolute right-12 rounded-md bottom-0 translate-y-1/2 text-xs bg-primary-900 px-1 py-0.5"
+         >
+           RUS
+         </div>
+       </a>
+       <a
+         href="/tasks/junior_final_2024_rus.pdf"
+         class="p-2 rounded-lg text-secondary relative bg-primary-700 text-lg"
+       >
+         Финал Младшая лига
+         <div
+           class="absolute right-2 rounded-md bottom-0 translate-y-1/2 text-xs bg-primary-900 px-1 py-0.5"
+         >
+           2024
+         </div>
+         <div
+           class="absolute right-12 rounded-md bottom-0 translate-y-1/2 text-xs bg-primary-900 px-1 py-0.5"
+         >
+           RUS
+         </div>
+       </a>
+       <a
+         href="/tasks/senior_qualifier_2024_kz_sols.pdf"
         class="p-2 rounded-lg text-secondary relative bg-primary-700 text-lg"
       >
-        Отбор Младшая лига
+        Отбор Старшая лига
         <div
           class="absolute right-2 rounded-md bottom-0 translate-y-1/2 text-xs bg-primary-900 px-1 py-0.5"
         >
@@ -45,26 +110,10 @@ console.log(results);
         </div>
       </a>
       <a
-        href="/tasks/junior_qualifier_2024_ru_sols.pdf"
+        href="/tasks/senior_final_2024_kaz.pdf"
         class="p-2 rounded-lg text-secondary relative bg-primary-700 text-lg"
       >
-        Отбор Младшая лига
-        <div
-          class="absolute right-2 rounded-md bottom-0 translate-y-1/2 text-xs bg-primary-900 px-1 py-0.5"
-        >
-          2024
-        </div>
-        <div
-          class="absolute right-12 rounded-md bottom-0 translate-y-1/2 text-xs bg-primary-900 px-1 py-0.5"
-        >
-          RUS
-        </div>
-      </a>
-      <a
-        href="/tasks/senior_qualifier_2024_kz_sols.pdf"
-        class="p-2 rounded-lg text-secondary relative bg-primary-700 text-lg"
-      >
-        Отбор Старшая лига
+        Финал Старшая лига
         <div
           class="absolute right-2 rounded-md bottom-0 translate-y-1/2 text-xs bg-primary-900 px-1 py-0.5"
         >
@@ -81,6 +130,22 @@ console.log(results);
         class="p-2 rounded-lg text-secondary relative bg-primary-700 text-lg"
       >
         Отбор Старшая лига
+        <div
+          class="absolute right-2 rounded-md bottom-0 translate-y-1/2 text-xs bg-primary-900 px-1 py-0.5"
+        >
+          2024
+        </div>
+        <div
+          class="absolute right-12 rounded-md bottom-0 translate-y-1/2 text-xs bg-primary-900 px-1 py-0.5"
+        >
+          RUS
+        </div>
+      </a>
+      <a
+        href="/tasks/senior_final_2024_ru.pdf"
+        class="p-2 rounded-lg text-secondary relative bg-primary-700 text-lg"
+      >
+        Финал Старшая лига
         <div
           class="absolute right-2 rounded-md bottom-0 translate-y-1/2 text-xs bg-primary-900 px-1 py-0.5"
         >
@@ -141,7 +206,7 @@ console.log(results);
   </div>
 
   {
-    results.map((table_result) => (
+    sortedResults.map((table_result) => (
       <>
         <div class="col-span-4 pt-6">
           <h2 class="text-neutral-300 text-3xl mb-2">Старшая Лига</h2>

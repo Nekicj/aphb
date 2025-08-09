@@ -10,6 +10,7 @@ interface Props {
 const { className, results } = Astro.props;
 
 const placeStyle = {
+  "GP": "text-[#E2B127] border-[#E2B127]",
   "1": "text-[#E2B127] border-[#E2B127]",
   "2": "text-[#AFAFAF] border-[#AFAFAF]",
   "3": "text-[#FF9270] border-[#FF9270]",
@@ -37,7 +38,7 @@ const placeStyle = {
             <td
               class={
                 placeStyle[result.place || "4"] +
-                "-mt-1 rounded-full border-2 leading-6 h-8 w-8  text-2xl grid place-items-center  relative z-10"
+                "-mt-1 rounded-full border-2 leading-6 h-11 w-11  text-2xl grid place-items-center  relative z-10"
               }
             >
               {result.place}

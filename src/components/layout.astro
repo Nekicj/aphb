@@ -43,14 +43,14 @@ const rules =
         href={translatePath("/", lang)}
         class="flex gap-2 items-center justify-self-start"
       >
-        <img src="/logo.svg" alt="logo" class="hidden lg:block" />
+        <img src="/logo.svg" width={125} height={30} alt="logo" class="hidden lg:block" />
         <img src="/logo-sm.svg" alt="logo" class="md:hidden block" />
       </a>
       <div class="md:flex gap-5 text-neutral-400 items-center hidden">
         <a href="/team">Команда</a>
         <a href="/results-and-tasks">Результаты</a>
         <a href="/topics">Темы</a>
-        <a href="/sponsors">Спонсора</a>
+        <a href="/sponsors">Спонсоры</a>
         <ul class="flex gap-2">
           {
             Object.entries(languages).map(([lang]) => (
@@ -99,7 +99,7 @@ const rules =
         <a href="/team">Команда</a>
         <a href="/results-and-tasks">Результаты</a>
         <a href="/topics">Темы</a>
-        <a href="/sponsors">Спонсора</a>
+        <a href="/sponsors">Спонсоры</a>
       </div>
       <div class="flex h-12 flex-row items-center justify-between">
         <img src="/logo.svg" alt="logo" class="w-24" />
