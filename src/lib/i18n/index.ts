@@ -1,5 +1,5 @@
 export const enHome = {
-    'seo.description': 'From November 14 to November 16, the best physicists from across Kazakhstan and beyond will gather to compete in physics battles - a unique team-based competition in Olympiad physics for grades 8-12.',
+    'seo.description': 'The best physicists from across Kazakhstan and beyond will gather to compete in physics battles - a unique team-based competition in Olympiad physics for grades 8-12.',
     'seo.title': 'Almaty Physics Battles - III Tournament of Physics Battles in Central Asia',
     "collision.minds": "COLLISION OF MINDS",
     "participate.battle": "take part in the APhB battle",
@@ -10,7 +10,7 @@ export const enHome = {
     "register.now": "Register now",
     results: "Results",
     "join.competition.description":
-        "Join the team physics competitions at the main Olympiad of Central Asia from November 14 to November 16.",
+        "Join the team physics competitions at the main Olympiad of Central Asia.",
 
     "about.competition": "ABOUT THE COMPETITION",
     "about.competition.description":
@@ -24,11 +24,11 @@ export const enHome = {
     "league.school": "Ученики престижных школ",
     "participation.stages": "STAGES OF PARTICIPATION",
     "participation.stages.registration":
-        "Registration for the online qualifier until 23:59 Astana time, October 9th, 2025",
+        "Registration for the online qualifier until 23:59 Astana time",
     "participation.stages.online":
-        "The online qualifier will be held from October 10th to October 12th, 2025, on the platform <a href='https://app.formative.com' class='underline' target='_blank'>app.formative.com</a><br>You can start at any time, there is a 5-hour limit on solving.<br>Instructions with access to the platform will be sent to all registered participants by October 9th.",
+        "The online qualifier will be held on the platform <a href='https://app.formative.com' class='underline' target='_blank'>app.formative.com</a><br>You can start at any time, there is a 5-hour limit on solving.<br>Instructions with access to the platform will be sent to all registered participants.",
     "participation.stages.final":
-        "The final in-person stage from November 14th to November 16th, 2025 in the city of Astana",
+        "The final in-person stage in the city of Astana",
     tasks: "TASKS",
     "tasks.description":
         "The tournament tasks are compiled by a team from the members of the Kazakhstan national physics and math team: awardees of IPhO, IMO, APhO, EuPhO, IJSO, BPhO, IMChO, IYPT and students from the LPR MIPT, Harvard, Williams College, and Sheffield University. We strive to take the very best from both classical Olympiads, as well as from the less typical ones like the MIPT LPR Cup",
@@ -49,7 +49,7 @@ export const enHome = {
 };
 
 export const ruHome = {
-    'seo.description': '14-16 ноября соберутся лучшие физики со всего Казахстана и не только в том, чтобы сразиться в физическом бое - уникальном виде командных соревнований по олимпиадной физике для 8-12 классов',
+    'seo.description': 'Соберутся лучшие физики со всего Казахстана и не только в том, чтобы сразиться в физическом бое - уникальном виде командных соревнований по олимпиадной физике для 8-12 классов',
     'seo.title': 'Almaty Physics Battles -  III турнир по физическим боям в Центральной Азии',
     "collision.minds": "СТОЛКНОВЕНИЕ УМОВ",
     "participate.battle":
@@ -61,7 +61,7 @@ export const ruHome = {
     "register.now": "Регистрируйся сейчас",
     results: "Результаты",
     "join.competition.description":
-        "Присоединяйтесь к командным соревнованиям по физике 14-16 ноября 2025 года в г. Астана",
+        "Присоединяйтесь к командным соревнованиям по физике в г. Астана",
     "about.competition": "О СОРЕВНОВАНИИ",
     "about.competition.description":
         "АРhВ сочетает в себе уникальный формат командных соревнований школьников в решении олимпиадных задач по физике. Весь турнир организован исключительно старшеклассниками или студентами - первокурсниками.",
@@ -74,11 +74,11 @@ export const ruHome = {
     "league.school": "Ученики престижных школ",
     "participation.stages": "ЭТАПЫ УЧАСТИЯ",
     "participation.stages.registration":
-        "Регистрация на онлайн отбор до 9 октября 2025 года, 23:59 по времени г. Астана",
+        "Регистрация на онлайн отбор до 23:59 по времени г. Астана",
     "participation.stages.online":
-        `Онлайн отбор с 10 по 12 октября 2025 года на платформе <a href='https://app.formative.com' class='underline' target='_blank'>app.formative.com</a><br>Начать можно в любой момент, ограничение на решение - 5 часов.<br>Всем зарегистрированным участникам приходят инструкции с доступом к платформе до 9 октября.`, 
+        "Онлайн отбор на платформе <a href='https://app.formative.com' class='underline' target='_blank'>app.formative.com</a><br>Начать можно в любой момент, ограничение на решение - 5 часов.<br>Всем зарегистрированным участникам приходят инструкции с доступом к платформе.",
     "participation.stages.final":
-        "Финальный очный этап с 14 по 16 ноября 2025 года в г. Астана",
+        "Финальный очный этап в г. Астана",
     tasks: "ЗАДАЧИ",
     "tasks.description":
         "Задачи на турнир составляются командой из членов национальной сборной Казахстана по физике: призерами IPhO, IMO, APhO, EuPhO, IJSO, BPhO, IMChO, IYPT и студентами ЛФИ МФТИ, Harvard, Williams College и Sheffield University. Мы стараемся брать все самое лучшее как с классических олимпиад, так и с не очень по типу кубка ЛФИ ",
@@ -99,7 +99,7 @@ export const ruHome = {
 };
 
 export const kzHome = {
-    'seo.description': "14-16 қарашада  Қазақстанның түкпір-түкпірінен келген үздік физиктер 8-12 сыныптарға арналған олимпиадалық физикадан командалық жарыстың бірегей түрі - физикалық жекпе-жекте күресу үшін жиналады",
+    'seo.description': "Қазақстанның түкпір-түкпірінен келген үздік физиктер 8-12 сыныптарға арналған олимпиадалық физикадан командалық жарыстың бірегей түрі - физикалық жекпе-жекте күресу үшін жиналады",
     'seo.title': 'Almaty Physics Battles - Орталық Азиядағы физикалық жекпе-жектен III турнир',
     "collision.minds": "ОЙЛАРДЫҢ СОҚТЫҒЫСУЫ",
     "participate.battle": "APhB шайқасына қатысыңыз",
@@ -110,13 +110,13 @@ export const kzHome = {
     "register.now": "Қазір тіркеліңіз",
     results: "Нәтижелер",
     "join.competition.description":
-        "14-16 қарашада Орталық Азияның басты олимпиадасындағы физика бойынша командалық жарыстарға қосылыңыз.",
+        "Орталық Азияның басты олимпиадасындағы физика бойынша командалық жарыстарға қосылыңыз.",
 
     "about.competition": "ЖАРЫС ТУРАЛЫ",
     "about.competition.description":
-        "АРhВ физикадан олимпиадалық тапсырмаларды шешуде оқушылардың командалық жарыстарының бірегей форматын үйлестіреді. Турнирді жоғары сынып оқушылары немесе бірінші курс студенттері ұйымдастырады.", 
+        "АРhВ физикадан олимпиадалық тапсырмаларды шешуде оқушылардың командалық жарыстарының бірегей форматын үйлестіреді. Турнирді жоғары сынып оқушылары немесе бірінші курс студенттері ұйымдастырады.",
     "about.competition.fights":
-        "Физикалық жекпе-жек қазіргі уақытқа дейін тек Ресей, Украина және Францияда өткізілді, ал әлемнің қалған бөлігінде мүлдем өткізілмеді. Біздің турнир - Қазақстан мен Орталық Азиядағы алғашқы турнир", 
+        "Физикалық жекпе-жек қазіргі уақытқа дейін тек Ресей, Украина және Францияда өткізілді, ал әлемнің қалған бөлігінде мүлдем өткізілмеді. Біздің турнир - Қазақстан мен Орталық Азиядағы алғашқы турнир",
     "league.older": "Үлкен лига",
     "league.older.description": "10-12 сынып оқушылары",
     "league.younger": "Кіші лига",
@@ -124,17 +124,17 @@ export const kzHome = {
     "league.school": "Ученики престижных школ",
     "participation.stages": "ҚАТЫСУ КЕЗЕҢДЕРІ",
     "participation.stages.registration":
-        "2025 жылғы 9 қазанда Астана уақыты бойынша 23:59-ға дейін онлайн іріктеуге тіркелу",
+        "Астана уақыты бойынша 23:59-ға дейін онлайн іріктеуге тіркелу",
     "participation.stages.online":
-        "Онлайн іріктеу 2025 жылғы 10-12 қазан аралығында <a href='https://app.formative.com' class='underline' target='_blank'>app.formative.com</a> платформасында өткізіледі.<br>Кез келген уақытта бастауға болады, бірақ шешуге арналған уақыт шегі - 5 сағат.<br>Барлық тіркелген қатысушыларға 9-қазаннан кешіктірмей платформаға кіру рұқсаты мен нұсқаулықтар жіберіледі.", 
+        "Онлайн іріктеу <a href='https://app.formative.com' class='underline' target='_blank'>app.formative.com</a> платформасында өткізіледі.<br>Кез келген уақытта бастауға болады, бірақ шешуге арналған уақыт шегі - 5 сағат.<br>Барлық тіркелген қатысушыларға платформаға кіру рұқсаты мен нұсқаулықтар жіберіледі.",
     "participation.stages.final":
-        "2025 жылғы 14-16 қараша аралығында Астана қаласында өтетін ақтық оффлайн тур",
+        "Астана қаласында өтетін ақтық оффлайн тур",
     tasks: "ТАПСЫРМАЛАР",
     "tasks.description":
         "Турнирдің тапсырмаларын физикадан Қазақстанның ұлттық құрамасы мүшелерінен тұратын команда: IPhO, IMO, APhO, EuPhO, IJSO, BPhO, IMChO, IYPT жүлдегерлері және МФТИ ЛФИ, Harvard, Williams College және Sheffield University студенттері құрайды. Біз классикалық олимпиадалардан да, ЛЛФИ кубогы сияқты әдеттен тыс сайыстардан да ең жақсысын алуға тырысамыз",
     teamwork: "КОМАНДАЛЫҚ ЖҰМЫС",
     "teamwork.description":
-        "Формат жеңіске жету үшін міндетті түрде команданың барлық мүшелерінің бірлескен және тиімді жұмысын көздейді. Бұл ең алдымен 6 сағат олимпиадалық физика бойынша күрделі есептерді шешкеннен кейін достық атмосфераны сақтау және міндеттерді орындауда дұрыс бөлу қабілеті", 
+        "Формат жеңіске жету үшін міндетті түрде команданың барлық мүшелерінің бірлескен және тиімді жұмысын көздейді. Бұл ең алдымен 6 сағат олимпиадалық физика бойынша күрделі есептерді шешкеннен кейін достық атмосфераны сақтау және міндеттерді орындауда дұрыс бөлу қабілеті",
     strategy: "СТРАТЕГИЯ",
     "strategy.description":
         "Жеңіске жету үшін командалар дұрыс тактика және стратегиялар құруы керек. Тек олармен ғана академиялық жағынан күшті команданы жеңуге болады",
