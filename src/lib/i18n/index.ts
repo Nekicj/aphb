@@ -24,7 +24,7 @@ export const enHome = {
     "league.school": "Ученики престижных школ",
     "participation.stages": "STAGES OF PARTICIPATION",
     "participation.stages.registration":
-        "Registration for the online qualifier until 23:59 Astana time",
+        "Registration for the online qualifier",
     "participation.stages.online":
         "The online qualifier will be held on the platform <a href='https://app.formative.com' class='underline' target='_blank'>app.formative.com</a><br>You can start at any time, there is a 5-hour limit on solving.<br>Instructions with access to the platform will be sent to all registered participants.",
     "participation.stages.final":
@@ -74,7 +74,7 @@ export const ruHome = {
     "league.school": "Ученики престижных школ",
     "participation.stages": "ЭТАПЫ УЧАСТИЯ",
     "participation.stages.registration":
-        "Регистрация на онлайн отбор до 23:59 по времени г. Астана",
+        "Регистрация на онлайн отбор",
     "participation.stages.online":
         "Онлайн отбор на платформе <a href='https://app.formative.com' class='underline' target='_blank'>app.formative.com</a><br>Начать можно в любой момент, ограничение на решение - 5 часов.<br>Всем зарегистрированным участникам приходят инструкции с доступом к платформе.",
     "participation.stages.final":
@@ -124,7 +124,7 @@ export const kzHome = {
     "league.school": "Ученики престижных школ",
     "participation.stages": "ҚАТЫСУ КЕЗЕҢДЕРІ",
     "participation.stages.registration":
-        "Астана уақыты бойынша 23:59-ға дейін онлайн іріктеуге тіркелу",
+        "Онлайн іріктеуге тіркелу",
     "participation.stages.online":
         "Онлайн іріктеу <a href='https://app.formative.com' class='underline' target='_blank'>app.formative.com</a> платформасында өткізіледі.<br>Кез келген уақытта бастауға болады, бірақ шешуге арналған уақыт шегі - 5 сағат.<br>Барлық тіркелген қатысушыларға платформаға кіру рұқсаты мен нұсқаулықтар жіберіледі.",
     "participation.stages.final":
