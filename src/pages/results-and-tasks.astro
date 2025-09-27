@@ -2,238 +2,149 @@
 import { getCollection } from "astro:content";
 import Layout from "~/components/layout.astro";
 import Table from "~/components/result-table.astro";
+import { getLangFromUrl } from "~/utils/i18n";
 
 const results = await getCollection("results");
 const sortedResults = results.sort((a, b) => b.data.year - a.data.year);
+const years = Array.from(new Set(sortedResults.map((r) => r.data.year))).sort((a, b) => b - a);
 console.log(sortedResults);
+
+const lang = getLangFromUrl(Astro.url);
+const i18n = {
+  ru: {
+    title: "Результаты и задачи",
+    description: "Результаты и задачи турниров прошлых лет Almaty Physics Battles!",
+    filters: { year: "Год", league: "Лига", all: "Все" },
+    leagues: { senior: "Старшая лига", junior: "Младшая лига" },
+    tasks: {
+      qualifierSenior: "Отбор Старшая лига",
+      finalSenior: "Финал Старшая лига",
+      qualifierJunior: "Отбор Младшая лига",
+      finalJunior: "Финал Младшая лига",
+    },
+  },
+  en: {
+    title: "Results and tasks",
+    description: "Results and tasks from past years of Almaty Physics Battles!",
+    filters: { year: "Year", league: "League", all: "All" },
+    leagues: { senior: "Senior League", junior: "Junior League" },
+    tasks: {
+      qualifierSenior: "Qualifier Senior League",
+      finalSenior: "Final Senior League",
+      qualifierJunior: "Qualifier Junior League",
+      finalJunior: "Final Junior League",
+    },
+  },
+  kz: {
+    title: "Нәтижелер мен тапсырмалар",
+    description: "Almaty Physics Battles өткен жылдардың нәтижелері мен тапсырмалары!",
+    filters: { year: "Жыл", league: "Лига", all: "Барлығы" },
+    leagues: { senior: "Үлкен лига", junior: "Кіші лига" },
+    tasks: {
+      qualifierSenior: "Іріктеу Үлкен лига",
+      finalSenior: "Финал Үлкен лига",
+      qualifierJunior: "Іріктеу Кіші лига",
+      finalJunior: "Финал Кіші лига",
+    },
+  },
+} as const;
+const t = i18n[lang as keyof typeof i18n] ?? i18n.ru;
 ---
 
 <Layout
-  title="Результаты и задачи"
-  description="Результаты и задачи турниров прошлых лет Almaty Physics Battles!"
+  title={t.title}
+  description={t.description}
 >
-  <div
-    class="lg:col-start-11 sticky-gsap lg:sticky relative col-span-4 lg:col-span-2 lg:top-24 mb-5 lg:-right-5 lg:w-60 bg-primary-500 rounded-xl overflow-hidden  px-4 py-8 lg:py-14 lg:row-span-3 lg:h-[700px] overflow-y-auto"
-  >
-    <svg
-      xmlns="http://www.w3.org/2000/svg"
-      viewBox="0 0 222 852"
-      fill="none"
-      class="inset-0 absolute"
-    >
-      <path
-        d="M117.037 860.776L264.386 -123.642M-61.3062 725.807L264.386 -123.642M264.386 -123.642L-26.4734 216.138"
-        stroke="#0F2871"
-        stroke-width="64"></path>
-    </svg>
-    <h2 class="text-3xl text-blue-300 relative">Задачи</h2>
-
-    <div class="flex flex-col gap-4 mt-8 lg:mt-20 whitespace-nowrap">
-             <a
-         href="/tasks/junior_qualifier_2024_kz_sols.pdf"
-         class="p-2 rounded-lg text-secondary relative bg-primary-700 text-lg"
-       >
-         Отбор Младшая лига
-         <div
-           class="absolute right-2 rounded-md bottom-0 translate-y-1/2 text-xs bg-primary-900 px-1 py-0.5"
-         >
-           2024
-         </div>
-         <div
-           class="absolute right-12 rounded-md bottom-0 translate-y-1/2 text-xs bg-primary-900 px-1 py-0.5"
-         >
-           KAZ
-         </div>
-       </a>
-       <a
-         href="/tasks/junior_final_2024_kaz.pdf"
-         class="p-2 rounded-lg text-secondary relative bg-primary-700 text-lg"
-       >
-         Финал Младшая лига
-         <div
-           class="absolute right-2 rounded-md bottom-0 translate-y-1/2 text-xs bg-primary-900 px-1 py-0.5"
-         >
-           2024
-         </div>
-         <div
-           class="absolute right-12 rounded-md bottom-0 translate-y-1/2 text-xs bg-primary-900 px-1 py-0.5"
-         >
-           KAZ
-         </div>
-       </a>
-              <a
-          href="/tasks/junior_qualifier_2024_ru_sols.pdf"
-         class="p-2 rounded-lg text-secondary relative bg-primary-700 text-lg"
-       >
-         Отбор Младшая лига
-         <div
-           class="absolute right-2 rounded-md bottom-0 translate-y-1/2 text-xs bg-primary-900 px-1 py-0.5"
-         >
-           2024
-         </div>
-         <div
-           class="absolute right-12 rounded-md bottom-0 translate-y-1/2 text-xs bg-primary-900 px-1 py-0.5"
-         >
-           RUS
-         </div>
-       </a>
-       <a
-         href="/tasks/junior_final_2024_rus.pdf"
-         class="p-2 rounded-lg text-secondary relative bg-primary-700 text-lg"
-       >
-         Финал Младшая лига
-         <div
-           class="absolute right-2 rounded-md bottom-0 translate-y-1/2 text-xs bg-primary-900 px-1 py-0.5"
-         >
-           2024
-         </div>
-         <div
-           class="absolute right-12 rounded-md bottom-0 translate-y-1/2 text-xs bg-primary-900 px-1 py-0.5"
-         >
-           RUS
-         </div>
-       </a>
-       <a
-         href="/tasks/senior_qualifier_2024_kz_sols.pdf"
-        class="p-2 rounded-lg text-secondary relative bg-primary-700 text-lg"
-      >
-        Отбор Старшая лига
-        <div
-          class="absolute right-2 rounded-md bottom-0 translate-y-1/2 text-xs bg-primary-900 px-1 py-0.5"
-        >
-          2024
-        </div>
-        <div
-          class="absolute right-12 rounded-md bottom-0 translate-y-1/2 text-xs bg-primary-900 px-1 py-0.5"
-        >
-          KAZ
-        </div>
-      </a>
-      <a
-        href="/tasks/senior_final_2024_kaz.pdf"
-        class="p-2 rounded-lg text-secondary relative bg-primary-700 text-lg"
-      >
-        Финал Старшая лига
-        <div
-          class="absolute right-2 rounded-md bottom-0 translate-y-1/2 text-xs bg-primary-900 px-1 py-0.5"
-        >
-          2024
-        </div>
-        <div
-          class="absolute right-12 rounded-md bottom-0 translate-y-1/2 text-xs bg-primary-900 px-1 py-0.5"
-        >
-          KAZ
-        </div>
-      </a>
-      <a
-        href="/tasks/senior_qualifier_2024_ru_sols.pdf"
-        class="p-2 rounded-lg text-secondary relative bg-primary-700 text-lg"
-      >
-        Отбор Старшая лига
-        <div
-          class="absolute right-2 rounded-md bottom-0 translate-y-1/2 text-xs bg-primary-900 px-1 py-0.5"
-        >
-          2024
-        </div>
-        <div
-          class="absolute right-12 rounded-md bottom-0 translate-y-1/2 text-xs bg-primary-900 px-1 py-0.5"
-        >
-          RUS
-        </div>
-      </a>
-      <a
-        href="/tasks/senior_final_2024_ru.pdf"
-        class="p-2 rounded-lg text-secondary relative bg-primary-700 text-lg"
-      >
-        Финал Старшая лига
-        <div
-          class="absolute right-2 rounded-md bottom-0 translate-y-1/2 text-xs bg-primary-900 px-1 py-0.5"
-        >
-          2024
-        </div>
-        <div
-          class="absolute right-12 rounded-md bottom-0 translate-y-1/2 text-xs bg-primary-900 px-1 py-0.5"
-        >
-          RUS
-        </div>
-      </a>
-      <a
-        href="/tasks/senior_qualifier_2023_sols.pdf"
-        class="p-2 rounded-lg text-secondary relative bg-primary-700 text-lg"
-      >
-        Отбор Старшая лига
-        <div
-          class="absolute right-2 rounded-md bottom-0 translate-y-1/2 text-xs bg-primary-900 px-1 py-0.5"
-        >
-          2023
-        </div>
-      </a>
-      <a
-        href="/tasks/senior_final_2023_sols.pdf"
-        class="p-2 rounded-lg text-secondary relative bg-primary-700 text-lg"
-      >
-        Финал Старшая лига
-        <div
-          class="absolute right-2 rounded-md bottom-0 translate-y-1/2 text-xs bg-primary-900 px-1 py-0.5"
-        >
-          2023
-        </div>
-      </a>
-
-      <a
-        href="/tasks/junior_qualifier_2023_sols.pdf"
-        class="p-2 rounded-lg text-secondary relative bg-primary-700 text-lg"
-      >
-        Отбор Младшая лига
-        <div
-          class="absolute right-2 rounded-md bottom-0 translate-y-1/2 text-xs bg-primary-900 px-1 py-0.5"
-        >
-          2023
-        </div>
-      </a>
-      <a
-        href="/tasks/junior_final_2023_sols.pdf"
-        class="p-2 rounded-lg text-secondary relative bg-primary-700 text-lg"
-      >
-        Финал Младшая лига
-        <div
-          class="absolute right-2 rounded-md bottom-0 translate-y-1/2 text-xs bg-primary-900 px-1 py-0.5"
-        >
-          2023
-        </div>
-      </a>
+  <!-- Filters bar -->
+  <div class="col-span-full mb-6 flex flex-wrap gap-3 items-end justify-center max-w-5xl mx-auto">
+    <div>
+      <label for="yearFilter" class="block text-sm text-neutral-500 mb-1">{t.filters.year}</label>
+      <select id="yearFilter" class="min-w-48 border border-neutral-300 rounded-md px-3 py-2 bg-white">
+        <option value="all">{t.filters.all}</option>
+        {years.map((y) => (
+          <option value={y}>{y}</option>
+        ))}
+      </select>
+    </div>
+    <div>
+      <label for="leagueFilter" class="block text-sm text-neutral-500 mb-1">{t.filters.league}</label>
+      <select id="leagueFilter" class="min-w-48 border border-neutral-300 rounded-md px-3 py-2 bg-white">
+        <option value="all">{t.filters.all}</option>
+        <option value="senior">{t.leagues.senior}</option>
+        <option value="junior">{t.leagues.junior}</option>
+      </select>
     </div>
   </div>
+  <!-- Sidebar removed; tasks moved inline above each section -->
 
   {
     sortedResults.map((table_result) => (
       <>
-        <div class="col-span-4 pt-6">
-          <h2 class="text-neutral-300 text-3xl mb-2">Старшая Лига</h2>
-          <p class="text-neutral-700 leading-relaxed">
-            Обзор Итогов Олимпиады {table_result.data.year}: Лучшие Выступления
-            в Младшей Категории
-          </p>
-        </div>
-        <div class="lg:col-span-6 lg:block hidden" />
+        <section class="result-block col-span-full grid grid-cols-subgrid" data-year={table_result.data.year} data-league="senior">
+          <div class="col-span-full pt-6 text-center">
+            <h3 class="text-neutral-400 text-xl">{table_result.data.year}</h3>
+            <h2 class="text-neutral-900 text-4xl md:text-5xl font-bold uppercase mb-2">{t.leagues.senior}</h2>
+          </div>
+          {table_result.data.year === 2024 && (
+            <div class="col-span-full flex flex-wrap gap-3 mb-4 justify-center">
+              <a href="/tasks/senior_qualifier_2024_kz_sols.pdf" class="p-2 rounded-lg text-secondary relative bg-primary-700 text-lg">{t.tasks.qualifierSenior}<div class="absolute right-2 rounded-md bottom-0 translate-y-1/2 text-xs bg-primary-900 px-1 py-0.5">2024</div><div class="absolute right-12 rounded-md bottom-0 translate-y-1/2 text-xs bg-primary-900 px-1 py-0.5">KAZ</div></a>
+              <a href="/tasks/senior_final_2024_kaz.pdf" class="p-2 rounded-lg text-secondary relative bg-primary-700 text-lg">{t.tasks.finalSenior}<div class="absolute right-2 rounded-md bottom-0 translate-y-1/2 text-xs bg-primary-900 px-1 py-0.5">2024</div><div class="absolute right-12 rounded-md bottom-0 translate-y-1/2 text-xs bg-primary-900 px-1 py-0.5">KAZ</div></a>
+              <a href="/tasks/senior_qualifier_2024_ru_sols.pdf" class="p-2 rounded-lg text-secondary relative bg-primary-700 text-lg">{t.tasks.qualifierSenior}<div class="absolute right-2 rounded-md bottom-0 translate-y-1/2 text-xs bg-primary-900 px-1 py-0.5">2024</div><div class="absolute right-12 rounded-md bottom-0 translate-y-1/2 text-xs bg-primary-900 px-1 py-0.5">RUS</div></a>
+              <a href="/tasks/senior_final_2024_ru.pdf" class="p-2 rounded-lg text-secondary relative bg-primary-700 text-lg">{t.tasks.finalSenior}<div class="absolute right-2 rounded-md bottom-0 translate-y-1/2 text-xs bg-primary-900 px-1 py-0.5">2024</div><div class="absolute right-12 rounded-md bottom-0 translate-y-1/2 text-xs bg-primary-900 px-1 py-0.5">RUS</div></a>
+            </div>
+          )}
+          {table_result.data.year === 2023 && (
+            <div class="col-span-full flex flex-wrap gap-3 mb-4 justify-center">
+              <a href="/tasks/senior_qualifier_2023_sols.pdf" class="p-2 rounded-lg text-secondary relative bg-primary-700 text-lg">{t.tasks.qualifierSenior}<div class="absolute right-2 rounded-md bottom-0 translate-y-1/2 text-xs bg-primary-900 px-1 py-0.5">2023</div></a>
+              <a href="/tasks/senior_final_2023_sols.pdf" class="p-2 rounded-lg text-secondary relative bg-primary-700 text-lg">{t.tasks.finalSenior}<div class="absolute right-2 rounded-md bottom-0 translate-y-1/2 text-xs bg-primary-900 px-1 py-0.5">2023</div></a>
+            </div>
+          )}
+          <Table className="col-span-full lg:col-span-10 lg:col-start-2 w-full max-w-6xl mx-auto" results={table_result.data.senior} />
+        </section>
 
-        <Table
-          className="col-span-4 lg:col-span-10 col-start-1"
-          results={table_result.data.senior}
-        />
-        <div class="col-span-4 pt-6 mt-16">
-          <h2 class="text-neutral-300 text-3xl mb-2">Младшая Лига</h2>
-          <p class="text-neutral-700 leading-relaxed">
-            Обзор Итогов Олимпиады {table_result.data.year}: Лучшие Выступления
-            в Младшей Категории
-          </p>
-        </div>
-        <div class="lg:col-span-6 lg:block hidden" />
-        <Table
-          className="col-span-4 lg:col-span-10 col-start-1"
-          results={table_result.data.junior}
-        />
+        <section class="result-block col-span-full grid grid-cols-subgrid" data-year={table_result.data.year} data-league="junior">
+          <div class="col-span-full pt-6 mt-16 text-center">
+            <h3 class="text-neutral-400 text-xl">{table_result.data.year}</h3>
+            <h2 class="text-neutral-900 text-4xl md:text-5xl font-bold uppercase mb-2">{t.leagues.junior}</h2>
+          </div>
+          {table_result.data.year === 2024 && (
+            <div class="col-span-full flex flex-wrap gap-3 mb-4 justify-center">
+              <a href="/tasks/junior_qualifier_2024_kz_sols.pdf" class="p-2 rounded-lg text-secondary relative bg-primary-700 text-lg">{t.tasks.qualifierJunior}<div class="absolute right-2 rounded-md bottom-0 translate-y-1/2 text-xs bg-primary-900 px-1 py-0.5">2024</div><div class="absolute right-12 rounded-md bottom-0 translate-y-1/2 text-xs bg-primary-900 px-1 py-0.5">KAZ</div></a>
+              <a href="/tasks/junior_final_2024_kaz.pdf" class="p-2 rounded-lg text-secondary relative bg-primary-700 text-lg">{t.tasks.finalJunior}<div class="absolute right-2 rounded-md bottom-0 translate-y-1/2 text-xs bg-primary-900 px-1 py-0.5">2024</div><div class="absolute right-12 rounded-md bottom-0 translate-y-1/2 text-xs bg-primary-900 px-1 py-0.5">KAZ</div></a>
+              <a href="/tasks/junior_qualifier_2024_ru_sols.pdf" class="p-2 rounded-lg text-secondary relative bg-primary-700 text-lg">{t.tasks.qualifierJunior}<div class="absolute right-2 rounded-md bottom-0 translate-y-1/2 text-xs bg-primary-900 px-1 py-0.5">2024</div><div class="absolute right-12 rounded-md bottom-0 translate-y-1/2 text-xs bg-primary-900 px-1 py-0.5">RUS</div></a>
+              <a href="/tasks/junior_final_2024_rus.pdf" class="p-2 rounded-lg text-secondary relative bg-primary-700 text-lg">{t.tasks.finalJunior}<div class="absolute right-2 rounded-md bottom-0 translate-y-1/2 text-xs bg-primary-900 px-1 py-0.5">2024</div><div class="absolute right-12 rounded-md bottom-0 translate-y-1/2 text-xs bg-primary-900 px-1 py-0.5">RUS</div></a>
+            </div>
+          )}
+          {table_result.data.year === 2023 && (
+            <div class="col-span-full flex flex-wrap gap-3 mb-4 justify-center">
+              <a href="/tasks/junior_qualifier_2023_sols.pdf" class="p-2 rounded-lg text-secondary relative bg-primary-700 text-lg">{t.tasks.qualifierJunior}<div class="absolute right-2 rounded-md bottom-0 translate-y-1/2 text-xs bg-primary-900 px-1 py-0.5">2023</div></a>
+              <a href="/tasks/junior_final_2023_sols.pdf" class="p-2 rounded-lg text-secondary relative bg-primary-700 text-lg">{t.tasks.finalJunior}<div class="absolute right-2 rounded-md bottom-0 translate-y-1/2 text-xs bg-primary-900 px-1 py-0.5">2023</div></a>
+            </div>
+          )}
+          <Table className="col-span-full lg:col-span-10 lg:col-start-2 w-full max-w-6xl mx-auto" results={table_result.data.junior} />
+        </section>
       </>
     ))
   }
+
+  <script>
+    const yearSelect = document.getElementById('yearFilter');
+    const leagueSelect = document.getElementById('leagueFilter');
+
+    function applyFilters() {
+      const year = (yearSelect && (yearSelect as HTMLSelectElement).value) || 'all';
+      const league = (leagueSelect && (leagueSelect as HTMLSelectElement).value) || 'all';
+      document.querySelectorAll<HTMLElement>('.result-block').forEach((el) => {
+        const y = el.dataset.year;
+        const l = el.dataset.league;
+        const yearOk = year === 'all' || y === year;
+        const leagueOk = league === 'all' || l === league;
+        el.classList.toggle('hidden', !(yearOk && leagueOk));
+      });
+    }
+
+    yearSelect?.addEventListener('change', applyFilters);
+    leagueSelect?.addEventListener('change', applyFilters);
+    applyFilters();
+  </script>
 </Layout>

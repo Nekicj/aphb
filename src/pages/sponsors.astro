@@ -1,60 +1,97 @@
----
 import Layout from "~/components/layout.astro";
-import { sponsors } from "~/lib/sponsors";
----
+import fs from "node:fs";
+import path from "node:path";
 
-<Layout title="Спонсоры" description="Список спонсоров Aphb">
-  <div
-    class="col-span-full bg-primary-900 p-3 lg:p-6 text-3xl lg:text-8xl font-bold rounded-xl lg:rounded-3xl relative overflow-clip my-5 lg:my-20"
-  >
-    <svg
-      xmlns="http://www.w3.org/2000/svg"
-      viewBox="0 0 1431 157"
-      fill="none"
-      class="absolute inset-0 h-full lg:h-auto"
-    >
-      <path
-        d="M693.47 152.008L-45.5 15.5M693.47 152.008L230.5 -67.5M693.47 152.008L546.001 -33.9992M693.47 152.008L808.001 -33.9992M693.47 152.008L1084.5 -67.5M693.47 152.008L1461.5 15.5M693.47 152.008L1470.5 152.008M693.47 152.008L-134.001 139.5"
-        stroke="#163BA4"
-        stroke-width="64"
-        class=""></path>
+const publicDir = path.resolve(Astro.srcDir, "../public");
+const partnersBasePath = path.join(publicDir, "partners");
+
+const allowedExtensions = [".svg", ".png", ".jpg", ".jpeg", ".webp"] as const;
+
+function listLogosByYear(year: string) {
+  const yearDir = path.join(partnersBasePath, year);
+  if (!fs.existsSync(yearDir)) return [] as { src: string; alt: string }[];
+  return fs
+    .readdirSync(yearDir)
+    .filter((file) => allowedExtensions.includes(path.extname(file).toLowerCase() as any))
+    .map((file) => ({
+      src: `/partners/${year}/${file}`,
+      alt: file.replace(path.extname(file), "").replace(/[-_]/g, " "),
+    }));
+}
+
+const logos2023 = listLogosByYear("2023");
+const logos2024 = listLogosByYear("2024");
+const logos = [...logos2023, ...logos2024];
+
+<Layout title="Партнерам" description="Информация для партнеров и спонсоров Aphb">
+  <div class="col-span-full bg-primary-900 p-3 lg:p-6 text-3xl lg:text-8xl font-bold rounded-xl lg:rounded-3xl relative overflow-clip my-5 lg:my-20">
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1431 157" fill="none" class="absolute inset-0 h-full lg:h-auto">
+      <path d="M693.47 152.008L-45.5 15.5M693.47 152.008L230.5 -67.5M693.47 152.008L546.001 -33.9992M693.47 152.008L808.001 -33.9992M693.47 152.008L1084.5 -67.5M693.47 152.008L1461.5 15.5M693.47 152.008L1470.5 152.008M693.47 152.008L-134.001 139.5" stroke="#163BA4" stroke-width="64"></path>
     </svg>
-    <h1 class="relative text-white text-center">Наши спонсора</h1>
+    <h1 class="relative text-white text-center">Партнерам</h1>
   </div>
-  <div
-    class="grid md:grid-cols-4 grid-cols-2 col-span-full gap-y-5 gap-x-3 md:gap-y-6 md:gap-x-16"
-  >
-    {
-      sponsors
-        .sort((a, b) => a.title.length - b.title.length)
-        .map((sponsor) => (
-          <a
-            class="md:text-xl  hover:text-blue-500 duration-200"
-            href={sponsor.url}
-          >
-            {sponsor.title}
-          </a>
-        ))
-    }
-  </div>
+
+  <section class="col-span-full md:col-span-12 grid md:grid-cols-12 grid-cols-4 gap-5">
+    <div class="md:col-span-6 col-span-full space-y-4">
+      <h2 class="text-2xl md:text-4xl font-bold">Наш опыт</h2>
+      <p class="text-lg text-neutral-700">
+        За 2023–2024 годы мы провели турниры совместно с крупными образовательными и корпоративными партнерами. На базе
+        <b>Haileybury Astana</b> и <b>Satbayev University</b> мы организовали площадки с аудиториями и актовыми залами.
+        <br />
+        <b>FlyArystan</b> обеспечил перелеты участников ваучерами в 2023 году. <b>Satbayev University</b> предоставил образовательные гранты
+        победителям турнира в 2024 году.
+      </p>
+    </div>
+    <div class="md:col-span-6 col-span-full bg-white border border-neutral-200 rounded-2xl p-5 md:p-8">
+      <blockquote class="space-y-3">
+        <p class="text-xl md:text-2xl font-semibold">«Aphb — организаторы, с которыми приятно работать: четкая коммуникация, высокая планка академического содержания и внимание к участникам. Мы рады поддерживать развитие олимпиадного движения»</p>
+        <footer class="text-neutral-600">Марс Нарбаев, глава приемной комиссии Satbayev University</footer>
+      </blockquote>
+    </div>
+  </section>
+
+  {logos.length > 0 && (
+    <div class="col-span-full grid grid-cols-3 md:grid-cols-6 gap-6 place-items-center opacity-80">
+      {logos.map((logo) => (
+        <img src={logo.src} alt={logo.alt} loading="lazy" class="max-h-10 md:max-h-12 object-contain" />
+      ))}
+    </div>
+  )}
+
+  <section class="col-span-full md:col-span-12 grid md:grid-cols-12 grid-cols-4 gap-5 mt-6">
+    <div class="md:col-span-12 col-span-full">
+      <h2 class="text-2xl md:text-4xl font-bold">Что мы можем дать</h2>
+    </div>
+    <ul class="md:col-span-8 col-span-full grid gap-3 text-lg list-disc pl-5">
+      <li>Размещение логотипа вашей компании на всех рекламных материалах и баннере</li>
+      <li>Активное упоминание спонсора в социальных сетях, на сайте и в пресс-релизах</li>
+      <li>Возможность приветственного слова на открытии и/или закрытии мероприятия</li>
+      <li>Совместно с вами развиваем образовательные программы в области олимпиад в Казахстане</li>
+    </ul>
+  </section>
+
+  <section class="col-span-full md:col-span-12 grid md:grid-cols-12 grid-cols-4 gap-5 mt-6">
+    <div class="md:col-span-12 col-span-full">
+      <h2 class="text-2xl md:text-4xl font-bold">Варианты партнерства</h2>
+    </div>
+    <div class="md:col-span-4 col-span-full bg-white border border-neutral-200 rounded-2xl p-5 space-y-3">
+      <h3 class="text-xl font-semibold">Организация площадки</h3>
+      <p class="text-neutral-700">Аудитории, актовые залы. Haileybury Astana и Satbayev University были площадками наших турниров в 2023 и 2024 годах.</p>
+    </div>
+    <div class="md:col-span-4 col-span-full bg-white border border-neutral-200 rounded-2xl p-5 space-y-3">
+      <h3 class="text-xl font-semibold">Спонсорские призы</h3>
+      <p class="text-neutral-700">Гранты, стажировки, подарки, скидки. Satbayev University предоставил гранты победителям турнира в 2024 году.</p>
+    </div>
+    <div class="md:col-span-4 col-span-full bg-white border border-neutral-200 rounded-2xl p-5 space-y-3">
+      <h3 class="text-xl font-semibold">Финансовая помощь</h3>
+      <p class="text-neutral-700">Поддержка организации турнира, производство материалов, техническое обеспечение.</p>
+    </div>
+    <div class="md:col-span-4 col-span-full bg-white border border-neutral-200 rounded-2xl p-5 space-y-3">
+      <h3 class="text-xl font-semibold">Логистическая поддержка</h3>
+      <p class="text-neutral-700">Трансфер и проживание участников. FlyArystan выделил ваучеры на перелет участников в 2023 году.</p>
+    </div>
+  </section>
 
   <div class="mb-32"></div>
 </Layout>
 
-<script>
-  // import { gsap } from "gsap";
-  import { gsap } from "gsap";
-  import { ScrollTrigger } from "gsap/all";
-
-  gsap.registerPlugin(ScrollTrigger);
-  gsap.utils.toArray(".member div").forEach((member) => {
-    gsap.from(member as any, {
-      scrollTrigger: {
-        trigger: member as any,
-        toggleActions: "restart none none none",
-      },
-      y: "100%",
-      ease: "power4.out",
-    });
-  });
-</script>

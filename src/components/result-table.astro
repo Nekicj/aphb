@@ -1,6 +1,7 @@
 ---
 import type { CollectionEntry } from "astro:content";
 import { cn } from "~/utils/cn";
+import { getLangFromUrl } from "~/utils/i18n";
 
 interface Props {
   className: string;
@@ -8,9 +9,17 @@ interface Props {
 }
 
 const { className, results } = Astro.props;
+const lang = getLangFromUrl(Astro.url);
+
+const tooltipText = {
+  en: { GP: "Grand Prix", HM: "Honorable Mention" },
+  ru: { GP: "Гран-при", HM: "Почётное упоминание" },
+  kz: { GP: "Гран-при", HM: "Арнайы жүлде" },
+} as const;
 
 const placeStyle = {
   "GP": "text-[#E2B127] border-[#E2B127]",
+  "HM": "text-[#7C3AED] border-[#7C3AED]",
   "1": "text-[#E2B127] border-[#E2B127]",
   "2": "text-[#AFAFAF] border-[#AFAFAF]",
   "3": "text-[#FF9270] border-[#FF9270]",
@@ -19,7 +28,7 @@ const placeStyle = {
 ---
 
 <>
-  <table class={cn("hidden grid-cols-1 gap-6 lg:grid py-6", className)}>
+  <table class={cn("hidden grid-cols-1 gap-6 lg:grid py-6 bg-white", className)}>
     <thead>
       <tr
         class="uppercase text-neutral-300 py-3 border-b-2 border-neutral-300 grid grid-cols-10 gap-5 place-items-start"
@@ -35,13 +44,15 @@ const placeStyle = {
       {
         results.map((result) => (
           <tr class="grid grid-cols-10 gap-5">
-            <td
-              class={
-                placeStyle[result.place || "4"] +
-                "-mt-1 rounded-full border-2 leading-6 h-11 w-11  text-2xl grid place-items-center  relative z-10"
-              }
-            >
-              {result.place}
+            <td>
+              <span class="relative inline-block group">
+                <span class={(placeStyle[result.place || "4"] + " rounded-full border-2 leading-6 h-11 w-11 text-2xl grid place-items-center  relative z-10 inline-grid")}>{result.place}</span>
+                {(["GP","HM"].includes((result.place || "").toString())) && (
+                  <span class="absolute z-10 hidden group-hover:block bg-black text-white text-xs rounded px-2 py-1 -top-10 left-1/2 -translate-x-1/2 whitespace-nowrap">
+                    {tooltipText[lang as keyof typeof tooltipText][result.place as "GP" | "HM"]}
+                  </span>
+                )}
+              </span>
             </td>
             <td class="uppercase">{result.team}</td>
             <td class="col-span-2">
@@ -59,6 +70,17 @@ const placeStyle = {
                 </span>
               ))}
             </td>
+            {(["GP", "HM", "1", "2", "3"].includes((result.place || "").toString())) && (
+              <td class="col-span-10">
+                {result.photo ? (
+                  <img src={result.photo} alt={`team ${result.team}`} class="w-1/3 md:w-1/4 rounded-lg border border-neutral-300" />
+                ) : (
+                  <div class="w-1/3 md:w-1/4 aspect-[4/3] rounded-lg border border-neutral-300 bg-neutral-100 grid place-items-center text-neutral-400">
+                    Фото будет позже — {result.place}
+                  </div>
+                )}
+              </td>
+            )}
           </tr>
         ))
       }
@@ -69,14 +91,23 @@ const placeStyle = {
     {
       results.map((result) => (
         <table class="border-t border-l border-neutral-300">
-          {result.place && (
-            <tr class="grid grid-cols-2">
-              <th class="border-b border-r uppercase text-neutral-300 text-start p-2 ">
-                Место
-              </th>
-              <td class="border-b border-r p-2 ">{result.place}</td>
-            </tr>
-          )}
+            {result.place && (
+              <tr class="grid grid-cols-2">
+                <th class="border-b border-r uppercase text-neutral-300 text-start p-2 ">
+                  Место
+                </th>
+                <td class="border-b border-r p-2 ">
+                  <span class="relative inline-block group">
+                    <span class={placeStyle[result.place || "4"] + " rounded-full border-2 px-3 py-1"}>{result.place}</span>
+                    {(["GP","HM"].includes((result.place || "").toString())) && (
+                      <span class="absolute z-10 hidden group-hover:block bg-black text-white text-xs rounded px-2 py-1 -top-10 left-1/2 -translate-x-1/2 whitespace-nowrap">
+                        {result.place === "GP" ? "Grand Prix" : "Honorable Mention"}
+                      </span>
+                    )}
+                  </span>
+                </td>
+              </tr>
+            )}
           <tr class="grid grid-cols-2">
             <th class="border-b border-r uppercase text-neutral-300 text-start p-2">
               Команда
@@ -113,6 +144,19 @@ const placeStyle = {
               ))}
             </td>
           </tr>
+          {(["GP", "HM", "1", "2", "3"].includes((result.place || "").toString())) && (
+            <tr>
+              <td class="col-span-2">
+                {result.photo ? (
+                  <img src={result.photo} alt={`team ${result.team}`} class="w-1/2 rounded-lg border border-neutral-300" />
+                ) : (
+                  <div class="w-1/2 aspect-[4/3] rounded-lg border border-neutral-300 bg-neutral-100 grid place-items-center text-neutral-400">
+                    Фото будет позже — {result.place}
+                  </div>
+                )}
+              </td>
+            </tr>
+          )}
         </table>
       ))
     }

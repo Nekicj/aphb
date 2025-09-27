@@ -4,6 +4,7 @@
     {
     "team": "NEND",
     "place": "GP",
+    "photo": "/photos/team_nend.jpg",
     "schools": ["Нурорда", "СШЛИ им. Нурмакова г. Караганда", "БИЛ г. Костанай"],
     "captain": "Тюлюбаев Даниэль Маратович",
     "members": [
@@ -14,6 +15,7 @@
   {
     "team": "AESC MSU 11G",
     "place": "1",
+    "photo": "/photos/team_aesc.jpg",
     "schools": ["СУНЦ МГУ г. Москва, Россия"],
     "captain": "Кузнецов Егор Геннадьевич",
     "members": [
@@ -24,7 +26,8 @@
   },
   {
     "team": "Tri kota i myaso",
-    "place": "2",
+    "place": "2",   
+    "photo": "/photos/team_trikota.jpg",
     "schools": ["РФМШ г. Астана"],
     "captain": "Аушахман Талим Асхатулы",
     "members": [
@@ -36,6 +39,7 @@
   {
     "team": "Interstellar",
     "place": "3",
+    "photo": "/photos/team_interstellar.jpg",
     "schools": ["№166 лицей г. Алматы", "Haileybury Almaty"],
     "captain": "Шокоров Федор Алексеевич",
     "members": [
@@ -46,6 +50,8 @@
   },
   {
     "team": "Potom Podumaem",
+    "place": "HM",
+    "photo": "/photos/team_potom.jpg",
     "schools": ["СУНЦ МГУ, г. Москва"],
     "captain": "Музоваткина Вероника Сергеевна",
     "members": [
@@ -146,6 +152,7 @@
   {
       "team": "MA^3",
       "place": "GP",
+      "photo": "/photos/team_ma3.jpg",
       "schools": ["РФМШ г. Алматы"],
       "captain": "Sagymbai Munar",
       "members": [
@@ -157,6 +164,7 @@
     {
       "team": "Skibidi sigmas",
       "place": "1",
+      "photo": "/photos/team_skibidi.jpg",
       "schools": ["БИЛ г. Костанай", "БИЛ г. Караганда","БИЛ г. Туркестан"],
       "captain": "Өжентай Абзал Сабитұлы",
       "members": [
@@ -168,6 +176,7 @@
     {
       "team": "BETA",
       "place": "2",
+      "photo": "/photos/team_beta.jpg",
       "schools": ["БИЛ г. Тараз", "БИЛ г. Туркестан"],
       "captain": "Тоқберген Ерсайын ",
       "members": [
@@ -179,6 +188,7 @@
     {
       "team": "SIN",
       "place": "3",
+      "photo": "/photos/team_sin.jpg",
       "schools": ["НИШ ФМН г. Алматы"],
       "captain": "Азамат Аймуратов ",
       "members": [

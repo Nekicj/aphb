@@ -36,7 +36,7 @@ export function getLangFromUrl(url: URL) {
 
 export function useTranslatedPath(lang: keyof typeof languages) {
   return function translatePath(path: string, l: string = lang) {
-    const langRegex = /^\/(en|kz)(\/|$)/;
+    const langRegex = /^\/(en|kz|ru)(\/|$)/;
     // Remove the existing language code if present
     const pathWithoutLang = path.replace(langRegex, '/');
     // If the target language is the default, return the path without the language code

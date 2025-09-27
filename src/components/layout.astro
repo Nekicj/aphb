@@ -47,10 +47,10 @@ const rules =
         <img src="/logo-sm.svg" alt="logo" class="md:hidden block" />
       </a>
       <div class="md:flex gap-5 text-neutral-400 items-center hidden">
-        <a href="/team">Команда</a>
-        <a href="/results-and-tasks">Результаты</a>
-        <a href="/topics">Темы</a>
-        <a href="/sponsors">Спонсоры</a>
+        <a href={translatePath("/team", lang)}>Команда</a>
+        <a href={translatePath("/results-and-tasks", lang)}>Результаты</a>
+        <a href={translatePath("/topics", lang)}>Подготовка</a>
+        <a href={translatePath("/sponsors", lang)}>Партнерам</a>
         <ul class="flex gap-2">
           {
             Object.entries(languages).map(([lang]) => (
@@ -87,7 +87,7 @@ const rules =
         </button>
       </div>
     </nav>
-    <div
+      <div
       class="fixed -top-[260px] right-0 left-0 z-30 flex-col gap-8
         border-b border-b-neutral-300 bg-white/80 px-4 pt-8 pb-2
         backdrop-blur-2xl flex closed"
@@ -96,10 +96,10 @@ const rules =
       <div
         class="flex flex-col justify-center gap-1 text-2xl capitalize text-black"
       >
-        <a href="/team">Команда</a>
-        <a href="/results-and-tasks">Результаты</a>
-        <a href="/topics">Темы</a>
-        <a href="/sponsors">Спонсоры</a>
+        <a href={translatePath("/team", lang)}>Команда</a>
+        <a href={translatePath("/results-and-tasks", lang)}>Результаты</a>
+        <a href={translatePath("/topics", lang)}>Подготовка</a>
+        <a href={translatePath("/sponsors", lang)}>Партнерам</a>
       </div>
       <div class="flex h-12 flex-row items-center justify-between">
         <img src="/logo.svg" alt="logo" class="w-24" />
@@ -193,24 +193,17 @@ const rules =
             <img src="/logo-md.svg" alt="logo-md" />
           </div>
           <div class="flex md:col-span-3 flex-col gap-4 relative z-20">
-            <a href={regulation}>{t("footer.sections.regulations")}</a>
-            <a href={rules}>{t("footer.sections.parliament")}</a><a
-              href="/results-and-tasks">{t("footer.sections.results")}</a
-            ><a
-              href="https://docs.google.com/document/d/1I8nwjE3vdZkJfWb5Cax5RRVbBVBZp6I7zbvoIHIrySY/edit?usp=sharing"
-              >{t("footer.sections.hr.policy")}</a
-            >
-            <a
-              href='https://drive.google.com/drive/folders/1W5sNNEnsnxkwXzGHtQbQPulZS10QC0de?usp=drive_link/"'
-              >{t("footer.sections.sponsors.partners")}</a
-            >
+            <a class="hidden" href={regulation}>{t("footer.sections.regulations")}</a>
+            <a class="hidden" href={rules}>{t("footer.sections.parliament")}</a>
+            <a href="/results-and-tasks">{t("footer.sections.results")}</a>
+            <a class="hidden" href="https://docs.google.com/document/d/1I8nwjE3vdZkJfWb5Cax5RRVbBVBZp6I7zbvoIHIrySY/edit?usp=sharing">{t("footer.sections.hr.policy")}</a>
+            <a class="hidden" href='https://drive.google.com/drive/folders/1W5sNNEnsnxkwXzGHtQbQPulZS10QC0de?usp=drive_link/"'>{t("footer.sections.sponsors.partners")}</a>
           </div>
           <div
             class="md:col-span-4 grid-cols-2 gap-y-8 gap-x-5 relative grid text-xl z-20"
           >
             <span class="col-span-full md:text-2xl">{t("footer")}</span>
             <a href="mailto:administrator@aphb.kz">administrator@aphb.kz</a>
-            <span> <a href="tel:877752146221">+7 775 214 62 21</a></span>
             <a href="https://www.instagram.com/aphb.kz/">Instagram</a>
             <a href="https://t.me/aphbkz">Telegram</a>
           </div>

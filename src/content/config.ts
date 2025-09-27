@@ -2,8 +2,9 @@ import { defineCollection, z } from "astro:content";
 
 const table = z.array(
   z.object({
-    place: z.enum(["GP", "1", "2", "3"]).optional(),
+    place: z.enum(["GP", "HM", "1", "2", "3"]).optional(),
     team: z.string(),
+    photo: z.string().optional(),
     schools: z.array(z.string()),
     captain: z.string(),
     members: z.array(z.string()),
