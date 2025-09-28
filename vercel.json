@@ -1,6 +1,14 @@
 {
   "buildCommand": "pnpm build",
-  "devCommand": "pnpm dev",
+  "devCommand": "pnpm dev", 
   "installCommand": "pnpm install",
-  "framework": "astro"
+  "framework": "astro",
+  "functions": {
+    "app/**/*.js": {
+      "runtime": "nodejs20.x"
+    },
+    ".vercel/output/functions/**/*.js": {
+      "runtime": "nodejs20.x"
+    }
+  }
 }

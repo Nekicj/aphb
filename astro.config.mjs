@@ -36,6 +36,8 @@ export default defineConfig({
     },
     speedInsights: {
       enabled: true
-    }
+    },
+    functionPerRoute: false,
+    edgeMiddleware: false
   })
 });
