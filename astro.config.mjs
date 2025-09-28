@@ -30,5 +30,12 @@ export default defineConfig({
       authToken: process.env.SENTRY_AUTH_TOKEN
     }
   }), sitemap()],
-  adapter: vercel()
+  adapter: vercel({
+    webAnalytics: {
+      enabled: true
+    },
+    speedInsights: {
+      enabled: true
+    }
+  })
 });
