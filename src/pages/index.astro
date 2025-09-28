@@ -3,11 +3,16 @@ export const prerender = true;
 
 import { getRelativeLocaleUrl } from "astro:i18n";
 import Layout from "~/components/layout.astro";
+import ParticipantsMap from "~/components/participants-map";
 import { getLangFromUrl, useTranslations } from "~/utils/i18n";
 import { sponsors } from "~/lib/sponsors";
+import { participantsLocations, getTotalStats } from "~/data/participants-locations";
 
 const lang = getLangFromUrl(Astro.url);
 const t = useTranslations("home", lang);
+
+// Получаем статистику участников
+const totalStats = getTotalStats();
 ---
 
 <Layout title={t("seo.title")} description={t("seo.description")}>
@@ -266,6 +271,34 @@ const t = useTranslations("home", lang);
       {t("photo5.caption")}
     </p>
   </div>
+
+  <!-- Международный масштаб -->
+  <section class="col-span-full mb-20">
+    <h2 class="text-3xl lg:text-5xl font-bold text-center mb-12">Международный масштаб</h2>
+    
+    <!-- Карта -->
+    <div class="max-w-6xl mx-auto mb-12">
+      <div class="bg-white border border-neutral-200 rounded-2xl p-6 lg:p-8 mb-8">
+        <ParticipantsMap locations={participantsLocations} client:load />
+      </div>
+    </div>
+
+    <!-- Статистика -->
+    <div class="grid grid-cols-1 md:grid-cols-3 gap-8 max-w-4xl mx-auto">
+      <div class="text-center bg-white border border-neutral-200 rounded-2xl p-8">
+        <div class="text-5xl font-bold text-primary-600 mb-4">1000+</div>
+        <h3 class="text-xl font-semibold text-neutral-800 mb-2">Участников</h3>
+      </div>
+      <div class="text-center bg-white border border-neutral-200 rounded-2xl p-8">
+        <div class="text-5xl font-bold text-primary-600 mb-4">{totalStats.countries}</div>
+        <h3 class="text-xl font-semibold text-neutral-800 mb-2">Стран</h3>
+      </div>
+      <div class="text-center bg-white border border-neutral-200 rounded-2xl p-8">
+        <div class="text-5xl font-bold text-primary-600 mb-4">{totalStats.cities}</div>
+        <h3 class="text-xl font-semibold text-neutral-800 mb-2">Населенных пункта</h3>
+      </div>
+    </div>
+  </section>
 
   <div
     class="h-screen grid gap-5 grid-cols-subgrid col-span-full relative pt-10"

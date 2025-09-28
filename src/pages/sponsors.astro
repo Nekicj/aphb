@@ -1,8 +1,12 @@
+---
 import Layout from "~/components/layout.astro";
+import ParticipantsMap from "~/components/participants-map";
+import { participantsLocations, getTotalStats } from "~/data/participants-locations";
 import fs from "node:fs";
 import path from "node:path";
 
-const publicDir = path.resolve(Astro.srcDir, "../public");
+// Use process.cwd() to get the project root directory
+const publicDir = path.join(process.cwd(), "public");
 const partnersBasePath = path.join(publicDir, "partners");
 
 const allowedExtensions = [".svg", ".png", ".jpg", ".jpeg", ".webp"] as const;
@@ -19,79 +23,499 @@ function listLogosByYear(year: string) {
     }));
 }
 
+// Get all partner logos from the main partners directory
+function getAllPartnerLogos() {
+  if (!fs.existsSync(partnersBasePath)) return [];
+  return fs
+    .readdirSync(partnersBasePath)
+    .filter((file) => allowedExtensions.includes(path.extname(file).toLowerCase() as any))
+    .map((file) => ({
+      src: `/partners/${file}`,
+      alt: file.replace(path.extname(file), "").replace(/[-_]/g, " "),
+    }));
+}
+
 const logos2023 = listLogosByYear("2023");
 const logos2024 = listLogosByYear("2024");
-const logos = [...logos2023, ...logos2024];
+const allPartnerLogos = getAllPartnerLogos();
 
-<Layout title="Партнерам" description="Информация для партнеров и спонсоров Aphb">
-  <div class="col-span-full bg-primary-900 p-3 lg:p-6 text-3xl lg:text-8xl font-bold rounded-xl lg:rounded-3xl relative overflow-clip my-5 lg:my-20">
-    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1431 157" fill="none" class="absolute inset-0 h-full lg:h-auto">
-      <path d="M693.47 152.008L-45.5 15.5M693.47 152.008L230.5 -67.5M693.47 152.008L546.001 -33.9992M693.47 152.008L808.001 -33.9992M693.47 152.008L1084.5 -67.5M693.47 152.008L1461.5 15.5M693.47 152.008L1470.5 152.008M693.47 152.008L-134.001 139.5" stroke="#163BA4" stroke-width="64"></path>
+// Фильтруем нежелательные логотипы
+const filteredPartnerLogos = allPartnerLogos.filter(logo => 
+  !logo.src.includes('el-umiti') && 
+  !logo.src.includes('aues') &&
+  !logo.src.includes('mephi.svg') // используем mephi_af.svg вместо mephi.svg
+);
+
+const logos = [...logos2023, ...logos2024, ...filteredPartnerLogos];
+
+// Получаем статистику участников
+const totalStats = getTotalStats();
+
+// Импорты изображений и видео
+const aphb2023Video = "/photos/IMG_1450.MP4";
+const aphb2024OpeningPhoto = "/photos/aphb-2024-opening.jpg";
+const volunteersPhoto = "/photos/volunteers-team.jpg";
+const mountainHikeVideo = "/photos/IMG_7234.MOV";
+const awardsPhoto = "/photos/awards-ceremony.jpg";
+const volunteer1Photo = "/photos/volunteer-1.jpg";
+const volunteer2Photo = "/photos/volunteer-2.jpg";
+const volunteer3Photo = "/photos/volunteer-3.jpg";
+
+// Отзывы участников
+const testimonials = [
+  {
+    text: "Турнир APhB оставил у меня массу впечатлений. Организация турнира была на высшем уровне, что позволило участникам полностью сосредоточиться на решении сложных задач и демонстрации своих знаний.",
+    author: "Сагындык Хамза",
+    team: "unBILievable",
+    school: "БИЛ г. Астана"
+  },
+  {
+    text: "APhB2024 был очень запоминающимся. Было весело. Огромное спасибо хочу сказать переводчикам задач на казахский, а также жюри, которые иногда бывали моими личными переводчиками.",
+    author: "Назгүл",
+    team: "",
+    school: "НИШ ХБН г. Актау"
+  },
+  {
+    text: "Поход в горы понравился мне больше всего. Я впервые забирался в гору. Поэтому, любопытство и интерес опережали мои шаги. Взамен на сложности, я получил много эмоций и друзей!",
+    author: "Алмасхан Арсен",
+    team: "Pchelovody",
+    school: "БИЛ г. Шымкент"
+  }
+];
+---
+
+<Layout title="История Almaty Physics Battles" description="Путешествие от первых шагов до международного признания">
+  <!-- 1. Hero секция -->
+  <div class="col-span-full bg-primary-900 p-6 lg:p-12 text-white rounded-2xl lg:rounded-3xl relative overflow-hidden my-5 lg:my-20">
+    <svg
+      xmlns="http://www.w3.org/2000/svg"
+      viewBox="0 0 100 100"
+      fill="none"
+      class="absolute inset-0 w-full h-full"
+      preserveAspectRatio="none"
+    >
+      <path
+        d="M50 95L0 10M50 95L20 0M50 95L40 5M50 95L60 5M50 95L80 0M50 95L100 10M50 95L100 95M50 95L0 95"
+        stroke="#163BA4"
+        stroke-width="2"
+        class=""></path>
     </svg>
-    <h1 class="relative text-white text-center">Партнерам</h1>
+    <div class="relative z-10 text-center max-w-4xl mx-auto">
+      <h1 class="text-4xl lg:text-7xl font-bold mb-6">
+        Almaty Physics Battles
+      </h1>
+      <p class="text-lg lg:text-xl text-primary-100 mb-8 leading-relaxed">
+        История о том, как студенты и школьники создали крупнейший физический турнир Центральной Азии
+      </p>
+      <a href="mailto:contact@bc-pf.org" class="inline-flex items-center gap-2 bg-white text-primary-900 px-8 py-4 rounded-xl text-lg font-semibold hover:bg-primary-50 transition-colors">
+        Стать партнёром
+      </a>
+    </div>
   </div>
 
-  <section class="col-span-full md:col-span-12 grid md:grid-cols-12 grid-cols-4 gap-5">
-    <div class="md:col-span-6 col-span-full space-y-4">
-      <h2 class="text-2xl md:text-4xl font-bold">Наш опыт</h2>
-      <p class="text-lg text-neutral-700">
-        За 2023–2024 годы мы провели турниры совместно с крупными образовательными и корпоративными партнерами. На базе
-        <b>Haileybury Astana</b> и <b>Satbayev University</b> мы организовали площадки с аудиториями и актовыми залами.
-        <br />
-        <b>FlyArystan</b> обеспечил перелеты участников ваучерами в 2023 году. <b>Satbayev University</b> предоставил образовательные гранты
-        победителям турнира в 2024 году.
-      </p>
+  <!-- 2. Начало истории - 2023 год -->
+  <section class="col-span-full mb-20">
+    <div class="max-w-6xl mx-auto">
+      <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
+        <div>
+          <h2 class="text-3xl lg:text-5xl font-bold mb-8">Всё началось в 2023</h2>
+          <p class="text-lg text-neutral-700 mb-6 leading-relaxed">
+            Astana Physics Battles 2023 стал нашим первым шагом. 505 участников из 106 команд, 19 городов Казахстана и России. Мы собрались в Haileybury Astana 11-12 ноября, чтобы провести уникальный для Центральной Азии турнир по олимпиадной физике.
+          </p>
+          <p class="text-lg text-neutral-700 mb-6 leading-relaxed">
+            Было много ошибок, много недочётов. Наша команда была расстроена, но не опустила руки. На следующий же день мы начали работать над ошибками и планировать что-то большее.
+          </p>
+        </div>
+        <div class="bg-neutral-100 rounded-2xl p-8 text-center">
+          <div class="flex justify-center mb-4">
+            <img src="/partners/haileybury-astana.svg" alt="Haileybury Astana" class="h-12 opacity-80" />
+          </div>
+          <div class="w-full h-64 rounded-xl mb-4 overflow-hidden">
+            <video 
+              src={aphb2023Video} 
+              autoplay 
+              muted 
+              loop 
+              playsinline
+              class="w-full h-full object-cover"
+              aria-label="Участники APhB 2023 в Haileybury Astana">
+            </video>
+          </div>
+               <div class="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 gap-4 md:gap-6 mt-6 place-items-center">
+                 <img src="/partners/american-corner.svg" alt="American Corner" class="h-7 md:h-9 lg:h-10 object-contain opacity-80 hover:opacity-100 transition-all duration-300 hover:scale-110" />
+                 <img src="/partners/beyond-curriculum.svg" alt="Beyond Curriculum" class="h-7 md:h-9 lg:h-10 object-contain opacity-80 hover:opacity-100 transition-all duration-300 hover:scale-110" />
+                 <img src="/partners/fly-arystan.svg" alt="Fly Arystan" class="h-7 md:h-9 lg:h-10 object-contain opacity-80 hover:opacity-100 transition-all duration-300 hover:scale-110" />
+                 <img src="/partners/kinematic.svg" alt="Kinematic" class="h-7 md:h-9 lg:h-10 object-contain opacity-80 hover:opacity-100 transition-all duration-300 hover:scale-110" />
+                 <img src="/partners/lever.svg" alt="Lever" class="h-7 md:h-9 lg:h-10 object-contain opacity-80 hover:opacity-100 transition-all duration-300 hover:scale-110" />
+                 <img src="/partners/maker-space.svg" alt="Maker Space" class="h-7 md:h-9 lg:h-10 object-contain opacity-80 hover:opacity-100 transition-all duration-300 hover:scale-110" />
+                 <img src="/partners/maple-bear.svg" alt="Maple Bear" class="h-7 md:h-9 lg:h-10 object-contain opacity-80 hover:opacity-100 transition-all duration-300 hover:scale-110" />
+                 <img src="/partners/rphms.svg" alt="RPHMS" class="h-7 md:h-9 lg:h-10 object-contain opacity-80 hover:opacity-100 transition-all duration-300 hover:scale-110" />
+                 <img src="/partners/ustem.svg" alt="USTEM" class="h-7 md:h-9 lg:h-10 object-contain opacity-80 hover:opacity-100 transition-all duration-300 hover:scale-110" />
+                 <img src="/partners/stemolympiads.svg" alt="STEM Olympiads" class="h-7 md:h-9 lg:h-10 object-contain opacity-80 hover:opacity-100 transition-all duration-300 hover:scale-110" />
+               </div>
+        </div>
+      </div>
     </div>
-    <div class="md:col-span-6 col-span-full bg-white border border-neutral-200 rounded-2xl p-5 md:p-8">
-      <blockquote class="space-y-3">
-        <p class="text-xl md:text-2xl font-semibold">«Aphb — организаторы, с которыми приятно работать: четкая коммуникация, высокая планка академического содержания и внимание к участникам. Мы рады поддерживать развитие олимпиадного движения»</p>
-        <footer class="text-neutral-600">Марс Нарбаев, глава приемной комиссии Satbayev University</footer>
+  </section>
+
+  <!-- 2.5. Отзыв от Haileybury Astana -->
+  <section class="col-span-full mb-20">
+    <div class="max-w-4xl mx-auto">
+      <blockquote class="bg-white border border-neutral-200 rounded-2xl p-8 lg:p-12 text-center">
+        <p class="text-xl lg:text-2xl font-semibold text-neutral-800 mb-6 leading-relaxed">
+          «Команда APhB - большие молодцы. Организовать мероприятие такого масштаба может не каждая компания. Я считаю, все прошло на ура. Поздравляю вас с успешным проведением Баттлов!»
+        </p>
+        <footer class="text-neutral-600 text-lg">
+          Альмира Сырбаева, Deputy Designated Safeguarding Lead of Haileybury Astana
+        </footer>
       </blockquote>
     </div>
   </section>
 
-  {logos.length > 0 && (
-    <div class="col-span-full grid grid-cols-3 md:grid-cols-6 gap-6 place-items-center opacity-80">
-      {logos.map((logo) => (
-        <img src={logo.src} alt={logo.alt} loading="lazy" class="max-h-10 md:max-h-12 object-contain" />
-      ))}
+  <!-- 3. Прорыв 2024 года -->
+  <section class="col-span-full mb-20">
+    <div class="max-w-6xl mx-auto">
+      <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
+        <div class="bg-gradient-to-br from-blue-50 to-indigo-100 border-2 border-blue-200 rounded-3xl p-8 lg:order-1 shadow-lg">
+          <!-- Логотип университета -->
+          <div class="flex justify-center mb-6">
+            <div class="bg-white rounded-2xl p-4 shadow-md">
+              <img src="/partners/satbayev_uni.svg" alt="Satbayev University" class="h-16 opacity-90" />
+            </div>
+          </div>
+          
+          <!-- Видео -->
+          <div class="aspect-video rounded-2xl overflow-hidden mb-6 shadow-lg border-2 border-white">
+            <iframe 
+              width="100%" 
+              height="100%" 
+              src="https://www.youtube.com/embed/rStI6M0aaxc?si=blU-dKTYyQBJzpxj" 
+              title="YouTube video player" 
+              frameborder="0" 
+              allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" 
+              referrerpolicy="strict-origin-when-cross-origin" 
+              allowfullscreen
+              class="w-full h-full">
+            </iframe>
+          </div>
+          
+          <p class="text-center text-lg font-semibold text-blue-900 mb-8">
+            Репортаж Almaty TV с APhB 2024
+          </p>
+          
+          <!-- Логотипы партнёров -->
+          <div class="bg-white rounded-2xl p-6 shadow-md">
+            <h4 class="text-center text-lg font-bold text-gray-800 mb-6">Партнёры 2024</h4>
+            <div class="space-y-6">
+              <!-- Основные логотипы -->
+              <div class="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 gap-4 place-items-center">
+                <img src="/partners/almaty-daryny.svg" alt="Almaty Daryny" class="h-10 md:h-12 object-contain opacity-90 hover:opacity-100 transition-all duration-300 hover:scale-110" />
+                <img src="/partners/chevron.svg" alt="Chevron" class="h-10 md:h-12 object-contain opacity-90 hover:opacity-100 transition-all duration-300 hover:scale-110" />
+                <img src="/partners/caravan.svg" alt="Caravan" class="h-10 md:h-12 object-contain opacity-90 hover:opacity-100 transition-all duration-300 hover:scale-110" />
+                <img src="/partners/lenovo.svg" alt="Lenovo" class="h-10 md:h-12 object-contain opacity-90 hover:opacity-100 transition-all duration-300 hover:scale-110" />
+                <img src="/partners/nis.svg" alt="NIS" class="h-10 md:h-12 object-contain opacity-90 hover:opacity-100 transition-all duration-300 hover:scale-110" />
+                <img src="/partners/sunmary.svg" alt="Sunmary" class="h-10 md:h-12 object-contain opacity-90 hover:opacity-100 transition-all duration-300 hover:scale-110" />
+                <img src="/partners/umag.svg" alt="UMag" class="h-10 md:h-12 object-contain opacity-90 hover:opacity-100 transition-all duration-300 hover:scale-110" />
+                <img src="/partners/ustem.svg" alt="USTEM" class="h-10 md:h-12 object-contain opacity-90 hover:opacity-100 transition-all duration-300 hover:scale-110" />
+                <img src="/partners/wolfram-alpha.svg" alt="Wolfram Alpha" class="h-14 md:h-16 object-contain opacity-90 hover:opacity-100 transition-all duration-300 hover:scale-110" />
+                <img src="/partners/zapis.svg" alt="Zapis" class="h-12 md:h-14 object-contain opacity-90 hover:opacity-100 transition-all duration-300 hover:scale-110" />
+              </div>
+              
+              <!-- Министерства -->
+              <div class="border-t border-gray-200 pt-4">
+                <div class="flex justify-center gap-8">
+                  <img src="/partners/ministry-of-education.svg" alt="Ministry of Education" class="h-8 md:h-10 object-contain opacity-90 hover:opacity-100 transition-all duration-300 hover:scale-110" />
+                  <img src="/partners/mnvo.svg" alt="MNVO" class="h-8 md:h-10 object-contain opacity-90 hover:opacity-100 transition-all duration-300 hover:scale-110" />
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="lg:order-2">
+          <h2 class="text-3xl lg:text-5xl font-bold mb-8">Прорыв 2024 года</h2>
+          <p class="text-lg text-neutral-700 mb-6 leading-relaxed">
+            Мы бросили себе вызов — провести турнир целую неделю на базе Satbayev University. Впервые в истории Центральной Азии одновременно прошли APhB и National Chemical Battles.
+          </p>
+          <p class="text-lg text-neutral-700 mb-6 leading-relaxed">
+            <strong>Более 1000 участников</strong> из Казахстана, России, Кыргызстана, Узбекистана, Таджикистана и Беларуси. Впервые приехали иностранные команды — из СУНЦ МГУ и официальная сборная Республики Башкортостан.
+          </p>
+        </div>
+      </div>
     </div>
-  )}
-
-  <section class="col-span-full md:col-span-12 grid md:grid-cols-12 grid-cols-4 gap-5 mt-6">
-    <div class="md:col-span-12 col-span-full">
-      <h2 class="text-2xl md:text-4xl font-bold">Что мы можем дать</h2>
-    </div>
-    <ul class="md:col-span-8 col-span-full grid gap-3 text-lg list-disc pl-5">
-      <li>Размещение логотипа вашей компании на всех рекламных материалах и баннере</li>
-      <li>Активное упоминание спонсора в социальных сетях, на сайте и в пресс-релизах</li>
-      <li>Возможность приветственного слова на открытии и/или закрытии мероприятия</li>
-      <li>Совместно с вами развиваем образовательные программы в области олимпиад в Казахстане</li>
-    </ul>
   </section>
 
-  <section class="col-span-full md:col-span-12 grid md:grid-cols-12 grid-cols-4 gap-5 mt-6">
-    <div class="md:col-span-12 col-span-full">
-      <h2 class="text-2xl md:text-4xl font-bold">Варианты партнерства</h2>
+  <!-- 3.5. Отзыв от Satbayev University -->
+  <section class="col-span-full mb-20">
+    <div class="max-w-4xl mx-auto">
+      <blockquote class="bg-white border border-neutral-200 rounded-2xl p-8 lg:p-12 text-center">
+        <p class="text-xl lg:text-2xl font-semibold text-neutral-800 mb-6 leading-relaxed">
+          «APhB — организаторы, с которыми приятно работать: четкая коммуникация, высокая планка академического содержания и внимание к участникам. Мы рады поддерживать развитие олимпиадного движения»
+        </p>
+        <footer class="text-neutral-600 text-lg">
+          Марс Нарбаев, Руководитель Офиса формирования контингента обучающихся Satbayev University
+        </footer>
+      </blockquote>
     </div>
-    <div class="md:col-span-4 col-span-full bg-white border border-neutral-200 rounded-2xl p-5 space-y-3">
-      <h3 class="text-xl font-semibold">Организация площадки</h3>
-      <p class="text-neutral-700">Аудитории, актовые залы. Haileybury Astana и Satbayev University были площадками наших турниров в 2023 и 2024 годах.</p>
+  </section>
+
+  <!-- 4. Команда и волонтёры -->
+  <section class="col-span-full mb-20">
+    <div class="max-w-6xl mx-auto">
+      <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
+        <div>
+          <h2 class="text-3xl lg:text-5xl font-bold mb-8">Люди, которые делают чудеса</h2>
+          <p class="text-lg text-neutral-700 mb-6 leading-relaxed">
+            <strong>За два года было создано более 150 задач</strong> командой лучших олимпиадников Казахстана, России, и не только: школьниками и студентами MIT, Williams College, Notre Dame, Grinnell College NYU, HKUST, CityU, KAIST, Назарбаев Университета, и МФТИ. Среди которых бывшие и нынешние члены жюри и составители задач Всероссийской Олимпиады Школьников, Республиканской Олимпиады РК, Международной Жаутыковской Олимпиады, Олимпиады ЛФИ, и других!
+          </p>
+          <p class="text-lg text-neutral-700 mb-6 leading-relaxed">
+            Жюри из 6 городов работали по 12 часов в день. Волонтёры приехали со всей страны и даже из Ташкента — встречали в аэропорту, водили в походы на Бутаковский водопад, дежурили ночами в общежитии.
+          </p>
+          <div class="grid grid-cols-1 md:grid-cols-3 gap-4 mt-8">
+            <div class="rounded-xl overflow-hidden">
+              <img src={volunteer1Photo} alt="Волонтёры APhB" class="w-full h-48 object-cover" />
+            </div>
+            <div class="rounded-xl overflow-hidden">
+              <img src={volunteer2Photo} alt="Волонтёры APhB" class="w-full h-48 object-cover" />
+            </div>
+            <div class="rounded-xl overflow-hidden">
+              <img src={volunteer3Photo} alt="Волонтёры APhB" class="w-full h-48 object-cover" />
+            </div>
+          </div>
+          <p class="text-lg text-neutral-700 mb-6 leading-relaxed">
+            Сотни часов волонтёрской работы, бессонные ночи — всё ради того, чтобы дать ребятам незабываемый опыт.
+          </p>
+        </div>
+        <div class="bg-neutral-100 rounded-2xl p-8 text-center">
+          <div class="w-full h-64 rounded-xl mb-4 overflow-hidden">
+            <img src={volunteersPhoto} alt="Команда волонтёров и организаторов" class="w-full h-full object-cover" />
+          </div>
+          <p class="text-neutral-600">Команда жюри 2024 года</p>  
+        </div>
+      </div>
     </div>
-    <div class="md:col-span-4 col-span-full bg-white border border-neutral-200 rounded-2xl p-5 space-y-3">
-      <h3 class="text-xl font-semibold">Спонсорские призы</h3>
-      <p class="text-neutral-700">Гранты, стажировки, подарки, скидки. Satbayev University предоставил гранты победителям турнира в 2024 году.</p>
+  </section>
+
+  <!-- 4.5. Признание на государственном уровне -->
+  <section class="col-span-full mb-20">
+    <div class="max-w-6xl mx-auto">
+      <h2 class="text-3xl lg:text-5xl font-bold text-center mb-8">Признание на государственном уровне</h2>
+      <p class="text-center text-lg text-neutral-600 mb-12 max-w-3xl mx-auto">
+        APhB получил официальное признание от Министерства науки и высшего образования РК и стал частью важных государственных инициатив
+      </p>
+      
+      <div class="grid grid-cols-1 lg:grid-cols-3 gap-8">
+        <!-- Расширенное заседание коллегии -->
+        <div class="bg-gradient-to-br from-green-50 to-emerald-100 border-2 border-green-200 rounded-2xl p-6 hover:shadow-xl transition-all duration-300 hover:scale-105">
+          <div class="w-full h-48 rounded-xl mb-4 overflow-hidden border-2 border-white shadow-md">
+            <img src="/photos/rashir.png" alt="Расширенное заседание коллегии Министерства науки и высшего образования РК" class="w-full h-full object-cover" />
+          </div>
+          <h3 class="text-xl font-bold text-green-900 mb-3">Заседание коллегии Министерства</h3>
+          <p class="text-green-800 text-sm leading-relaxed font-medium">
+            Министерства науки и высшего образования РК «Качественное образование – качественный человеческий капитал»
+          </p>
+        </div>
+
+        <!-- Встреча с министром -->
+        <div class="bg-gradient-to-br from-blue-50 to-indigo-100 border-2 border-blue-200 rounded-2xl p-6 hover:shadow-xl transition-all duration-300 hover:scale-105">
+          <div class="w-full h-48 rounded-xl mb-4 overflow-hidden border-2 border-white shadow-md">
+            <img src="/photos/minister.png" alt="Встреча с министром науки и высшего образования РК" class="w-full h-full object-cover" />
+          </div>
+          <h3 class="text-xl font-bold text-blue-900 mb-3">Встреча с министром</h3>
+          <p class="text-blue-800 text-sm leading-relaxed font-medium">
+            Оргкомитет на личной встрече с министром науки и высшего образования РК Саясат Нурбеком
+          </p>
+        </div>
+
+        <!-- Международный опыт -->
+        <div class="bg-gradient-to-br from-purple-50 to-violet-100 border-2 border-purple-200 rounded-2xl p-6 hover:shadow-xl transition-all duration-300 hover:scale-105">
+          <div class="w-full h-48 rounded-xl mb-4 overflow-hidden border-2 border-white shadow-md">
+            <img src="/photos/izho.png" alt="Обмен опытом с организатором IZhO 2024" class="w-full h-full object-cover" />
+          </div>
+          <h3 class="text-xl font-bold text-purple-900 mb-3">Международный опыт</h3>
+          <p class="text-purple-800 text-sm leading-relaxed font-medium">
+            Перенимаем опыт организации международных олимпиад у организатора IZhO 2024 - директора РФМШ г. Алматы, Меирбека Меирлана Едигерулы
+          </p>
+        </div>
+      </div>
     </div>
-    <div class="md:col-span-4 col-span-full bg-white border border-neutral-200 rounded-2xl p-5 space-y-3">
-      <h3 class="text-xl font-semibold">Финансовая помощь</h3>
-      <p class="text-neutral-700">Поддержка организации турнира, производство материалов, техническое обеспечение.</p>
+  </section>
+
+  <!-- 6. Поход в горы -->
+  <section class="col-span-full mb-20">
+    <div class="max-w-6xl mx-auto">
+      <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
+        <div class="bg-neutral-100 rounded-2xl p-8 text-center lg:order-1">
+          <div class="w-full h-64 rounded-xl mb-4 overflow-hidden relative">
+            <video 
+              src={mountainHikeVideo} 
+              autoplay 
+              muted
+              loop 
+              playsinline
+              class="w-full h-full object-cover"
+              aria-label="Поход на Бутаковский водопад в горах Заилийского Алатау"
+              controls>
+            </video>
+          </div>
+        </div>
+        <div class="lg:order-2">
+          <h2 class="text-3xl lg:text-5xl font-bold mb-8">Больше чем турнир</h2>
+          <p class="text-lg text-neutral-700 mb-6 leading-relaxed">
+            APhB — это не только физика. Во время турниров у нас было много развлечений, воркшопов, и нетворкинг-ивентов. Это походы в музей Кастеева и к Бутаковскому водопаду в горах Заилийского Алатау, лекции от профессоров Назарбаев Университета, гитарные вечера, футбольные турниры, и многое другое!
+          </p>
+          <p class="text-lg text-neutral-700 mb-6 leading-relaxed">
+            Это вечера кино, новые друзья из разных стран, и воспоминания на всю жизнь. Один участник даже пошёл в горы в шлёпках — просто не знал, что будет поход!
+          </p>
+        </div>
+      </div>
     </div>
-    <div class="md:col-span-4 col-span-full bg-white border border-neutral-200 rounded-2xl p-5 space-y-3">
-      <h3 class="text-xl font-semibold">Логистическая поддержка</h3>
-      <p class="text-neutral-700">Трансфер и проживание участников. FlyArystan выделил ваучеры на перелет участников в 2023 году.</p>
+  </section>
+
+  <!-- 6. Партнёры -->
+  {logos.length > 0 && (
+    <section class="col-span-full mb-20">
+      <h2 class="text-3xl lg:text-5xl font-bold text-center mb-8">Партнёры, которые поверили в нас</h2>
+      <p class="text-center text-lg text-neutral-600 mb-12 max-w-3xl mx-auto">
+        Впервые были установлены партнёрства с государством — Министерством науки и высшего образования РК, а также с ведущими компаниями и образовательными учреждениями
+      </p>
+      <div class="bg-white border border-neutral-200 rounded-2xl p-8 lg:p-12 max-w-7xl mx-auto">
+        <div class="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 xl:grid-cols-6 gap-8 lg:gap-12 place-items-center">
+          {logos.map((logo) => (
+            <div class="flex items-center justify-center p-4 hover:bg-neutral-50 rounded-xl transition-all duration-300 hover:scale-105">
+              <img 
+                src={logo.src} 
+                alt={logo.alt} 
+                loading="lazy" 
+                class="max-h-12 lg:max-h-16 xl:max-h-20 w-auto object-contain opacity-75 hover:opacity-100 transition-opacity duration-300" 
+              />
+            </div>
+          ))}
+        </div>
+      </div>
+    </section>
+  )}
+
+  <!-- 7. Отзывы участников -->
+  <section class="col-span-full mb-20">
+    <h2 class="text-3xl lg:text-5xl font-bold text-center mb-12">Голоса участников</h2>
+    <div class="max-w-6xl mx-auto">
+      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+        {testimonials.map((testimonial) => (
+          <div class="bg-white border border-neutral-200 rounded-2xl p-6">
+            <p class="text-neutral-700 mb-4 leading-relaxed">
+              "{testimonial.text}"
+            </p>
+            <div class="border-t border-neutral-200 pt-4">
+              <p class="font-semibold text-neutral-800">{testimonial.author}</p>
+              {testimonial.team && <p class="text-sm text-neutral-600">Команда "{testimonial.team}"</p>}
+              <p class="text-sm text-neutral-500">{testimonial.school}</p>
+            </div>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+
+  <!-- 8. Партнёрство -->
+  <section class="col-span-full mb-20">
+    <div class="max-w-6xl mx-auto">
+      <h2 class="text-3xl lg:text-5xl font-bold text-center mb-8">Партнёрство с APhB</h2>
+      <p class="text-center text-lg text-neutral-600 mb-12 max-w-3xl mx-auto">
+        Мы ценим поддержку наших партнёров и предлагаем взаимовыгодное сотрудничество
+      </p>
+
+      <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 mb-12">
+        <!-- Как поддерживают нас -->
+        <div class="bg-gradient-to-br from-blue-50 to-indigo-100 border border-blue-200 rounded-2xl p-8">
+          <h3 class="text-2xl font-bold text-blue-900 mb-6">Как нас поддерживают</h3>
+          <div class="space-y-4">
+            <div class="flex items-start gap-3">
+              <div class="w-2 h-2 bg-blue-600 rounded-full mt-2 flex-shrink-0"></div>
+              <p class="text-blue-800"><strong>Финансовая поддержка</strong> турнира</p>
+            </div>
+            <div class="flex items-start gap-3">
+              <div class="w-2 h-2 bg-blue-600 rounded-full mt-2 flex-shrink-0"></div>
+              <p class="text-blue-800"><strong>Призы участникам</strong> и мерч</p>
+            </div>
+            <div class="flex items-start gap-3">
+              <div class="w-2 h-2 bg-blue-600 rounded-full mt-2 flex-shrink-0"></div>
+              <p class="text-blue-800"><strong>Площадки</strong> для проведения</p>
+            </div>
+            <div class="flex items-start gap-3">
+              <div class="w-2 h-2 bg-blue-600 rounded-full mt-2 flex-shrink-0"></div>
+              <p class="text-blue-800"><strong>Экспертиза</strong> жюри и лекторов</p>
+            </div>
+          </div>
+        </div>
+
+        <!-- Что получают партнёры -->
+        <div class="bg-gradient-to-br from-green-50 to-emerald-100 border border-green-200 rounded-2xl p-8">
+          <h3 class="text-2xl font-bold text-green-900 mb-6">Что получают партнёры</h3>
+          <div class="space-y-4">
+            <div class="flex items-start gap-3">
+              <div class="w-2 h-2 bg-green-600 rounded-full mt-2 flex-shrink-0"></div>
+              <p class="text-green-800"><strong>Логотип на футболках</strong> участников</p>
+            </div>
+            <div class="flex items-start gap-3">
+              <div class="w-2 h-2 bg-green-600 rounded-full mt-2 flex-shrink-0"></div>
+              <p class="text-green-800"><strong>Размещение в печатной продукции</strong></p>
+            </div>
+            <div class="flex items-start gap-3">
+              <div class="w-2 h-2 bg-green-600 rounded-full mt-2 flex-shrink-0"></div>
+              <p class="text-green-800"><strong>Упоминание в соцсетях</strong> и медиа</p>
+            </div>
+            <div class="flex items-start gap-3">
+              <div class="w-2 h-2 bg-green-600 rounded-full mt-2 flex-shrink-0"></div>
+              <p class="text-green-800"><strong>Доступ к талантам</strong> региона</p>
+            </div>
+            <div class="flex items-start gap-3">
+              <div class="w-2 h-2 bg-green-600 rounded-full mt-2 flex-shrink-0"></div>
+              <p class="text-green-800"><strong>Презентация компании</strong> участникам</p>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Примеры футболок -->
+      <div class="bg-white border border-neutral-200 rounded-2xl p-8 mb-16">
+        <h3 class="text-2xl font-bold text-center mb-6">Примеры размещения на мерче</h3>
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-8 max-w-2xl mx-auto">
+          <div class="text-center">
+            <div class="bg-neutral-50 rounded-xl p-6 mb-3">
+              <img src="/photos/t-shirt_front.png" alt="Передняя сторона футболки APhB с логотипами партнёров" class="w-full h-48 object-contain" />
+            </div>
+            <p class="text-neutral-600 font-medium">Передняя сторона</p>
+          </div>
+          <div class="text-center">
+            <div class="bg-neutral-50 rounded-xl p-6 mb-3">
+              <img src="/photos/t-shirt_back.png" alt="Задняя сторона футболки APhB с логотипами партнёров" class="w-full h-48 object-contain" />
+            </div>
+            <p class="text-neutral-600 font-medium">Задняя сторона</p>
+          </div>
+        </div>
+      </div>
+
+      <!-- Контакты -->
+      <div class="bg-white border border-neutral-200 rounded-2xl p-8 text-center">
+        <h3 class="text-2xl font-bold mb-4">Обсудить партнёрство</h3>
+        <p class="text-neutral-600 mb-6">
+          Свяжитесь с нами, чтобы обсудить варианты сотрудничества для APhB 2025
+        </p>
+        <div class="flex flex-col md:flex-row gap-4 justify-center items-center mb-6">
+          <a href="mailto:contact@bc-pf.org" class="text-primary-600 hover:text-primary-700 font-medium">contact@bc-pf.org</a>
+          <span class="hidden md:block text-neutral-400">•</span>
+          <a href="tel:+77017168517" class="text-primary-600 hover:text-primary-700 font-medium">+7 701 716 8517</a>
+        </div>
+        <a 
+          href="mailto:contact@bc-pf.org" 
+          class="bg-primary-600 text-white px-6 py-3 rounded-xl font-medium hover:bg-primary-700 transition-colors inline-block"
+        >
+          Написать нам
+        </a>
+      </div>
     </div>
   </section>
 
   <div class="mb-32"></div>
 </Layout>
-
