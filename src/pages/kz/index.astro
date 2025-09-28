@@ -3,33 +3,16 @@ export const prerender = true;
 
 import { getRelativeLocaleUrl } from "astro:i18n";
 import Layout from "~/components/layout.astro";
+import ParticipantsMap from "~/components/participants-map";
 import { getLangFromUrl, useTranslations } from "~/utils/i18n";
-
-export const images = [
-  {
-    name: "american-corner.svg",
-    url: "https://www.instagram.com/americancorner_astana/ },",
-  },
-  { name: "beyond-curriculum.svg", url: "https://bc-pf.org/" },
-  { name: "bridge.svg", url: "https://digitalbridge.kz/" },
-  { name: "caravan.svg", url: "https://caravanofknowledge.com/" },
-  { name: "el-umiti.svg", url: "https://elumiti.kz/" },
-  { name: "fly-arystan.svg", url: "https://flyarystan.com/" },
-  { name: "haileybury-astana.svg", url: "https://www.haileybury.kz/en/astana" },
-  { name: "kinematic.svg", url: "https://kinematic.academy/" },
-  { name: "lenovo.svg", url: "https://www.lenovo.com/kz/ru/" },
-  { name: "lever.svg", url: "https://www.instagram.com/levertutoring/" },
-  { name: "maple-bear.svg", url: "https://maplebear.kz/" },
-  { name: "rphms.svg", url: "https://fizmat.kz/" },
-  { name: "ustem.svg", url: "https://www.instagram.com/ustem_foundation/" },
-  {
-    name: "maker-space.svg",
-    url: "https://www.instagram.com/americancorner_astana/",
-  },
-];
+import { sponsors } from "~/lib/sponsors";
+import { participantsLocations, getTotalStats } from "~/data/participants-locations";
 
 const lang = getLangFromUrl(Astro.url);
 const t = useTranslations("home", lang);
+
+// Получаем статистику участников
+const totalStats = getTotalStats();
 ---
 
 <Layout title={t("seo.title")} description={t("seo.description")}>
@@ -90,7 +73,7 @@ const t = useTranslations("home", lang);
     class="col-span-full grid-cols-5 md:grid-cols-7 grid place-items-center mt-8 mb-20 gap-5"
   >
     {
-      images.map((item) => (
+      sponsors.map((item) => (
         <div class="grid place-items-center">
           <a href={item.url} target="_blank" rel="noopener noreferrer">
             <img src={`/partners/${item.name}`} alt={item.name} class="logo" />
@@ -197,7 +180,7 @@ const t = useTranslations("home", lang);
       3
     </div>
     <p class="md:col-span-3 col-span-4 relative">
-      {t("participation.stages.final")}
+      <Fragment set:html={t("participation.stages.final")} />
     </p>
   </div>
 
@@ -275,7 +258,47 @@ const t = useTranslations("home", lang);
       class="col-span-full row-span-4 aspect-square md:row-span-5 md:aspect-[12/6] object-cover"
       data-speed="1"
     />
+    <p class="col-span-full leading-relaxed text-sm">
+      {t("photo4.caption")}
+    </p>
+    <img
+      src="/photos/5.webp"
+      alt="photo5"
+      class="col-span-full row-span-4 aspect-square md:row-span-5 md:aspect-[12/6] object-cover"
+      data-speed="1"
+    />
+    <p class="col-span-full leading-relaxed text-sm">
+      {t("photo5.caption")}
+    </p>
   </div>
+
+  <!-- Международный масштаб -->
+  <section class="col-span-full mb-20">
+    <h2 class="text-3xl lg:text-5xl font-bold text-center mb-12">{t("international.title")}</h2>
+    
+    <!-- Карта -->
+    <div class="max-w-6xl mx-auto mb-12">
+      <div class="bg-white border border-neutral-200 rounded-2xl p-6 lg:p-8 mb-8">
+        <ParticipantsMap locations={participantsLocations} client:load />
+      </div>
+    </div>
+
+    <!-- Статистика -->
+    <div class="grid grid-cols-1 md:grid-cols-3 gap-8 max-w-4xl mx-auto">
+      <div class="text-center bg-white border border-neutral-200 rounded-2xl p-8">
+        <div class="text-5xl font-bold text-primary-600 mb-4">1000+</div>
+        <h3 class="text-xl font-semibold text-neutral-800 mb-2">{t("international.participants")}</h3>
+      </div>
+      <div class="text-center bg-white border border-neutral-200 rounded-2xl p-8">
+        <div class="text-5xl font-bold text-primary-600 mb-4">{totalStats.countries}</div>
+        <h3 class="text-xl font-semibold text-neutral-800 mb-2">{t("international.countries")}</h3>
+      </div>
+      <div class="text-center bg-white border border-neutral-200 rounded-2xl p-8">
+        <div class="text-5xl font-bold text-primary-600 mb-4">{totalStats.cities}</div>
+        <h3 class="text-xl font-semibold text-neutral-800 mb-2">{t("international.cities")}</h3>
+      </div>
+    </div>
+  </section>
 
   <div
     class="h-screen grid gap-5 grid-cols-subgrid col-span-full relative pt-10"
@@ -293,7 +316,7 @@ const t = useTranslations("home", lang);
       <img src="/winners.png" alt="" />
       <a
         class="bg-primary-500 text-white px-3 py-1.5 rounded-lg mx-auto"
-        href={getRelativeLocaleUrl(lang, "apply")}>Регистрируйся сейчас</a
+        href={getRelativeLocaleUrl(lang, "apply")}>{t("participate.battle")}</a
       >
     </div>
 

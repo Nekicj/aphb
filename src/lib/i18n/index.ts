@@ -48,6 +48,12 @@ export const enHome = {
         "\"At APhB, every challenge is an opportunity—an opportunity to exceed expectations, to break out of traditional learning, and to celebrate the true delight of discovery. Here, we don't just solve equations; we gradually unveil the mysteries of the universe, theorem by theorem.\"",
     "photo4.caption": "Almaty Physics Battles 2024 held in Satbayev University on July 4–11. In the photo, we scream SCI-BI-DI-DOO!",
     "photo5.caption": "Astana Physics Battles 2023 held in Haileybury school on November 11–12. In the photo, we are super serious because we were super tired",
+    
+    // International scale section
+    "international.title": "International Scale",
+    "international.participants": "Participants",
+    "international.countries": "Countries", 
+    "international.cities": "Cities",
 };
 
 export const ruHome = {
@@ -100,7 +106,16 @@ export const ruHome = {
         "«На APhB каждый вызов является возможностью — возможностью превзойти ожидания, выйти за рамки традиционного обучения и отпраздновать истинное восторг от открытий. Здесь мы не просто решаем уравнения; мы постепенно раскрываем тайны вселенной, теорема за теоремой.» ",
     "photo4.caption": "Алматинские Физические Бои 2024, которые мы провели на базе Satbayev University 4–11 июля. На фото мы кричим СКИ-БИ-ДИ-ДУУ!",
     "photo5.caption": "Астанинские Физические бои 2023, которые мы провели на базе Международной школы Haileybury 11–12 ноября. На фото мы очень уставшие вечером после двух дней очень интенсивной работы",
+    
+    // International scale section
+    "international.title": "Международный масштаб",
+    "international.participants": "Участников",
+    "international.countries": "Стран", 
+    "international.cities": "Населенных пункта",
 };
+
+// Import sponsors translations
+import * as sponsors from './sponsors';
 
 export const kzHome = {
     'seo.description': "Турнирдің нақты күні мен өтетін орны келісіліп жатыр, алдын ала 2025 жылдың қарашасының ортасында Астанада өткізу жоспарлануда.",
@@ -150,4 +165,15 @@ export const kzHome = {
         "«APhB-да әрбір қиындық – мүмкіндік. Бұл – күткендерден асып түсу мүмкіндігі, дәстүрлі оқытудан шығып, ашылулардың шынайы қуанышын атап өту мүмкіндігі. Мұнда біз тек теңдеулерді шешпейміз; біз бір теоремадан кейін бір теореманы ашып, ғаламның құпияларын ашамыз.»",
     "photo4.caption": "Almaty Physics Battles 2024 Satbayev University базасында 4–11 шілдеде өтті. Фотода біз «СКИ-БИ-ДИ-ДУУ!» деп айқайлап тұрмыз!",
     "photo5.caption": "Astana Physics Battles 2023 Haileybury мектебінде 11–12 қарашада өтті. Фотода біз екі күндік өте қарқынды жұмыстан кейін қатты шаршағандықтан өте байсалдыбыз",
+    
+    // International scale section
+    "international.title": "Халықаралық ауқым",
+    "international.participants": "Қатысушы",
+    "international.countries": "Ел", 
+    "international.cities": "Қала",
 };
+
+// Export sponsors translations
+export const enSponsors = sponsors.en;
+export const ruSponsors = sponsors.ru;
+export const kzSponsors = sponsors.kz;

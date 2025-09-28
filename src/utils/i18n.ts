@@ -1,6 +1,6 @@
 import { enApply, kzApply, ruApply } from "~/lib/i18n/apply";
 import { en, kz, ru } from "~/lib/i18n/base";
-import { enHome, kzHome, ruHome } from "~/lib/i18n/index";
+import { enHome, kzHome, ruHome, enSponsors, ruSponsors, kzSponsors } from "~/lib/i18n/index";
 
 export const languages = {
   en: "en",
@@ -20,6 +20,11 @@ export const translations = {
     en: enApply,
     kz: kzApply,
     ru: ruApply,
+  },
+  sponsors: {
+    en: enSponsors,
+    ru: ruSponsors,
+    kz: kzSponsors,
   },
   base: {
     en,
