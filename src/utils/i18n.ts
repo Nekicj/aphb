@@ -1,7 +1,9 @@
 import { enApply, kzApply, ruApply } from "~/lib/i18n/apply";
 import { en, kz, ru } from "~/lib/i18n/base";
 import { enHome, kzHome, ruHome, enSponsors, ruSponsors, kzSponsors } from "~/lib/i18n/index";
-
+import { teamEN, teamKZ, teamRU } from "~/lib/i18n/team";
+import { resEN, resKZ, resRU } from "~/lib/i18n/results";
+import { topicsEN, topicsRU, topicsKZ } from '~/lib/i18n/topics';
 export const languages = {
   en: "en",
   ru: "ru",
@@ -31,6 +33,21 @@ export const translations = {
     ru,
     kz,
   },
+  results: {
+    en: resEN,
+    kz: resKZ,
+    ru: resRU,
+  },
+  team: {
+    en: teamEN,
+    kz: teamKZ,
+    ru: teamRU,
+  },
+  topics: {
+    en: topicsEN,
+    ru: topicsRU,
+    kz: topicsKZ,
+},
 } as const;
 
 export function getLangFromUrl(url: URL) {

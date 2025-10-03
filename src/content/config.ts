@@ -26,6 +26,12 @@ const teamCollection = defineCollection({
     name: z.string(),
     position: z.string(),
     achievements: z.array(z.string()),
+    name_en: z.string().optional(),
+    name_kz: z.string().optional(),
+    position_en: z.string().optional(),
+    position_kz: z.string().optional(),
+    achievements_en: z.array(z.string()).optional(),
+    achievements_kz: z.array(z.string()).optional(),
   }),
 });
 

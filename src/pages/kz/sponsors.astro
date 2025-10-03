@@ -65,30 +65,30 @@ const volunteer1Photo = "/photos/volunteer-1.jpg";
 const volunteer2Photo = "/photos/volunteer-2.jpg";
 const volunteer3Photo = "/photos/volunteer-3.jpg";
 
-// Отзывы участников
+// Testimonials
 const testimonials = [
   {
-    text: "Турнир APhB оставил у меня массу впечатлений. Организация турнира была на высшем уровне, что позволило участникам полностью сосредоточиться на решении сложных задач и демонстрации своих знаний.",
-    author: "Сагындык Хамза",
-    team: "unBILievable",
-    school: "БИЛ г. Астана"
+    text: t("testimonials.1.text"),
+    author: t("testimonials.1.author"),
+    team: t("testimonials.1.team"),
+    school: t("testimonials.1.school")
   },
   {
-    text: "APhB2024 был очень запоминающимся. Было весело. Огромное спасибо хочу сказать переводчикам задач на казахский, а также жюри, которые иногда бывали моими личными переводчиками.",
-    author: "Назгүл",
-    team: "",
-    school: "НИШ ХБН г. Актау"
+    text: t("testimonials.2.text"),
+    author: t("testimonials.2.author"),
+    team: t("testimonials.2.team"),
+    school: t("testimonials.2.school")
   },
   {
-    text: "Поход в горы понравился мне больше всего. Я впервые забирался в гору. Поэтому, любопытство и интерес опережали мои шаги. Взамен на сложности, я получил много эмоций и друзей!",
-    author: "Алмасхан Арсен",
-    team: "Pchelovody",
-    school: "БИЛ г. Шымкент"
+    text: t("testimonials.3.text"),
+    author: t("testimonials.3.author"),
+    team: t("testimonials.3.team"),
+    school: t("testimonials.3.school")
   }
 ];
 ---
 
-<Layout title="История Almaty Physics Battles" description="Путешествие от первых шагов до международного признания">
+<Layout title={t("seo.title")} description={t("seo.description")}>
   <!-- 1. Hero секция -->
   <div class="col-span-full bg-primary-900 p-6 lg:p-12 text-white rounded-2xl lg:rounded-3xl relative overflow-hidden my-5 lg:my-20">
     <svg
@@ -122,12 +122,12 @@ const testimonials = [
     <div class="max-w-6xl mx-auto">
       <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
         <div>
-          <h2 class="text-3xl lg:text-5xl font-bold mb-8">Всё началось в 2023</h2>
+          <h2 class="text-3xl lg:text-5xl font-bold mb-8">{t("2023.title")}</h2>
           <p class="text-lg text-neutral-700 mb-6 leading-relaxed">
-            Astana Physics Battles 2023 стал нашим первым шагом. 505 участников из 106 команд, 19 городов Казахстана и России. Мы собрались в Haileybury Astana 11-12 ноября, чтобы провести уникальный для Центральной Азии турнир по олимпиадной физике.
+            {t("2023.description")}
           </p>
           <p class="text-lg text-neutral-700 mb-6 leading-relaxed">
-            Было много ошибок, много недочётов. Наша команда была расстроена, но не опустила руки. На следующий же день мы начали работать над ошибками и планировать что-то большее.
+            {t("2023.description.2")}
           </p>
         </div>
         <div class="bg-neutral-100 rounded-2xl p-8 text-center">
@@ -167,10 +167,10 @@ const testimonials = [
     <div class="max-w-4xl mx-auto">
       <blockquote class="bg-white border border-neutral-200 rounded-2xl p-8 lg:p-12 text-center">
         <p class="text-xl lg:text-2xl font-semibold text-neutral-800 mb-6 leading-relaxed">
-          «Команда APhB - большие молодцы. Организовать мероприятие такого масштаба может не каждая компания. Я считаю, все прошло на ура. Поздравляю вас с успешным проведением Баттлов!»
+          «{t("2023.testimonial.text")}»
         </p>
         <footer class="text-neutral-600 text-lg">
-          Альмира Сырбаева, Deputy Designated Safeguarding Lead of Haileybury Astana
+          {t("2023.testimonial.author")}
         </footer>
       </blockquote>
     </div>
@@ -204,12 +204,12 @@ const testimonials = [
           </div>
           
           <p class="text-center text-lg font-semibold text-blue-900 mb-8">
-            Репортаж Almaty TV с APhB 2024
+            {t("2024.video.caption")}
           </p>
           
           <!-- Логотипы партнёров -->
           <div class="bg-white rounded-2xl p-6 shadow-md">
-            <h4 class="text-center text-lg font-bold text-gray-800 mb-6">Партнёры 2024</h4>
+            <h4 class="text-center text-lg font-bold text-gray-800 mb-6">{t("2024.partners.title")}</h4>
             <div class="space-y-6">
               <!-- Основные логотипы -->
               <div class="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 gap-4 place-items-center">
@@ -236,12 +236,12 @@ const testimonials = [
           </div>
         </div>
         <div class="lg:order-2">
-          <h2 class="text-3xl lg:text-5xl font-bold mb-8">Прорыв 2024 года</h2>
+          <h2 class="text-3xl lg:text-5xl font-bold mb-8">{t("2024.title")}</h2>
           <p class="text-lg text-neutral-700 mb-6 leading-relaxed">
-            Мы бросили себе вызов — провести турнир целую неделю на базе Satbayev University. Впервые в истории Центральной Азии одновременно прошли APhB и National Chemical Battles.
+            {t("2024.description.1")}
           </p>
           <p class="text-lg text-neutral-700 mb-6 leading-relaxed">
-            <strong>Более 1000 участников</strong> из Казахстана, России, Кыргызстана, Узбекистана, Таджикистана и Беларуси. Впервые приехали иностранные команды — из СУНЦ МГУ и официальная сборная Республики Башкортостан.
+            <strong>{t("2024.description.2")}</strong>
           </p>
         </div>
       </div>
@@ -253,10 +253,10 @@ const testimonials = [
     <div class="max-w-4xl mx-auto">
       <blockquote class="bg-white border border-neutral-200 rounded-2xl p-8 lg:p-12 text-center">
         <p class="text-xl lg:text-2xl font-semibold text-neutral-800 mb-6 leading-relaxed">
-          «APhB — организаторы, с которыми приятно работать: четкая коммуникация, высокая планка академического содержания и внимание к участникам. Мы рады поддерживать развитие олимпиадного движения»
+          «{t("2024.testimonial.text")}»
         </p>
         <footer class="text-neutral-600 text-lg">
-          Марс Нарбаев, Руководитель Офиса формирования контингента обучающихся Satbayev University
+          {t("2024.testimonial.author")}
         </footer>
       </blockquote>
     </div>
@@ -267,12 +267,12 @@ const testimonials = [
     <div class="max-w-6xl mx-auto">
       <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
         <div>
-          <h2 class="text-3xl lg:text-5xl font-bold mb-8">Люди, которые делают чудеса</h2>
+          <h2 class="text-3xl lg:text-5xl font-bold mb-8">{t("team.title")}</h2>
           <p class="text-lg text-neutral-700 mb-6 leading-relaxed">
-            <strong>За два года было создано более 150 задач</strong> командой лучших олимпиадников Казахстана, России, и не только: школьниками и студентами MIT, Williams College, Notre Dame, Grinnell College NYU, HKUST, CityU, KAIST, Назарбаев Университета, и МФТИ. Среди которых бывшие и нынешние члены жюри и составители задач Всероссийской Олимпиады Школьников, Республиканской Олимпиады РК, Международной Жаутыковской Олимпиады, Олимпиады ЛФИ, и других!
+            <strong>{t("team.description.1")}</strong>
           </p>
           <p class="text-lg text-neutral-700 mb-6 leading-relaxed">
-            Жюри из 6 городов работали по 12 часов в день. Волонтёры приехали со всей страны и даже из Ташкента — встречали в аэропорту, водили в походы на Бутаковский водопад, дежурили ночами в общежитии.
+            {t("team.description.2")}
           </p>
           <div class="grid grid-cols-1 md:grid-cols-3 gap-4 mt-8">
             <div class="rounded-xl overflow-hidden">
@@ -286,14 +286,14 @@ const testimonials = [
             </div>
           </div>
           <p class="text-lg text-neutral-700 mb-6 leading-relaxed">
-            Сотни часов волонтёрской работы, бессонные ночи — всё ради того, чтобы дать ребятам незабываемый опыт.
+            {t("team.description.3")}
           </p>
         </div>
         <div class="bg-neutral-100 rounded-2xl p-8 text-center">
           <div class="w-full h-64 rounded-xl mb-4 overflow-hidden">
             <img src={volunteersPhoto} alt="Команда волонтёров и организаторов" class="w-full h-full object-cover" />
           </div>
-          <p class="text-neutral-600">Команда жюри 2024 года</p>  
+          <p class="text-neutral-600">{t("team.jury.caption")}</p>  
         </div>
       </div>
     </div>
@@ -302,9 +302,9 @@ const testimonials = [
   <!-- 4.5. Признание на государственном уровне -->
   <section class="col-span-full mb-20">
     <div class="max-w-6xl mx-auto">
-      <h2 class="text-3xl lg:text-5xl font-bold text-center mb-8">Признание на государственном уровне</h2>
+      <h2 class="text-3xl lg:text-5xl font-bold text-center mb-8">{t("recognition.title")}</h2>
       <p class="text-center text-lg text-neutral-600 mb-12 max-w-3xl mx-auto">
-        APhB получил официальное признание от Министерства науки и высшего образования РК и стал частью важных государственных инициатив
+        {t("recognition.subtitle")}
       </p>
       
       <div class="grid grid-cols-1 lg:grid-cols-3 gap-8">
@@ -313,9 +313,9 @@ const testimonials = [
           <div class="w-full h-48 rounded-xl mb-4 overflow-hidden border-2 border-white shadow-md">
             <img src="/photos/rashir.png" alt="Расширенное заседание коллегии Министерства науки и высшего образования РК" class="w-full h-full object-cover" />
           </div>
-          <h3 class="text-xl font-bold text-green-900 mb-3">Заседание коллегии Министерства</h3>
+          <h3 class="text-xl font-bold text-green-900 mb-3">{t("recognition.ministry.title")}</h3>
           <p class="text-green-800 text-sm leading-relaxed font-medium">
-            Министерства науки и высшего образования РК «Качественное образование – качественный человеческий капитал»
+            {t("recognition.ministry.description")}
           </p>
         </div>
 
@@ -324,9 +324,9 @@ const testimonials = [
           <div class="w-full h-48 rounded-xl mb-4 overflow-hidden border-2 border-white shadow-md">
             <img src="/photos/minister.png" alt="Встреча с министром науки и высшего образования РК" class="w-full h-full object-cover" />
           </div>
-          <h3 class="text-xl font-bold text-blue-900 mb-3">Встреча с министром</h3>
+          <h3 class="text-xl font-bold text-blue-900 mb-3">{t("recognition.minister.title")}</h3>
           <p class="text-blue-800 text-sm leading-relaxed font-medium">
-            Оргкомитет на личной встрече с министром науки и высшего образования РК Саясат Нурбеком
+            {t("recognition.minister.description")}
           </p>
         </div>
 
@@ -335,9 +335,9 @@ const testimonials = [
           <div class="w-full h-48 rounded-xl mb-4 overflow-hidden border-2 border-white shadow-md">
             <img src="/photos/izho.png" alt="Обмен опытом с организатором IZhO 2024" class="w-full h-full object-cover" />
           </div>
-          <h3 class="text-xl font-bold text-purple-900 mb-3">Международный опыт</h3>
+          <h3 class="text-xl font-bold text-purple-900 mb-3">{t("recognition.international.title")}</h3>
           <p class="text-purple-800 text-sm leading-relaxed font-medium">
-            Перенимаем опыт организации международных олимпиад у организатора IZhO 2024 - директора РФМШ г. Алматы, Меирбека Меирлана Едигерулы
+            {t("recognition.international.description")}
           </p>
         </div>
       </div>
@@ -363,12 +363,12 @@ const testimonials = [
           </div>
         </div>
         <div class="lg:order-2">
-          <h2 class="text-3xl lg:text-5xl font-bold mb-8">Больше чем турнир</h2>
+          <h2 class="text-3xl lg:text-5xl font-bold mb-8">{t("more.title")}</h2>
           <p class="text-lg text-neutral-700 mb-6 leading-relaxed">
-            APhB — это не только физика. Во время турниров у нас было много развлечений, воркшопов, и нетворкинг-ивентов. Это походы в музей Кастеева и к Бутаковскому водопаду в горах Заилийского Алатау, лекции от профессоров Назарбаев Университета, гитарные вечера, футбольные турниры, и многое другое!
+            {t("more.description.1")}
           </p>
           <p class="text-lg text-neutral-700 mb-6 leading-relaxed">
-            Это вечера кино, новые друзья из разных стран, и воспоминания на всю жизнь. Один участник даже пошёл в горы в шлёпках — просто не знал, что будет поход!
+            {t("more.description.2")}
           </p>
         </div>
       </div>
@@ -378,9 +378,9 @@ const testimonials = [
   <!-- 6. Партнёры -->
   {logos.length > 0 && (
     <section class="col-span-full mb-20">
-      <h2 class="text-3xl lg:text-5xl font-bold text-center mb-8">Партнёры, которые поверили в нас</h2>
+      <h2 class="text-3xl lg:text-5xl font-bold text-center mb-8">{t("partners.title")}</h2>
       <p class="text-center text-lg text-neutral-600 mb-12 max-w-3xl mx-auto">
-        Впервые были установлены партнёрства с государством — Министерством науки и высшего образования РК, а также с ведущими компаниями и образовательными учреждениями
+        {t("partners.subtitle")}
       </p>
       <div class="bg-white border border-neutral-200 rounded-2xl p-8 lg:p-12 max-w-7xl mx-auto">
         <div class="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 xl:grid-cols-6 gap-8 lg:gap-12 place-items-center">
@@ -401,7 +401,7 @@ const testimonials = [
 
   <!-- 7. Отзывы участников -->
   <section class="col-span-full mb-20">
-    <h2 class="text-3xl lg:text-5xl font-bold text-center mb-12">Голоса участников</h2>
+    <h2 class="text-3xl lg:text-5xl font-bold text-center mb-12">{t("testimonials.title")}</h2>
     <div class="max-w-6xl mx-auto">
       <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
         {testimonials.map((testimonial) => (
@@ -411,7 +411,7 @@ const testimonials = [
             </p>
             <div class="border-t border-neutral-200 pt-4">
               <p class="font-semibold text-neutral-800">{testimonial.author}</p>
-              {testimonial.team && <p class="text-sm text-neutral-600">Команда "{testimonial.team}"</p>}
+              {testimonial.team && <p class="text-sm text-neutral-600">{t("testimonials.team_label")} "{testimonial.team}"</p>}
               <p class="text-sm text-neutral-500">{testimonial.school}</p>
             </div>
           </div>
@@ -424,58 +424,58 @@ const testimonials = [
   <!-- 8. Партнёрство -->
   <section class="col-span-full mb-20">
     <div class="max-w-6xl mx-auto">
-      <h2 class="text-3xl lg:text-5xl font-bold text-center mb-8">Партнёрство с APhB</h2>
+      <h2 class="text-3xl lg:text-5xl font-bold text-center mb-8">{t("partnership.title")}</h2>
       <p class="text-center text-lg text-neutral-600 mb-12 max-w-3xl mx-auto">
-        Мы ценим поддержку наших партнёров и предлагаем взаимовыгодное сотрудничество
+        {t("partnership.subtitle")}
       </p>
 
       <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 mb-12">
         <!-- Как поддерживают нас -->
         <div class="bg-gradient-to-br from-blue-50 to-indigo-100 border border-blue-200 rounded-2xl p-8">
-          <h3 class="text-2xl font-bold text-blue-900 mb-6">Как нас поддерживают</h3>
+          <h3 class="text-2xl font-bold text-blue-900 mb-6">{t("partnership.support.title")}</h3>
           <div class="space-y-4">
             <div class="flex items-start gap-3">
               <div class="w-2 h-2 bg-blue-600 rounded-full mt-2 flex-shrink-0"></div>
-              <p class="text-blue-800"><strong>Финансовая поддержка</strong> турнира</p>
+              <p class="text-blue-800"><strong>{t("partnership.support.financial")}</strong></p>
             </div>
             <div class="flex items-start gap-3">
               <div class="w-2 h-2 bg-blue-600 rounded-full mt-2 flex-shrink-0"></div>
-              <p class="text-blue-800"><strong>Призы участникам</strong> и мерч</p>
+              <p class="text-blue-800"><strong>{t("partnership.support.prizes")}</strong></p>
             </div>
             <div class="flex items-start gap-3">
               <div class="w-2 h-2 bg-blue-600 rounded-full mt-2 flex-shrink-0"></div>
-              <p class="text-blue-800"><strong>Площадки</strong> для проведения</p>
+              <p class="text-blue-800"><strong>{t("partnership.support.venues")}</strong></p>
             </div>
             <div class="flex items-start gap-3">
               <div class="w-2 h-2 bg-blue-600 rounded-full mt-2 flex-shrink-0"></div>
-              <p class="text-blue-800"><strong>Экспертиза</strong> жюри и лекторов</p>
+              <p class="text-blue-800"><strong>{t("partnership.support.expertise")}</strong></p>
             </div>
           </div>
         </div>
 
         <!-- Что получают партнёры -->
         <div class="bg-gradient-to-br from-green-50 to-emerald-100 border border-green-200 rounded-2xl p-8">
-          <h3 class="text-2xl font-bold text-green-900 mb-6">Что получают партнёры</h3>
+          <h3 class="text-2xl font-bold text-green-900 mb-6">{t("partnership.benefits.title")}</h3>
           <div class="space-y-4">
             <div class="flex items-start gap-3">
               <div class="w-2 h-2 bg-green-600 rounded-full mt-2 flex-shrink-0"></div>
-              <p class="text-green-800"><strong>Логотип на футболках</strong> участников</p>
+              <p class="text-green-800"><strong>{t("partnership.benefits.tshirts")}</strong></p>
             </div>
             <div class="flex items-start gap-3">
               <div class="w-2 h-2 bg-green-600 rounded-full mt-2 flex-shrink-0"></div>
-              <p class="text-green-800"><strong>Размещение в печатной продукции</strong></p>
+              <p class="text-green-800"><strong>{t("partnership.benefits.print")}</strong></p>
             </div>
             <div class="flex items-start gap-3">
               <div class="w-2 h-2 bg-green-600 rounded-full mt-2 flex-shrink-0"></div>
-              <p class="text-green-800"><strong>Упоминание в соцсетях</strong> и медиа</p>
+              <p class="text-green-800"><strong>{t("partnership.benefits.social")}</strong></p>
             </div>
             <div class="flex items-start gap-3">
               <div class="w-2 h-2 bg-green-600 rounded-full mt-2 flex-shrink-0"></div>
-              <p class="text-green-800"><strong>Доступ к талантам</strong> региона</p>
+              <p class="text-green-800"><strong>{t("partnership.benefits.talents")}</strong></p>
             </div>
             <div class="flex items-start gap-3">
               <div class="w-2 h-2 bg-green-600 rounded-full mt-2 flex-shrink-0"></div>
-              <p class="text-green-800"><strong>Презентация компании</strong> участникам</p>
+              <p class="text-green-800"><strong>{t("partnership.benefits.presentation")}</strong></p>
             </div>
           </div>
         </div>
@@ -483,28 +483,28 @@ const testimonials = [
 
       <!-- Примеры футболок -->
       <div class="bg-white border border-neutral-200 rounded-2xl p-8 mb-16">
-        <h3 class="text-2xl font-bold text-center mb-6">Примеры размещения на мерче</h3>
+        <h3 class="text-2xl font-bold text-center mb-6">{t("partnership.merchandise.title")}</h3>
         <div class="grid grid-cols-1 md:grid-cols-2 gap-8 max-w-2xl mx-auto">
           <div class="text-center">
             <div class="bg-neutral-50 rounded-xl p-6 mb-3">
               <img src="/photos/t-shirt_front.png" alt="Передняя сторона футболки APhB с логотипами партнёров" class="w-full h-48 object-contain" />
             </div>
-            <p class="text-neutral-600 font-medium">Передняя сторона</p>
+            <p class="text-neutral-600 font-medium">{t("partnership.merchandise.front")}</p>
           </div>
           <div class="text-center">
             <div class="bg-neutral-50 rounded-xl p-6 mb-3">
               <img src="/photos/t-shirt_back.png" alt="Задняя сторона футболки APhB с логотипами партнёров" class="w-full h-48 object-contain" />
             </div>
-            <p class="text-neutral-600 font-medium">Задняя сторона</p>
+            <p class="text-neutral-600 font-medium">{t("partnership.merchandise.back")}</p>
           </div>
         </div>
       </div>
 
       <!-- Контакты -->
       <div class="bg-white border border-neutral-200 rounded-2xl p-8 text-center">
-        <h3 class="text-2xl font-bold mb-4">Обсудить партнёрство</h3>
+        <h3 class="text-2xl font-bold mb-4">{t("partnership.contact.title")}</h3>
         <p class="text-neutral-600 mb-6">
-          Свяжитесь с нами, чтобы обсудить варианты сотрудничества для APhB 2025
+          {t("partnership.contact.subtitle")}
         </p>
         <div class="flex flex-col md:flex-row gap-4 justify-center items-center mb-6">
           <a href="mailto:contact@bc-pf.org" class="text-primary-600 hover:text-primary-700 font-medium">contact@bc-pf.org</a>
@@ -515,7 +515,7 @@ const testimonials = [
           href="mailto:contact@bc-pf.org" 
           class="bg-primary-600 text-white px-6 py-3 rounded-xl font-medium hover:bg-primary-700 transition-colors inline-block"
         >
-          Написать нам
+{t("partnership.contact.cta")}
         </a>
       </div>
     </div>

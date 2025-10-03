@@ -1,6 +1,7 @@
 ---
 import type { CollectionEntry } from "astro:content";
 import { cn } from "~/utils/cn";
+import { getLangFromUrl, useTranslations } from "~/utils/i18n";
 
 interface Props {
   className?: string;
@@ -9,10 +10,27 @@ interface Props {
 }
 
 const {
-  member: { achievements, name, position },
+  member,
   id,
   className,
 } = Astro.props;
+const lang = getLangFromUrl(Astro.url);
+const t = useTranslations("team", lang);
+
+const localizedName =
+  (lang === "en" && member.name_en) ||
+  (lang === "kz" && member.name_kz) ||
+  member.name;
+
+const localizedPosition =
+  (lang === "en" && member.position_en) ||
+  (lang === "kz" && member.position_kz) ||
+  member.position;
+
+const localizedAchievements =
+  (lang === "en" && member.achievements_en) ||
+  (lang === "kz" && member.achievements_kz) ||
+  member.achievements;
 ---
 
 <div class={cn(className)}>
@@ -23,27 +41,25 @@ const {
     <div
       class="grid grid-cols-1 lg:grid-cols-6 lg:gap-5 gap-3 text-4xl lg:text-8xl items-baseline sticky"
     >
-      <span class="col-span-5 leading-tight">{name}</span>
-      <p class="uppercase text-neutral-300 text-base">
-        {position}
-      </p>
+      <span class="col-span-5 leading-tight">{localizedName}</span>
+      <p class="uppercase text-neutral-300 text-base">{localizedPosition}</p>
     </div>
   </div>
   <div
     class="grid-cols-1 lg:grid-cols-6 gap-5 border-b border-neutral-300 grid relative max-h-0 overflow-hidden duration-300"
   >
-    <span class="col-span-3 lg:mt-6 mt-3">Достижения</span>
+    <span class="col-span-3 lg:mt-6 mt-3">{t("achievements_label")}</span>
     <div class="col-span-3 grid grid-cols-2 lg:grid-cols-3 gap-5 lg:my-6 my-3">
       {
-        achievements
-          .sort((a, b) => a.length - b.length)
-          .map((achievement) => <span>{achievement}</span>)
+        localizedAchievements
+          .sort((a: string, b: string) => a.length - b.length)
+          .map((achievement: string) => <span>{achievement}</span>)
       }
     </div>
   </div>
 </div>
 
-<script define:vars={{ id, open: achievements.length > 0 }}>
+<script define:vars={{ id, open: (localizedAchievements?.length ?? 0) > 0 }}>
   const accordion = document.getElementById(id);
 
   if (open) {

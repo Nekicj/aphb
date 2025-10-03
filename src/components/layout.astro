@@ -47,10 +47,10 @@ const rules =
         <img src="/logo-sm.svg" alt="logo" class="md:hidden block" />
       </a>
       <div class="md:flex gap-5 text-neutral-400 items-center hidden">
-        <a href={translatePath("/team", lang)}>Команда</a>
-        <a href={translatePath("/results-and-tasks", lang)}>Результаты</a>
-        <a href={translatePath("/topics", lang)}>Подготовка</a>
-        <a href={translatePath("/sponsors", lang)}>Партнерам</a>
+        <a href="/team">{t("nav.team")}</a>
+        <a href="/results-and-tasks">{t("nav.results")}</a>
+        <a href="/topics">{t("nav.topics")}</a>
+        <a href="/sponsors">{t("nav.sponsors")}</a>
         <ul class="flex gap-2">
           {
             Object.entries(languages).map(([lang]) => (
@@ -96,10 +96,10 @@ const rules =
       <div
         class="flex flex-col justify-center gap-1 text-2xl capitalize text-black"
       >
-        <a href={translatePath("/team", lang)}>Команда</a>
-        <a href={translatePath("/results-and-tasks", lang)}>Результаты</a>
-        <a href={translatePath("/topics", lang)}>Подготовка</a>
-        <a href={translatePath("/sponsors", lang)}>Партнерам</a>
+        <a href="/team">{t("nav.team")}</a>
+        <a href="/results-and-tasks">{t("nav.results")}</a>
+        <a href="/topics">{t("nav.topics")}</a>
+        <a href="/sponsors">{t("nav.sponsors")}</a>
       </div>
       <div class="flex h-12 flex-row items-center justify-between">
         <img src="/logo.svg" alt="logo" class="w-24" />
@@ -197,7 +197,7 @@ const rules =
           
           <!-- Навигация -->
           <div class="flex md:col-span-3 lg:col-span-2 flex-col gap-4 relative z-20">
-            <h3 class="font-bold text-lg md:text-xl mb-2">Разделы</h3>
+            <h3 class="font-bold text-lg md:text-xl mb-2">{t("footer.sections")}</h3>
             <a class="hidden" href={regulation}>{t("footer.sections.regulations")}</a>
             <a class="hidden" href={rules}>{t("footer.sections.parliament")}</a>
             <a href="/results-and-tasks" class="hover:text-primary-200 transition-colors">{t("footer.sections.results")}</a>
@@ -207,7 +207,7 @@ const rules =
           
           <!-- Контакты -->
           <div class="md:col-span-3 lg:col-span-4 relative z-20">
-            <h3 class="font-bold text-lg md:text-xl mb-4">Контакты</h3>
+            <h3 class="font-bold text-lg md:text-xl mb-4">{t("footer.contacts")}</h3>
             <div class="grid grid-cols-1 sm:grid-cols-2 gap-4 text-lg">
               <a href="mailto:administrator@aphb.kz" class="hover:text-primary-200 transition-colors">administrator@aphb.kz</a>
               <a href="https://www.instagram.com/aphb.kz/" class="hover:text-primary-200 transition-colors">Instagram</a>

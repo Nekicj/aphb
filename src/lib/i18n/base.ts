@@ -8,6 +8,12 @@ export const en = {
   "footer.sections.results": "Results",
   "footer.sections.hr.policy": "HR Policy",
   "footer.sections.sponsors.partners": "For Sponsors and Partners",
+  "nav.team": "Team",
+  "nav.results": "Results",
+  "nav.topics": "Topics",
+  "nav.sponsors": "Sponsors",
+  "footer.sections": "Sections",
+  "footer.contacts": "Contacts",
 };
 
 export const ru = {
@@ -20,6 +26,12 @@ export const ru = {
   "footer.sections.results": "Результаты",
   "footer.sections.hr.policy": "Кадровая политика",
   "footer.sections.sponsors.partners": "Для спонсоров и партнеров",
+  "nav.team": "Команда",
+  "nav.results": "Результаты",
+  "nav.topics": "Темы",
+  "nav.sponsors": "Партнеры",
+  "footer.sections": "Разделы",
+  "footer.contacts": "Контакты",
 };
 
 export const kz = {
@@ -31,4 +43,10 @@ export const kz = {
   "footer.sections.results": "Нәтижелер",
   "footer.sections.hr.policy": "Кадр саясаты",
   "footer.sections.sponsors.partners": "Демеушілер мен серіктестер үшін",
+  "nav.team": "Команда",
+  "nav.results": "Нәтижелер",
+  "nav.topics": "Тақырыптар",
+  "nav.sponsors": "Серіктестер",
+  "footer.sections": "Бөлімдер",
+  "footer.contacts": "Байланыс",
 };
