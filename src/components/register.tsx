@@ -325,14 +325,9 @@ export const RegisterForm = ({
                     <h2 className="text-3xl md:text-4xl font-bold text-primary-900 mb-4">
                         Регистрация команды
                     </h2>
-                    <p className="text-neutral-600 text-lg mb-4">
+                    <p className="text-neutral-600 text-lg">
                         Заполните все поля для регистрации вашей команды
                     </p>
-                    <div className="bg-blue-50 border border-blue-200 rounded-lg p-4">
-                        <p className="text-blue-800 font-medium">
-                            ⚠️ {t("languageRequirement")}
-                        </p>
-                    </div>
                 </div>
                 
                 <Form {...form}>
@@ -400,6 +395,11 @@ export const RegisterForm = ({
                                         {form.formState.errors.language.message}
                                     </p>
                                 )}
+                                <div className="bg-amber-50 border border-amber-200 rounded-lg p-3 mt-2">
+                                    <p className="text-amber-800 text-sm font-medium">
+                                        ⚠️ Все участники должны знать русский, казахский язык или оба языка.
+                                    </p>
+                                </div>
                             </div>
                         </div>
 
