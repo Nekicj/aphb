@@ -428,7 +428,7 @@ export const RegisterForm = ({
                                 type="button"
                                 onClick={() => setHasAdditionalMember(true)}
                             >
-                                + Добавить четвертого участника
+                                + Добавить участника 4
                             </button>
                         </div>
                         <div className="flex justify-center pt-4">
@@ -483,9 +483,9 @@ const MemberForm = ({ lang, prefix, className, required, tooltip }: MemberFormPr
         switch (prefix) {
             case "leader": return "Руководитель команды";
             case "captain": return "Капитан команды";
-            case "member1": return "Участник 1";
-            case "member2": return "Участник 2";
-            case "member3": return "Участник 3 (необязательно)";
+            case "member1": return "Участник 2";
+            case "member2": return "Участник 3";
+            case "member3": return "Участник 4 (необязательно)";
             default: return "";
         }
     };
