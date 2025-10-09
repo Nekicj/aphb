@@ -558,7 +558,7 @@ const MemberForm = ({ lang, prefix, className, required, tooltip }: MemberFormPr
                         </Label>
                         <FormControl>
                             <Input
-                                placeholder="+77752146221"
+                                placeholder="+77011234567"
                                 className="h-12 md:h-14 p-3 md:p-4 border-neutral-300 rounded-lg text-base placeholder:text-neutral-400 w-full"
                                 type="tel"
                                 {...field}
