@@ -319,14 +319,14 @@ export const RegisterForm = ({
     }
 
     return (
-        <div className="col-span-full flex justify-center">
-            <div className="w-full max-w-2xl mx-auto bg-white rounded-2xl border border-neutral-200 shadow-lg p-8 md:p-12">
+        <div className="col-span-full">
+            <div className="w-full max-w-6xl mx-auto bg-white rounded-2xl border border-neutral-200 shadow-lg p-6 md:p-8">
                 <div className="text-center mb-8">
                     <h2 className="text-3xl md:text-4xl font-bold text-primary-900 mb-4">
-                        {t("form.title") || "Регистрация команды"}
+                        Регистрация команды
                     </h2>
                     <p className="text-neutral-600 text-lg mb-4">
-                        {t("form.subtitle") || "Заполните все поля для регистрации вашей команды"}
+                        Заполните все поля для регистрации вашей команды
                     </p>
                     <div className="bg-blue-50 border border-blue-200 rounded-lg p-4">
                         <p className="text-blue-800 font-medium">
@@ -350,7 +350,7 @@ export const RegisterForm = ({
                                 <Input
                                     placeholder={t("team.name") + " (автоматически переводится в латиницу)"}
                                     maxLength={20}
-                                    className="md:h-16 h-14 md:p-5 border-neutral-300 rounded-lg lg:text-lg placeholder:text-neutral-400"
+                                    className="h-12 md:h-14 p-3 md:p-4 border-neutral-300 rounded-lg text-base placeholder:text-neutral-400 w-full"
                                     {...field}
                                     onChange={(e) => {
                                         const transliterated = transliterate(e.target.value);
@@ -365,7 +365,7 @@ export const RegisterForm = ({
                 />
 
 
-                        <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+                        <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
                             <div className="flex flex-col gap-2">
                                 <Label className="text-lg font-semibold text-neutral-800">{t("league.label")}</Label>
                                 <TabBar
@@ -422,13 +422,15 @@ export const RegisterForm = ({
                     />
                     <Label className="ml-2"><div dangerouslySetInnerHTML={{ __html: t("personalData") }} /></Label>
                 </div>
-                <button
-                    className={cn("border border-neutral-300 bg-white text-lg rounded-lg px-4 py-2 lg:grow-0 grow", hasAdditionalMember && "hidden")}
-                    type="button"
-                    onClick={() => setHasAdditionalMember(true)}
-                >
-                    Add More members
-                </button>
+                        <div className="flex justify-center">
+                            <button
+                                className={cn("border-2 border-dashed border-neutral-300 bg-neutral-50 hover:bg-neutral-100 text-neutral-700 text-base font-medium rounded-xl px-6 py-4 transition-colors", hasAdditionalMember && "hidden")}
+                                type="button"
+                                onClick={() => setHasAdditionalMember(true)}
+                            >
+                                + Добавить четвертого участника
+                            </button>
+                        </div>
                         <div className="flex justify-center pt-4">
                             <button
                                 className="bg-primary-500 hover:bg-primary-700 text-white text-lg font-semibold rounded-xl px-8 py-4 flex gap-2 items-center disabled:opacity-50 disabled:cursor-not-allowed transition-colors min-w-[200px] justify-center shadow-lg border-2 border-primary-700"
@@ -489,11 +491,18 @@ const MemberForm = ({ lang, prefix, className, required, tooltip }: MemberFormPr
     };
 
     return (
-        <div className={cn("bg-neutral-50 rounded-xl p-6 border border-neutral-200", className)} >
+        <div className={cn("bg-neutral-50 rounded-xl p-4 md:p-6 border border-neutral-200", className)} >
             <h3 className="text-xl font-semibold text-neutral-800 mb-4 pb-2 border-b border-neutral-200">
                 {getSectionTitle()}
             </h3>
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+            {prefix === "leader" && (
+                <div className="bg-blue-50 border border-blue-200 rounded-lg p-4 mb-6">
+                    <p className="text-blue-800 text-sm leading-relaxed">
+                        {t("leaderInfo")}
+                    </p>
+                </div>
+            )}
+            <div className="grid grid-cols-1 lg:grid-cols-2 xl:grid-cols-3 gap-4">
             <FormField
                 control={control}
                 name={`${prefix}Name`}
@@ -507,7 +516,7 @@ const MemberForm = ({ lang, prefix, className, required, tooltip }: MemberFormPr
                             <Input
                                 placeholder={t(`${prefix}Name`) +
                                     " (ex: Константин Константинов Константинопольский)"}
-                                className="md:h-16 h-14 md:p-5 border-neutral-300 rounded-lg lg:text-lg placeholder:text-neutral-400"
+                                className="h-12 md:h-14 p-3 md:p-4 border-neutral-300 rounded-lg text-base placeholder:text-neutral-400 w-full"
 
                                 {...field}
                             />
@@ -529,7 +538,7 @@ const MemberForm = ({ lang, prefix, className, required, tooltip }: MemberFormPr
                         <FormControl>
                             <Input
                                 placeholder={t(`${prefix}Email`)}
-                                className="md:h-16 h-14 md:p-5 border-neutral-300 rounded-lg lg:text-lg placeholder:text-neutral-400"
+                                className="h-12 md:h-14 p-3 md:p-4 border-neutral-300 rounded-lg text-base placeholder:text-neutral-400 w-full"
                                 {...field}
                             />
                         </FormControl>
@@ -550,7 +559,7 @@ const MemberForm = ({ lang, prefix, className, required, tooltip }: MemberFormPr
                         <FormControl>
                             <Input
                                 placeholder="+77752146221"
-                                className="md:h-16 h-14 md:p-5 border-neutral-300 rounded-lg lg:text-lg placeholder:text-neutral-400"
+                                className="h-12 md:h-14 p-3 md:p-4 border-neutral-300 rounded-lg text-base placeholder:text-neutral-400 w-full"
                                 type="tel"
                                 {...field}
                                 onChange={(e) => {
@@ -580,7 +589,7 @@ const MemberForm = ({ lang, prefix, className, required, tooltip }: MemberFormPr
                                     </Label>
                                     <FormControl>
                                         <select
-                                            className="md:h-16 h-14 md:p-5 border-neutral-300 rounded-lg lg:text-lg placeholder:text-neutral-400 w-full border"
+                                            className="h-12 md:h-14 p-3 md:p-4 border-neutral-300 rounded-lg text-base w-full border bg-white"
                                             {...field}
                                             onChange={(e) => field.onChange(Number(e.target.value))}
                                         >
@@ -609,7 +618,7 @@ const MemberForm = ({ lang, prefix, className, required, tooltip }: MemberFormPr
                                     <FormControl>
                                         <Input
                                             placeholder={t(`${prefix}School`) + " (ex: НИШ ФМН г. Тараз)"}
-                                            className="md:h-16 h-14 md:p-5 border-neutral-300 rounded-lg lg:text-lg placeholder:text-neutral-400"
+                                            className="h-12 md:h-14 p-3 md:p-4 border-neutral-300 rounded-lg text-base placeholder:text-neutral-400 w-full"
                                             {...field}
                                         />
                                     </FormControl>
