@@ -17,7 +17,7 @@ import {
 import Toast from "~/components/atoms/toast.astro";
 import { Toaster } from "~/components/atoms/sonner";
 import BaseHead from "./base-head.astro";
-import { SpeedInsights } from "@vercel/speed-insights/astro";
+import SpeedInsights from "@vercel/speed-insights/astro";
 
 const lang = getLangFromUrl(Astro.url);
 const t = useTranslations("base", lang);
