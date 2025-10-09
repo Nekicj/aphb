@@ -397,7 +397,7 @@ export const RegisterForm = ({
                                 )}
                                 <div className="bg-amber-50 border border-amber-200 rounded-lg p-3 mt-2">
                                     <p className="text-amber-800 text-sm font-medium">
-                                        ⚠️ Все участники должны знать русский, казахский язык или оба языка.
+                                        ⚠️ {t("languageRequirement")}
                                     </p>
                                 </div>
                             </div>
@@ -428,7 +428,7 @@ export const RegisterForm = ({
                                 type="button"
                                 onClick={() => setHasAdditionalMember(true)}
                             >
-                                + Добавить участника 4
+{t("addMember4")}
                             </button>
                         </div>
                         <div className="flex justify-center pt-4">

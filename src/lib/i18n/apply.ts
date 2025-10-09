@@ -15,7 +15,8 @@ export const enApply = {
 
   'leaderInfo': "Team Leader is responsible for the team and cannot be a team member or minor. Must be an adult with notarized authorization from parents of minor participants. Can be a teacher, school employee, or any authorized adult. Required for all teams.",
   'languageRequirement': "All participants must know Russian, Kazakh, or both languages.",
-  'captainInfo': "Team captain is a team member who participates in captain’s battles and participates in communication with the Tournament Organizing Committee when questions arise.",
+  'addMember4': "+ Add Participant 4",
+  'captainInfo': "Team captain is a team member who participates in captain's battles and participates in communication with the Tournament Organizing Committee when questions arise.",
 
   "leaderName": "Leader's Name",
   "leaderEmail": "Leader's Email",
@@ -64,6 +65,7 @@ export const ruApply = {
 
   'leaderInfo': "Руководитель команды — лицо, ответственное за команду. Не может быть участником команды или несовершеннолетним. Должен быть совершеннолетним с нотариально заверенной доверенностью от родителей несовершеннолетних участников. Может быть преподавателем, сотрудником школы или любым уполномоченным взрослым. Обязателен для всех команд.",
   'languageRequirement': "Все участники должны знать русский, казахский язык или оба языка.",
+  'addMember4': "+ Добавить участника 4",
   'captainInfo': "Капитан команды - член команды, участвующий в капитанских боях и участвующий в коммуникации с Оргкомитетом турнира при возникновении вопросов",
 
   "leaderName": "Имя руководителя",
@@ -113,6 +115,7 @@ export const kzApply = {
   "hasLeader.no": "Жоқ",
   'leaderInfo': "Команда жетекшісі — командаға жауапты адам. Команда мүшесі немесе кәмелетке толмаған адам бола алмайды. Кәмелетке толмаған қатысушылардың ата-аналарынан нотариалды куәландырылған сенімхаты бар кәмелетке толған адам болуы керек. Мұғалім, мектеп қызметкері немесе кез келген уәкілетті ересек адам болуы мүмкін. Барлық командаларға міндетті.",
   'languageRequirement': "Барлық қатысушылар орыс, қазақ тілін немесе екі тілді де білуі керек.",
+  'addMember4': "+ 4-қатысушыны қосу",
   'captainInfo': "Команда капитаны – капитандық шайқастарға қатысатын және сұрақтар туындаған кезде Турнирді ұйымдастыру комитетімен байланысқа қатысатын команда мүшесі.",
   "leaderName": "Жетекшінің аты",
   "leaderEmail": "Жетекшінің электрондық поштасы",
