@@ -8,7 +8,7 @@ const lang = getLangFromUrl(Astro.url);
 const t = useTranslations("apply", lang);
 ---
 
-<Layout title={t("seo.title")} description={t("seo.description")}>
+<Layout title={t("seo.title")} description={t("seo.description")} image="/og.png">
   
 
   <!-- Registration temporarily closed: hiding the form without deleting it -->

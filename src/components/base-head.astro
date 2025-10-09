@@ -8,6 +8,12 @@ export interface Props {
 // const canonicalURL = new URL(Astro.url.pathname, Astro.site);
 
 const { title, description, image } = Astro.props;
+
+// Default OG image if none provided
+const ogImage = image || "https://www.aphb.kz/og.png";
+
+// Ensure we have a full URL for the OG image
+const fullOgImageUrl = ogImage.startsWith('http') ? ogImage : `https://www.aphb.kz${ogImage}`;
 ---
 
 <!-- Global Metadata -->
@@ -30,11 +36,15 @@ const { title, description, image } = Astro.props;
 <meta property="og:url" content={Astro.url} />
 <meta property="og:title" content={title} />
 <meta property="og:description" content={description} />
-<meta property="og:image" content="https://www.aphb.kz/og.png" />
+<meta property="og:image" content={fullOgImageUrl} />
+<meta property="og:image:width" content="1200" />
+<meta property="og:image:height" content="630" />
+<meta property="og:site_name" content="Almaty Physics Battles" />
 
 <!-- Twitter -->
 <meta property="twitter:card" content="summary_large_image" />
 <meta property="twitter:url" content={Astro.url} />
 <meta property="twitter:title" content={title} />
 <meta property="twitter:description" content={description} />
-<meta property="twitter:image" content="https://www.aphb.kz/og.png" />
+<meta property="twitter:image" content={fullOgImageUrl} />
+<meta property="twitter:site" content="@aphbkz" />
