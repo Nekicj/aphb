@@ -202,10 +202,10 @@ const EmergencyModal = ({ isOpen, onClose }: { isOpen: boolean; onClose: () => v
                 </p>
                 <div className="flex flex-col gap-2">
                     <a 
-                        href="mailto:info@aphb.kz" 
+                        href="mailto:info@aphb.org" 
                         className="bg-blue-600 text-white px-4 py-2 rounded hover:bg-blue-700 text-center"
                     >
-                        Написать на info@aphb.kz
+                        Написать на info@aphb.org
                     </a>
                     <button 
                         onClick={onClose}

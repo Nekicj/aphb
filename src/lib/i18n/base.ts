@@ -11,7 +11,7 @@ export const en = {
   "nav.team": "Team",
   "nav.results": "Results",
   "nav.topics": "Topics",
-  "nav.sponsors": "Sponsors",
+  "nav.sponsors": "For Partners",
   "footer.sections": "Sections",
   "footer.contacts": "Contacts",
 };
@@ -29,7 +29,7 @@ export const ru = {
   "nav.team": "Команда",
   "nav.results": "Результаты",
   "nav.topics": "Темы",
-  "nav.sponsors": "Партнеры",
+  "nav.sponsors": "Партнерам",
   "footer.sections": "Разделы",
   "footer.contacts": "Контакты",
 };
@@ -46,7 +46,7 @@ export const kz = {
   "nav.team": "Команда",
   "nav.results": "Нәтижелер",
   "nav.topics": "Тақырыптар",
-  "nav.sponsors": "Серіктестер",
+  "nav.sponsors": "Серіктестерге",
   "footer.sections": "Бөлімдер",
   "footer.contacts": "Байланыс",
 };
