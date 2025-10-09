@@ -1,0 +1,223 @@
+{
+  "id": "2ea2385e-d4eb-4830-8756-4f1a74604ba6",
+  "prevId": "00000000-0000-0000-0000-000000000000",
+  "version": "5",
+  "dialect": "pg",
+  "tables": {
+    "aphb_team": {
+      "name": "aphb_team",
+      "schema": "",
+      "columns": {
+        "id": {
+          "name": "id",
+          "type": "serial",
+          "primaryKey": true,
+          "notNull": true
+        },
+        "name": {
+          "name": "name",
+          "type": "varchar(256)",
+          "primaryKey": false,
+          "notNull": true
+        },
+        "league": {
+          "name": "league",
+          "type": "varchar(50)",
+          "primaryKey": false,
+          "notNull": true
+        },
+        "language": {
+          "name": "language",
+          "type": "varchar(50)",
+          "primaryKey": false,
+          "notNull": true
+        },
+        "leader_name": {
+          "name": "leader_name",
+          "type": "varchar(256)",
+          "primaryKey": false,
+          "notNull": true
+        },
+        "leader_email": {
+          "name": "leader_email",
+          "type": "varchar(256)",
+          "primaryKey": false,
+          "notNull": true
+        },
+        "leader_phone": {
+          "name": "leader_phone",
+          "type": "varchar(50)",
+          "primaryKey": false,
+          "notNull": true
+        },
+        "captain_name": {
+          "name": "captain_name",
+          "type": "varchar(256)",
+          "primaryKey": false,
+          "notNull": true
+        },
+        "captain_school": {
+          "name": "captain_school",
+          "type": "varchar(256)",
+          "primaryKey": false,
+          "notNull": true
+        },
+        "captain_grade": {
+          "name": "captain_grade",
+          "type": "integer",
+          "primaryKey": false,
+          "notNull": true
+        },
+        "captain_email": {
+          "name": "captain_email",
+          "type": "varchar(256)",
+          "primaryKey": false,
+          "notNull": true
+        },
+        "captain_phone": {
+          "name": "captain_phone",
+          "type": "varchar(50)",
+          "primaryKey": false,
+          "notNull": true
+        },
+        "member1_name": {
+          "name": "member1_name",
+          "type": "varchar(256)",
+          "primaryKey": false,
+          "notNull": true
+        },
+        "member1_school": {
+          "name": "member1_school",
+          "type": "varchar(256)",
+          "primaryKey": false,
+          "notNull": true
+        },
+        "member1_grade": {
+          "name": "member1_grade",
+          "type": "integer",
+          "primaryKey": false,
+          "notNull": true
+        },
+        "member1_email": {
+          "name": "member1_email",
+          "type": "varchar(256)",
+          "primaryKey": false,
+          "notNull": true
+        },
+        "member1_phone": {
+          "name": "member1_phone",
+          "type": "varchar(50)",
+          "primaryKey": false,
+          "notNull": true
+        },
+        "member2_name": {
+          "name": "member2_name",
+          "type": "varchar(256)",
+          "primaryKey": false,
+          "notNull": true
+        },
+        "member2_school": {
+          "name": "member2_school",
+          "type": "varchar(256)",
+          "primaryKey": false,
+          "notNull": true
+        },
+        "member2_grade": {
+          "name": "member2_grade",
+          "type": "integer",
+          "primaryKey": false,
+          "notNull": true
+        },
+        "member2_email": {
+          "name": "member2_email",
+          "type": "varchar(256)",
+          "primaryKey": false,
+          "notNull": true
+        },
+        "member2_phone": {
+          "name": "member2_phone",
+          "type": "varchar(50)",
+          "primaryKey": false,
+          "notNull": true
+        },
+        "member3_name": {
+          "name": "member3_name",
+          "type": "varchar(256)",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "member3_school": {
+          "name": "member3_school",
+          "type": "varchar(256)",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "member3_grade": {
+          "name": "member3_grade",
+          "type": "integer",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "member3_email": {
+          "name": "member3_email",
+          "type": "varchar(256)",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "member3_phone": {
+          "name": "member3_phone",
+          "type": "varchar(50)",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "created_at": {
+          "name": "created_at",
+          "type": "timestamp",
+          "primaryKey": false,
+          "notNull": true,
+          "default": "CURRENT_TIMESTAMP"
+        },
+        "updatedAt": {
+          "name": "updatedAt",
+          "type": "timestamp",
+          "primaryKey": false,
+          "notNull": false
+        }
+      },
+      "indexes": {
+        "team_idx": {
+          "name": "team_idx",
+          "columns": [
+            "name"
+          ],
+          "isUnique": false
+        }
+      },
+      "foreignKeys": {},
+      "compositePrimaryKeys": {},
+      "uniqueConstraints": {
+        "aphb_team_name_unique": {
+          "name": "aphb_team_name_unique",
+          "nullsNotDistinct": false,
+          "columns": [
+            "name"
+          ]
+        },
+        "aphb_team_captain_email_unique": {
+          "name": "aphb_team_captain_email_unique",
+          "nullsNotDistinct": false,
+          "columns": [
+            "captain_email"
+          ]
+        }
+      }
+    }
+  },
+  "enums": {},
+  "schemas": {},
+  "_meta": {
+    "columns": {},
+    "schemas": {},
+    "tables": {}
+  }
+}
