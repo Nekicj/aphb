@@ -38,6 +38,25 @@ const formatPhoneNumber = (phone: string): string => {
     return phone; // Return as is if can't format
 };
 
+// Transliteration function for team names
+const transliterate = (text: string): string => {
+    const cyrillicToLatin: { [key: string]: string } = {
+        'а': 'a', 'б': 'b', 'в': 'v', 'г': 'g', 'д': 'd', 'е': 'e', 'ё': 'yo', 'ж': 'zh',
+        'з': 'z', 'и': 'i', 'й': 'y', 'к': 'k', 'л': 'l', 'м': 'm', 'н': 'n', 'о': 'o',
+        'п': 'p', 'р': 'r', 'с': 's', 'т': 't', 'у': 'u', 'ф': 'f', 'х': 'kh', 'ц': 'ts',
+        'ч': 'ch', 'ш': 'sh', 'щ': 'shch', 'ъ': '', 'ы': 'y', 'ь': '', 'э': 'e', 'ю': 'yu', 'я': 'ya',
+        'А': 'A', 'Б': 'B', 'В': 'V', 'Г': 'G', 'Д': 'D', 'Е': 'E', 'Ё': 'Yo', 'Ж': 'Zh',
+        'З': 'Z', 'И': 'I', 'Й': 'Y', 'К': 'K', 'Л': 'L', 'М': 'M', 'Н': 'N', 'О': 'O',
+        'П': 'P', 'Р': 'R', 'С': 'S', 'Т': 'T', 'У': 'U', 'Ф': 'F', 'Х': 'Kh', 'Ц': 'Ts',
+        'Ч': 'Ch', 'Ш': 'Sh', 'Щ': 'Shch', 'Ъ': '', 'Ы': 'Y', 'Ь': '', 'Э': 'E', 'Ю': 'Yu', 'Я': 'Ya',
+        // Kazakh specific characters
+        'ә': 'a', 'ғ': 'gh', 'қ': 'q', 'ң': 'ng', 'ө': 'o', 'ұ': 'u', 'ү': 'u', 'һ': 'h', 'і': 'i',
+        'Ә': 'A', 'Ғ': 'Gh', 'Қ': 'Q', 'Ң': 'Ng', 'Ө': 'O', 'Ұ': 'U', 'Ү': 'U', 'Һ': 'H', 'І': 'I'
+    };
+    
+    return text.split('').map(char => cyrillicToLatin[char] || char).join('');
+};
+
 // Dynamic grade validation based on league
 const createGradeSchema = (league: "junior" | "senior") => {
     if (league === "junior") {
@@ -51,8 +70,8 @@ export const teamSchema = z.object({
     teamName: z
         .string()
         .min(1, "Название команды обязательно")
-        .regex(/^[a-zA-Z0-9\s]+$/, "Только латинские буквы, цифры и пробелы")
-        .max(20, "Максимум 20 символов"),
+        .max(20, "Максимум 20 символов")
+        .transform(transliterate), // Auto-transliterate any input
     league: z.enum(["junior", "senior"]).default("junior"),
     language: z.enum(["ru", "kz"]).default("ru"),
     leaderName: z.string().min(1, "Имя руководителя обязательно"),
@@ -170,12 +189,15 @@ export const RegisterForm = ({
 
             if (res.ok) {
                 toast.success(`Спасибо за вашу заявку. Ваша команда успешно зарегистрирована на отборочный этап APhB 2025!`, { duration: 100000 })
+                // Only reset form on successful registration
+                form.reset();
             } else {
                 const errorData = await res.json()
                 const errorMessage = errorData.message || "Неизвестная ошибка";
                 
+                // DON'T reset form data - preserve all user input
                 // Try to identify which field has the error
-                if (errorMessage.includes("team name") || errorMessage.includes("teamName")) {
+                if (errorMessage.includes("team name") || errorMessage.includes("teamName") || errorMessage.includes("team")) {
                     form.setError("teamName", { message: errorMessage });
                 } else if (errorMessage.includes("email")) {
                     // Try to identify which email field
@@ -210,7 +232,7 @@ export const RegisterForm = ({
                         form.setError("leaderPhone", { message: errorMessage });
                     }
                 } else {
-                    // Unknown error - show emergency modal
+                    // Unknown error - show emergency modal but keep form data
                     setShowEmergencyModal(true);
                 }
             }
@@ -244,11 +266,14 @@ export const RegisterForm = ({
                             <FormLabel className="mb-1">{t("team.name")}</FormLabel>
                             <FormControl>
                                 <Input
-                                    placeholder={t("team.name") + " (только на латинице)"}
+                                    placeholder={t("team.name") + " (автоматически переводится в латиницу)"}
                                     maxLength={20}
-                                    pattern="[a-zA-z0-9 ]+"
                                     className="md:h-16 h-14 md:p-5 border-neutral-300 rounded-lg lg:text-lg placeholder:text-neutral-400"
                                     {...field}
+                                    onChange={(e) => {
+                                        const transliterated = transliterate(e.target.value);
+                                        field.onChange(transliterated);
+                                    }}
                                 />
                             </FormControl>
 
