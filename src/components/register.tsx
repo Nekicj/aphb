@@ -66,57 +66,121 @@ const createGradeSchema = (league: "junior" | "senior") => {
     }
 };
 
-export const teamSchema = z.object({
-    teamName: z
-        .string()
-        .min(1, "Название команды обязательно")
-        .max(20, "Максимум 20 символов")
-        .transform(transliterate), // Auto-transliterate any input
-    league: z.enum(["junior", "senior"]).default("junior"),
-    language: z.enum(["ru", "kz"]).default("ru"),
-    leaderName: z.string().min(1, "Имя руководителя обязательно"),
-    leaderEmail: z.string().email("Неверный формат email"),
-    leaderPhone: z.string().min(1, "Телефон обязателен").transform(formatPhoneNumber),
-    captainName: z.string().min(1, "Имя капитана обязательно"),
-    captainSchool: z.string().min(1, "Школа капитана обязательна"),
-    captainGrade: z.coerce.number().min(5).max(13),
-    captainEmail: z.string().email("Неверный формат email"),
-    captainPhone: z.string().min(1, "Телефон обязателен").transform(formatPhoneNumber),
-    member1Name: z.string().min(1, "Имя участника обязательно"),
-    member1School: z.string().min(1, "Школа участника обязательна"),
-    member1Grade: z.coerce.number().min(5).max(13),
-    member1Email: z.string().email("Неверный формат email"),
-    member1Phone: z.string().min(1, "Телефон обязателен").transform(formatPhoneNumber),
-    member2Name: z.string().min(1, "Имя участника обязательно"),
-    member2School: z.string().min(1, "Школа участника обязательна"),
-    member2Grade: z.coerce.number().min(5).max(13),
-    member2Email: z.string().email("Неверный формат email"),
-    member2Phone: z.string().min(1, "Телефон обязателен").transform(formatPhoneNumber),
-    member3Name: z.string().optional(),
-    member3School: z.string().optional(),
-    member3Grade: z.union([z.coerce.number().min(5).max(13), z.nan()]).optional(),
-    member3Email: z.string().email("Неверный формат email").optional().or(z.literal("")),
-    member3Phone: z.string().optional().transform((phone) => phone ? formatPhoneNumber(phone) : phone),
-}).refine((data) => {
-    // Validate grades based on league
-    const maxGrade = data.league === "junior" ? 9 : 13;
-    const minGrade = 5;
-    
-    const grades = [data.captainGrade, data.member1Grade, data.member2Grade];
-    if (data.member3Grade && !isNaN(data.member3Grade)) {
-        grades.push(data.member3Grade);
-    }
-    
-    for (const grade of grades) {
-        if (grade < minGrade || grade > maxGrade) {
-            return false;
+// Create schema with proper error messages based on language
+const createTeamSchema = (lang: string) => {
+    const messages = {
+        ru: {
+            teamNameRequired: "Название команды обязательно",
+            teamNameTooLong: "Максимум 20 символов",
+            nameRequired: "Имя обязательно",
+            emailInvalid: "Неверный формат email",
+            phoneRequired: "Телефон обязателен",
+            schoolRequired: "Школа обязательна",
+            gradeRequired: "Выберите класс",
+            gradeInvalid: "Класс должен быть числом от 5 до 13",
+            gradeNotInLeague: "Класс не соответствует выбранной лиге"
+        },
+        en: {
+            teamNameRequired: "Team name is required",
+            teamNameTooLong: "Maximum 20 characters",
+            nameRequired: "Name is required",
+            emailInvalid: "Invalid email format",
+            phoneRequired: "Phone is required",
+            schoolRequired: "School is required",
+            gradeRequired: "Please select grade",
+            gradeInvalid: "Grade must be a number from 5 to 13",
+            gradeNotInLeague: "Grade doesn't match selected league"
+        },
+        kz: {
+            teamNameRequired: "Команда атауы міндетті",
+            teamNameTooLong: "Максимум 20 символ",
+            nameRequired: "Аты міндетті",
+            emailInvalid: "Email форматы дұрыс емес",
+            phoneRequired: "Телефон міндетті",
+            schoolRequired: "Мектеп міндетті",
+            gradeRequired: "Сыныпты таңдаңыз",
+            gradeInvalid: "Сынып 5-тен 13-ке дейінгі сан болуы керек",
+            gradeNotInLeague: "Сынып таңдалған лигаға сәйкес келмейді"
         }
-    }
-    return true;
-}, {
-    message: "Класс не соответствует выбранной лиге",
-    path: ["captainGrade"]
-});
+    };
+    
+    const msg = messages[lang as keyof typeof messages] || messages.ru;
+    
+    return z.object({
+        teamName: z
+            .string()
+            .min(1, msg.teamNameRequired)
+            .max(20, msg.teamNameTooLong)
+            .transform(transliterate),
+        league: z.enum(["junior", "senior"]).default("junior"),
+        language: z.enum(["ru", "kz"]).default("ru"),
+        leaderName: z.string().min(1, msg.nameRequired),
+        leaderEmail: z.string().email(msg.emailInvalid),
+        leaderPhone: z.string().min(1, msg.phoneRequired).transform(formatPhoneNumber),
+        captainName: z.string().min(1, msg.nameRequired),
+        captainSchool: z.string().min(1, msg.schoolRequired),
+        captainGrade: z.preprocess((val) => {
+            if (val === "" || val === null || val === undefined) return NaN;
+            return Number(val);
+        }, z.number({
+            required_error: msg.gradeRequired,
+            invalid_type_error: msg.gradeRequired
+        }).min(5, msg.gradeInvalid).max(13, msg.gradeInvalid)),
+        captainEmail: z.string().email(msg.emailInvalid),
+        captainPhone: z.string().min(1, msg.phoneRequired).transform(formatPhoneNumber),
+        member1Name: z.string().min(1, msg.nameRequired),
+        member1School: z.string().min(1, msg.schoolRequired),
+        member1Grade: z.preprocess((val) => {
+            if (val === "" || val === null || val === undefined) return NaN;
+            return Number(val);
+        }, z.number({
+            required_error: msg.gradeRequired,
+            invalid_type_error: msg.gradeRequired
+        }).min(5, msg.gradeInvalid).max(13, msg.gradeInvalid)),
+        member1Email: z.string().email(msg.emailInvalid),
+        member1Phone: z.string().min(1, msg.phoneRequired).transform(formatPhoneNumber),
+        member2Name: z.string().min(1, msg.nameRequired),
+        member2School: z.string().min(1, msg.schoolRequired),
+        member2Grade: z.preprocess((val) => {
+            if (val === "" || val === null || val === undefined) return NaN;
+            return Number(val);
+        }, z.number({
+            required_error: msg.gradeRequired,
+            invalid_type_error: msg.gradeRequired
+        }).min(5, msg.gradeInvalid).max(13, msg.gradeInvalid)),
+        member2Email: z.string().email(msg.emailInvalid),
+        member2Phone: z.string().min(1, msg.phoneRequired).transform(formatPhoneNumber),
+        member3Name: z.string().optional(),
+        member3School: z.string().optional(),
+        member3Grade: z.preprocess((val) => {
+            if (val === "" || val === null || val === undefined) return undefined;
+            return Number(val);
+        }, z.number().min(5, msg.gradeInvalid).max(13, msg.gradeInvalid).optional()),
+        member3Email: z.string().email(msg.emailInvalid).optional().or(z.literal("")),
+        member3Phone: z.string().optional().transform((phone) => phone ? formatPhoneNumber(phone) : phone),
+    }).refine((data) => {
+        // Validate grades based on league
+        const maxGrade = data.league === "junior" ? 9 : 13;
+        const minGrade = 5;
+        
+        const grades = [data.captainGrade, data.member1Grade, data.member2Grade];
+        if (data.member3Grade && !isNaN(data.member3Grade)) {
+            grades.push(data.member3Grade);
+        }
+        
+        for (const grade of grades) {
+            if (grade < minGrade || grade > maxGrade) {
+                return false;
+            }
+        }
+        return true;
+    }, {
+        message: msg.gradeNotInLeague,
+        path: ["captainGrade"]
+    });
+};
+
+export const teamSchema = createTeamSchema("ru"); // Default schema
 
 export type TeamSchema = z.infer<typeof teamSchema>;
 
@@ -166,8 +230,11 @@ export const RegisterForm = ({
     const [personalDataChecked, setPersonalDataChecked] = useState(false)
     const [showEmergencyModal, setShowEmergencyModal] = useState(false)
     
+    // Create schema based on current language
+    const dynamicSchema = createTeamSchema(lang);
+    
     const form = useForm<TeamSchema>({
-        resolver: zodResolver(teamSchema),
+        resolver: zodResolver(dynamicSchema),
     });
     const registrationCloseDate = new Date("2025-10-19T23:59:00+05:00");
     
@@ -252,12 +319,22 @@ export const RegisterForm = ({
     }
 
     return (
-
-        <Form {...form}>
-            <form
-                className="flex flex-col gap-4 lg:col-span-6 col-span-4 lg:col-start-7 mb-6 md:px-5 md:py-2 md:mt-3 relative"
-                onSubmit={form.handleSubmit(handleSubmit)}
-            >
+        <div className="col-span-full flex justify-center">
+            <div className="w-full max-w-2xl mx-auto bg-white rounded-2xl border border-neutral-200 shadow-lg p-8 md:p-12">
+                <div className="text-center mb-8">
+                    <h2 className="text-3xl md:text-4xl font-bold text-primary-900 mb-4">
+                        {t("form.title") || "Регистрация команды"}
+                    </h2>
+                    <p className="text-neutral-600 text-lg">
+                        {t("form.subtitle") || "Заполните все поля для регистрации вашей команды"}
+                    </p>
+                </div>
+                
+                <Form {...form}>
+                    <form
+                        className="flex flex-col gap-6"
+                        onSubmit={form.handleSubmit(handleSubmit)}
+                    >
                 <FormField
                     control={form.control}
                     name="teamName"
@@ -283,41 +360,43 @@ export const RegisterForm = ({
                 />
 
 
-                <div className="flex flex-col lg:flex-row gap-5 flex-wrap">
-                    <div className="flex flex-col gap-1 min-w-0">
-                        <Label>{t("league.label")}</Label>
-                        <TabBar
+                        <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+                            <div className="flex flex-col gap-2">
+                                <Label className="text-lg font-semibold text-neutral-800">{t("league.label")}</Label>
+                                <TabBar
+                                    tabs={[
+                                        { label: `${t("league.junior")}, 5-9`, value: "junior" },
+                                        { label: `${t("league.senior")}, 5-13`, value: "senior" },
+                                    ]}
+                                    onChange={(value) =>
+                                        form.setValue("league", value as "junior" | "senior")
+                                    }
+                                />
+                                {form.formState.errors.league && (
+                                    <p className="text-sm font-medium text-red-600 bg-red-50 p-2 rounded-lg border border-red-200">
+                                        {form.formState.errors.league.message}
+                                    </p>
+                                )}
+                            </div>
 
-                            tabs={[
-                                { label: `${t("league.junior")}, 5-9`, value: "junior" },
-                                { label: `${t("league.senior")}, 5-13`, value: "senior" },
-                            ]}
-                            onChange={(value) =>
-                                form.setValue("league", value as "junior" | "senior")
-                            }
-                        />
-                    </div>
-
-                    <div className="flex flex-col gap-1 min-w-0">
-                        <Label>{t("language.label")}</Label>
-                        <TabBar
-                            tabs={[
-                                { label: t("language.ru"), value: "ru" },
-                                { label: t("language.kz"), value: "kz" },
-                            ]}
-                            onChange={(value) =>
-                                form.setValue("language", value as "ru" | "kz")
-                            }
-                        />
-                    </div>
-
-                    <p className="text-sm font-medium text-destructive text-red-300">
-                        {form.formState.errors.league?.message}
-                    </p>
-                    <p className="text-sm font-medium text-destructive text-red-300">
-                        {form.formState.errors.language?.message}
-                    </p>
-                </div>
+                            <div className="flex flex-col gap-2">
+                                <Label className="text-lg font-semibold text-neutral-800">{t("language.label")}</Label>
+                                <TabBar
+                                    tabs={[
+                                        { label: t("language.ru"), value: "ru" },
+                                        { label: t("language.kz"), value: "kz" },
+                                    ]}
+                                    onChange={(value) =>
+                                        form.setValue("language", value as "ru" | "kz")
+                                    }
+                                />
+                                {form.formState.errors.language && (
+                                    <p className="text-sm font-medium text-red-600 bg-red-50 p-2 rounded-lg border border-red-200">
+                                        {form.formState.errors.language.message}
+                                    </p>
+                                )}
+                            </div>
+                        </div>
 
                 <MemberForm prefix="leader" required={true} tooltip={t("leaderInfo")} lang={lang} />
                 <MemberForm prefix="captain" required={true} tooltip={t("captainInfo")} lang={lang} />
@@ -345,22 +424,25 @@ export const RegisterForm = ({
                 >
                     Add More members
                 </button>
-                <div className="flex justify-end">
-                    <button
-                        className="bg-black text-white text-lg rounded-lg px-4 py-2 lg:grow-0 grow flex gap-1 items-center disabled:text-white/50"
-                        type="submit"
-                        disabled={!personalDataChecked || loading}
-                    >
-                        {loading && <Loader2 className="mr-2 h-4 w-4 animate-spin" />}
-                        {t("register.team")}
-                    </button>
-                </div>
-            </form>
-            <EmergencyModal 
-                isOpen={showEmergencyModal} 
-                onClose={() => setShowEmergencyModal(false)} 
-            />
-        </Form>
+                        <div className="flex justify-center pt-4">
+                            <button
+                                className="bg-primary-600 hover:bg-primary-700 text-white text-lg font-semibold rounded-xl px-8 py-4 flex gap-2 items-center disabled:opacity-50 disabled:cursor-not-allowed transition-colors min-w-[200px] justify-center"
+                                type="submit"
+                                disabled={!personalDataChecked || loading}
+                            >
+                                {loading && <Loader2 className="h-5 w-5 animate-spin" />}
+                                {t("register.team") || "Зарегистрировать команду"}
+                            </button>
+                        </div>
+                    </form>
+                </Form>
+                
+                <EmergencyModal 
+                    isOpen={showEmergencyModal} 
+                    onClose={() => setShowEmergencyModal(false)} 
+                />
+            </div>
+        </div>
     );
 };
 
@@ -389,8 +471,23 @@ const MemberForm = ({ lang, prefix, className, required, tooltip }: MemberFormPr
         }
         return grades;
     };
+    const getSectionTitle = () => {
+        switch (prefix) {
+            case "leader": return "Руководитель команды";
+            case "captain": return "Капитан команды";
+            case "member1": return "Участник 1";
+            case "member2": return "Участник 2";
+            case "member3": return "Участник 3 (необязательно)";
+            default: return "";
+        }
+    };
+
     return (
-        <div className={cn("flex flex-col gap-4 my-3", className)} >
+        <div className={cn("bg-neutral-50 rounded-xl p-6 border border-neutral-200", className)} >
+            <h3 className="text-xl font-semibold text-neutral-800 mb-4 pb-2 border-b border-neutral-200">
+                {getSectionTitle()}
+            </h3>
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
             <FormField
                 control={control}
                 name={`${prefix}Name`}
@@ -520,6 +617,7 @@ const MemberForm = ({ lang, prefix, className, required, tooltip }: MemberFormPr
                     </>
                 )
             }
+            </div>
         </div>
     )
 }
