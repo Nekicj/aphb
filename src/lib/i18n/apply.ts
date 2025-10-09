@@ -13,7 +13,8 @@ export const enApply = {
   "hasLeader.yes": "Yes",
   "hasLeader.no": "No",
 
-  'leaderInfo': "The team leader is any person who has reached the age of majority and has a notarized power of attorney to accompany them to the tournament from the parents of minor participants. This could be a teacher, a school/educational institution employee, or any other person who has received a power of attorney.",
+  'leaderInfo': "Team Leader is responsible for the team and cannot be a team member or minor. Must be an adult with notarized authorization from parents of minor participants. Can be a teacher, school employee, or any authorized adult. Required for all teams.",
+  'languageRequirement': "All participants must know Russian, Kazakh, or both languages.",
   'captainInfo': "Team captain is a team member who participates in captain’s battles and participates in communication with the Tournament Organizing Committee when questions arise.",
 
   "leaderName": "Leader's Name",
@@ -61,7 +62,8 @@ export const ruApply = {
   "hasLeader.yes": "Да",
   "hasLeader.no": "Нет",
 
-  'leaderInfo': "Руководитель команды -  любое лицо, достигшее совершеннолетнего возраста и имеющее нотариально заверенную доверенность на сопровождение на турнир от родителей несовершеннолетних участников. Это может быть преподаватель, сотрудник школы/образовательного учреждения или любое другое лицо, которое получило доверенность. ",
+  'leaderInfo': "Руководитель команды — лицо, ответственное за команду. Не может быть участником команды или несовершеннолетним. Должен быть совершеннолетним с нотариально заверенной доверенностью от родителей несовершеннолетних участников. Может быть преподавателем, сотрудником школы или любым уполномоченным взрослым. Обязателен для всех команд.",
+  'languageRequirement': "Все участники должны знать русский, казахский язык или оба языка.",
   'captainInfo': "Капитан команды - член команды, участвующий в капитанских боях и участвующий в коммуникации с Оргкомитетом турнира при возникновении вопросов",
 
   "leaderName": "Имя руководителя",
@@ -109,7 +111,8 @@ export const kzApply = {
   "hasLeader": "Жетекшісі бар ма",
   "hasLeader.yes": "Иә",
   "hasLeader.no": "Жоқ",
-  'leaderInfo': "Команда жетекшісі - кәмелетке толған және кәмелетке толмаған қатысушылардың ата-аналарынан турнирге оларды алып жүруге нотариалды куәландырылған сенімхаты бар кез келген адам. Бұл мұғалім, мектеп/білім беру мекемесінің қызметкері немесе сенімхат алған кез келген басқа адам болуы мүмкін. ",
+  'leaderInfo': "Команда жетекшісі — командаға жауапты адам. Команда мүшесі немесе кәмелетке толмаған адам бола алмайды. Кәмелетке толмаған қатысушылардың ата-аналарынан нотариалды куәландырылған сенімхаты бар кәмелетке толған адам болуы керек. Мұғалім, мектеп қызметкері немесе кез келген уәкілетті ересек адам болуы мүмкін. Барлық командаларға міндетті.",
+  'languageRequirement': "Барлық қатысушылар орыс, қазақ тілін немесе екі тілді де білуі керек.",
   'captainInfo': "Команда капитаны – капитандық шайқастарға қатысатын және сұрақтар туындаған кезде Турнирді ұйымдастыру комитетімен байланысқа қатысатын команда мүшесі.",
   "leaderName": "Жетекшінің аты",
   "leaderEmail": "Жетекшінің электрондық поштасы",

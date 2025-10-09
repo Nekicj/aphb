@@ -325,9 +325,14 @@ export const RegisterForm = ({
                     <h2 className="text-3xl md:text-4xl font-bold text-primary-900 mb-4">
                         {t("form.title") || "Регистрация команды"}
                     </h2>
-                    <p className="text-neutral-600 text-lg">
+                    <p className="text-neutral-600 text-lg mb-4">
                         {t("form.subtitle") || "Заполните все поля для регистрации вашей команды"}
                     </p>
+                    <div className="bg-blue-50 border border-blue-200 rounded-lg p-4">
+                        <p className="text-blue-800 font-medium">
+                            ⚠️ {t("languageRequirement")}
+                        </p>
+                    </div>
                 </div>
                 
                 <Form {...form}>
