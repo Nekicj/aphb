@@ -1,7 +1,7 @@
 
 
 import { zodResolver } from "@hookform/resolvers/zod";
-import { Loader2 } from "lucide-react";
+import { Loader2, X } from "lucide-react";
 import { useState } from "react";
 import { useForm, useFormContext } from "react-hook-form";
 import { toast } from "sonner";
@@ -15,39 +15,126 @@ import { TabBar } from "./atoms/tab-bar";
 import { TooltipForm } from "./atoms/tooltip";
 
 
+// Phone number formatting function
+const formatPhoneNumber = (phone: string): string => {
+    // Remove all non-digit characters
+    const digits = phone.replace(/\D/g, '');
+    
+    // If starts with 8, replace with +7
+    if (digits.startsWith('8') && digits.length === 11) {
+        return '+7' + digits.slice(1);
+    }
+    
+    // If starts with 7, add +
+    if (digits.startsWith('7') && digits.length === 11) {
+        return '+' + digits;
+    }
+    
+    // If already formatted correctly
+    if (digits.startsWith('77') && digits.length === 11) {
+        return '+' + digits;
+    }
+    
+    return phone; // Return as is if can't format
+};
+
+// Dynamic grade validation based on league
+const createGradeSchema = (league: "junior" | "senior") => {
+    if (league === "junior") {
+        return z.coerce.number().min(5).max(9);
+    } else {
+        return z.coerce.number().min(5).max(13);
+    }
+};
+
 export const teamSchema = z.object({
     teamName: z
         .string()
-        .regex(/[a-zA-z0-9]+/)
-        .max(20),
+        .min(1, "Название команды обязательно")
+        .regex(/^[a-zA-Z0-9\s]+$/, "Только латинские буквы, цифры и пробелы")
+        .max(20, "Максимум 20 символов"),
     league: z.enum(["junior", "senior"]).default("junior"),
     language: z.enum(["ru", "kz"]).default("ru"),
-    leaderName: z.string(),
-    leaderEmail: z.string().email(),
-    leaderPhone: z.string(),
-    captainName: z.string(),
-    captainSchool: z.string(),
-    captainGrade: z.coerce.number().min(8).max(12),
-    captainEmail: z.string().email(),
-    captainPhone: z.string(),
-    member1Name: z.string(),
-    member1School: z.string(),
-    member1Grade: z.coerce.number().min(8).max(12),
-    member1Email: z.string().email(),
-    member1Phone: z.string(),
-    member2Name: z.string(),
-    member2School: z.string(),
-    member2Grade: z.coerce.number().min(8).max(12),
-    member2Email: z.string().email(),
-    member2Phone: z.string(),
+    leaderName: z.string().min(1, "Имя руководителя обязательно"),
+    leaderEmail: z.string().email("Неверный формат email"),
+    leaderPhone: z.string().min(1, "Телефон обязателен").transform(formatPhoneNumber),
+    captainName: z.string().min(1, "Имя капитана обязательно"),
+    captainSchool: z.string().min(1, "Школа капитана обязательна"),
+    captainGrade: z.coerce.number().min(5).max(13),
+    captainEmail: z.string().email("Неверный формат email"),
+    captainPhone: z.string().min(1, "Телефон обязателен").transform(formatPhoneNumber),
+    member1Name: z.string().min(1, "Имя участника обязательно"),
+    member1School: z.string().min(1, "Школа участника обязательна"),
+    member1Grade: z.coerce.number().min(5).max(13),
+    member1Email: z.string().email("Неверный формат email"),
+    member1Phone: z.string().min(1, "Телефон обязателен").transform(formatPhoneNumber),
+    member2Name: z.string().min(1, "Имя участника обязательно"),
+    member2School: z.string().min(1, "Школа участника обязательна"),
+    member2Grade: z.coerce.number().min(5).max(13),
+    member2Email: z.string().email("Неверный формат email"),
+    member2Phone: z.string().min(1, "Телефон обязателен").transform(formatPhoneNumber),
     member3Name: z.string().optional(),
     member3School: z.string().optional(),
-    member3Grade: z.union([z.coerce.number().min(8).max(12), z.nan()]).optional(),
-    member3Email: z.string().email().optional(),
-    member3Phone: z.string().optional(),
+    member3Grade: z.union([z.coerce.number().min(5).max(13), z.nan()]).optional(),
+    member3Email: z.string().email("Неверный формат email").optional().or(z.literal("")),
+    member3Phone: z.string().optional().transform((phone) => phone ? formatPhoneNumber(phone) : phone),
+}).refine((data) => {
+    // Validate grades based on league
+    const maxGrade = data.league === "junior" ? 9 : 13;
+    const minGrade = 5;
+    
+    const grades = [data.captainGrade, data.member1Grade, data.member2Grade];
+    if (data.member3Grade && !isNaN(data.member3Grade)) {
+        grades.push(data.member3Grade);
+    }
+    
+    for (const grade of grades) {
+        if (grade < minGrade || grade > maxGrade) {
+            return false;
+        }
+    }
+    return true;
+}, {
+    message: "Класс не соответствует выбранной лиге",
+    path: ["captainGrade"]
 });
 
 export type TeamSchema = z.infer<typeof teamSchema>;
+
+// Emergency Modal Component
+const EmergencyModal = ({ isOpen, onClose }: { isOpen: boolean; onClose: () => void }) => {
+    if (!isOpen) return null;
+    
+    return (
+        <div className="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50">
+            <div className="bg-white rounded-lg p-6 max-w-md mx-4">
+                <div className="flex justify-between items-center mb-4">
+                    <h3 className="text-lg font-semibold text-red-600">Ошибка регистрации</h3>
+                    <button onClick={onClose} className="text-gray-500 hover:text-gray-700">
+                        <X size={20} />
+                    </button>
+                </div>
+                <p className="text-gray-700 mb-4">
+                    Произошла неожиданная ошибка. Пожалуйста, свяжитесь с нами для решения проблемы.
+                </p>
+                <div className="flex flex-col gap-2">
+                    <a 
+                        href="mailto:info@aphb.kz" 
+                        className="bg-blue-600 text-white px-4 py-2 rounded hover:bg-blue-700 text-center"
+                    >
+                        Написать на info@aphb.kz
+                    </a>
+                    <button 
+                        onClick={onClose}
+                        className="bg-gray-300 text-gray-700 px-4 py-2 rounded hover:bg-gray-400"
+                    >
+                        Закрыть
+                    </button>
+                </div>
+            </div>
+        </div>
+    );
+};
 
 export const RegisterForm = ({
     lang,
@@ -58,6 +145,7 @@ export const RegisterForm = ({
     const [hasAdditionalMember, setHasAdditionalMember] = useState(false)
     const [loading, setLoading] = useState(false)
     const [personalDataChecked, setPersonalDataChecked] = useState(false)
+    const [showEmergencyModal, setShowEmergencyModal] = useState(false)
     
     const form = useForm<TeamSchema>({
         resolver: zodResolver(teamSchema),
@@ -70,29 +158,65 @@ export const RegisterForm = ({
             location.reload()
         }
         setLoading(true)
-        const keyValues = (Object.keys(data) as (keyof typeof data)[]).map(
-            (key) => {
-                const newKey = key === "teamName" ? "team" : key;
-                return { [newKey]: data[key] };
-            }
-        );
         
-        const res = await fetch("/api/form.json", {
-            method: 'POST',
-            headers: {
-                'Content-Type': 'application/json',
-            },
-            body: JSON.stringify(data),
-        })
+        try {
+            const res = await fetch("/api/form.json", {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                },
+                body: JSON.stringify(data),
+            })
 
-        if (res.ok) {
-            toast.success(`Спасибо за вашу заявку. Ваша команда успешно зарегистрирована на отборочный этап APhB 2025!`, { duration: 100000 })
-        }
-        else {
-            const data = await res.json()
-            form.setError("teamName", { message: data.message })
-            toast.error(`Неудачная регистрация, проверьте корректность всех полей. Подробнее: '${data.message}'.\n Можете написать https://t.me/defescooler"`, { duration: 100000 })
-
+            if (res.ok) {
+                toast.success(`Спасибо за вашу заявку. Ваша команда успешно зарегистрирована на отборочный этап APhB 2025!`, { duration: 100000 })
+            } else {
+                const errorData = await res.json()
+                const errorMessage = errorData.message || "Неизвестная ошибка";
+                
+                // Try to identify which field has the error
+                if (errorMessage.includes("team name") || errorMessage.includes("teamName")) {
+                    form.setError("teamName", { message: errorMessage });
+                } else if (errorMessage.includes("email")) {
+                    // Try to identify which email field
+                    if (errorMessage.includes("leader")) {
+                        form.setError("leaderEmail", { message: errorMessage });
+                    } else if (errorMessage.includes("captain")) {
+                        form.setError("captainEmail", { message: errorMessage });
+                    } else if (errorMessage.includes("member1")) {
+                        form.setError("member1Email", { message: errorMessage });
+                    } else if (errorMessage.includes("member2")) {
+                        form.setError("member2Email", { message: errorMessage });
+                    } else if (errorMessage.includes("member3")) {
+                        form.setError("member3Email", { message: errorMessage });
+                    } else {
+                        // Generic email error - set on leader email as primary
+                        form.setError("leaderEmail", { message: errorMessage });
+                    }
+                } else if (errorMessage.includes("phone")) {
+                    // Try to identify which phone field
+                    if (errorMessage.includes("leader")) {
+                        form.setError("leaderPhone", { message: errorMessage });
+                    } else if (errorMessage.includes("captain")) {
+                        form.setError("captainPhone", { message: errorMessage });
+                    } else if (errorMessage.includes("member1")) {
+                        form.setError("member1Phone", { message: errorMessage });
+                    } else if (errorMessage.includes("member2")) {
+                        form.setError("member2Phone", { message: errorMessage });
+                    } else if (errorMessage.includes("member3")) {
+                        form.setError("member3Phone", { message: errorMessage });
+                    } else {
+                        // Generic phone error - set on leader phone as primary
+                        form.setError("leaderPhone", { message: errorMessage });
+                    }
+                } else {
+                    // Unknown error - show emergency modal
+                    setShowEmergencyModal(true);
+                }
+            }
+        } catch (error) {
+            // Network or other unexpected error
+            setShowEmergencyModal(true);
         }
 
         setLoading(false)
@@ -140,8 +264,8 @@ export const RegisterForm = ({
                         <TabBar
 
                             tabs={[
-                                { label: `${t("league.junior")}, 8-9`, value: "junior" },
-                                { label: `${t("league.senior")}, 10-12`, value: "senior" },
+                                { label: `${t("league.junior")}, 5-9`, value: "junior" },
+                                { label: `${t("league.senior")}, 5-13`, value: "senior" },
                             ]}
                             onChange={(value) =>
                                 form.setValue("league", value as "junior" | "senior")
@@ -207,7 +331,10 @@ export const RegisterForm = ({
                     </button>
                 </div>
             </form>
-
+            <EmergencyModal 
+                isOpen={showEmergencyModal} 
+                onClose={() => setShowEmergencyModal(false)} 
+            />
         </Form>
     );
 };
@@ -223,8 +350,20 @@ interface MemberFormProps {
 }
 
 const MemberForm = ({ lang, prefix, className, required, tooltip }: MemberFormProps) => {
-    const { control } = useFormContext<TeamSchema>()
+    const { control, watch } = useFormContext<TeamSchema>()
     const t = useTranslations("apply", lang);
+    const league = watch("league");
+    
+    // Generate grade options based on league
+    const getGradeOptions = () => {
+        const minGrade = 5;
+        const maxGrade = league === "junior" ? 9 : 13;
+        const grades = [];
+        for (let i = minGrade; i <= maxGrade; i++) {
+            grades.push(i);
+        }
+        return grades;
+    };
     return (
         <div className={cn("flex flex-col gap-4 my-3", className)} >
             <FormField
@@ -282,10 +421,14 @@ const MemberForm = ({ lang, prefix, className, required, tooltip }: MemberFormPr
                         </Label>
                         <FormControl>
                             <Input
-                                placeholder={t(`${prefix}Phone`) + " (ex: +77752146221)"}
+                                placeholder="+77752146221"
                                 className="md:h-16 h-14 md:p-5 border-neutral-300 rounded-lg lg:text-lg placeholder:text-neutral-400"
                                 type="tel"
                                 {...field}
+                                onChange={(e) => {
+                                    const formatted = formatPhoneNumber(e.target.value);
+                                    field.onChange(formatted);
+                                }}
                             />
                         </FormControl>
 
@@ -308,14 +451,18 @@ const MemberForm = ({ lang, prefix, className, required, tooltip }: MemberFormPr
                                         {t(`${prefix}Grade`)}
                                     </Label>
                                     <FormControl>
-                                        <Input
-                                            placeholder={t(`${prefix}Grade`)}
-                                            className="md:h-16 h-14 md:p-5 border-neutral-300 rounded-lg lg:text-lg placeholder:text-neutral-400"
+                                        <select
+                                            className="md:h-16 h-14 md:p-5 border-neutral-300 rounded-lg lg:text-lg placeholder:text-neutral-400 w-full border"
                                             {...field}
-                                            type="number"
-                                            min={8}
-                                            max={12}
-                                        />
+                                            onChange={(e) => field.onChange(Number(e.target.value))}
+                                        >
+                                            <option value="">Выберите класс</option>
+                                            {getGradeOptions().map((grade) => (
+                                                <option key={grade} value={grade}>
+                                                    {grade} класс
+                                                </option>
+                                            ))}
+                                        </select>
                                     </FormControl>
 
                                     <FormMessage />
