@@ -13,6 +13,8 @@ export const enApply = {
   "hasLeader.yes": "Yes",
   "hasLeader.no": "No",
 
+  'formTitle': "Team Registration",
+  'formSubtitle': "Fill in all fields to register your team",
   'leaderInfo': "Team Leader is responsible for the team and cannot be a team member or minor. Must be an adult with notarized authorization from parents of minor participants. Can be a teacher, school employee, or any authorized adult. Required for all teams.",
   'languageRequirement': "All participants must know Russian, Kazakh, or both languages.",
   'addMember4': "+ Add Participant 4",
@@ -63,6 +65,8 @@ export const ruApply = {
   "hasLeader.yes": "Да",
   "hasLeader.no": "Нет",
 
+  'formTitle': "Регистрация команды",
+  'formSubtitle': "Заполните все поля для регистрации вашей команды",
   'leaderInfo': "Руководитель команды — лицо, ответственное за команду. Не может быть участником команды или несовершеннолетним. Должен быть совершеннолетним с нотариально заверенной доверенностью от родителей несовершеннолетних участников. Может быть преподавателем, сотрудником школы или любым уполномоченным взрослым. Обязателен для всех команд.",
   'languageRequirement': "Все участники должны знать русский, казахский язык или оба языка.",
   'addMember4': "+ Добавить участника 4",
@@ -113,6 +117,8 @@ export const kzApply = {
   "hasLeader": "Жетекшісі бар ма",
   "hasLeader.yes": "Иә",
   "hasLeader.no": "Жоқ",
+  'formTitle': "Команда тіркеу",
+  'formSubtitle': "Командаңызды тіркеу үшін барлық өрістерді толтырыңыз",
   'leaderInfo': "Команда жетекшісі — командаға жауапты адам. Команда мүшесі немесе кәмелетке толмаған адам бола алмайды. Кәмелетке толмаған қатысушылардың ата-аналарынан нотариалды куәландырылған сенімхаты бар кәмелетке толған адам болуы керек. Мұғалім, мектеп қызметкері немесе кез келген уәкілетті ересек адам болуы мүмкін. Барлық командаларға міндетті.",
   'languageRequirement': "Барлық қатысушылар орыс, қазақ тілін немесе екі тілді де білуі керек.",
   'addMember4': "+ 4-қатысушыны қосу",

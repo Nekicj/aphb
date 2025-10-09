@@ -323,10 +323,10 @@ export const RegisterForm = ({
             <div className="w-full max-w-6xl mx-auto bg-white rounded-2xl border border-neutral-200 shadow-lg p-6 md:p-8">
                 <div className="text-center mb-8">
                     <h2 className="text-3xl md:text-4xl font-bold text-primary-900 mb-4">
-                        Регистрация команды
+                        {t("formTitle")}
                     </h2>
                     <p className="text-neutral-600 text-lg">
-                        Заполните все поля для регистрации вашей команды
+                        {t("formSubtitle")}
                     </p>
                 </div>
                 
