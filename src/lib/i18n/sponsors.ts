@@ -41,6 +41,12 @@ export const en = {
   "recognition.international.title": "International Experience",
   "recognition.international.description": "Learning organizational experience of international olympiads from IZhO 2024 organizer - director of RPHMS Almaty, Meirbek Meirlan Edigeruly",
 
+  // 2025 Section
+  "2025.title": "APhB 2025 - New Heights",
+  "2025.description.1": "The third tournament will be held in two stages: online qualifier (October 24-26, 2025) and in-person final (November 28 - December 1, 2025) at Baiterek School of Science and Technology in Almaty.",
+  "2025.description.2": "Registration opens October 10, 2025 at 00:00 and closes October 26, 2025 at 20:00 (Almaty time, UTC+5). The qualifier will be held on app.formative.com platform in team online olympiad format.",
+  "2025.venue": "Baiterek School of Science and Technology, 94 Oraza Zhandosova Street, Almaty, Kazakhstan",
+
   // More than tournament
   "more.title": "More Than a Tournament",
   "more.description.1": "APhB is not just physics. During tournaments we had many entertainments, workshops, and networking events. These are trips to the Kasteyev Museum and to Butakovsky waterfall in the Zailiysky Alatau mountains, lectures by Nazarbayev University professors, guitar evenings, football tournaments, and much more!",
@@ -131,6 +137,12 @@ export const ru = {
   "recognition.international.title": "Международный опыт",
   "recognition.international.description": "Перенимаем опыт организации международных олимпиад у организатора IZhO 2024 - директора РФМШ г. Алматы, Меирбека Меирлана Едигерулы",
 
+  // 2025 Section
+  "2025.title": "APhB 2025 - Новые высоты",
+  "2025.description.1": "Третий турнир пройдёт в два этапа: онлайн отбор (24-26 октября 2025 года) и очный финал (28 ноября - 1 декабря 2025 года) в школе Baiterek School of Science and Technology в Алматы.",
+  "2025.description.2": "Регистрация открывается 10 октября 2025 года в 00:00 и закрывается 26 октября 2025 года в 20:00 (время Алматы, UTC+5). Отбор пройдёт на платформе app.formative.com в формате командной онлайн олимпиады.",
+  "2025.venue": "Школа Baiterek School of Science and Technology, ул. Ораза Жандосова, 94, Алматы, Казахстан",
+
   // More than tournament
   "more.title": "Больше чем турнир",
   "more.description.1": "APhB — это не только физика. Во время турниров у нас было много развлечений, воркшопов, и нетворкинг-ивентов. Это походы в музей Кастеева и к Бутаковскому водопаду в горах Заилийского Алатау, лекции от профессоров Назарбаев Университета, гитарные вечера, футбольные турниры, и многое другое!",
@@ -220,6 +232,12 @@ export const kz = {
   "recognition.minister.description": "Ұйымдастыру комитеті ҚР ғылым және жоғары білім министрі Саясат Нұрбекпен жеке кездесуде",
   "recognition.international.title": "Халықаралық тәжірибе",
   "recognition.international.description": "IZhO 2024 ұйымдастырушысынан - Алматы қ. РФМШ директоры Мейірбек Мейірлан Едігерұлынан халықаралық олимпиадаларды ұйымдастыру тәжірибесін алу",
+
+  // 2025 Section
+  "2025.title": "APhB 2025 - Жаңа биіктіктер",
+  "2025.description.1": "Үшінші турнир екі кезеңде өтеді: онлайн іріктеу (24-26 қазан 2025 жылы) және ақтық финал (28 қараша - 1 желтоқсан 2025 жылы) Алматыдағы Baiterek School of Science and Technology мектебінде.",
+  "2025.description.2": "Тіркелу 2025 жылғы 10 қазанда 00:00-де ашылады және 26 қазанда 20:00-де жабылады (Алматы уақыты, UTC+5). Іріктеу app.formative.com платформасында командалық онлайн олимпиада форматында өтеді.",
+  "2025.venue": "Baiterek School of Science and Technology мектебі, Ораза Жандосова көшесі, 94, Алматы, Қазақстан",
 
   // More than tournament
   "more.title": "Турнирден де көп",

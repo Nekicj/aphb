@@ -1,5 +1,5 @@
 export const enApply = {
-  'seo.description': 'Seize the opportunity to be part of APhB 2025! Register now to compete for the title of top physicist in this unique team-based Olympiad for grades 8-12 across Central Asia. Join our community of talented scientists!',
+  'seo.description': 'Register for APhB 2025! Qualifier: October 24-26, 2025 online. Final: November 28 - December 1, 2025 at Baiterek School, Almaty. Registration closes October 26, 2025 at 20:00.',
 'seo.title': 'Apply for APhB 2025 - Join the Physics Battles in Almaty',
 
   "team.name": "Team Name",
@@ -47,7 +47,7 @@ export const enApply = {
 };
 
 export const ruApply = {
-      "seo.description": "Не упустите шанс стать частью APhB 2025! Регистрируйтесь сейчас, чтобы соревноваться за звание лучшего физика в этой уникальной командной олимпиаде для учащихся 8-12 классов по всей Центральной Азии. Присоединяйтесь к нашему сообществу талантливых ученых!",
+      "seo.description": "Регистрируйтесь на APhB 2025! Отборочный этап: 24-26 октября 2025 года онлайн. Финал: 28 ноября - 1 декабря 2025 года в школе Baiterek, Алматы. Регистрация закрывается 26 октября 2025 года в 20:00.",
     "seo.title": "Подайте заявку на APhB 2025 - Присоединяйтесь к битвам по физике в Алматы",
 
   "team.name": "Название команды",
@@ -95,7 +95,7 @@ export const ruApply = {
 };
 
 export const kzApply = {
-      "seo.description": "APhB 2025-ке қатысу мүмкіндігін қолдан жібермеңіз! Орталық Азиядағы 8-12 сынып оқушылары арасындағы бұл бірегей командалық олимпиадада үздік физик атағы үшін жарысқа тіркеліңіз. Дарынды ғалымдар қауымдастығымызға қосылыңыз!",
+      "seo.description": "APhB 2025-ке тіркеліңіз! Іріктеу: 24-26 қазан 2025 жылы онлайн. Финал: 28 қараша - 1 желтоқсан 2025 жылы Baiterek мектебінде, Алматы. Тіркелу 26 қазан 2025 жылы 20:00-де жабылады.",
     "seo.title": "APhB 2025-ке қатысыңыз - Алматыдағы Физикалық Жекпе-жектерге Қосылыңыз",
 
   "team.name": "Команда атауы",

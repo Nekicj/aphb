@@ -1,0 +1,62 @@
+export const topicsRU = {
+  title: "Что такое турниры по Физическим Боям и как к ним готовиться?",
+  description: "План подготовки к Турнирам по Физическим Боям (APhB): правила, советы, стратегия, командная работа и список рекомендуемых тем",
+  junior_link: "Перейти к темам (Младшая лига)",
+  senior_link: "Перейти к темам (Старшая лига)",
+  license_title: "Лицензия",
+  authors_title: "Авторы плана",
+  preface_title: "Предисловие",
+  about_title: "Про Турниры по Физическим Боям",
+  before_title: "До Турнира",
+  during_title: "Во время турнира",
+  after_title: "После Физбоя",
+  materials_title: "Материалы по темам (скоро)",
+  junior_title: "Младшая лига",
+  senior_title: "Старшая лига",
+  back_to_prep: "← Назад к подготовке",
+  mechanics: "Механика",
+  thermodynamics: "Термодинамика, оптика, электричество",
+  math_apparatus: "Математический аппарат"
+};
+
+export const topicsEN = {
+  title: "What are Physics Battles tournaments and how to prepare for them?",
+  description: "Preparation plan for Physics Battles Tournaments (APhB): rules, tips, strategy, teamwork and list of recommended topics",
+  junior_link: "Go to topics (Junior League)",
+  senior_link: "Go to topics (Senior League)",
+  license_title: "License",
+  authors_title: "Plan Authors",
+  preface_title: "Preface",
+  about_title: "About Physics Battles Tournaments",
+  before_title: "Before the Tournament",
+  during_title: "During the tournament",
+  after_title: "After Physics Battle",
+  materials_title: "Topic Materials (coming soon)",
+  junior_title: "Junior League",
+  senior_title: "Senior League",
+  back_to_prep: "← Back to preparation",
+  mechanics: "Mechanics",
+  thermodynamics: "Thermodynamics, optics, electricity",
+  math_apparatus: "Mathematical apparatus"
+};
+
+export const topicsKZ = {
+  title: "Физикалық шайқас турнирлері дегеніміз не және оларға қалай дайындалу керек?",
+  description: "Физикалық шайқас турнирлеріне (APhB) дайындық жоспары: ережелер, кеңестер, стратегия, командалық жұмыс және ұсынылатын тақырыптар тізімі",
+  junior_link: "Тақырыптарға өту (Кіші лига)",
+  senior_link: "Тақырыптарға өту (Үлкен лига)",
+  license_title: "Лицензия",
+  authors_title: "Жоспар авторлары",
+  preface_title: "Алғысөз",
+  about_title: "Физикалық шайқас турнирлері туралы",
+  before_title: "Турнирге дейін",
+  during_title: "Турнир кезінде",
+  after_title: "Физикалық шайқастан кейін",
+  materials_title: "Тақырып бойынша материалдар (жақында)",
+  junior_title: "Кіші лига",
+  senior_title: "Үлкен лига",
+  back_to_prep: "← Дайындыққа оралу",
+  mechanics: "Механика",
+  thermodynamics: "Термодинамика, оптика, электр",
+  math_apparatus: "Математикалық аппарат"
+};

@@ -13,6 +13,11 @@ const defaultLang = "ru";
 // Read filenames from the i18n directory, ignoring 'base.ts'
 const filenames = fs.readdirSync(i18nDir).filter((file) => file !== "base.ts");
 
+// File name mappings for cases where i18n file names don't match page file names
+const fileNameMappings = {
+  "results": "results-and-tasks"
+};
+
 // Iterate over each language
 languages.forEach((lang) => {
   if (lang === defaultLang) return;
@@ -27,17 +32,19 @@ languages.forEach((lang) => {
 
   // Iterate over each filename and copy it to the destination with an .astro extension
   filenames.forEach((filename) => {
-    const sourcePath = path.join(
-      pagesBaseDir,
-      filename.replace(/\.[^/.]+$/, "") + ".astro"
-    );
-    const destPath = path.join(
-      langDir,
-      filename.replace(/\.[^/.]+$/, "") + ".astro"
-    );
+    const baseFilename = filename.replace(/\.[^/.]+$/, "");
+    const sourceFilename = fileNameMappings[baseFilename] || baseFilename;
+    
+    const sourcePath = path.join(pagesBaseDir, sourceFilename + ".astro");
+    const destPath = path.join(langDir, sourceFilename + ".astro");
 
-    fs.copyFileSync(sourcePath, destPath);
-    console.log(`Created ${destPath}`);
+    // Check if source file exists before copying
+    if (fs.existsSync(sourcePath)) {
+      fs.copyFileSync(sourcePath, destPath);
+      console.log(`Created ${destPath}`);
+    } else {
+      console.warn(`Warning: Source file ${sourcePath} does not exist, skipping...`);
+    }
   });
 });
 

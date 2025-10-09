@@ -1,5 +1,5 @@
 export const enHome = {
-    'seo.description': "While we finalize the tournament's date and venue, the tournament is tentatively planned for mid-November 2025 in Astana.",
+    'seo.description': "The qualifier runs October 24-26, 2025 online, with the final held November 28 - December 1, 2025 at Baiterek School in Almaty.",
     'seo.title': 'Almaty Physics Battles - III Tournament of Physics Battles in Central Asia',
     "collision.minds": "COLLISION OF MINDS",
     "participate.battle": "Take part in the largest Physics Battles in Central Asia!",
@@ -10,7 +10,7 @@ export const enHome = {
     "register.now": "Register now",
     results: "Results",
     "join.competition.description":
-        "While we finalize the date and venue, the tournament is tentatively planned for mid-November 2025 in Astana.",
+        "The qualifier runs October 24-26, 2025 online on app.formative.com, with the final held November 28 - December 1, 2025 at Baiterek School of Science and Technology in Almaty.",
 
     "about.competition": "ABOUT THE COMPETITION",
     "about.competition.description":
@@ -24,11 +24,11 @@ export const enHome = {
     "league.school": "Ученики престижных школ",
     "participation.stages": "STAGES OF PARTICIPATION",
     "participation.stages.registration":
-        "Registration for the online qualifier (exact deadline to be announced)",
+        "Registration opens October 10, 2025 at 00:00 and closes October 26, 2025 at 20:00 (Almaty time, UTC+5)",
     "participation.stages.online":
-        "The online qualifier will be held in October 2025 on the platform <a href='https://app.formative.com' class='underline' target='_blank'>app.formative.com</a> (exact dates to be announced).<br>You can start at any time; there is a 5-hour limit on solving.<br>Instructions with access to the platform will be sent to all registered participants closer to the date.",
+        "The online qualifier will be held October 24-26, 2025 on the platform <a href='https://app.formative.com' class='underline' target='_blank'>app.formative.com</a>.<br>Teams can participate from 00:00 October 24 to 23:55 October 26, 2025 (Almaty time, UTC+5).<br>Instructions with access to the platform will be sent to all registered participants closer to the date.",
     "participation.stages.final":
-        "The in-person final is tentatively planned for mid-November 2025 in Astana",
+        "The in-person final will be held November 28 - December 1, 2025 at Baiterek School of Science and Technology, Almaty (94 Oraza Zhandosova Street)",
     tasks: "TASKS",
     "tasks.description":
         "The tournament tasks are compiled by a team from the members of the Kazakhstan national physics and math team: awardees of IPhO, IMO, APhO, EuPhO, IJSO, BPhO, IMChO, IYPT and students from the LPR MIPT, Harvard, Williams College, and Sheffield University. We strive to take the very best from both classical Olympiads, as well as from the less typical ones like the MIPT LPR Cup",
@@ -57,7 +57,7 @@ export const enHome = {
 };
 
 export const ruHome = {
-    'seo.description': 'Пока мы окончательно согласовываем дату и место проведения турнира, ориентировочно планируем провести его в середине ноября 2025 года в Астане.',
+    'seo.description': 'Отборочный этап проходит 24-26 октября 2025 года онлайн, финал — 28 ноября - 1 декабря 2025 года в школе Baiterek в Алматы.',
     'seo.title': 'Almaty Physics Battles -  III турнир по физическим боям в Центральной Азии',
     "collision.minds": "СТОЛКНОВЕНИЕ УМОВ",
     "participate.battle":
@@ -69,7 +69,7 @@ export const ruHome = {
     "register.now": "Регистрируйся сейчас",
     results: "Результаты",
     "join.competition.description":
-        "Пока мы окончательно согласовываем дату и место проведения турнира, ориентировочно планируем провести его в середине ноября 2025 года в Астане.",
+        "Отборочный этап проходит 24-26 октября 2025 года онлайн на платформе app.formative.com, финал — 28 ноября - 1 декабря 2025 года в школе Baiterek School of Science and Technology в Алматы.",
     "about.competition": "О СОРЕВНОВАНИИ",
     "about.competition.description":
         "АРhВ сочетает в себе уникальный формат командных соревнований школьников в решении олимпиадных задач по физике. Весь турнир организован исключительно старшеклассниками или студентами - первокурсниками.",
@@ -82,11 +82,11 @@ export const ruHome = {
     "league.school": "Ученики престижных школ",
     "participation.stages": "ЭТАПЫ УЧАСТИЯ",
     "participation.stages.registration":
-        "Регистрация на онлайн отбор (точная дата и время будут объявлены дополнительно)",
+        "Регистрация открывается 10 октября 2025 года в 00:00 и закрывается 26 октября 2025 года в 20:00 (время Алматы, UTC+5)",
     "participation.stages.online":
-        `Онлайн отбор пройдет в октябре 2025 года на платформе <a href='https://app.formative.com' class='underline' target='_blank'>app.formative.com</a> (точные даты будут объявлены дополнительно).<br>Начать можно в любой момент, ограничение на решение — 5 часов.<br>Всем зарегистрированным участникам инструкции с доступом к платформе будут отправлены ближе к дате.`, 
+        `Онлайн отбор пройдет 24-26 октября 2025 года на платформе <a href='https://app.formative.com' class='underline' target='_blank'>app.formative.com</a>.<br>Команды могут участвовать с 00:00 24 октября по 23:55 26 октября 2025 года (время Алматы, UTC+5).<br>Всем зарегистрированным участникам инструкции с доступом к платформе будут отправлены ближе к дате.`, 
     "participation.stages.final":
-        "Финальный очный этап ориентировочно пройдет в середине ноября 2025 года в Астане",
+        "Финальный очный этап пройдет 28 ноября - 1 декабря 2025 года в школе Baiterek School of Science and Technology, Алматы (ул. Ораза Жандосова, 94)",
     tasks: "ЗАДАЧИ",
     "tasks.description":
         "Задачи на турнир составляются командой из членов национальной сборной Казахстана по физике: призерами IPhO, IMO, APhO, EuPhO, IJSO, BPhO, IMChO, IYPT и студентами ЛФИ МФТИ, Harvard, Williams College и Sheffield University. Мы стараемся брать все самое лучшее как с классических олимпиад, так и с не очень по типу кубка ЛФИ ",
@@ -118,7 +118,7 @@ export const ruHome = {
 import * as sponsors from './sponsors';
 
 export const kzHome = {
-    'seo.description': "Турнирдің нақты күні мен өтетін орны келісіліп жатыр, алдын ала 2025 жылдың қарашасының ортасында Астанада өткізу жоспарлануда.",
+    'seo.description': "Іріктеу кезеңі 24-26 қазан 2025 жылы онлайн өтеді, финал 28 қараша - 1 желтоқсан 2025 жылы Алматыдағы Baiterek мектебінде өтеді.",
     'seo.title': 'Almaty Physics Battles - Орталық Азиядағы физикалық жекпе-жектен III турнир',
     "collision.minds": "ОЙЛАРДЫҢ СОҚТЫҒЫСУЫ",
     "participate.battle": "Орталық Азиядағы ең ірі Физикалық жекпе-жектерге қатысыңыз!",
@@ -129,7 +129,7 @@ export const kzHome = {
     "register.now": "Қазір тіркеліңіз",
     results: "Нәтижелер",
     "join.competition.description":
-        "Турнирдің нақты күні мен өтетін орны келісіліп жатыр, алдын ала 2025 жылдың қарашасының ортасында Астанада өткізу жоспарлануда.",
+        "Іріктеу кезеңі 24-26 қазан 2025 жылы app.formative.com платформасында онлайн өтеді, финал 28 қараша - 1 желтоқсан 2025 жылы Алматыдағы Baiterek School of Science and Technology мектебінде өтеді.",
 
     "about.competition": "ЖАРЫС ТУРАЛЫ",
     "about.competition.description":
@@ -143,11 +143,11 @@ export const kzHome = {
     "league.school": "Ученики престижных школ",
     "participation.stages": "ҚАТЫСУ КЕЗЕҢДЕРІ",
     "participation.stages.registration":
-        "Онлайн іріктеуге тіркелу (нақты мерзімі кейін жарияланады)",
+        "Тіркелу 2025 жылғы 10 қазанда 00:00-де ашылады және 26 қазанда 20:00-де жабылады (Алматы уақыты, UTC+5)",
     "participation.stages.online":
-        "Онлайн іріктеу 2025 жылғы қазан айында <a href='https://app.formative.com' class='underline' target='_blank'>app.formative.com</a> платформасында өтеді (нақты күндері кейін хабарланады).<br>Кез келген уақытта бастауға болады, шешуге берілетін уақыт — 5 сағат.<br>Платформаға қолжетімділік және нұсқаулықтар іс-шараға жақын уақытта жіберіледі.", 
+        "Онлайн іріктеу 24-26 қазан 2025 жылы <a href='https://app.formative.com' class='underline' target='_blank'>app.formative.com</a> платформасында өтеді.<br>Командалар 24 қазан 00:00-ден 26 қазан 23:55-ке дейін қатыса алады (Алматы уақыты, UTC+5).<br>Платформаға қолжетімділік және нұсқаулықтар іс-шараға жақын уақытта жіберіледі.", 
     "participation.stages.final":
-        "Ақтық оффлайн тур алдын ала 2025 жылғы қарашаның ортасында Астанада өтеді",
+        "Ақтық финал кезеңі 28 қараша - 1 желтоқсан 2025 жылы Baiterek School of Science and Technology мектебінде, Алматы (Ораза Жандосова көшесі, 94) өтеді",
     tasks: "ТАПСЫРМАЛАР",
     "tasks.description":
         "Турнирдің тапсырмаларын физикадан Қазақстанның ұлттық құрамасы мүшелерінен тұратын команда: IPhO, IMO, APhO, EuPhO, IJSO, BPhO, IMChO, IYPT жүлдегерлері және МФТИ ЛФИ, Harvard, Williams College және Sheffield University студенттері құрайды. Біз классикалық олимпиадалардан да, ЛЛФИ кубогы сияқты әдеттен тыс сайыстардан да ең жақсысын алуға тырысамыз",
