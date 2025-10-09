@@ -426,7 +426,8 @@ export const RegisterForm = ({
                 </button>
                         <div className="flex justify-center pt-4">
                             <button
-                                className="bg-primary-600 hover:bg-primary-700 text-white text-lg font-semibold rounded-xl px-8 py-4 flex gap-2 items-center disabled:opacity-50 disabled:cursor-not-allowed transition-colors min-w-[200px] justify-center"
+                                className="bg-primary-500 hover:bg-primary-700 text-white text-lg font-semibold rounded-xl px-8 py-4 flex gap-2 items-center disabled:opacity-50 disabled:cursor-not-allowed transition-colors min-w-[200px] justify-center shadow-lg border-2 border-primary-700"
+                                style={{ backgroundColor: '#1D4ED8' }} // Fallback color
                                 type="submit"
                                 disabled={!personalDataChecked || loading}
                             >
