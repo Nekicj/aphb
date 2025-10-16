@@ -2,7 +2,7 @@ import { resend } from ".";
 
 const emailRuContent = `
     <p>Хотим сообщить, что Оргкомитет турнира Almaty Physics Battles успешно получил вашу заявку.</p>
-    <p>Онлайн отбор пройдет в октябре 2025 года на платформе app.formative.com (точные даты будут объявлены позже). <a href="https://drive.google.com/drive/folders/1J5UYqaUpl_DxOWM4l0taJgvucHTL8_ff">Подробности в положении об отборе</a></p>
+    <p>Онлайн отбор пройдет в октябре 2025 года на платформе app.formative.com (предварительно нужно зайти на платформу и ввести код 64RP6Z для прохода в регистрационное лобби). <a href="https://drive.google.com/drive/folders/1J5UYqaUpl_DxOWM4l0taJgvucHTL8_ff">Подробности в положении об отборе</a></p>
     <p>По результатам отборочного этапа будет отобрано более 30 команд, которые пройдут на финал. Финал ориентировочно планируем провести в середине ноября 2025 года в Астане.</p>
     <p>Спасибо за вашу заинтересованность. Ждем с нетерпением ваших достижений на нашем турнире!
     При возникновении вопросов обращайтесь по почте info@aphb.org или в наш телеграмм-чат https://t.me/aphbchat</p>
@@ -11,7 +11,7 @@ const emailRuContent = `
 
 const emailKzContent = `
     <p>Almaty Physics Battles турнирінің ұйымдастыру комитеті Сіздің өтініміңізді сәтті алғанын хабарлағымыз келеді.</p>
-    <p>Онлайн іріктеу 2025 жылғы қазан айында app.formative.com платформасында өтеді (нақты күндері кейін хабарланады). <a href="https://drive.google.com/drive/folders/1J5UYqaUpl_DxOWM4l0taJgvucHTL8_ff">Іріктеу ережелері туралы</a></p>
+    <p>Онлайн іріктеу 2025 жылғы қазан айында app.formative.com платформасында өтеді (Алдымен платформаға кіріп, тіркелу лоббиіне өту үшін 64RP6Z кодын енгізу керек). <a href="https://drive.google.com/drive/folders/1J5UYqaUpl_DxOWM4l0taJgvucHTL8_ff">Іріктеу ережелері туралы</a></p>
     <p>Іріктеу кезеңінің нәтижелері бойынша 30-дан астам команда финалға өтеді. Ақтық тур алдын ала 2025 жылғы қарашаның ортасында Астанада өтеді.</p>
     <p>Қызығушылығыңыз үшін рахмет. Біздің турнирде сіздің жетістіктеріңізді асыға күтеміз!
     Сұрақтар туындаған кезде пошта арқылы хабарласыңыз info@aphb.org немесе біздің жеделхат-чатқа https://t.me/aphbchat</p>
@@ -31,7 +31,7 @@ export const sendAfterRegister = async ({ team, participantsEmail, leaderEmail, 
         <p><strong>ENG:</strong></p>
         <p>Dear participant of APhB 2025,</p>
         <p>We want to inform you that the Almaty Physics Battles Tournament Organizing Committee has successfully received your application.</p>
-        <p>The online qualifier will take place in October 2025 on the app.formative.com platform (exact dates to be announced). <a href="https://drive.google.com/drive/folders/1J5UYqaUpl_DxOWM4l0taJgvucHTL8_ff">Details of the competition</a></p>
+        <p>The online qualifier will take place in October 2025 on the app.formative.com platform (First, you need to go to the platform and enter the code 64RP6Z to enter the registration lobby). <a href="https://drive.google.com/drive/folders/1J5UYqaUpl_DxOWM4l0taJgvucHTL8_ff">Details of the competition</a></p>
         <p>Following the preliminary stage, more than 30 teams will be selected to advance to the finals. The finals are tentatively planned for mid-November 2025 in Astana.</p>
         <p>Thank you for your interest. We look forward to your achievements at our tournament!
         If you have any questions, please contact us via email at info@aphb.org or in our Telegram chat at https://t.me/aphbchat.</p>
