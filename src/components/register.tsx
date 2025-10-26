@@ -236,7 +236,7 @@ export const RegisterForm = ({
     const form = useForm<TeamSchema>({
         resolver: zodResolver(dynamicSchema),
     });
-    const registrationCloseDate = new Date("2025-10-26T23:59:00+05:00");
+    const registrationCloseDate = new Date("2025-10-26T20:00:00+05:00");
     
     const handleSubmit = async (data: TeamSchema) => {
         // reload the page if the registration is closed
