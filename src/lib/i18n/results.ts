@@ -1,4 +1,6 @@
 export const resRU = {
+    qualifier_results: "Результаты Отборочного Этапа",
+    qualifier_disqualification: "Протокол Дисквалификаций",
     tasks_header: "Результаты и задачи",
     tasks_description: "Результаты и задачи турниров прошлых лет Almaty Physics Battles!",
     tasks_tasks: "Задачи",
@@ -19,6 +21,8 @@ export const resRU = {
 };
 
 export const resKZ = {
+    qualifier_results: "Іріктеу Кезеңінің Нәтижелері",
+    qualifier_disqualification: "Дисквалификация Протоколы",
     tasks_header: "Нәтижелер және тапсырмалар",
     tasks_description: "Almaty Physics Battles өткен жылдардың нәтижелері мен тапсырмалары!",
     tasks_tasks: "Тапсырмалар",
@@ -37,7 +41,6 @@ export const resKZ = {
     "filters.league": "Лига",
     "filters.all": "Барлығы",
 };
-
 export const resEN = {
     qualifier_results: "Qualifier Stage Results",
     qualifier_disqualification: "Disqualification Protocol",
