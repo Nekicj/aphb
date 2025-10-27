@@ -47,7 +47,7 @@ export const enApply = {
   "register.team": "Register Team",
   register: "Register",
   "registrationClosed": "Registration is closed",
-  "seeYouSoon": "See you at APhB 2025!",
+  "seeYouSoon": "See you at APhB 2026!",
 };
 
 export const ruApply = {
@@ -99,7 +99,7 @@ export const ruApply = {
   "register.team": "Зарегистрировать команду",
   register: "Регистрация",
   "registrationClosed": "Регистрация закрыта",
-  "seeYouSoon": "До встречи на APhB 2025!",
+  "seeYouSoon": "До встречи на APhB 2026!",
 };
 
 export const kzApply = {
@@ -150,5 +150,5 @@ export const kzApply = {
   "register.team": "Команданы тіркеу",
   register: "Тіркелу",
   "registrationClosed": "Тіркелу жабық",
-  "seeYouSoon": "APhB 2025-те көрісеміз!",
+  "seeYouSoon": "APhB 2026-те көрісеміз!",
 };

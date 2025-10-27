@@ -39,6 +39,8 @@ export const resKZ = {
 };
 
 export const resEN = {
+    qualifier_results: "Qualifier Stage Results",
+    qualifier_disqualification: "Disqualification Protocol",
     tasks_header: "Results and tasks",
     tasks_description: "Results and tasks from past years of Almaty Physics Battles!",
     tasks_tasks: "Tasks",

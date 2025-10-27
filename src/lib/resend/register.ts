@@ -21,7 +21,7 @@ const emailKzContent = `
 export const sendAfterRegister = async ({ team, participantsEmail, leaderEmail, lang }: { team: string, participantsEmail: string[], leaderEmail: string, lang: "ru" | 'kz' }) => {
     {
         const { data, error } = await resend.emails.send({
-            from: 'arsen@mail.aphb.kz',
+            from: 'info@aphb.org',
             to: participantsEmail,
             subject: 'APhB registration',
             html: `<div>
@@ -47,7 +47,7 @@ export const sendAfterRegister = async ({ team, participantsEmail, leaderEmail, 
     }
     {
         const { data, error } = await resend.emails.send({
-            from: 'arsen@mail.aphb.kz',
+            from: 'info@aphb.org',
             to: [leaderEmail],
             subject: 'APhB registration',
             html: `<div>
