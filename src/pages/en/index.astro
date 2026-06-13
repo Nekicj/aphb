@@ -261,24 +261,45 @@ const totalStats = getTotalStats();
     >
       {t("strategy")}
     </h3>
-    <img
-      src="/photos/4.webp"
-      alt="photo4"
-      class="col-span-full row-span-4 aspect-square md:row-span-5 md:aspect-[12/6] object-cover"
-      data-speed="1"
-    />
-    <p class="col-span-full leading-relaxed text-sm">
-      {t("photo4.caption")}
-    </p>
-    <img
-      src="/photos/5.webp"
-      alt="photo5"
-      class="col-span-full row-span-4 aspect-square md:row-span-5 md:aspect-[12/6] object-cover"
-      data-speed="1"
-    />
-    <p class="col-span-full leading-relaxed text-sm">
-      {t("photo5.caption")}
-    </p>
+    <h2 class="col-span-full text-3xl lg:text-5xl font-bold text-center mb-4 uppercase">
+      {t("past.tournaments")}
+    </h2>
+
+    <div class="col-span-full grid grid-cols-1 md:grid-cols-2 gap-6 items-center bg-neutral-100 rounded-3xl p-4 md:p-8">
+      <p class="text-base md:text-xl leading-relaxed text-neutral-600 md:order-1">
+        {t("photo6.caption")}
+      </p>
+      <img
+        src="/photos/6.webp"
+        alt="photo6"
+        class="w-full aspect-square md:aspect-[4/3] object-cover rounded-2xl md:order-2"
+        data-speed="1"
+      />
+    </div>
+
+    <div class="col-span-full grid grid-cols-1 md:grid-cols-2 gap-6 items-center bg-neutral-100 rounded-3xl p-4 md:p-8">
+      <img
+        src="/photos/4.webp"
+        alt="photo4"
+        class="w-full aspect-square md:aspect-[4/3] object-cover rounded-2xl"
+        data-speed="1"
+      />
+      <p class="text-base md:text-xl leading-relaxed text-neutral-600">
+        {t("photo4.caption")}
+      </p>
+    </div>
+
+    <div class="col-span-full grid grid-cols-1 md:grid-cols-2 gap-6 items-center bg-neutral-100 rounded-3xl p-4 md:p-8">
+      <p class="text-base md:text-xl leading-relaxed text-neutral-600 md:order-1">
+        {t("photo5.caption")}
+      </p>
+      <img
+        src="/photos/5.webp"
+        alt="photo5"
+        class="w-full aspect-square md:aspect-[4/3] object-cover rounded-2xl md:order-2"
+        data-speed="1"
+      />
+    </div>
   </div>
 
   <!-- Международный масштаб -->

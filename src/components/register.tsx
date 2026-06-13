@@ -236,7 +236,7 @@ export const RegisterForm = ({
     const form = useForm<TeamSchema>({
         resolver: zodResolver(dynamicSchema),
     });
-    const registrationCloseDate = new Date("2025-10-26T20:00:00+05:00");
+    const registrationCloseDate = new Date("2025-8-1T20:00:00+05:00");
     
     const handleSubmit = async (data: TeamSchema) => {
         // reload the page if the registration is closed
@@ -365,8 +365,8 @@ export const RegisterForm = ({
                                 <Label className="text-lg font-semibold text-neutral-800">{t("league.label")}</Label>
                                 <TabBar
                                     tabs={[
-                                        { label: `${t("league.junior")}, 5-9`, value: "junior" },
-                                        { label: `${t("league.senior")}, 5-13`, value: "senior" },
+                                        { label: `${t("league.junior")}, 7-9`, value: "junior" },
+                                        { label: `${t("league.senior")}, 10-12`, value: "senior" },
                                     ]}
                                     onChange={(value) =>
                                         form.setValue("league", value as "junior" | "senior")

@@ -1,16 +1,16 @@
 export const enHome = {
-    'seo.description': "The qualifier runs October 24-26, 2025 online, with the final held November 28 - December 1, 2025 at Baiterek School in Almaty.",
-    'seo.title': 'Almaty Physics Battles - III Tournament of Physics Battles in Central Asia',
+    'seo.description': "The qualifier runs on June 30th, 2026, online on AutoProctor, with the final held on August 1-5, 2026 at International IT University in Almaty.",
+    'seo.title': 'Almaty Physics Battles - IV Tournament of Physics Battles in Central Asia',
     "collision.minds": "COLLISION OF MINDS",
     "participate.battle": "Take part in the largest Physics Battles in Central Asia!",
-    "box-1": "Baiterek School",
+    "box-1": "International IT University",
     "box-2": "Interactive format",
-    "box-3": "8-12 classes",
-    "box-4": "The most challenging problems",
+    "box-3": "Grades 7-12",
+    "box-4": "Trickiest problems",
     "register.now": "Register now",
     results: "Results",
     "join.competition.description":
-        "The qualifier runs October 24-26, 2025 online on app.formative.com, with the final held November 28 - December 1, 2025 at Baiterek School of Science and Technology in Almaty.",
+        "The qualifier runs on June 30th, 2026, online on AutoProctor, with the final held on August 1-5, 2026 at International IT University in Almaty.",
 
     "about.competition": "ABOUT THE COMPETITION",
     "about.competition.description":
@@ -20,15 +20,15 @@ export const enHome = {
     "league.older": "Senior League",
     "league.older.description": "Students of grades 10-12",
     "league.younger": "Junior League",
-    "league.younger.description": "Students of grades 8-9",
+    "league.younger.description": "Students of grades 7-9",
     "league.school": "Ученики престижных школ",
     "participation.stages": "STAGES OF PARTICIPATION",
     "participation.stages.registration":
-        "Registration opens October 10, 2025 at 00:00 and closes October 26, 2025 at 20:00 (Almaty time, UTC+5)",
+        "Registration opens June Xth, 2026 at 00:00 and closes June Xth, 2026 at 20:00 (Almaty time, UTC+5)",
     "participation.stages.online":
-        "The online qualifier will be held October 24-26, 2025 on the platform <a href='https://app.formative.com' class='underline' target='_blank'>app.formative.com</a>.<br>Teams can participate from 00:00 October 24 to 23:55 October 26, 2025 (Almaty time, UTC+5).<br>Instructions with access to the platform will be sent to all registered participants closer to the date.",
+        "The online qualifier will be held on June 30th, 2026 on the platform <a href='https://autoproctor.com' class='underline' target='_blank'>autoproctor.com</a>.<br>Teams can participate from 00:00 June 30 to 23:55 June 30, 2026 (Almaty time, UTC+5).<br>Instructions with access to the platform will be sent to all registered participants closer to the date.",
     "participation.stages.final":
-        "The in-person final will be held November 28 - December 1, 2025 at Baiterek School of Science and Technology, Almaty (94 Oraza Zhandosova Street)",
+        "The in-person final will be held on August 1-5, 2026 at International IT University in Almaty.",
     tasks: "TASKS",
     "tasks.description":
         "The tournament tasks are compiled by a team from the members of the Kazakhstan national physics and math team: awardees of IPhO, IMO, APhO, EuPhO, IJSO, BPhO, IMChO, IYPT and students from the LPR MIPT, Harvard, Williams College, and Sheffield University. We strive to take the very best from both classical Olympiads, as well as from the less typical ones like the MIPT LPR Cup",
@@ -48,6 +48,8 @@ export const enHome = {
         "\"At APhB, every challenge is an opportunity—an opportunity to exceed expectations, to break out of traditional learning, and to celebrate the true delight of discovery. Here, we don't just solve equations; we gradually unveil the mysteries of the universe, theorem by theorem.\"",
     "photo4.caption": "Almaty Physics Battles 2024 held in Satbayev University on July 4–11. In the photo, we scream SCI-BI-DI-DOO!",
     "photo5.caption": "Astana Physics Battles 2023 held in Haileybury school on November 11–12. In the photo, we are super serious because we were super tired",
+    "past.tournaments": "Past Tournaments",
+    "photo6.caption": "Almaty Physics Battles 2025 was held together with the Chemistry and Math Battles from November 28 to December 1 at Baiterek School of Science and Technology in Almaty. The photo captures a bit of chaos due to the record number of participants)",
     
     // International scale section
     "international.title": "International Scale",
@@ -57,19 +59,19 @@ export const enHome = {
 };
 
 export const ruHome = {
-    'seo.description': 'Отборочный этап проходит 24-26 октября 2025 года онлайн, финал — 28 ноября - 1 декабря 2025 года в школе Baiterek в Алматы.',
-    'seo.title': 'Almaty Physics Battles -  III турнир по физическим боям в Центральной Азии',
+    'seo.description': 'Отборочный этап проходит 30 июня 2026 года онлайн, финал — 1-5 августа 2026 года в Международном Университете Информационных Технологий в Алматы.',
+    'seo.title': 'Almaty Physics Battles -  IV турнир по физическим боям в Центральной Азии',
     "collision.minds": "СТОЛКНОВЕНИЕ УМОВ",
     "participate.battle":
         "Примите участие в крупнейших в Центральной Азии Физических боях!",
-    "box-1": "Baiterek School",
+    "box-1": "МУИТ",
     "box-2": "Интерактивный формат",
-    "box-3": "8-12 классы",
+    "box-3": "7-12 классы",
     "box-4": "Сложнейшие задачи",
     "register.now": "Регистрируйся сейчас",
     results: "Результаты",
     "join.competition.description":
-        "Отборочный этап проходит 24-26 октября 2025 года онлайн на платформе app.formative.com, финал — 28 ноября - 1 декабря 2025 года в школе Baiterek School of Science and Technology в Алматы.",
+        "Отборочный этап проходит 30 июня 2026 года онлайн на платформе autoproctor.com, финал — 1-5 августа 2026 года в Международном Университете Информационных Технологий в Алматы.",
     "about.competition": "О СОРЕВНОВАНИИ",
     "about.competition.description":
         "АРhВ сочетает в себе уникальный формат командных соревнований школьников в решении олимпиадных задач по физике. Весь турнир организован исключительно старшеклассниками или студентами - первокурсниками.",
@@ -78,15 +80,15 @@ export const ruHome = {
     "league.older": "Старшая лига",
     "league.older.description": "Ученики 10-12 классов",
     "league.younger": "Младшая лига",
-    "league.younger.description": "Ученики 8-9 классов",
+    "league.younger.description": "Ученики 7-9 классов",
     "league.school": "Ученики престижных школ",
     "participation.stages": "ЭТАПЫ УЧАСТИЯ",
     "participation.stages.registration":
-        "Регистрация открывается 10 октября 2025 года в 00:00 и закрывается 26 октября 2025 года в 20:00 (время Алматы, UTC+5)",
+        "Регистрация открывается X b.yz 2026 года в 00:00 и закрывается X b.yz 2026 года в 20:00 (время Алматы, UTC+5)",
     "participation.stages.online":
-        `Онлайн отбор пройдет 24-26 октября 2025 года на платформе <a href='https://app.formative.com' class='underline' target='_blank'>app.formative.com</a>.<br>Команды могут участвовать с 00:00 24 октября по 23:55 26 октября 2025 года (время Алматы, UTC+5).<br>Всем зарегистрированным участникам инструкции с доступом к платформе будут отправлены ближе к дате.`, 
+        `Онлайн отбор пройдет 30 июня 2026 года на платформе <a href='https://autoproctor.com' class='underline' target='_blank'>autoproctor.com</a>.<br>Команды могут участвовать с 00:00 30 июня по 23:55 30 июня 2026 года (время Алматы, UTC+5).<br>Всем зарегистрированным участникам инструкции с доступом к платформе будут отправлены ближе к дате.`, 
     "participation.stages.final":
-        "Финальный очный этап пройдет 28 ноября - 1 декабря 2025 года в школе Baiterek School of Science and Technology, Алматы (ул. Ораза Жандосова, 94)",
+        "Финальный очный этап пройдет 1-5 августа 2026 года в Международном Университете Информационных Технологий в Алматы (ул. Манаса 34/1).",
     tasks: "ЗАДАЧИ",
     "tasks.description":
         "Задачи на турнир составляются командой из членов национальной сборной Казахстана по физике: призерами IPhO, IMO, APhO, EuPhO, IJSO, BPhO, IMChO, IYPT и студентами ЛФИ МФТИ, Harvard, Williams College и Sheffield University. Мы стараемся брать все самое лучшее как с классических олимпиад, так и с не очень по типу кубка ЛФИ ",
@@ -106,6 +108,8 @@ export const ruHome = {
         "«На APhB каждый вызов является возможностью — возможностью превзойти ожидания, выйти за рамки традиционного обучения и отпраздновать истинное восторг от открытий. Здесь мы не просто решаем уравнения; мы постепенно раскрываем тайны вселенной, теорема за теоремой.» ",
     "photo4.caption": "Алматинские Физические Бои 2024, которые мы провели на базе Satbayev University 4–11 июля. На фото мы кричим СКИ-БИ-ДИ-ДУУ!",
     "photo5.caption": "Астанинские Физические бои 2023, которые мы провели на базе Международной школы Haileybury 11–12 ноября. На фото мы очень уставшие вечером после двух дней очень интенсивной работы",
+    "past.tournaments": "Прошлые турниры",
+    "photo6.caption": "Алматинские Физические Бои в 2025 году прошли совместно с Химбоями и Матбоями с 28 ноября по 1 декабря на базе Baiterek School of Science and Technology в городе Алматы. На фото происходит небольшой хаос из-за рекордного количества участников)",
     
     // International scale section
     "international.title": "Международный масштаб",
@@ -118,18 +122,18 @@ export const ruHome = {
 import * as sponsors from './sponsors';
 
 export const kzHome = {
-    'seo.description': "Іріктеу кезеңі 24-26 қазан 2025 жылы онлайн өтеді, финал 28 қараша - 1 желтоқсан 2025 жылы Алматыдағы Baiterek мектебінде өтеді.",
-    'seo.title': 'Almaty Physics Battles - Орталық Азиядағы физикалық жекпе-жектен III турнир',
+    'seo.description': "Іріктеу кезеңі 2026 жылғы 30 маусымда AutoProctor платформасында онлайн өтеді, финал 1-5 тамыз 2026 жылы Алматыдағы Халықаралық Ақпараттық Технологиялар Университетінде өтеді.",
+    'seo.title': 'Almaty Physics Battles - Орталық Азиядағы физикалық жекпе-жектен IV турнир',
     "collision.minds": "ОЙЛАРДЫҢ СОҚТЫҒЫСУЫ",
     "participate.battle": "Орталық Азиядағы ең ірі Физикалық жекпе-жектерге қатысыңыз!",
-    "box-1": "Baiterek School",
+    "box-1": "ХАТУ",
     "box-2": "Интерактивті формат",
-    "box-3": "8-12 сыныптар",
+    "box-3": "7-12 сыныптар",
     "box-4": "Ең күрделі есептер",
     "register.now": "Қазір тіркеліңіз",
     results: "Нәтижелер",
     "join.competition.description":
-        "Іріктеу кезеңі 24-26 қазан 2025 жылы app.formative.com платформасында онлайн өтеді, финал 28 қараша - 1 желтоқсан 2025 жылы Алматыдағы Baiterek School of Science and Technology мектебінде өтеді.",
+        "Іріктеу кезеңі 2026 жылғы 30 маусымда autoproctor.com платформасында онлайн өтеді, финал 1-5 тамыз 2026 жылы Алматыдағы Халықаралық Ақпараттық Технологиялар Университетінде өтеді.",
 
     "about.competition": "ЖАРЫС ТУРАЛЫ",
     "about.competition.description":
@@ -139,15 +143,15 @@ export const kzHome = {
     "league.older": "Үлкен лига",
     "league.older.description": "10-12 сынып оқушылары",
     "league.younger": "Кіші лига",
-    "league.younger.description": "8-9 сынып оқушылары",
+    "league.younger.description": "7-9 сынып оқушылары",
     "league.school": "Ученики престижных школ",
     "participation.stages": "ҚАТЫСУ КЕЗЕҢДЕРІ",
     "participation.stages.registration":
-        "Тіркелу 2025 жылғы 10 қазанда 00:00-де ашылады және 26 қазанда 20:00-де жабылады (Алматы уақыты, UTC+5)",
+        "Тіркелу 2026 жылғы Х маусымда 00:00-де ашылады және 2026 жылғы Х маусымда 20:00-де жабылады (Алматы уақыты, UTC+5)",
     "participation.stages.online":
-        "Онлайн іріктеу 24-26 қазан 2025 жылы <a href='https://app.formative.com' class='underline' target='_blank'>app.formative.com</a> платформасында өтеді.<br>Командалар 24 қазан 00:00-ден 26 қазан 23:55-ке дейін қатыса алады (Алматы уақыты, UTC+5).<br>Платформаға қолжетімділік және нұсқаулықтар іс-шараға жақын уақытта жіберіледі.", 
+        "Онлайн іріктеу 2026 жылғы 30 маусымда <a href='https://autoproctor.com' class='underline' target='_blank'>autoproctor.com</a> платформасында өтеді.<br>Командалар 30 маусым 00:00-ден 30 маусым 23:55-ке дейін қатыса алады (Алматы уақыты, UTC+5).<br>Платформаға қолжетімділік және нұсқаулықтар іс-шараға жақын уақытта тіркелген барлық қатысушыларға жіберіледі.",
     "participation.stages.final":
-        "Ақтық финал кезеңі 28 қараша - 1 желтоқсан 2025 жылы Baiterek School of Science and Technology мектебінде, Алматы (Ораза Жандосова көшесі, 94) өтеді",
+        "Ақтық финал кезеңі 2026 жылғы 1-5 тамызда Алматыдағы Халықаралық Ақпараттық Технологиялар Университетінде (Манас көшесі 34/1) өтеді",
     tasks: "ТАПСЫРМАЛАР",
     "tasks.description":
         "Турнирдің тапсырмаларын физикадан Қазақстанның ұлттық құрамасы мүшелерінен тұратын команда: IPhO, IMO, APhO, EuPhO, IJSO, BPhO, IMChO, IYPT жүлдегерлері және МФТИ ЛФИ, Harvard, Williams College және Sheffield University студенттері құрайды. Біз классикалық олимпиадалардан да, ЛЛФИ кубогы сияқты әдеттен тыс сайыстардан да ең жақсысын алуға тырысамыз",
@@ -165,6 +169,8 @@ export const kzHome = {
         "«APhB-да әрбір қиындық – мүмкіндік. Бұл – күткендерден асып түсу мүмкіндігі, дәстүрлі оқытудан шығып, ашылулардың шынайы қуанышын атап өту мүмкіндігі. Мұнда біз тек теңдеулерді шешпейміз; біз бір теоремадан кейін бір теореманы ашып, ғаламның құпияларын ашамыз.»",
     "photo4.caption": "Almaty Physics Battles 2024 Satbayev University базасында 4–11 шілдеде өтті. Фотода біз «СКИ-БИ-ДИ-ДУУ!» деп айқайлап тұрмыз!",
     "photo5.caption": "Astana Physics Battles 2023 Haileybury мектебінде 11–12 қарашада өтті. Фотода біз екі күндік өте қарқынды жұмыстан кейін қатты шаршағандықтан өте байсалдыбыз",
+    "past.tournaments": "Өткен турнирлер",
+    "photo6.caption": "Almaty Physics Battles 2025 Химбои мен Матбоймен бірге 28 қарашадан 1 желтоқсанға дейін Алматы қаласындағы Baiterek School of Science and Technology базасында өтті. Фотода қатысушылардың рекордтық саны салдарынан болған шамалы тәртіпсіздік көрсетілген)",
     
     // International scale section
     "international.title": "Халықаралық ауқым",
