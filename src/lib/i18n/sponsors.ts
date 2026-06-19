@@ -26,10 +26,11 @@ export const en = {
 
   // Team section
   "team.title": "People Who Make Miracles",
-  "team.description.1": "Over two years, more than 150 problems were created by a team of the best olympiad participants from Kazakhstan, Russia, and beyond: students from MIT, Williams College, Notre Dame, Grinnell College, NYU, HKUST, CityU, KAIST, Nazarbayev University, and MIPT. Among them are former and current jury members and problem setters for the All-Russian School Olympiad, Republican Olympiad of Kazakhstan, International Zhautykov Olympiad, LFI Olympiad, and others!",
+  "team.description.1": "Over two years, more than 250 problems were created by a team of the best olympiad participants from Kazakhstan, Russia, and beyond: students from MIT, Caltech, Williams College, Notre Dame, Grinnell College, NYU, HKUST, CityU, KAIST, Nazarbayev University, and MIPT. Among them are former and current jury members and problem setters for the All-Russian School Olympiad, Republican Olympiad of Kazakhstan, International Zhautykov Olympiad, LFI Olympiad, and others!",
   "team.description.2": "Jury from 6 cities worked 12 hours a day. Volunteers came from all over the country and even from Tashkent - they met at the airport, took hiking trips to Butakovsky waterfall, and stayed on duty in dormitories at night.",
   "team.description.3": "Hundreds of hours of volunteer work, sleepless nights - all to give the participants an unforgettable experience.",
   "team.jury.caption": "2024 Jury Team",
+  "team.orgcommittee.caption": "2025 Organizing Committee",
 
   // Government recognition
   "recognition.title": "Government Level Recognition",
@@ -42,10 +43,13 @@ export const en = {
   "recognition.international.description": "Learning organizational experience of international olympiads from IZhO 2024 organizer - director of RPHMS Almaty, Meirbek Meirlan Edigeruly",
 
   // 2025 Section
-  "2025.title": "APhB 2025 - New Heights",
-  "2025.description.1": "The third tournament will be held in two stages: online qualifier (October 24-26, 2025) and in-person final (November 28 - December 1, 2025) at Baiterek School of Science and Technology in Almaty.",
-  "2025.description.2": "Registration opens October 10, 2025 at 00:00 and closes October 26, 2025 at 20:00 (Almaty time, UTC+5). The qualifier will be held on app.formative.com platform in team online olympiad format.",
-  "2025.venue": "Baiterek School of Science and Technology, 94 Oraza Zhandosova Street, Almaty, Kazakhstan",
+  "2025.title": "2025 Legacy",
+  "2025.description.1": "After the 2024 breakthrough, the heart of the organizing committee scattered to universities across the world, and the tournament's future was uncertain. But a new team of enthusiasts took up the APhB legacy, preserved its past glory and scaled the project, merging APhB with the Almaty Math Battles and the National Chemical Battles, breaking a new record for participants and countries.",
+  "2025.description.2": "The new team brought a fresh spirit of enthusiasm, not without its mistakes. In 2026, success must be reinforced with a completely new regulation and a more thoughtful Physics Battles format.",
+  "2025.partners.title": "2025 Partners",
+  "2025.video.caption": "Video report from APhB 2025",
+  "2025.testimonial.text": "For us, as a new school, helping promote APhB was an experiment: we wanted to see how such large events are organized. But the experiment turned out to be more than successful. We are immensely grateful to the APhB team for this experience and to this day we proudly tell everyone about their enthusiasm and responsibility!",
+  "2025.testimonial.author": "Anar Nurlybayeva, Director of Baiterek School of Science and Technology",
 
   // More than tournament
   "more.title": "More Than a Tournament",
@@ -122,10 +126,11 @@ export const ru = {
 
   // Team section
   "team.title": "Люди, которые делают чудеса",
-  "team.description.1": "За два года было создано более 150 задач командой лучших олимпиадников Казахстана, России, и не только: школьниками и студентами MIT, Williams College, Notre Dame, Grinnell College NYU, HKUST, CityU, KAIST, Назарбаев Университета, и МФТИ. Среди которых бывшие и нынешние члены жюри и составители задач Всероссийской Олимпиады Школьников, Республиканской Олимпиады РК, Международной Жаутыковской Олимпиады, Олимпиады ЛФИ, и других!",
+  "team.description.1": "За два года было создано более 250 задач командой лучших олимпиадников Казахстана, России, и не только: школьниками и студентами MIT, Caltech, Williams College, Notre Dame, Grinnell College NYU, HKUST, CityU, KAIST, Назарбаев Университета, и МФТИ. Среди которых бывшие и нынешние члены жюри и составители задач Всероссийской Олимпиады Школьников, Республиканской Олимпиады РК, Международной Жаутыковской Олимпиады, Олимпиады ЛФИ, и других!",
   "team.description.2": "Жюри из 6 городов работали по 12 часов в день. Волонтёры приехали со всей страны и даже из Ташкента — встречали в аэропорту, водили в походы на Бутаковский водопад, дежурили ночами в общежитии.",
   "team.description.3": "Сотни часов волонтёрской работы, бессонные ночи — всё ради того, чтобы дать ребятам незабываемый опыт.",
   "team.jury.caption": "Команда жюри 2024 года",
+  "team.orgcommittee.caption": "Оргкомитет 2025 года",
 
   // Government recognition
   "recognition.title": "Признание на государственном уровне",
@@ -138,10 +143,13 @@ export const ru = {
   "recognition.international.description": "Перенимаем опыт организации международных олимпиад у организатора IZhO 2024 - директора РФМШ г. Алматы, Меирбека Меирлана Едигерулы",
 
   // 2025 Section
-  "2025.title": "APhB 2025 - Новые высоты",
-  "2025.description.1": "Третий турнир пройдёт в два этапа: онлайн отбор (24-26 октября 2025 года) и очный финал (28 ноября - 1 декабря 2025 года) в школе Baiterek School of Science and Technology в Алматы.",
-  "2025.description.2": "Регистрация открывается 10 октября 2025 года в 00:00 и закрывается 26 октября 2025 года в 20:00 (время Алматы, UTC+5). Отбор пройдёт на платформе app.formative.com в формате командной онлайн олимпиады.",
-  "2025.venue": "Школа Baiterek School of Science and Technology, ул. Ораза Жандосова, 94, Алматы, Казахстан",
+  "2025.title": "Наследие 2025 года",
+  "2025.description.1": "После прорыва 2024 года, сердце организационного комитета разъехалось по университетам во все уголки мира, а дальнейшая судьба турнира находилась под большим вопросом. Однако новая команда энтузиастов смогла перенять наследие APhB, сохранить былую славу и масштабировать проект, объединив APhB с Almaty Math Battles и National Chemical Battles и побив новый рекорд по участникам и количеству стран.",
+  "2025.description.2": "Новая команда привнесла с собой новый дух энтузиазма, но не без ошибок. В 2026 году, успех должен закрепится с абсолютно новой версией регламента и более продуманным форматом Физбоев.",
+  "2025.partners.title": "Партнёры 2025 года",
+  "2025.video.caption": "Видеорепортаж с APhB 2025",
+  "2025.testimonial.text": "Для нас, как новой школы, помощь в продвижении APhB была экспериментом: мы хотели посмотреть, как проводятся такие крупные мероприятия. Но эксперимент оказался более чем успешен. Мы безмерно благодарны за такой опыт команде APhB и по сей день с гордостью рассказываем об их энтузиазме и ответственности!",
+  "2025.testimonial.author": "Нурлыбаева Анар, Директор Baiterek School of Science and Technology",
 
   // More than tournament
   "more.title": "Больше чем турнир",
@@ -218,10 +226,11 @@ export const kz = {
 
   // Team section
   "team.title": "Ғажайып жасайтын адамдар",
-  "team.description.1": "Екі жыл ішінде Қазақстан, Ресей және басқа елдердің үздік олимпиадшыларының командасы 150-ден астам есеп жасады: MIT, Williams College, Notre Dame, Grinnell College NYU, HKUST, CityU, KAIST, Назарбаев Университеті және МФТИ-нің мектеп оқушылары мен студенттері. Олардың арасында Бүкілресейлік мектеп олимпиадасы, ҚР Республикалық олимпиадасы, Халықаралық Жәутіков олимпиадасы, ЛФИ олимпиадасы және басқалардың бұрынғы және қазіргі жюри мүшелері мен есеп құрастырушылары бар!",
+  "team.description.1": "Екі жыл ішінде Қазақстан, Ресей және басқа елдердің үздік олимпиадшыларының командасы 250-ден астам есеп жасады: MIT, Caltech, Williams College, Notre Dame, Grinnell College NYU, HKUST, CityU, KAIST, Назарбаев Университеті және МФТИ-нің мектеп оқушылары мен студенттері. Олардың арасында Бүкілресейлік мектеп олимпиадасы, ҚР Республикалық олимпиадасы, Халықаралық Жәутіков олимпиадасы, ЛФИ олимпиадасы және басқалардың бұрынғы және қазіргі жюри мүшелері мен есеп құрастырушылары бар!",
   "team.description.2": "6 қаладан келген жюри күніне 12 сағат жұмыс істеді. Волонтерлер бүкіл елден, тіпті Ташкенттен келді - әуежайда қарсы алды, Бұтақов сарқырамасына серуендеуге апарды, жатақханада түнде кезекшілік етті.",
   "team.description.3": "Волонтерлік жұмыстың жүздеген сағаттары, ұйқысыз түндер - бәрі балаларға ұмытылмас тәжірибе беру үшін.",
   "team.jury.caption": "2024 жылғы жюри командасы",
+  "team.orgcommittee.caption": "2025 жылғы ұйымдастыру комитеті",
 
   // Government recognition
   "recognition.title": "Мемлекеттік деңгейде тану",
@@ -234,10 +243,13 @@ export const kz = {
   "recognition.international.description": "IZhO 2024 ұйымдастырушысынан - Алматы қ. РФМШ директоры Мейірбек Мейірлан Едігерұлынан халықаралық олимпиадаларды ұйымдастыру тәжірибесін алу",
 
   // 2025 Section
-  "2025.title": "APhB 2025 - Жаңа биіктіктер",
-  "2025.description.1": "Үшінші турнир екі кезеңде өтеді: онлайн іріктеу (24-26 қазан 2025 жылы) және ақтық финал (28 қараша - 1 желтоқсан 2025 жылы) Алматыдағы Baiterek School of Science and Technology мектебінде.",
-  "2025.description.2": "Тіркелу 2025 жылғы 10 қазанда 00:00-де ашылады және 26 қазанда 20:00-де жабылады (Алматы уақыты, UTC+5). Іріктеу app.formative.com платформасында командалық онлайн олимпиада форматында өтеді.",
-  "2025.venue": "Baiterek School of Science and Technology мектебі, Ораза Жандосова көшесі, 94, Алматы, Қазақстан",
+  "2025.title": "2025 жылғы мұра",
+  "2025.description.1": "2024 жылғы серпілістен кейін ұйымдастыру комитетінің жүрегі әлемнің түкпір-түкпіріндегі университеттерге тарап кетті, ал турнирдің одан арғы тағдыры үлкен сұрақ болып қалды. Дегенмен энтузиастардан тұратын жаңа команда APhB мұрасын қабылдап, бұрынғы даңқты сақтап, жобаны APhB-ны Almaty Math Battles және National Chemical Battles-пен біріктіру арқылы кеңейтіп, қатысушылар мен елдер саны бойынша жаңа рекорд орнатты.",
+  "2025.description.2": "Жаңа команда жаңа энтузиазм рухын алып келді, бірақ қателіктерсіз болған жоқ. 2026 жылы табыс мүлдем жаңа регламент нұсқасымен және Физбойлардың ойластырылған форматымен бекітілуі тиіс.",
+  "2025.partners.title": "2025 жылғы серіктестер",
+  "2025.video.caption": "APhB 2025 туралы бейне репортаж",
+  "2025.testimonial.text": "Жаңа мектеп ретінде біз үшін APhB-ны жылжытуға көмек эксперимент болды: біз осындай ірі іс-шаралардың қалай өткізілетінін көргіміз келді. Бірақ эксперимент күткеннен де сәтті болды. Біз бұл тәжірибе үшін APhB командасына шексіз алғыстармыз және бүгінге дейін олардың энтузиазмы мен жауапкершілігі туралы бәріне мақтанышпен айтып келеміз!",
+  "2025.testimonial.author": "Нұрлыбаева Анар, Baiterek School of Science and Technology директоры",
 
   // More than tournament
   "more.title": "Турнирден де көп",

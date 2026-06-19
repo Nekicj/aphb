@@ -4,6 +4,7 @@
     {
       "team": "BAMAN",
       "place": "1",
+      "photo": "/photos/team_baman.jpg",
       "schools": ["БИЛ г. Атырау", "БИЛ г. Караганда", "БИЛ г. Актобе"],
       "captain": "Нурали Тюлюбай Серикович",
       "members": [
@@ -16,6 +17,7 @@
     {
       "team": "AstPhM NIS Senior",
       "place": "2",
+      "photo": "/photos/team_astphmnis.jpg",
       "schools": ["НИШ ФМН г. Астана"],
       "captain": "Азатбеков Амирбек",
       "members": [
@@ -28,6 +30,7 @@
     {
       "team": "Демон Лапласа",
       "place": "3",
+      "photo": "/photos/team_demonlaplas.jpg",
       "schools": ["8 лицей г. Павлодар"],
       "captain": "Роговский Владимир Александрович",
       "members": [
@@ -129,6 +132,7 @@
     {
       "team": "Переменные",
       "place": "1",
+      "photo": "/photos/team_variables.jpg",
       "schools": ["165 СЛ г. Алматы"],
       "captain": "Ведянин Макар Вадимович",
       "members": [
@@ -141,6 +145,7 @@
     {
       "team": "SIN",
       "place": "2",
+      "photo": "/photos/team_sinog.jpg",
       "schools": ["НИШ ФМН г. Алматы"],
       "captain": "Азамат Аймуратов",
       "members": ["Сыргабаев Думан", "Ибрагим Алихан", "Пай Диана", "Ли Арсен"]
@@ -148,6 +153,7 @@
     {
       "team": "Эйлерова элита",
       "place": "3",
+      "photo": "/photos/team_eulerelite.jpg",
       "schools": ["НИШ ФМН г. Алматы"],
       "captain": "Куанышбек Темирлан",
       "members": [

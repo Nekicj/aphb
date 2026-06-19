@@ -262,6 +262,81 @@ const testimonials = [
     </div>
   </section>
 
+  <!-- 3.7. Наследие 2025 года -->
+  <section class="col-span-full mb-20">
+    <div class="max-w-6xl mx-auto">
+      <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
+        <div class="bg-gradient-to-br from-blue-50 to-indigo-100 border-2 border-blue-200 rounded-3xl p-8 lg:order-1 shadow-lg">
+          <!-- Логотип главного партнёра -->
+          <div class="flex justify-center mb-6">
+            <div class="bg-white rounded-2xl p-4 shadow-md">
+              <img src="/partners/baiterek-logo.png" alt="Baiterek School of Science and Technology" class="h-16 opacity-90" />
+            </div>
+          </div>
+
+          <!-- Видео -->
+          <div class="aspect-video rounded-2xl overflow-hidden mb-6 shadow-lg border-2 border-white">
+            <iframe
+              width="100%"
+              height="100%"
+              src="https://www.youtube.com/embed/AYaVSWhVEdI"
+              title="YouTube video player"
+              frameborder="0"
+              allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+              referrerpolicy="strict-origin-when-cross-origin"
+              allowfullscreen
+              class="w-full h-full">
+            </iframe>
+          </div>
+
+          <p class="text-center text-lg font-semibold text-blue-900 mb-8">
+            {t("2025.video.caption")}
+          </p>
+
+          <!-- Логотипы партнёров -->
+          <div class="bg-white rounded-2xl p-6 shadow-md">
+            <h4 class="text-center text-lg font-bold text-gray-800 mb-6">{t("2025.partners.title")}</h4>
+            <div class="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 gap-4 place-items-center">
+              <img src="/partners/hbalm-logo.png" alt="HBALM" class="h-10 md:h-12 object-contain opacity-90 hover:opacity-100 transition-all duration-300 hover:scale-110" />
+              <img src="/partners/genomix-logo.png" alt="Genomix" class="h-10 md:h-12 object-contain opacity-90 hover:opacity-100 transition-all duration-300 hover:scale-110" />
+              <img src="/partners/thesolution_logo.svg" alt="The Solution" class="h-10 md:h-12 object-contain opacity-90 hover:opacity-100 transition-all duration-300 hover:scale-110" />
+              <img src="/partners/kaznu-logo.png" alt="KazNU" class="h-10 md:h-12 object-contain opacity-90 hover:opacity-100 transition-all duration-300 hover:scale-110" />
+              <img src="/partners/energo-logo.png" alt="Energo" class="h-10 md:h-12 object-contain opacity-90 hover:opacity-100 transition-all duration-300 hover:scale-110" />
+              <img src="/partners/clevers-logo.png" alt="Clevers" class="h-10 md:h-12 object-contain opacity-90 hover:opacity-100 transition-all duration-300 hover:scale-110" />
+              <img src="/partners/satbayev_uni.svg" alt="Satbayev University" class="h-10 md:h-12 object-contain opacity-90 hover:opacity-100 transition-all duration-300 hover:scale-110" />
+              <img src="/partners/mephi-logo.png" alt="MEPhI" class="h-10 md:h-12 object-contain opacity-90 hover:opacity-100 transition-all duration-300 hover:scale-110" />
+              <img src="/partners/ustem.svg" alt="USTEM" class="h-10 md:h-12 object-contain opacity-90 hover:opacity-100 transition-all duration-300 hover:scale-110" />
+              <img src="/partners/almaty-daryny.svg" alt="Almaty Daryny" class="h-10 md:h-12 object-contain opacity-90 hover:opacity-100 transition-all duration-300 hover:scale-110" />
+            </div>
+          </div>
+        </div>
+        <div class="lg:order-2">
+          <h2 class="text-3xl lg:text-5xl font-bold mb-8">{t("2025.title")}</h2>
+          <p class="text-lg text-neutral-700 mb-6 leading-relaxed">
+            {t("2025.description.1")}
+          </p>
+          <p class="text-lg text-neutral-700 mb-6 leading-relaxed">
+            {t("2025.description.2")}
+          </p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 3.8. Отзыв о 2025 годе -->
+  <section class="col-span-full mb-20">
+    <div class="max-w-4xl mx-auto">
+      <blockquote class="bg-white border border-neutral-200 rounded-2xl p-8 lg:p-12 text-center">
+        <p class="text-xl lg:text-2xl font-semibold text-neutral-800 mb-6 leading-relaxed">
+          «{t("2025.testimonial.text")}»
+        </p>
+        <footer class="text-neutral-600 text-lg">
+          {t("2025.testimonial.author")}
+        </footer>
+      </blockquote>
+    </div>
+  </section>
+
   <!-- 4. Команда и волонтёры -->
   <section class="col-span-full mb-20">
     <div class="max-w-6xl mx-auto">
@@ -289,11 +364,19 @@ const testimonials = [
             {t("team.description.3")}
           </p>
         </div>
-        <div class="bg-neutral-100 rounded-2xl p-8 text-center">
-          <div class="w-full h-64 rounded-xl mb-4 overflow-hidden">
-            <img src={volunteersPhoto} alt="Команда волонтёров и организаторов" class="w-full h-full object-cover" />
+        <div class="grid grid-cols-1 gap-6">
+          <div class="bg-neutral-100 rounded-2xl p-8 text-center">
+            <div class="w-full h-64 rounded-xl mb-4 overflow-hidden">
+              <img src="/photos/orgcommittee-2025.jpg" alt="Оргкомитет 2025 года" class="w-full h-full object-cover" />
+            </div>
+            <p class="text-neutral-600">{t("team.orgcommittee.caption")}</p>
           </div>
-          <p class="text-neutral-600">{t("team.jury.caption")}</p>  
+          <div class="bg-neutral-100 rounded-2xl p-8 text-center">
+            <div class="w-full h-64 rounded-xl mb-4 overflow-hidden">
+              <img src={volunteersPhoto} alt="Команда волонтёров и организаторов" class="w-full h-full object-cover" />
+            </div>
+            <p class="text-neutral-600">{t("team.jury.caption")}</p>  
+          </div>
         </div>
       </div>
     </div>
@@ -509,7 +592,7 @@ const testimonials = [
         <div class="flex flex-col md:flex-row gap-4 justify-center items-center mb-6">
           <a href="mailto:contact@bc-pf.org" class="text-primary-600 hover:text-primary-700 font-medium">contact@bc-pf.org</a>
           <span class="hidden md:block text-neutral-400">•</span>
-          <a href="tel:+77017168517" class="text-primary-600 hover:text-primary-700 font-medium">+7 701 716 8517</a>
+          <a href="tel:+77071091311" class="text-primary-600 hover:text-primary-700 font-medium">+7 701 709 1311</a>
         </div>
         <a 
           href="mailto:contact@bc-pf.org" 
