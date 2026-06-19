@@ -60,7 +60,7 @@ export default function ParticipantsMap({ locations, className = '' }: Participa
         // Функция для получения цвета по стране
         const getCountryColor = (country: string) => {
           const countryColors: Record<string, string> = {
-            'Казахстан': '#3b82f6',    // Синий
+            'Казахстан': '#1D4ED8',    // Синий (бренд)
             'Россия': '#ef4444',       // Красный
             'Узбекистан': '#22c55e',   // Зеленый
             'Кыргызстан': '#f59e0b',   // Оранжевый
@@ -135,28 +135,28 @@ export default function ParticipantsMap({ locations, className = '' }: Participa
 
   return (
     <div className={`relative ${className}`}>
-      <div 
-        ref={mapRef} 
-        className="w-full h-96 rounded-2xl overflow-hidden border border-neutral-200"
-        style={{ minHeight: '400px' }}
+      <div
+        ref={mapRef}
+        className="w-full h-[420px] md:h-[520px] rounded-3xl overflow-hidden border border-neutral-300"
+        style={{ minHeight: '420px' }}
       />
-      
+
       {/* Показываем загрузку пока карта не инициализирована */}
       {!isClient && (
-        <div className="absolute inset-0 bg-neutral-100 rounded-2xl flex items-center justify-center">
+        <div className="absolute inset-0 bg-neutral-100 rounded-3xl flex items-center justify-center">
           <div className="text-center">
             <div className="w-8 h-8 border-2 border-primary-500 border-t-transparent rounded-full animate-spin mx-auto mb-2"></div>
-            <p className="text-neutral-600">Загрузка карты...</p>
+            <p className="text-neutral-500">Загрузка карты...</p>
           </div>
         </div>
       )}
-      
+
       {/* Легенда по странам */}
-      <div className="absolute top-4 left-4 bg-white/95 backdrop-blur-sm border border-neutral-200 rounded-xl p-4 shadow-lg z-[1000]">
-        <h4 className="font-semibold text-sm text-neutral-800 mb-3">Страны участников</h4>
+      <div className="absolute top-4 left-4 bg-white/95 backdrop-blur-sm border border-neutral-300 rounded-2xl p-4 shadow-lg z-[1000]">
+        <h4 className="font-bold text-xs uppercase tracking-wide text-primary-900 mb-3">Страны участников</h4>
         <div className="space-y-2">
           <div className="flex items-center gap-3">
-            <div className="w-4 h-4 bg-[#3b82f6] rounded-full border border-white shadow-sm"></div>
+            <div className="w-4 h-4 bg-[#1D4ED8] rounded-full border border-white shadow-sm"></div>
             <span className="text-xs text-neutral-600">Казахстан</span>
           </div>
           <div className="flex items-center gap-3">

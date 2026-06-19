@@ -1,5 +1,5 @@
 export const enHome = {
-    'seo.description': "The qualifier runs on June 30th, 2026, online on AutoProctor, with the final held on August 1-5, 2026 at International IT University in Almaty.",
+    'seo.description': "The qualifier runs on July 3rd, 2026, online on AutoProctor, with the final held on August 3-7, 2026 at International IT University in Almaty.",
     'seo.title': 'Almaty Physics Battles - IV Tournament of Physics Battles in Central Asia',
     "collision.minds": "COLLISION OF MINDS",
     "participate.battle": "Take part in the largest Physics Battles in Central Asia!",
@@ -10,7 +10,7 @@ export const enHome = {
     "register.now": "Register now",
     results: "Results",
     "join.competition.description":
-        "The qualifier runs on June 30th, 2026, online on AutoProctor, with the final held on August 1-5, 2026 at International IT University in Almaty.",
+        "The qualifier runs on July 3rd, 2026, online on AutoProctor, with the final held on August 3-7, 2026 at International IT University in Almaty.",
 
     "about.competition": "ABOUT THE COMPETITION",
     "about.competition.description":
@@ -24,11 +24,17 @@ export const enHome = {
     "league.school": "Ученики престижных школ",
     "participation.stages": "STAGES OF PARTICIPATION",
     "participation.stages.registration":
-        "Registration opens June Xth, 2026 at 00:00 and closes June Xth, 2026 at 20:00 (Almaty time, UTC+5)",
-    "participation.stages.online":
-        "The online qualifier will be held on June 30th, 2026 on the platform <a href='https://autoproctor.com' class='underline' target='_blank'>autoproctor.com</a>.<br>Teams can participate from 00:00 June 30 to 23:55 June 30, 2026 (Almaty time, UTC+5).<br>Instructions with access to the platform will be sent to all registered participants closer to the date.",
+        "Registration is open until July 2nd, 2026 at 20:00 (Almaty time, GMT+5).",
+    "participation.stages.qualifier":
+        "The online qualifier will be held on July 3rd, 2026 from 13:00 to 15:45 (Almaty time, GMT+5) on the platform <a href='https://autoproctor.com' class='underline' target='_blank'>autoproctor.com</a>.<br>Instructions with access to the platform will be sent to all registered participants closer to the date.",
+    "participation.stages.preliminary":
+        "Preliminary results will be announced on July 5th, 2026 at 17:00 (Almaty time, GMT+5).",
+    "participation.stages.appeal":
+        "The appeal form is available until July 5th, 2026 at 22:00, and appeals are accepted until July 6th, 2026 at 17:00 (Almaty time, GMT+5).",
+    "participation.stages.results":
+        "Final results will be announced and invitation letters sent on July 6th, 2026 at 19:00 (Almaty time, GMT+5).",
     "participation.stages.final":
-        "The in-person final will be held on August 1-5, 2026 at International IT University in Almaty.",
+        "The in-person final will be held on August 3–7, 2026 at International IT University in Almaty, Kazakhstan.",
     tasks: "TASKS",
     "tasks.description":
         "The tournament tasks are compiled by a team from the members of the Kazakhstan national physics and math team: awardees of IPhO, IMO, APhO, EuPhO, IJSO, BPhO, IMChO, IYPT and students from the LPR MIPT, Harvard, Williams College, and Sheffield University. We strive to take the very best from both classical Olympiads, as well as from the less typical ones like the MIPT LPR Cup",
@@ -59,7 +65,7 @@ export const enHome = {
 };
 
 export const ruHome = {
-    'seo.description': 'Отборочный этап проходит 30 июня 2026 года онлайн, финал — 1-5 августа 2026 года в Международном Университете Информационных Технологий в Алматы.',
+    'seo.description': 'Отборочный этап проходит 3 июля 2026 года онлайн, финал — 3-7 августа 2026 года в Международном Университете Информационных Технологий в Алматы.',
     'seo.title': 'Almaty Physics Battles -  IV турнир по физическим боям в Центральной Азии',
     "collision.minds": "СТОЛКНОВЕНИЕ УМОВ",
     "participate.battle":
@@ -71,7 +77,7 @@ export const ruHome = {
     "register.now": "Регистрируйся сейчас",
     results: "Результаты",
     "join.competition.description":
-        "Отборочный этап проходит 30 июня 2026 года онлайн на платформе autoproctor.com, финал — 1-5 августа 2026 года в Международном Университете Информационных Технологий в Алматы.",
+        "Отборочный этап проходит 3 июля 2026 года онлайн на платформе autoproctor.com, финал — 3-7 августа 2026 года в Международном Университете Информационных Технологий в Алматы.",
     "about.competition": "О СОРЕВНОВАНИИ",
     "about.competition.description":
         "АРhВ сочетает в себе уникальный формат командных соревнований школьников в решении олимпиадных задач по физике. Весь турнир организован исключительно старшеклассниками или студентами - первокурсниками.",
@@ -84,11 +90,17 @@ export const ruHome = {
     "league.school": "Ученики престижных школ",
     "participation.stages": "ЭТАПЫ УЧАСТИЯ",
     "participation.stages.registration":
-        "Регистрация открывается X b.yz 2026 года в 00:00 и закрывается X b.yz 2026 года в 20:00 (время Алматы, UTC+5)",
-    "participation.stages.online":
-        `Онлайн отбор пройдет 30 июня 2026 года на платформе <a href='https://autoproctor.com' class='underline' target='_blank'>autoproctor.com</a>.<br>Команды могут участвовать с 00:00 30 июня по 23:55 30 июня 2026 года (время Алматы, UTC+5).<br>Всем зарегистрированным участникам инструкции с доступом к платформе будут отправлены ближе к дате.`, 
+        "Регистрация открыта до 2 июля 2026 года, 20:00 (время Алматы, GMT+5).",
+    "participation.stages.qualifier":
+        `Онлайн отбор пройдёт 3 июля 2026 года с 13:00 до 15:45 (время Алматы, GMT+5) на платформе <a href='https://autoproctor.com' class='underline' target='_blank'>autoproctor.com</a>.<br>Всем зарегистрированным участникам инструкции с доступом к платформе будут отправлены ближе к дате.`,
+    "participation.stages.preliminary":
+        "Предварительные результаты будут объявлены 5 июля 2026 года в 17:00 (время Алматы, GMT+5).",
+    "participation.stages.appeal":
+        "Форма для апелляции доступна до 5 июля 2026 года, 22:00, а апелляции принимаются до 6 июля 2026 года, 17:00 (время Алматы, GMT+5).",
+    "participation.stages.results":
+        "Анонс окончательных результатов и рассылка пригласительных писем — 6 июля 2026 года в 19:00 (время Алматы, GMT+5).",
     "participation.stages.final":
-        "Финальный очный этап пройдет 1-5 августа 2026 года в Международном Университете Информационных Технологий в Алматы (ул. Манаса 34/1).",
+        "Финальный очный этап пройдёт 3-7 августа 2026 года в Международном Университете Информационных Технологий в Алматы (ул. Манаса 34/1).",
     tasks: "ЗАДАЧИ",
     "tasks.description":
         "Задачи на турнир составляются командой из членов национальной сборной Казахстана по физике: призерами IPhO, IMO, APhO, EuPhO, IJSO, BPhO, IMChO, IYPT и студентами ЛФИ МФТИ, Harvard, Williams College и Sheffield University. Мы стараемся брать все самое лучшее как с классических олимпиад, так и с не очень по типу кубка ЛФИ ",
@@ -122,7 +134,7 @@ export const ruHome = {
 import * as sponsors from './sponsors';
 
 export const kzHome = {
-    'seo.description': "Іріктеу кезеңі 2026 жылғы 30 маусымда AutoProctor платформасында онлайн өтеді, финал 1-5 тамыз 2026 жылы Алматыдағы Халықаралық Ақпараттық Технологиялар Университетінде өтеді.",
+    'seo.description': "Іріктеу кезеңі 2026 жылғы 3 шілдеде AutoProctor платформасында онлайн өтеді, финал 3-7 тамыз 2026 жылы Алматыдағы Халықаралық Ақпараттық Технологиялар Университетінде өтеді.",
     'seo.title': 'Almaty Physics Battles - Орталық Азиядағы физикалық жекпе-жектен IV турнир',
     "collision.minds": "ОЙЛАРДЫҢ СОҚТЫҒЫСУЫ",
     "participate.battle": "Орталық Азиядағы ең ірі Физикалық жекпе-жектерге қатысыңыз!",
@@ -133,7 +145,7 @@ export const kzHome = {
     "register.now": "Қазір тіркеліңіз",
     results: "Нәтижелер",
     "join.competition.description":
-        "Іріктеу кезеңі 2026 жылғы 30 маусымда autoproctor.com платформасында онлайн өтеді, финал 1-5 тамыз 2026 жылы Алматыдағы Халықаралық Ақпараттық Технологиялар Университетінде өтеді.",
+        "Іріктеу кезеңі 2026 жылғы 3 шілдеде autoproctor.com платформасында онлайн өтеді, финал 3-7 тамыз 2026 жылы Алматыдағы Халықаралық Ақпараттық Технологиялар Университетінде өтеді.",
 
     "about.competition": "ЖАРЫС ТУРАЛЫ",
     "about.competition.description":
@@ -147,11 +159,17 @@ export const kzHome = {
     "league.school": "Ученики престижных школ",
     "participation.stages": "ҚАТЫСУ КЕЗЕҢДЕРІ",
     "participation.stages.registration":
-        "Тіркелу 2026 жылғы Х маусымда 00:00-де ашылады және 2026 жылғы Х маусымда 20:00-де жабылады (Алматы уақыты, UTC+5)",
-    "participation.stages.online":
-        "Онлайн іріктеу 2026 жылғы 30 маусымда <a href='https://autoproctor.com' class='underline' target='_blank'>autoproctor.com</a> платформасында өтеді.<br>Командалар 30 маусым 00:00-ден 30 маусым 23:55-ке дейін қатыса алады (Алматы уақыты, UTC+5).<br>Платформаға қолжетімділік және нұсқаулықтар іс-шараға жақын уақытта тіркелген барлық қатысушыларға жіберіледі.",
+        "Тіркелу 2026 жылғы 2 шілде 20:00-ге дейін ашық (Алматы уақыты, GMT+5).",
+    "participation.stages.qualifier":
+        "Онлайн іріктеу 2026 жылғы 3 шілдеде 13:00–15:45 аралығында (Алматы уақыты, GMT+5) <a href='https://autoproctor.com' class='underline' target='_blank'>autoproctor.com</a> платформасында өтеді.<br>Платформаға қолжетімділік және нұсқаулықтар іс-шараға жақын уақытта тіркелген барлық қатысушыларға жіберіледі.",
+    "participation.stages.preliminary":
+        "Алдын ала нәтижелер 2026 жылғы 5 шілдеде сағат 17:00-де жарияланады (Алматы уақыты, GMT+5).",
+    "participation.stages.appeal":
+        "Апелляция формасы 2026 жылғы 5 шілде 22:00-ге дейін қолжетімді, ал апелляциялар 2026 жылғы 6 шілде 17:00-ге дейін қабылданады (Алматы уақыты, GMT+5).",
+    "participation.stages.results":
+        "Қорытынды нәтижелердің жариялануы және шақыру хаттарын жіберу — 2026 жылғы 6 шілдеде сағат 19:00-де (Алматы уақыты, GMT+5).",
     "participation.stages.final":
-        "Ақтық финал кезеңі 2026 жылғы 1-5 тамызда Алматыдағы Халықаралық Ақпараттық Технологиялар Университетінде (Манас көшесі 34/1) өтеді",
+        "Ақтық финал кезеңі 2026 жылғы 3-7 тамызда Алматыдағы Халықаралық Ақпараттық Технологиялар Университетінде (Манас көшесі 34/1) өтеді.",
     tasks: "ТАПСЫРМАЛАР",
     "tasks.description":
         "Турнирдің тапсырмаларын физикадан Қазақстанның ұлттық құрамасы мүшелерінен тұратын команда: IPhO, IMO, APhO, EuPhO, IJSO, BPhO, IMChO, IYPT жүлдегерлері және МФТИ ЛФИ, Harvard, Williams College және Sheffield University студенттері құрайды. Біз классикалық олимпиадалардан да, ЛЛФИ кубогы сияқты әдеттен тыс сайыстардан да ең жақсысын алуға тырысамыз",

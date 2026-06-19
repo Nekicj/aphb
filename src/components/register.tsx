@@ -236,11 +236,16 @@ export const RegisterForm = ({
     const form = useForm<TeamSchema>({
         resolver: zodResolver(dynamicSchema),
     });
-    const registrationCloseDate = new Date("2025-8-1T20:00:00+05:00");
-    
+    // Registration opens automatically on Mon, June 22, 2026 (00:00) and closes July 2, 2026 (20:00), Almaty time (GMT+5).
+    const registrationOpenDate = new Date("2026-06-22T00:00:00+05:00");
+    const registrationCloseDate = new Date("2026-07-02T20:00:00+05:00");
+    const now = new Date();
+    const registrationNotYetOpen = now < registrationOpenDate;
+    const registrationClosed = now > registrationCloseDate;
+
     const handleSubmit = async (data: TeamSchema) => {
-        // reload the page if the registration is closed
-        if (new Date() > registrationCloseDate) {
+        // reload the page if the registration is not currently open
+        if (registrationNotYetOpen || registrationClosed) {
             location.reload()
         }
         setLoading(true)
@@ -255,7 +260,7 @@ export const RegisterForm = ({
             })
 
             if (res.ok) {
-                toast.success(`Спасибо за вашу заявку. Ваша команда успешно зарегистрирована на отборочный этап APhB 2025!`, { duration: 100000 })
+                toast.success(`Спасибо за вашу заявку. Ваша команда успешно зарегистрирована на отборочный этап APhB 2026!`, { duration: 100000 })
                 // Only reset form on successful registration
                 form.reset();
             } else {
@@ -311,7 +316,13 @@ export const RegisterForm = ({
         setLoading(false)
     };
 
-    if (new Date() > registrationCloseDate) {
+    if (registrationNotYetOpen) {
+        return <div className="col-span-4 flex gap-4 flex-col">
+            <div className="text-primary-500 font-bold text-6xl uppercase">{t("registrationSoon")}</div>
+        </div>
+    }
+
+    if (registrationClosed) {
         return <div className="col-span-4 flex gap-4 flex-col">
             <div className="text-primary-500 font-bold text-6xl uppercase">{t("registrationClosed")}</div>
             <div className="text-primary-500 font-bold text-3xl uppercase">{t("seeYouSoon")}</div>

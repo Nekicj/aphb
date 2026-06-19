@@ -1,6 +1,6 @@
 export const enApply = {
-  'seo.description': 'Register for APhB 2025! Qualifier: October 24-26, 2025 online. Final: November 28 - December 1, 2025 at Baiterek School, Almaty. Registration closes October 26, 2025 at 20:00.',
-'seo.title': 'Apply for APhB 2025 - Join the Physics Battles in Almaty',
+  'seo.description': 'Register for APhB 2026! Qualifier: July 3, 2026 online. Final: August 3-7, 2026 at International IT University, Almaty. Registration closes July 2, 2026 at 20:00.',
+'seo.title': 'Apply for APhB 2026 - Join the Physics Battles in Almaty',
 
   "team.name": "Team Name",
   "league.label": "League",
@@ -48,11 +48,12 @@ export const enApply = {
   register: "Register",
   "registrationClosed": "Registration is closed",
   "seeYouSoon": "See you at APhB 2026!",
+  "registrationSoon": "Registration for APhB 2026 opens soon!",
 };
 
 export const ruApply = {
-      "seo.description": "Регистрируйтесь на APhB 2025! Отборочный этап: 24-26 октября 2025 года онлайн. Финал: 28 ноября - 1 декабря 2025 года в школе Baiterek, Алматы. Регистрация закрывается 26 октября 2025 года в 20:00.",
-    "seo.title": "Подайте заявку на APhB 2025 - Присоединяйтесь к битвам по физике в Алматы",
+      "seo.description": "Регистрируйтесь на APhB 2026! Отборочный этап: 3 июля 2026 года онлайн. Финал: 3-7 августа 2026 года в Международном Университете Информационных Технологий, Алматы. Регистрация закрывается 2 июля 2026 года в 20:00.",
+    "seo.title": "Подайте заявку на APhB 2026 - Присоединяйтесь к битвам по физике в Алматы",
 
   "team.name": "Название команды",
   "league.label": "Лига",
@@ -100,11 +101,12 @@ export const ruApply = {
   register: "Регистрация",
   "registrationClosed": "Регистрация закрыта",
   "seeYouSoon": "До встречи на APhB 2026!",
+  "registrationSoon": "Регистрация на APhB 2026 скоро будет открыта!",
 };
 
 export const kzApply = {
-      "seo.description": "APhB 2025-ке тіркеліңіз! Іріктеу: 24-26 қазан 2025 жылы онлайн. Финал: 28 қараша - 1 желтоқсан 2025 жылы Baiterek мектебінде, Алматы. Тіркелу 26 қазан 2025 жылы 20:00-де жабылады.",
-    "seo.title": "APhB 2025-ке қатысыңыз - Алматыдағы Физикалық Жекпе-жектерге Қосылыңыз",
+      "seo.description": "APhB 2026-ке тіркеліңіз! Іріктеу: 3 шілде 2026 жылы онлайн. Финал: 3-7 тамыз 2026 жылы Халықаралық Ақпараттық Технологиялар Университетінде, Алматы. Тіркелу 2 шілде 2026 жылы 20:00-де жабылады.",
+    "seo.title": "APhB 2026-ке қатысыңыз - Алматыдағы Физикалық Жекпе-жектерге Қосылыңыз",
 
   "team.name": "Команда атауы",
   "leader.email": "Жетекшінің электрондық поштасы",
@@ -151,4 +153,5 @@ export const kzApply = {
   register: "Тіркелу",
   "registrationClosed": "Тіркелу жабық",
   "seeYouSoon": "APhB 2026-те көрісеміз!",
+  "registrationSoon": "APhB 2026-ға тіркелу жақын арада ашылады!",
 };

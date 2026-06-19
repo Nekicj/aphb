@@ -6,13 +6,10 @@ import Layout from "~/components/layout.astro";
 import ParticipantsMap from "~/components/participants-map";
 import { getLangFromUrl, useTranslations } from "~/utils/i18n";
 import { sponsors } from "~/lib/sponsors";
-import { participantsLocations, getTotalStats } from "~/data/participants-locations";
+import { participantsLocations } from "~/data/participants-locations";
 
 const lang = getLangFromUrl(Astro.url);
 const t = useTranslations("home", lang);
-
-// Получаем статистику участников
-const totalStats = getTotalStats();
 ---
 
 <Layout title={t("seo.title")} description={t("seo.description")} image="/winners.png">
@@ -120,7 +117,7 @@ const totalStats = getTotalStats();
     {t("league.younger.description")}
   </p>
   <div
-    class="md:h-screen col-span-full bg-primary-900 md:-mx-10 -mx-4 gap-5 grid-cols-subgrid grid px-4 md:px-10 overflow-clip relative text-xl text-white md:py-20 py-10 pb-20 md:pb-32"
+    class="md:min-h-screen col-span-full bg-primary-900 md:-mx-10 -mx-4 gap-5 grid-cols-subgrid grid px-4 md:px-10 overflow-clip relative text-xl text-white md:py-20 py-10 pb-20 md:pb-32"
   >
     <svg
       id="triangle"
@@ -175,7 +172,7 @@ const totalStats = getTotalStats();
           2
         </div>
         <p class="flex-1">
-          <Fragment set:html={t("participation.stages.online")} />
+          <Fragment set:html={t("participation.stages.qualifier")} />
         </p>
       </div>
     </div>
@@ -185,6 +182,42 @@ const totalStats = getTotalStats();
       <div class="flex items-start gap-4 md:col-span-12">
         <div class="flex-shrink-0 rounded-full border-2 leading-6 h-8 w-8 text-white/20 grid place-items-center border-white/20">
           3
+        </div>
+        <p class="flex-1">
+          <Fragment set:html={t("participation.stages.preliminary")} />
+        </p>
+      </div>
+    </div>
+
+    <!-- Step 4 -->
+    <div class="col-span-4 md:col-span-12 flex flex-col md:grid md:grid-cols-12 gap-4 md:gap-5 relative z-10">
+      <div class="flex items-start gap-4 md:col-span-12">
+        <div class="flex-shrink-0 rounded-full border-2 leading-6 h-8 w-8 text-white/20 grid place-items-center border-white/20">
+          4
+        </div>
+        <p class="flex-1">
+          <Fragment set:html={t("participation.stages.appeal")} />
+        </p>
+      </div>
+    </div>
+
+    <!-- Step 5 -->
+    <div class="col-span-4 md:col-span-12 flex flex-col md:grid md:grid-cols-12 gap-4 md:gap-5 relative z-10">
+      <div class="flex items-start gap-4 md:col-span-12">
+        <div class="flex-shrink-0 rounded-full border-2 leading-6 h-8 w-8 text-white/20 grid place-items-center border-white/20">
+          5
+        </div>
+        <p class="flex-1">
+          <Fragment set:html={t("participation.stages.results")} />
+        </p>
+      </div>
+    </div>
+
+    <!-- Step 6 -->
+    <div class="col-span-4 md:col-span-12 flex flex-col md:grid md:grid-cols-12 gap-4 md:gap-5 relative z-10">
+      <div class="flex items-start gap-4 md:col-span-12">
+        <div class="flex-shrink-0 rounded-full border-2 leading-6 h-8 w-8 text-white/20 grid place-items-center border-white/20">
+          6
         </div>
         <p class="flex-1">
           <Fragment set:html={t("participation.stages.final")} />
@@ -303,31 +336,29 @@ const totalStats = getTotalStats();
   </div>
 
   <!-- Международный масштаб -->
-  <section class="col-span-full mb-20">
-    <h2 class="text-3xl lg:text-5xl font-bold text-center mb-12">{t("international.title")}</h2>
-    
-    <!-- Карта -->
-    <div class="max-w-6xl mx-auto mb-12">
-      <div class="bg-white border border-neutral-200 rounded-2xl p-6 lg:p-8 mb-8">
-        <ParticipantsMap locations={participantsLocations} client:load />
+  <section class="col-span-full mb-24 mt-12">
+    <h2 class="text-3xl lg:text-5xl font-bold text-center mb-12 uppercase">
+      {t("international.title")}
+    </h2>
+
+    <!-- Статистика -->
+    <div class="grid grid-cols-3 gap-4 md:gap-8 mb-12">
+      <div class="text-center">
+        <div class="text-3xl sm:text-5xl md:text-8xl font-bold text-primary-500 leading-none">1500+</div>
+        <p class="mt-2 md:mt-4 uppercase tracking-wide text-neutral-500 text-xs sm:text-sm md:text-lg">{t("international.participants")}</p>
+      </div>
+      <div class="text-center">
+        <div class="text-3xl sm:text-5xl md:text-8xl font-bold text-primary-500 leading-none">6</div>
+        <p class="mt-2 md:mt-4 uppercase tracking-wide text-neutral-500 text-xs sm:text-sm md:text-lg">{t("international.countries")}</p>
+      </div>
+      <div class="text-center">
+        <div class="text-3xl sm:text-5xl md:text-8xl font-bold text-primary-500 leading-none">55</div>
+        <p class="mt-2 md:mt-4 uppercase tracking-wide text-neutral-500 text-xs sm:text-sm md:text-lg">{t("international.cities")}</p>
       </div>
     </div>
 
-    <!-- Статистика -->
-    <div class="grid grid-cols-1 md:grid-cols-3 gap-8 max-w-4xl mx-auto">
-      <div class="text-center bg-white border border-neutral-200 rounded-2xl p-8">
-        <div class="text-5xl font-bold text-primary-600 mb-4">1000+</div>
-        <h3 class="text-xl font-semibold text-neutral-800 mb-2">{t("international.participants")}</h3>
-      </div>
-      <div class="text-center bg-white border border-neutral-200 rounded-2xl p-8">
-        <div class="text-5xl font-bold text-primary-600 mb-4">{totalStats.countries}</div>
-        <h3 class="text-xl font-semibold text-neutral-800 mb-2">{t("international.countries")}</h3>
-      </div>
-      <div class="text-center bg-white border border-neutral-200 rounded-2xl p-8">
-        <div class="text-5xl font-bold text-primary-600 mb-4">{totalStats.cities}</div>
-        <h3 class="text-xl font-semibold text-neutral-800 mb-2">{t("international.cities")}</h3>
-      </div>
-    </div>
+    <!-- Карта -->
+    <ParticipantsMap locations={participantsLocations} client:load />
   </section>
 
   <div

@@ -74,7 +74,7 @@ export const en = {
   "partnership.merchandise.front": "Front side",
   "partnership.merchandise.back": "Back side",
   "partnership.contact.title": "Discuss Partnership",
-  "partnership.contact.subtitle": "Contact us to discuss cooperation options for APhB 2025",
+  "partnership.contact.subtitle": "Contact us to discuss cooperation options for APhB 2026",
   "partnership.contact.cta": "Write to Us",
 
   // Testimonials section
@@ -170,7 +170,7 @@ export const ru = {
   "partnership.merchandise.front": "Передняя сторона",
   "partnership.merchandise.back": "Задняя сторона",
   "partnership.contact.title": "Обсудить партнёрство",
-  "partnership.contact.subtitle": "Свяжитесь с нами, чтобы обсудить варианты сотрудничества для APhB 2025",
+  "partnership.contact.subtitle": "Свяжитесь с нами, чтобы обсудить варианты сотрудничества для APhB 2026",
   "partnership.contact.cta": "Написать нам",
 
   // Testimonials section
@@ -266,7 +266,7 @@ export const kz = {
   "partnership.merchandise.front": "Алдыңғы жағы",
   "partnership.merchandise.back": "Артқы жағы",
   "partnership.contact.title": "Серіктестікті талқылау",
-  "partnership.contact.subtitle": "APhB 2025 үшін ынтымақтастық нұсқаларын талқылау үшін бізбен байланысыңыз",
+  "partnership.contact.subtitle": "APhB 2026 үшін ынтымақтастық нұсқаларын талқылау үшін бізбен байланысыңыз",
   "partnership.contact.cta": "Бізге жазыңыз",
 
   // Testimonials section
