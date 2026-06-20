@@ -8,7 +8,6 @@ achievements:
     "Организатор NSB 2025 и AMB 2025",
     "Бронзовый медалист Республиканской Олимпиады по математике 2025",
     "Серебряный медалист Республиканского Конкурса Научных Проектов",
-    "Second Prize winner on 14th European Mathematical Cup",
   ]
 
 name_en: "Miras Bazarbay"
