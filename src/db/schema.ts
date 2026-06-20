@@ -2,6 +2,7 @@
 // https://orm.drizzle.team/docs/sql-schema-declaration
 
 import {
+  boolean,
   index,
   integer,
   pgTableCreator,
@@ -50,6 +51,22 @@ export const teams = createTable(
     member3Grade: integer("member3_grade"),
     member3Email: varchar("member3_email", { length: 256 }),
     member3Phone: varchar("member3_phone", { length: 50 }),
+    captainParentName: varchar("captain_parent_name", { length: 256 }).notNull(),
+    captainParentEmail: varchar("captain_parent_email", { length: 256 }).notNull(),
+    captainParentPhone: varchar("captain_parent_phone", { length: 50 }).notNull(),
+    captainAutoproctorConsent: boolean("captain_autoproctor_consent").notNull(),
+    member1ParentName: varchar("member1_parent_name", { length: 256 }).notNull(),
+    member1ParentEmail: varchar("member1_parent_email", { length: 256 }).notNull(),
+    member1ParentPhone: varchar("member1_parent_phone", { length: 50 }).notNull(),
+    member1AutoproctorConsent: boolean("member1_autoproctor_consent").notNull(),
+    member2ParentName: varchar("member2_parent_name", { length: 256 }).notNull(),
+    member2ParentEmail: varchar("member2_parent_email", { length: 256 }).notNull(),
+    member2ParentPhone: varchar("member2_parent_phone", { length: 50 }).notNull(),
+    member2AutoproctorConsent: boolean("member2_autoproctor_consent").notNull(),
+    member3ParentName: varchar("member3_parent_name", { length: 256 }),
+    member3ParentEmail: varchar("member3_parent_email", { length: 256 }),
+    member3ParentPhone: varchar("member3_parent_phone", { length: 50 }),
+    member3AutoproctorConsent: boolean("member3_autoproctor_consent"),
     createdAt: timestamp("created_at")
       .default(sql`CURRENT_TIMESTAMP`)
       .notNull(),

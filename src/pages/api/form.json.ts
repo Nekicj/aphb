@@ -51,6 +51,22 @@ export const POST: APIRoute = async ({ request, redirect }) => {
                 member3Grade: data.member3Grade || null,
                 member3Email: data.member3Email || null,
                 member3Phone: data.member3Phone || null,
+                captainParentName: data.captainParent?.parentName,
+                captainParentEmail: data.captainParent?.parentEmail,
+                captainParentPhone: data.captainParent?.parentPhone,
+                captainAutoproctorConsent: data.captainParent?.autoproctorConsent ?? false,
+                member1ParentName: data.member1Parent?.parentName,
+                member1ParentEmail: data.member1Parent?.parentEmail,
+                member1ParentPhone: data.member1Parent?.parentPhone,
+                member1AutoproctorConsent: data.member1Parent?.autoproctorConsent ?? false,
+                member2ParentName: data.member2Parent?.parentName,
+                member2ParentEmail: data.member2Parent?.parentEmail,
+                member2ParentPhone: data.member2Parent?.parentPhone,
+                member2AutoproctorConsent: data.member2Parent?.autoproctorConsent ?? false,
+                member3ParentName: data.member3Parent?.parentName || null,
+                member3ParentEmail: data.member3Parent?.parentEmail || null,
+                member3ParentPhone: data.member3Parent?.parentPhone || null,
+                member3AutoproctorConsent: data.member3Parent?.autoproctorConsent ?? null,
             };
             
             console.log("Mapped database data:", JSON.stringify(dbData, null, 2));
