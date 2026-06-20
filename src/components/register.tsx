@@ -1,5 +1,3 @@
-
-
 import { zodResolver } from "@hookform/resolvers/zod";
 import { Loader2, X } from "lucide-react";
 import { useState } from "react";
@@ -15,30 +13,20 @@ import { TabBar } from "./atoms/tab-bar";
 import { TooltipForm } from "./atoms/tooltip";
 
 
-// Phone number formatting function
 const formatPhoneNumber = (phone: string): string => {
-    // Remove all non-digit characters
     const digits = phone.replace(/\D/g, '');
-    
-    // If starts with 8, replace with +7
     if (digits.startsWith('8') && digits.length === 11) {
         return '+7' + digits.slice(1);
     }
-    
-    // If starts with 7, add +
     if (digits.startsWith('7') && digits.length === 11) {
         return '+' + digits;
     }
-    
-    // If already formatted correctly
     if (digits.startsWith('77') && digits.length === 11) {
         return '+' + digits;
     }
-    
-    return phone; // Return as is if can't format
+    return phone;
 };
 
-// Transliteration function for team names
 const transliterate = (text: string): string => {
     const cyrillicToLatin: { [key: string]: string } = {
         'а': 'a', 'б': 'b', 'в': 'v', 'г': 'g', 'д': 'd', 'е': 'e', 'ё': 'yo', 'ж': 'zh',
@@ -49,24 +37,12 @@ const transliterate = (text: string): string => {
         'З': 'Z', 'И': 'I', 'Й': 'Y', 'К': 'K', 'Л': 'L', 'М': 'M', 'Н': 'N', 'О': 'O',
         'П': 'P', 'Р': 'R', 'С': 'S', 'Т': 'T', 'У': 'U', 'Ф': 'F', 'Х': 'Kh', 'Ц': 'Ts',
         'Ч': 'Ch', 'Ш': 'Sh', 'Щ': 'Shch', 'Ъ': '', 'Ы': 'Y', 'Ь': '', 'Э': 'E', 'Ю': 'Yu', 'Я': 'Ya',
-        // Kazakh specific characters
         'ә': 'a', 'ғ': 'gh', 'қ': 'q', 'ң': 'ng', 'ө': 'o', 'ұ': 'u', 'ү': 'u', 'һ': 'h', 'і': 'i',
         'Ә': 'A', 'Ғ': 'Gh', 'Қ': 'Q', 'Ң': 'Ng', 'Ө': 'O', 'Ұ': 'U', 'Ү': 'U', 'Һ': 'H', 'І': 'I'
     };
-    
     return text.split('').map(char => cyrillicToLatin[char] || char).join('');
 };
 
-// Dynamic grade validation based on league
-const createGradeSchema = (league: "junior" | "senior") => {
-    if (league === "junior") {
-        return z.coerce.number().min(5).max(9);
-    } else {
-        return z.coerce.number().min(5).max(13);
-    }
-};
-
-// Create schema with proper error messages based on language
 const createTeamSchema = (lang: string) => {
     const messages = {
         ru: {
@@ -78,7 +54,8 @@ const createTeamSchema = (lang: string) => {
             schoolRequired: "Школа обязательна",
             gradeRequired: "Выберите класс",
             gradeInvalid: "Класс должен быть числом от 5 до 13",
-            gradeNotInLeague: "Класс не соответствует выбранной лиге"
+            gradeNotInLeague: "Класс не соответствует выбранной лиге",
+            autoproctorConsent: "Необходимо подтвердить согласие на AutoProctor",
         },
         en: {
             teamNameRequired: "Team name is required",
@@ -89,7 +66,8 @@ const createTeamSchema = (lang: string) => {
             schoolRequired: "School is required",
             gradeRequired: "Please select grade",
             gradeInvalid: "Grade must be a number from 5 to 13",
-            gradeNotInLeague: "Grade doesn't match selected league"
+            gradeNotInLeague: "Grade doesn't match selected league",
+            autoproctorConsent: "AutoProctor consent is required",
         },
         kz: {
             teamNameRequired: "Команда атауы міндетті",
@@ -100,12 +78,29 @@ const createTeamSchema = (lang: string) => {
             schoolRequired: "Мектеп міндетті",
             gradeRequired: "Сыныпты таңдаңыз",
             gradeInvalid: "Сынып 5-тен 13-ке дейінгі сан болуы керек",
-            gradeNotInLeague: "Сынып таңдалған лигаға сәйкес келмейді"
+            gradeNotInLeague: "Сынып таңдалған лигаға сәйкес келмейді",
+            autoproctorConsent: "AutoProctor келісімін растау қажет",
         }
     };
-    
+
     const msg = messages[lang as keyof typeof messages] || messages.ru;
-    
+
+    const parentSchema = z.object({
+        parentName: z.string().min(1, msg.nameRequired),
+        parentEmail: z.string().email(msg.emailInvalid),
+        parentPhone: z.string().min(1, msg.phoneRequired).transform(formatPhoneNumber),
+        autoproctorConsent: z.literal(true, {
+            errorMap: () => ({ message: msg.autoproctorConsent }),
+        }),
+    });
+
+    const optionalParentSchema = z.object({
+        parentName: z.string().optional(),
+        parentEmail: z.string().email(msg.emailInvalid).optional().or(z.literal("")),
+        parentPhone: z.string().optional().transform((phone) => phone ? formatPhoneNumber(phone) : phone),
+        autoproctorConsent: z.boolean().optional(),
+    });
+
     return z.object({
         teamName: z
             .string()
@@ -114,9 +109,13 @@ const createTeamSchema = (lang: string) => {
             .transform(transliterate),
         league: z.enum(["junior", "senior"]).default("junior"),
         language: z.enum(["ru", "kz"]).default("ru"),
+
+        // Leader
         leaderName: z.string().min(1, msg.nameRequired),
         leaderEmail: z.string().email(msg.emailInvalid),
         leaderPhone: z.string().min(1, msg.phoneRequired).transform(formatPhoneNumber),
+
+        // Captain
         captainName: z.string().min(1, msg.nameRequired),
         captainSchool: z.string().min(1, msg.schoolRequired),
         captainGrade: z.preprocess((val) => {
@@ -128,6 +127,9 @@ const createTeamSchema = (lang: string) => {
         }).min(5, msg.gradeInvalid).max(13, msg.gradeInvalid)),
         captainEmail: z.string().email(msg.emailInvalid),
         captainPhone: z.string().min(1, msg.phoneRequired).transform(formatPhoneNumber),
+        captainParent: parentSchema,
+
+        // Member 1
         member1Name: z.string().min(1, msg.nameRequired),
         member1School: z.string().min(1, msg.schoolRequired),
         member1Grade: z.preprocess((val) => {
@@ -139,6 +141,9 @@ const createTeamSchema = (lang: string) => {
         }).min(5, msg.gradeInvalid).max(13, msg.gradeInvalid)),
         member1Email: z.string().email(msg.emailInvalid),
         member1Phone: z.string().min(1, msg.phoneRequired).transform(formatPhoneNumber),
+        member1Parent: parentSchema,
+
+        // Member 2
         member2Name: z.string().min(1, msg.nameRequired),
         member2School: z.string().min(1, msg.schoolRequired),
         member2Grade: z.preprocess((val) => {
@@ -150,6 +155,9 @@ const createTeamSchema = (lang: string) => {
         }).min(5, msg.gradeInvalid).max(13, msg.gradeInvalid)),
         member2Email: z.string().email(msg.emailInvalid),
         member2Phone: z.string().min(1, msg.phoneRequired).transform(formatPhoneNumber),
+        member2Parent: parentSchema,
+
+        // Member 3 (optional)
         member3Name: z.string().optional(),
         member3School: z.string().optional(),
         member3Grade: z.preprocess((val) => {
@@ -158,20 +166,17 @@ const createTeamSchema = (lang: string) => {
         }, z.number().min(5, msg.gradeInvalid).max(13, msg.gradeInvalid).optional()),
         member3Email: z.string().email(msg.emailInvalid).optional().or(z.literal("")),
         member3Phone: z.string().optional().transform((phone) => phone ? formatPhoneNumber(phone) : phone),
+        member3Parent: optionalParentSchema,
+
     }).refine((data) => {
-        // Validate grades based on league
         const maxGrade = data.league === "junior" ? 9 : 13;
         const minGrade = 5;
-        
         const grades = [data.captainGrade, data.member1Grade, data.member2Grade];
         if (data.member3Grade && !isNaN(data.member3Grade)) {
             grades.push(data.member3Grade);
         }
-        
         for (const grade of grades) {
-            if (grade < minGrade || grade > maxGrade) {
-                return false;
-            }
+            if (grade < minGrade || grade > maxGrade) return false;
         }
         return true;
     }, {
@@ -180,14 +185,11 @@ const createTeamSchema = (lang: string) => {
     });
 };
 
-export const teamSchema = createTeamSchema("ru"); // Default schema
-
+export const teamSchema = createTeamSchema("ru");
 export type TeamSchema = z.infer<typeof teamSchema>;
 
-// Emergency Modal Component
 const EmergencyModal = ({ isOpen, onClose }: { isOpen: boolean; onClose: () => void }) => {
     if (!isOpen) return null;
-    
     return (
         <div className="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50">
             <div className="bg-white rounded-lg p-6 max-w-md mx-4">
@@ -201,13 +203,13 @@ const EmergencyModal = ({ isOpen, onClose }: { isOpen: boolean; onClose: () => v
                     Произошла неожиданная ошибка. Пожалуйста, свяжитесь с нами для решения проблемы.
                 </p>
                 <div className="flex flex-col gap-2">
-                    <a 
-                        href="mailto:info@aphb.org" 
+                    <a
+                        href="mailto:info@aphb.org"
                         className="bg-blue-600 text-white px-4 py-2 rounded hover:bg-blue-700 text-center"
                     >
                         Написать на info@aphb.org
                     </a>
-                    <button 
+                    <button
                         onClick={onClose}
                         className="bg-gray-300 text-gray-700 px-4 py-2 rounded hover:bg-gray-400"
                     >
@@ -225,18 +227,17 @@ export const RegisterForm = ({
     lang: ReturnType<typeof getLangFromUrl>;
 }) => {
     const t = useTranslations('apply', lang);
-    const [hasAdditionalMember, setHasAdditionalMember] = useState(false)
-    const [loading, setLoading] = useState(false)
-    const [personalDataChecked, setPersonalDataChecked] = useState(false)
-    const [showEmergencyModal, setShowEmergencyModal] = useState(false)
-    
-    // Create schema based on current language
+    const [hasAdditionalMember, setHasAdditionalMember] = useState(false);
+    const [loading, setLoading] = useState(false);
+    const [personalDataChecked, setPersonalDataChecked] = useState(false);
+    const [showEmergencyModal, setShowEmergencyModal] = useState(false);
+
     const dynamicSchema = createTeamSchema(lang);
-    
+
     const form = useForm<TeamSchema>({
         resolver: zodResolver(dynamicSchema),
     });
-    // Registration opens automatically on Mon, June 22, 2026 (00:00) and closes July 2, 2026 (20:00), Almaty time (GMT+5).
+
     const registrationOpenDate = new Date("2026-06-22T00:00:00+05:00");
     const registrationCloseDate = new Date("2026-07-02T20:00:00+05:00");
     const now = new Date();
@@ -244,35 +245,28 @@ export const RegisterForm = ({
     const registrationClosed = now > registrationCloseDate;
 
     const handleSubmit = async (data: TeamSchema) => {
-        // reload the page if the registration is not currently open
         if (registrationNotYetOpen || registrationClosed) {
-            location.reload()
+            location.reload();
         }
-        setLoading(true)
-        
+        setLoading(true);
+
         try {
             const res = await fetch("/api/form.json", {
                 method: 'POST',
-                headers: {
-                    'Content-Type': 'application/json',
-                },
+                headers: { 'Content-Type': 'application/json' },
                 body: JSON.stringify(data),
-            })
+            });
 
             if (res.ok) {
-                toast.success(`Спасибо за вашу заявку. Ваша команда успешно зарегистрирована на отборочный этап APhB 2026!`, { duration: 100000 })
-                // Only reset form on successful registration
+                toast.success(`Спасибо за вашу заявку. Ваша команда успешно зарегистрирована на отборочный этап APhB 2026!`, { duration: 100000 });
                 form.reset();
             } else {
-                const errorData = await res.json()
+                const errorData = await res.json();
                 const errorMessage = errorData.message || "Неизвестная ошибка";
-                
-                // DON'T reset form data - preserve all user input
-                // Try to identify which field has the error
+
                 if (errorMessage.includes("team name") || errorMessage.includes("teamName") || errorMessage.includes("team")) {
                     form.setError("teamName", { message: errorMessage });
                 } else if (errorMessage.includes("email")) {
-                    // Try to identify which email field
                     if (errorMessage.includes("leader")) {
                         form.setError("leaderEmail", { message: errorMessage });
                     } else if (errorMessage.includes("captain")) {
@@ -284,11 +278,9 @@ export const RegisterForm = ({
                     } else if (errorMessage.includes("member3")) {
                         form.setError("member3Email", { message: errorMessage });
                     } else {
-                        // Generic email error - set on leader email as primary
                         form.setError("leaderEmail", { message: errorMessage });
                     }
                 } else if (errorMessage.includes("phone")) {
-                    // Try to identify which phone field
                     if (errorMessage.includes("leader")) {
                         form.setError("leaderPhone", { message: errorMessage });
                     } else if (errorMessage.includes("captain")) {
@@ -300,33 +292,30 @@ export const RegisterForm = ({
                     } else if (errorMessage.includes("member3")) {
                         form.setError("member3Phone", { message: errorMessage });
                     } else {
-                        // Generic phone error - set on leader phone as primary
                         form.setError("leaderPhone", { message: errorMessage });
                     }
                 } else {
-                    // Unknown error - show emergency modal but keep form data
                     setShowEmergencyModal(true);
                 }
             }
         } catch (error) {
-            // Network or other unexpected error
             setShowEmergencyModal(true);
         }
 
-        setLoading(false)
+        setLoading(false);
     };
 
     if (registrationNotYetOpen) {
         return <div className="col-span-4 flex gap-4 flex-col">
             <div className="text-primary-500 font-bold text-6xl uppercase">{t("registrationSoon")}</div>
-        </div>
+        </div>;
     }
 
     if (registrationClosed) {
         return <div className="col-span-4 flex gap-4 flex-col">
             <div className="text-primary-500 font-bold text-6xl uppercase">{t("registrationClosed")}</div>
             <div className="text-primary-500 font-bold text-3xl uppercase">{t("seeYouSoon")}</div>
-        </div>
+        </div>;
     }
 
     return (
@@ -340,36 +329,40 @@ export const RegisterForm = ({
                         {t("formSubtitle")}
                     </p>
                 </div>
-                
+
+                <div className="mb-8 bg-blue-50 border border-blue-200 rounded-xl p-4 md:p-5">
+                    <p className="text-blue-900 text-sm md:text-base leading-relaxed text-center font-medium">
+                        <span dangerouslySetInnerHTML={{ __html: t("rulesAcknowledgement") }} />
+                    </p>
+                </div>
+
                 <Form {...form}>
                     <form
                         className="flex flex-col gap-6"
                         onSubmit={form.handleSubmit(handleSubmit)}
                     >
-                <FormField
-                    control={form.control}
-                    name="teamName"
-                    render={({ field }) => (
-                        <FormItem>
-                            <FormLabel className="mb-1">{t("team.name")}</FormLabel>
-                            <FormControl>
-                                <Input
-                                    placeholder={t("team.name") + " (автоматически переводится в латиницу)"}
-                                    maxLength={20}
-                                    className="h-12 md:h-14 p-3 md:p-4 border-neutral-300 rounded-lg text-base placeholder:text-neutral-400 w-full"
-                                    {...field}
-                                    onChange={(e) => {
-                                        const transliterated = transliterate(e.target.value);
-                                        field.onChange(transliterated);
-                                    }}
-                                />
-                            </FormControl>
-
-                            <FormMessage />
-                        </FormItem>
-                    )}
-                />
-
+                        <FormField
+                            control={form.control}
+                            name="teamName"
+                            render={({ field }) => (
+                                <FormItem>
+                                    <FormLabel className="mb-1">{t("team.name")}</FormLabel>
+                                    <FormControl>
+                                        <Input
+                                            placeholder={t("team.name") + " (автоматически переводится в латиницу)"}
+                                            maxLength={20}
+                                            className="h-12 md:h-14 p-3 md:p-4 border-neutral-300 rounded-lg text-base placeholder:text-neutral-400 w-full"
+                                            {...field}
+                                            onChange={(e) => {
+                                                const transliterated = transliterate(e.target.value);
+                                                field.onChange(transliterated);
+                                            }}
+                                        />
+                                    </FormControl>
+                                    <FormMessage />
+                                </FormItem>
+                            )}
+                        />
 
                         <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
                             <div className="flex flex-col gap-2">
@@ -414,38 +407,47 @@ export const RegisterForm = ({
                             </div>
                         </div>
 
-                <MemberForm prefix="leader" required={true} tooltip={t("leaderInfo")} lang={lang} />
-                <MemberForm prefix="captain" required={true} tooltip={t("captainInfo")} lang={lang} />
+                        <MemberForm prefix="leader" required={true} tooltip={t("leaderInfo")} lang={lang} />
+                        <MemberForm prefix="captain" required={true} tooltip={t("captainInfo")} lang={lang} />
 
-                {
-                    Array(3)
-                        .fill(undefined)
-                        .map((_, index) => (
-                            <MemberForm key={`member${index + 1 as 1 | 2 | 3}`} prefix={`member${index + 1 as 1 | 2 | 3}`} lang={lang} required={index !== 2} className={`${index == 2 && !hasAdditionalMember && "hidden"}`} />
-                        ))
-                }
-                <div className="flex items-center mb-4">
-                    <input
-                        type="checkbox"
-                        checked={personalDataChecked}
-                        onChange={(e) => setPersonalDataChecked(e.target.checked)}
-                        className="w-4 h-4"
-                    />
-                    <Label className="ml-2"><div dangerouslySetInnerHTML={{ __html: t("personalData") }} /></Label>
-                </div>
+                        {
+                            Array(3)
+                                .fill(undefined)
+                                .map((_, index) => (
+                                    <MemberForm
+                                        key={`member${index + 1 as 1 | 2 | 3}`}
+                                        prefix={`member${index + 1 as 1 | 2 | 3}`}
+                                        lang={lang}
+                                        required={index !== 2}
+                                        className={`${index == 2 && !hasAdditionalMember && "hidden"}`}
+                                    />
+                                ))
+                        }
+
+                        <div className="flex items-center mb-4">
+                            <input
+                                type="checkbox"
+                                checked={personalDataChecked}
+                                onChange={(e) => setPersonalDataChecked(e.target.checked)}
+                                className="w-4 h-4"
+                            />
+                            <Label className="ml-2"><div dangerouslySetInnerHTML={{ __html: t("personalData") }} /></Label>
+                        </div>
+
                         <div className="flex justify-center">
                             <button
                                 className={cn("border-2 border-dashed border-neutral-300 bg-neutral-50 hover:bg-neutral-100 text-neutral-700 text-base font-medium rounded-xl px-6 py-4 transition-colors", hasAdditionalMember && "hidden")}
                                 type="button"
                                 onClick={() => setHasAdditionalMember(true)}
                             >
-{t("addMember4")}
+                                {t("addMember4")}
                             </button>
                         </div>
+
                         <div className="flex justify-center pt-4">
                             <button
                                 className="bg-primary-500 hover:bg-primary-700 text-white text-lg font-semibold rounded-xl px-8 py-4 flex gap-2 items-center disabled:opacity-50 disabled:cursor-not-allowed transition-colors min-w-[200px] justify-center shadow-lg border-2 border-primary-700"
-                                style={{ backgroundColor: '#1D4ED8' }} // Fallback color
+                                style={{ backgroundColor: '#1D4ED8' }}
                                 type="submit"
                                 disabled={!personalDataChecked || loading}
                             >
@@ -455,10 +457,10 @@ export const RegisterForm = ({
                         </div>
                     </form>
                 </Form>
-                
-                <EmergencyModal 
-                    isOpen={showEmergencyModal} 
-                    onClose={() => setShowEmergencyModal(false)} 
+
+                <EmergencyModal
+                    isOpen={showEmergencyModal}
+                    onClose={() => setShowEmergencyModal(false)}
                 />
             </div>
         </div>
@@ -472,15 +474,14 @@ interface MemberFormProps {
     required?: boolean;
     tooltip?: string;
     lang: ReturnType<typeof getLangFromUrl>;
-
 }
 
 const MemberForm = ({ lang, prefix, className, required, tooltip }: MemberFormProps) => {
-    const { control, watch } = useFormContext<TeamSchema>()
+    const { control, watch, formState: { errors } } = useFormContext<TeamSchema>();
     const t = useTranslations("apply", lang);
     const league = watch("league");
-    
-    // Generate grade options based on league
+    const isStudent = prefix !== "leader";
+
     const getGradeOptions = () => {
         const minGrade = 5;
         const maxGrade = league === "junior" ? 9 : 13;
@@ -490,22 +491,24 @@ const MemberForm = ({ lang, prefix, className, required, tooltip }: MemberFormPr
         }
         return grades;
     };
+
     const getSectionTitle = () => {
         switch (prefix) {
-            case "leader": return "Руководитель команды";
-            case "captain": return "Капитан команды";
-            case "member1": return "Участник 2";
-            case "member2": return "Участник 3";
-            case "member3": return "Участник 4 (необязательно)";
+            case "leader": return t("sectionLeader") || "Руководитель команды";
+            case "captain": return t("sectionCaptain") || "Капитан команды";
+            case "member1": return t("sectionMember1") || "Участник 2";
+            case "member2": return t("sectionMember2") || "Участник 3";
+            case "member3": return t("sectionMember3") || "Участник 4 (необязательно)";
             default: return "";
         }
     };
 
     return (
-        <div className={cn("bg-neutral-50 rounded-xl p-4 md:p-6 border border-neutral-200", className)} >
+        <div className={cn("bg-neutral-50 rounded-xl p-4 md:p-6 border border-neutral-200", className)}>
             <h3 className="text-xl font-semibold text-neutral-800 mb-4 pb-2 border-b border-neutral-200">
                 {getSectionTitle()}
             </h3>
+
             {prefix === "leader" && (
                 <div className="bg-blue-50 border border-blue-200 rounded-lg p-4 mb-6">
                     <p className="text-blue-800 text-sm leading-relaxed">
@@ -513,106 +516,92 @@ const MemberForm = ({ lang, prefix, className, required, tooltip }: MemberFormPr
                     </p>
                 </div>
             )}
+
             <div className="grid grid-cols-1 lg:grid-cols-2 xl:grid-cols-3 gap-4">
-            <FormField
-                control={control}
-                name={`${prefix}Name`}
-                render={({ field }) => (
-                    <FormItem>
-                        <Label className="mb-1 flex gap-1">
-                            {t(`${prefix}Name`)}
-                            {tooltip && <TooltipForm content={tooltip} />}
-                        </Label>
-                        <FormControl>
-                            <Input
-                                placeholder={t(`${prefix}Name`) +
-                                    " (ex: Константин Константинов Константинопольский)"}
-                                className="h-12 md:h-14 p-3 md:p-4 border-neutral-300 rounded-lg text-base placeholder:text-neutral-400 w-full"
+                <FormField
+                    control={control}
+                    name={`${prefix}Name`}
+                    render={({ field }) => (
+                        <FormItem>
+                            <Label className="mb-1 flex gap-1">
+                                {t(`${prefix}Name`)}
+                                {tooltip && <TooltipForm content={tooltip} />}
+                            </Label>
+                            <FormControl>
+                                <Input
+                                    placeholder={t(`${prefix}Name`) + " (ex: Константин Константинов Константинопольский)"}
+                                    className="h-12 md:h-14 p-3 md:p-4 border-neutral-300 rounded-lg text-base placeholder:text-neutral-400 w-full"
+                                    {...field}
+                                />
+                            </FormControl>
+                            <FormMessage />
+                        </FormItem>
+                    )}
+                />
 
-                                {...field}
-                            />
-                        </FormControl>
+                <FormField
+                    control={control}
+                    name={`${prefix}Email`}
+                    render={({ field }) => (
+                        <FormItem>
+                            <Label className="mb-1">{t(`${prefix}Email`)}</Label>
+                            <FormControl>
+                                <Input
+                                    placeholder={t(`${prefix}Email`)}
+                                    className="h-12 md:h-14 p-3 md:p-4 border-neutral-300 rounded-lg text-base placeholder:text-neutral-400 w-full"
+                                    {...field}
+                                />
+                            </FormControl>
+                            <FormMessage />
+                        </FormItem>
+                    )}
+                />
 
-                        <FormMessage />
-                    </FormItem>
-                )}
-            />
+                <FormField
+                    control={control}
+                    name={`${prefix}Phone`}
+                    render={({ field }) => (
+                        <FormItem>
+                            <Label className="mb-1">{t(`${prefix}Phone`)}</Label>
+                            <FormControl>
+                                <Input
+                                    placeholder="+77011234567"
+                                    className="h-12 md:h-14 p-3 md:p-4 border-neutral-300 rounded-lg text-base placeholder:text-neutral-400 w-full"
+                                    type="tel"
+                                    {...field}
+                                    onChange={(e) => {
+                                        const formatted = formatPhoneNumber(e.target.value);
+                                        field.onChange(formatted);
+                                    }}
+                                />
+                            </FormControl>
+                            <FormMessage />
+                        </FormItem>
+                    )}
+                />
 
-            <FormField
-                control={control}
-                name={`${prefix}Email`}
-                render={({ field }) => (
-                    <FormItem>
-                        <Label className="mb-1">
-                            {t(`${prefix}Email`)}
-                        </Label>
-                        <FormControl>
-                            <Input
-                                placeholder={t(`${prefix}Email`)}
-                                className="h-12 md:h-14 p-3 md:p-4 border-neutral-300 rounded-lg text-base placeholder:text-neutral-400 w-full"
-                                {...field}
-                            />
-                        </FormControl>
-
-                        <FormMessage />
-                    </FormItem>
-                )}
-            />
-
-            <FormField
-                control={control}
-                name={`${prefix}Phone`}
-                render={({ field }) => (
-                    <FormItem>
-                        <Label className="mb-1">
-                            {t(`${prefix}Phone`)}
-                        </Label>
-                        <FormControl>
-                            <Input
-                                placeholder="+77011234567"
-                                className="h-12 md:h-14 p-3 md:p-4 border-neutral-300 rounded-lg text-base placeholder:text-neutral-400 w-full"
-                                type="tel"
-                                {...field}
-                                onChange={(e) => {
-                                    const formatted = formatPhoneNumber(e.target.value);
-                                    field.onChange(formatted);
-                                }}
-                            />
-                        </FormControl>
-
-                        <FormMessage />
-                    </FormItem>
-                )}
-            />
-
-
-            {
-                prefix !== "leader" && (
+                {isStudent && (
                     <>
-
                         <FormField
                             control={control}
                             name={`${prefix}Grade`}
                             render={({ field }) => (
                                 <FormItem>
-                                    <Label className="mb-1">
-                                        {t(`${prefix}Grade`)}
-                                    </Label>
+                                    <Label className="mb-1">{t(`${prefix}Grade`)}</Label>
                                     <FormControl>
                                         <select
                                             className="h-12 md:h-14 p-3 md:p-4 border-neutral-300 rounded-lg text-base w-full border bg-white"
                                             {...field}
                                             onChange={(e) => field.onChange(Number(e.target.value))}
                                         >
-                                            <option value="">Выберите класс</option>
+                                            <option value="">{t("selectGrade") || "Выберите класс"}</option>
                                             {getGradeOptions().map((grade) => (
                                                 <option key={grade} value={grade}>
-                                                    {grade} класс
+                                                    {grade} {t("gradeLabel") || "класс"}
                                                 </option>
                                             ))}
                                         </select>
                                     </FormControl>
-
                                     <FormMessage />
                                 </FormItem>
                             )}
@@ -623,9 +612,7 @@ const MemberForm = ({ lang, prefix, className, required, tooltip }: MemberFormPr
                             name={`${prefix}School`}
                             render={({ field }) => (
                                 <FormItem>
-                                    <Label className="mb-1">
-                                        {t(`${prefix}School`)}
-                                    </Label>
+                                    <Label className="mb-1">{t(`${prefix}School`)}</Label>
                                     <FormControl>
                                         <Input
                                             placeholder={t(`${prefix}School`) + " (ex: НИШ ФМН г. Тараз)"}
@@ -633,17 +620,112 @@ const MemberForm = ({ lang, prefix, className, required, tooltip }: MemberFormPr
                                             {...field}
                                         />
                                     </FormControl>
+                                    <FormMessage />
+                                </FormItem>
+                            )}
+                        />
+                    </>
+                )}
+            </div>
 
+            {isStudent && (
+                <div className="mt-6 pt-5 border-t border-neutral-200">
+                    <h4 className="text-base font-semibold text-neutral-700 mb-4">
+                        {t("parentSection") || "Законный представитель"}
+                        {prefix === "member3" && (
+                            <span className="ml-2 text-sm font-normal text-neutral-500">
+                                ({t("optionalIfMember3") || "если участник зарегистрирован"})
+                            </span>
+                        )}
+                    </h4>
+
+                    <div className="grid grid-cols-1 lg:grid-cols-2 xl:grid-cols-3 gap-4">
+                        <FormField
+                            control={control}
+                            name={`${prefix}Parent.parentName` as any}
+                            render={({ field }) => (
+                                <FormItem>
+                                    <Label className="mb-1">{t("parentName") || "ФИО законного представителя"}</Label>
+                                    <FormControl>
+                                        <Input
+                                            placeholder="Иванов Иван Иванович"
+                                            className="h-12 md:h-14 p-3 md:p-4 border-neutral-300 rounded-lg text-base placeholder:text-neutral-400 w-full"
+                                            {...field}
+                                        />
+                                    </FormControl>
                                     <FormMessage />
                                 </FormItem>
                             )}
                         />
 
+                        <FormField
+                            control={control}
+                            name={`${prefix}Parent.parentEmail` as any}
+                            render={({ field }) => (
+                                <FormItem>
+                                    <Label className="mb-1">{t("parentEmail") || "Email законного представителя"}</Label>
+                                    <FormControl>
+                                        <Input
+                                            placeholder="parent@example.com"
+                                            className="h-12 md:h-14 p-3 md:p-4 border-neutral-300 rounded-lg text-base placeholder:text-neutral-400 w-full"
+                                            {...field}
+                                        />
+                                    </FormControl>
+                                    <FormMessage />
+                                </FormItem>
+                            )}
+                        />
 
-                    </>
-                )
-            }
-            </div>
+                        <FormField
+                            control={control}
+                            name={`${prefix}Parent.parentPhone` as any}
+                            render={({ field }) => (
+                                <FormItem>
+                                    <Label className="mb-1">{t("parentPhone") || "Телефон законного представителя"}</Label>
+                                    <FormControl>
+                                        <Input
+                                            placeholder="+77011234567"
+                                            type="tel"
+                                            className="h-12 md:h-14 p-3 md:p-4 border-neutral-300 rounded-lg text-base placeholder:text-neutral-400 w-full"
+                                            {...field}
+                                            onChange={(e) => {
+                                                const formatted = formatPhoneNumber(e.target.value);
+                                                field.onChange(formatted);
+                                            }}
+                                        />
+                                    </FormControl>
+                                    <FormMessage />
+                                </FormItem>
+                            )}
+                        />
+                    </div>
+
+                    <div className="mt-4">
+                        <FormField
+                            control={control}
+                            name={`${prefix}Parent.autoproctorConsent` as any}
+                            render={({ field }) => (
+                                <FormItem>
+                                    <div className="flex items-start gap-3 bg-amber-50 border border-amber-200 rounded-lg p-3 md:p-4">
+                                        <FormControl>
+                                            <input
+                                                type="checkbox"
+                                                className="w-4 h-4 mt-0.5 shrink-0 accent-blue-600"
+                                                checked={field.value as boolean | undefined ?? false}
+                                                onChange={(e) => field.onChange(e.target.checked)}
+                                            />
+                                        </FormControl>
+                                        <Label className="text-sm text-amber-900 leading-snug cursor-pointer">
+                                            {t("autoproctorConsent") || "Я, законный представитель этого ученика, подтверждаю согласие на использование системы AutoProctor и обработку связанных с этим персональных данных."}
+                                        </Label>
+                                    </div>
+                                    <FormMessage />
+                                </FormItem>
+                            )}
+                        />
+                    </div>
+                </div>
+            )}
         </div>
-    )
-}
+    );
+};
