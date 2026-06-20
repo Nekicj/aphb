@@ -4,7 +4,7 @@ position: "Организатор"
 achievements:
   [
     "Ученица Республиканской физико-математической школы",
-    "Founder общественного объединения Aurelion Youth Alliance",
+    "Основатель общественного объединения Aurelion Youth Alliance",
     "Организатор Young Researchers Tournament",
     "Организатор Young Cinema Tournament",
     "Бронзовая медалистка IZhO 2025 и 2026",
