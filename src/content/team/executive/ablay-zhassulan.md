@@ -8,7 +8,6 @@ achievements:
     "Золотой призёр Reach Award на FTC Worlds Championship в составе команды KAP",
     "Команда KAP входит в топ-8 лучших команд мира по робо-игре",
     "Организатор крупнейшего стартап-батла для школьников в Центральной Азии с призовым фондом 400 000 долларов",
-    "Silkway Accelerator Program Manager",
   ]
 
 name_en: "Zhassulan Ablay"
