@@ -3,11 +3,9 @@ name: "Асылхан Алижан"
 position: "Организатор"
 achievements:
   [
-    "Член общественного объединения Aurelion Youth Alliance",
-    "Организатор Young Researchers Tournament Winter 2026 и Summer 2026",
     "Ученик Республиканской физико-математической школы",
     "Бронзовый призёр IZhO 2026",
-    "АБС 5 Республиканской олимпиады по Science",
+    "АБС 5 Республиканской научной олимпиады",
     "Серебряный медалист КБО 2025",
   ]
 
@@ -19,8 +17,6 @@ position_kz: "Ұйымдастырушы"
 
 achievements_en:
   [
-    "Member of Aurelion Youth Alliance",
-    "Organizer of Young Researchers Tournament Winter 2026 and Summer 2026",
     "Student at the Republican Physics and Mathematics School",
     "Bronze medalist at IZhO 2026",
     "ABS 5 of the Republican Science Olympiad",
@@ -28,8 +24,7 @@ achievements_en:
   ]
 achievements_kz:
   [
-    "Aurelion Youth Alliance қоғамдық бірлестігінің мүшесі",
-    "Young Researchers Tournament Winter 2026 және Summer 2026 ұйымдастырушысы",
+    
     "Республикалық физика-математика мектебінің оқушысы",
     "IZhO 2026 қола жүлдегері",
     "Республикалық Science олимпиадасының АБС 5",

@@ -25,9 +25,9 @@ const translatePath = useTranslatedPath(lang);
 const url = new URL(Astro.url).pathname;
 
 const regulation =
-  "https://drive.google.com/drive/folders/1J5UYqaUpl_DxOWM4l0taJgvucHTL8_ff?usp=sharing";
+  "https://drive.google.com/drive/folders/1dtdZZJyb7xIg3XA7XWdRG-MkGWZB6DNp?usp=sharing";
 const rules =
-  "https://drive.google.com/drive/folders/1J5UYqaUpl_DxOWM4l0taJgvucHTL8_ff?usp=sharing";
+  "https://drive.google.com/drive/folders/1dtdZZJyb7xIg3XA7XWdRG-MkGWZB6DNp?usp=sharing";
 ---
 
 <!doctype html>
@@ -200,7 +200,6 @@ const rules =
           <!-- Навигация -->
           <div class="flex md:col-span-3 lg:col-span-2 flex-col gap-4 relative z-20">
             <h3 class="font-bold text-lg md:text-xl mb-2">{t("footer.sections")}</h3>
-            <a class="hidden" href={regulation}>{t("footer.sections.regulations")}</a>
             <a class="hidden" href={rules}>{t("footer.sections.parliament")}</a>
             <a href="/results-and-tasks" class="hover:text-primary-200 transition-colors">{t("footer.sections.results")}</a>
             <a class="hidden" href="https://docs.google.com/document/d/1I8nwjE3vdZkJfWb5Cax5RRVbBVBZp6I7zbvoIHIrySY/edit?usp=sharing">{t("footer.sections.hr.policy")}</a>
@@ -214,6 +213,7 @@ const rules =
               <a href="mailto:info@aphb.org" class="hover:text-primary-200 transition-colors">info@aphb.org</a>
               <a href="https://www.instagram.com/aphb.kz/" class="hover:text-primary-200 transition-colors">Instagram</a>
               <a href="https://t.me/aphbkz" class="hover:text-primary-200 transition-colors">Telegram</a>
+              <a href={regulation} target="_blank" rel="noopener noreferrer" class="hover:text-primary-200 transition-colors">{t("footer.sections.regulations")}</a>
             </div>
           </div>
           
