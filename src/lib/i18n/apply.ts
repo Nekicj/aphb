@@ -20,7 +20,7 @@ export const enApply = {
   'addMember4': "+ Add Participant 4",
   'captainInfo': "Team captain is a team member who participates in captain's battles and participates in communication with the Tournament Organizing Committee when questions arise.",
 
-  'rulesAcknowledgement': "By filling out this form, team members, participants, and their legal representatives confirm that they have read the <a href='/docs/rules' class='underline font-semibold' target='_blank'>General Rules</a> and the <a href='/docs/qualifier-rules' class='underline font-semibold' target='_blank'>Qualifier Rules</a> of the Almaty Physics Battles 2026.",
+  'rulesAcknowledgement': "By filling out this form, team members, participants, and their legal representatives confirm that they have read the <a href='https://drive.google.com/drive/folders/19AKx--sPkC0RdW-ZWI8PDHJamkmMKtPa?usp=sharing' class='underline font-semibold' target='_blank'>General Rules</a> and the <a href='https://drive.google.com/drive/folders/1tATCkKah2fDOqCX_V5hma3pT51EYmqTQ?usp=sharing' class='underline font-semibold' target='_blank'>Qualifier Rules</a> of the Almaty Physics Battles 2026.",
 
   "sectionLeader": "Team Leader",
   "sectionCaptain": "Team Captain",
@@ -92,7 +92,7 @@ export const ruApply = {
   'addMember4': "+ Добавить участника 4",
   'captainInfo': "Капитан команды - член команды, участвующий в капитанских боях и участвующий в коммуникации с Оргкомитетом турнира при возникновении вопросов",
 
-  'rulesAcknowledgement': "Заполняя форму, члены команды, участники и их законные представители подтверждают, что ознакомлены с <a href='/docs/rules' class='underline font-semibold' target='_blank'>основным регламентом</a> и <a href='/docs/qualifier-rules' class='underline font-semibold' target='_blank'>регламентом отбора</a> на Almaty Physics Battles 2026.",
+  'rulesAcknowledgement': "Заполняя форму, члены команды, участники и их законные представители подтверждают, что ознакомлены с <a href='https://drive.google.com/drive/folders/19AKx--sPkC0RdW-ZWI8PDHJamkmMKtPa?usp=sharing' class='underline font-semibold' target='_blank'>основным регламентом</a> и <a href='https://drive.google.com/drive/folders/1tATCkKah2fDOqCX_V5hma3pT51EYmqTQ?usp=sharing' class='underline font-semibold' target='_blank'>регламентом отбора</a> на Almaty Physics Battles 2026.",
 
   "sectionLeader": "Руководитель команды",
   "sectionCaptain": "Капитан команды",
@@ -164,7 +164,7 @@ export const kzApply = {
   'addMember4': "+ 4-қатысушыны қосу",
   'captainInfo': "Команда капитаны – капитандық шайқастарға қатысатын және сұрақтар туындаған кезде Турнирді ұйымдастыру комитетімен байланысқа қатысатын команда мүшесі.",
 
-  'rulesAcknowledgement': "Пішінді толтыра отырып, команда мүшелері, қатысушылар және олардың заңды өкілдері ғылыми шайқастардың <a href='/docs/rules' class='underline font-semibold' target='_blank'>негізгі регламентімен</a> және <a href='/docs/qualifier-rules' class='underline font-semibold' target='_blank'>іріктеу регламентімен</a> танысқанын растайды.",
+  'rulesAcknowledgement': "Пішінді толтыра отырып, команда мүшелері, қатысушылар және олардың заңды өкілдері ғылыми шайқастардың <a href='https://drive.google.com/drive/folders/19AKx--sPkC0RdW-ZWI8PDHJamkmMKtPa?usp=sharing' class='underline font-semibold' target='_blank'>негізгі регламентімен</a> және <a href='https://drive.google.com/drive/folders/1tATCkKah2fDOqCX_V5hma3pT51EYmqTQ?usp=sharing' class='underline font-semibold' target='_blank'>іріктеу регламентімен</a> танысқанын растайды.",
 
   "sectionLeader": "Команда жетекшісі",
   "sectionCaptain": "Команда капитаны",

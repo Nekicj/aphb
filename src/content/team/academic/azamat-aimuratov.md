@@ -3,27 +3,33 @@ name: "Азамат Аймуратов"
 position: "Член академического комитета"
 achievements:
   [
-    "МЖО 2026: золотая медаль",
-    "IOAA 2025: бронзовая медаль",
-    "APhB: серебряная (2023) и бронзовая (2024) медали",
-    "РО по физике: две бронзовые медали (2025, 2026)",
+    "Член академического комитета APhB",
+    "МЖО (2026): золотая медаль",
+    "IOAA (2025): бронзовая медаль",
+    "APhB (2023, 2024): серебряная и бронзовая медали",
+    "Республиканская олимпиада по физике (2025, 2026): двукратный бронзовый медалист",
   ]
+
 name_en: "Azamat Aimuratov"
 name_kz: "Азамат Аймуратов"
-position_en: "Member of Academic Committee"
+
+position_en: "Academic Committee Member"
 position_kz: "Академиялық комитет мүшесі"
+
 achievements_en:
   [
-    "IZhO 2026: gold medal",
-    "IOAA 2025: bronze medal",
-    "APhB: silver (2023) and bronze (2024) medals",
-    "National Physics Olympiad: two bronze medals (2025, 2026)",
+    "Member of the APhB Academic Committee",
+    "IZhO (2026): gold medal",
+    "IOAA (2025): bronze medal",
+    "APhB (2023, 2024): silver and bronze medals",
+    "Republican Physics Olympiad (2025, 2026): two-time bronze medalist",
   ]
 achievements_kz:
   [
-    "IZhO 2026: алтын медаль",
-    "IOAA 2025: қола медаль",
-    "APhB: күміс (2023) және қола (2024) медаль",
-    "Физика бойынша РО: екі қола медаль (2025, 2026)",
+    "APhB академиялық комитетінің мүшесі",
+    "IZhO (2026): алтын медаль",
+    "IOAA (2025): қола медаль",
+    "APhB (2023, 2024): күміс және қола медальдар",
+    "Физика бойынша республикалық олимпиада (2025, 2026): екі дүркін қола жүлдегері",
   ]
 ---

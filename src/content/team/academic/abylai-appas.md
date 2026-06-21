@@ -3,24 +3,30 @@ name: "Абылай Аппас"
 position: "Член академического комитета"
 achievements:
   [
-    "МЖО: бронзовая (2025) и серебряная (2026) медали",
-    "РО по физике: серебряная (2025) и бронзовая (2026) медали",
-    "APhB 2024: гран-при",
+    "Член академического комитета APhB",
+    "МЖО (2025, 2026): бронзовая и серебряная медали",
+    "Республиканская олимпиада по физике (2025, 2026): серебряная и бронзовая медали",
+    "APhB (2024): Гран-при",
   ]
-name_en: "Abylai Appas"
+
+name_en: "Abylay Appas"
 name_kz: "Абылай Аппас"
-position_en: "Member of Academic Committee"
+
+position_en: "Academic Committee Member"
 position_kz: "Академиялық комитет мүшесі"
+
 achievements_en:
   [
-    "IZhO: bronze (2025) and silver (2026) medals",
-    "National Physics Olympiad: silver (2025) and bronze (2026) medals",
-    "APhB 2024: grand prix",
+    "Member of the APhB Academic Committee",
+    "IZhO (2025, 2026): bronze and silver medals",
+    "Republican Physics Olympiad (2025, 2026): silver and bronze medals",
+    "APhB (2024): Grand Prix",
   ]
 achievements_kz:
   [
-    "IZhO: қола (2025) және күміс (2026) медаль",
-    "Физика бойынша РО: күміс (2025) және қола (2026) медаль",
-    "APhB 2024: гран-при",
+    "APhB академиялық комитетінің мүшесі",
+    "IZhO (2025, 2026): қола және күміс медальдар",
+    "Физика бойынша республикалық олимпиада (2025, 2026): күміс және қола медальдар",
+    "APhB (2024): Гран-при",
   ]
 ---
