@@ -20,7 +20,7 @@ export const ru = {
   register: "Регистрация",
   footer:
     "Соревнование проводится Общественным Фондом \"Beyond Curriculum\"",
-  "footer.sections.regulations": "Положение",
+  "footer.sections.regulations": "Регламент",
   "footer.sections.parliament": "Регламент",
   "footer.sections.past.tasks": "Задачи прошлых лет",
   "footer.sections.results": "Результаты",
