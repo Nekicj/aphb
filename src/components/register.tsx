@@ -58,7 +58,7 @@ const MemberBlock = ({
             type="text"
             required={!optional}
             className={inputCls}
-            placeholder="Иванов Иван Иванович"
+            placeholder="Дихамбай Дихамбай Дихамбаевич"
           />
         </div>
         <div>
@@ -130,14 +130,17 @@ export function RegisterForm({ lang }: { lang: string }) {
   const [isSubmitted, setIsSubmitted] = useState(false)
   const [league, setLeague] = useState("junior")
   const [loading, setLoading] = useState(false)
+  const [error, setError] = useState<string | null>(null) // Стейт для вывода ошибок пользователю
 
   const handleFormSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault()
     setLoading(true)
+    setError(null) // Сбрасываем прошлую ошибку перед отправкой
 
     const formData = new FormData(e.currentTarget)
     const data = Object.fromEntries(formData.entries())
 
+    // Безопасный парсинг чисел во избежание передачи NaN в базу данных
     const payload = {
       teamName: data.teamName,
       league: data.league,
@@ -149,23 +152,23 @@ export function RegisterForm({ lang }: { lang: string }) {
       leaderCity: data.leaderCity,
       captainName: data.captainName,
       captainSchool: data.captainSchool,
-      captainGrade: parseInt(data.captainGrade as string, 10),
+      captainGrade: parseInt(data.captainGrade as string, 10) || null,
       captainEmail: data.captainEmail,
       captainPhone: data.captainPhone,
       member1Name: data.member1Name,
       member1School: data.member1School,
-      member1Grade: parseInt(data.member1Grade as string, 10),
+      member1Grade: parseInt(data.member1Grade as string, 10) || null,
       member1Email: data.member1Email,
       member1Phone: data.member1Phone,
       member2Name: data.member2Name,
       member2School: data.member2School,
-      member2Grade: parseInt(data.member2Grade as string, 10),
+      member2Grade: parseInt(data.member2Grade as string, 10) || null,
       member2Email: data.member2Email,
       member2Phone: data.member2Phone,
       member3Name: showMember4 ? data.member3Name : null,
       member3School: showMember4 ? data.member3School : null,
-      member3Grade: showMember4
-        ? parseInt(data.member3Grade as string, 10)
+      member3Grade: showMember4 && data.member3Grade
+        ? (parseInt(data.member3Grade as string, 10) || null)
         : null,
       member3Email: showMember4 ? data.member3Email : null,
       member3Phone: showMember4 ? data.member3Phone : null,
@@ -205,11 +208,13 @@ export function RegisterForm({ lang }: { lang: string }) {
       if (response.ok) {
         setIsSubmitted(true)
       } else {
-        const errorText = await response.text()
-        console.error("Ошибка при отправке формы:", errorText)
+        // Парсим ошибку как JSON, чтобы достать красивое сообщение от бэкенда
+        const errorData = await response.json()
+        setError(errorData.message || "Произошла ошибка при регистрации. Пожалуйста, попробуйте еще раз.")
       }
     } catch (err) {
       console.error("Сетевая ошибка:", err)
+      setError("Сетевая ошибка. Проверьте интернет-соединение и попробуйте снова.")
     } finally {
       setLoading(false)
     }
@@ -366,7 +371,7 @@ export function RegisterForm({ lang }: { lang: string }) {
               type="text"
               required
               className={inputCls}
-              placeholder="Иванов Иван Иванович"
+              placeholder="Рамазан Ли Атрофович"
             />
           </div>
           <div>
@@ -522,6 +527,13 @@ export function RegisterForm({ lang }: { lang: string }) {
           .<span className="text-red-400"> *</span>
         </span>
       </label>
+
+      {/* Красивый баннер ошибки, если бэкенд вернет ошибку */}
+      {error && (
+        <div className="p-4 bg-red-50 border border-red-200 text-red-800 rounded-xl text-sm font-medium animate-in fade-in duration-200">
+          ⚠️ {error}
+        </div>
+      )}
 
       <button
         type="submit"

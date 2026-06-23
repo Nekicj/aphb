@@ -16,14 +16,13 @@ function makeErrorMessageHumanReadable(error: string) {
     return "An error occurred. Please try again.";
 }
 
-export const POST: APIRoute = async ({ request, redirect }) => {
+export const POST: APIRoute = async ({ request }) => {
     if (request.headers.get("Content-Type") === "application/json") {
         const data = await request.json();
 
         try {
             console.log("Received registration data:", JSON.stringify(data, null, 2));
             
-            // Map form data to database schema
             const dbData = {
                 team: data.teamName,
                 league: data.league,
@@ -53,17 +52,17 @@ export const POST: APIRoute = async ({ request, redirect }) => {
                 member3Grade: data.member3Grade || null,
                 member3Email: data.member3Email || null,
                 member3Phone: data.member3Phone || null,
-                captainParentName: data.captainParent?.parentName,
-                captainParentEmail: data.captainParent?.parentEmail,
-                captainParentPhone: data.captainParent?.parentPhone,
+                captainParentName: data.captainParent?.parentName || null,
+                captainParentEmail: data.captainParent?.parentEmail || null,
+                captainParentPhone: data.captainParent?.parentPhone || null,
                 captainAutoproctorConsent: data.captainParent?.autoproctorConsent ?? false,
-                member1ParentName: data.member1Parent?.parentName,
-                member1ParentEmail: data.member1Parent?.parentEmail,
-                member1ParentPhone: data.member1Parent?.parentPhone,
+                member1ParentName: data.member1Parent?.parentName || null,
+                member1ParentEmail: data.member1Parent?.parentEmail || null,
+                member1ParentPhone: data.member1Parent?.parentPhone || null,
                 member1AutoproctorConsent: data.member1Parent?.autoproctorConsent ?? false,
-                member2ParentName: data.member2Parent?.parentName,
-                member2ParentEmail: data.member2Parent?.parentEmail,
-                member2ParentPhone: data.member2Parent?.parentPhone,
+                member2ParentName: data.member2Parent?.parentName || null,
+                member2ParentEmail: data.member2Parent?.parentEmail || null,
+                member2ParentPhone: data.member2Parent?.parentPhone || null,
                 member2AutoproctorConsent: data.member2Parent?.autoproctorConsent ?? false,
                 member3ParentName: data.member3Parent?.parentName || null,
                 member3ParentEmail: data.member3Parent?.parentEmail || null,
@@ -75,35 +74,39 @@ export const POST: APIRoute = async ({ request, redirect }) => {
             
             await db.insert(teams).values(dbData);
 
+            const participantsEmail = [
+                data.captainEmail,
+                data.member1Email,
+                data.member2Email,
+            ].filter(Boolean) as string[];
+
+            if (data.member3Email) {
+                participantsEmail.push(data.member3Email as string);
+            }
+
             await sendAfterRegister({
                 lang: data.language,
                 leaderEmail: data.leaderEmail,
-                participantsEmail: [
-                    data.captainEmail,
-                    data.member1Email,
-                    data.member2Email,
-                ],
+                participantsEmail, 
                 team: data.teamName,
             });
 
-            const homepageUrl = new URL("/", request.url);
-            homepageUrl.searchParams.set("status", "registered");
-
-            return new Response("", { status: 200 })
+            return new Response(JSON.stringify({ success: true }), { status: 200 });
         } catch (e: any) {
             console.error("Registration error:", e);
             Sentry.captureException(e);
             
-            // Better error handling
             const errorMessage = e?.detail || e?.message || "An error occurred. Please try again.";
             
             return new Response(JSON.stringify({
                 message: makeErrorMessageHumanReadable(errorMessage),
                 error: process.env.NODE_ENV === 'development' ? e?.message : undefined
-            }), { status: 403 })
+            }), { 
+                status: 403,
+                headers: { "Content-Type": "application/json" }
+            });
         }
     }
 
     return new Response(null, { status: 400 });
-
-}
+};
