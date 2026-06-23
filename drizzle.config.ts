@@ -1,8 +1,14 @@
 import { type Config } from "drizzle-kit";
 
-import { loadEnv } from "vite";
+import * as dotenv from 'dotenv';
 // @ts-ignore
-const { DATABASE_URL } = loadEnv(process.env.DATABASE_URL, process.cwd(), "");
+dotenv.config({ path: '.env.local' });
+
+const DATABASE_URL = process.env.DATABASE_URL;
+
+if (!DATABASE_URL) {
+  throw new Error("DATABASE_URL environment variable is required and must be a filled string in .env.local.");
+}
 
 export default {
   schema: "./src/db/schema.ts",
@@ -11,5 +17,4 @@ export default {
   dbCredentials: {
     connectionString: DATABASE_URL,
   },
-  tablesFilter: ["airdrop_*"],
 } satisfies Config;

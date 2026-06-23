@@ -31,6 +31,8 @@ export const POST: APIRoute = async ({ request, redirect }) => {
                 leaderName: data.leaderName,
                 leaderEmail: data.leaderEmail,
                 leaderPhone: data.leaderPhone,
+                leaderCountry: data.leaderCountry,
+                leaderCity: data.leaderCity,
                 captainName: data.captainName,
                 captainSchool: data.captainSchool,
                 captainGrade: data.captainGrade,
