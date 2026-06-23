@@ -1,11 +1,9 @@
 import React, { useState } from 'react';
 
-// --- ОБЩИЕ СТИЛИ ДЛЯ ИНПУТОВ И ЛЕЙБЛОВ ---
 const inputCls = "w-full h-11 border border-neutral-200 rounded-lg px-3 text-sm bg-white text-neutral-900 outline-none focus:ring-2 focus:ring-primary-500 focus:border-transparent transition-all placeholder:text-neutral-400";
 const labelCls = "block text-xs font-medium text-neutral-500 mb-1.5 uppercase tracking-wide";
 const sectionTitle = "text-xs font-semibold text-neutral-400 uppercase tracking-widest mb-4 pb-2 border-b border-neutral-100";
 
-// --- ИНТЕРФЕЙС ДЛЯ ПРОПСОВ БЛОКА УЧАСТНИКА ---
 interface MemberBlockProps {
     title: string;
     badge?: string;
@@ -15,7 +13,6 @@ interface MemberBlockProps {
     league: string;
 }
 
-// --- ВЫНЕСЕННЫЙ КОМПОНЕНТ УЧАСТНИКА (Чтобы не пропадал фокус при вводе) ---
 const MemberBlock = ({ title, badge, prefix, optional = false, extra, league }: MemberBlockProps) => {
     const validateGrade = (e: React.ChangeEvent<HTMLInputElement>) => {
         const val = parseInt(e.target.value);
@@ -104,7 +101,6 @@ const MemberBlock = ({ title, badge, prefix, optional = false, extra, league }: 
     );
 };
 
-// --- ОСНОВНАЯ ФУНКЦИЯ ФОРМЫ ---
 export function RegisterForm({ lang }: { lang: string }) {
     const [showMember4, setShowMember4] = useState(false);
     const [isSubmitted, setIsSubmitted] = useState(false);
@@ -178,7 +174,6 @@ export function RegisterForm({ lang }: { lang: string }) {
         : lang === 'en' ? '/en/parent-consent'
         : '/parent-consent';
 
-    // ЭКРАН УСПЕШНОЙ ОТПРАВКИ
     if (isSubmitted) {
         return (
             <div className="max-w-3xl mx-auto p-8 bg-amber-50 border border-amber-200 rounded-2xl text-neutral-800 space-y-4 relative z-20">
@@ -226,11 +221,9 @@ export function RegisterForm({ lang }: { lang: string }) {
         );
     }
 
-    // ОСНОВНАЯ ФОРМА
     return (
         <form onSubmit={handleFormSubmit} className="max-w-3xl mx-auto space-y-8 text-neutral-800 bg-white relative z-20">
             
-            {/* СЕКЦИЯ: ОСНОВНАЯ ИНФОРМАЦИЯ */}
             <div className="space-y-4">
                 <p className={sectionTitle}>Основная информация</p>
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-3">
@@ -265,7 +258,6 @@ export function RegisterForm({ lang }: { lang: string }) {
                 </div>
             </div>
 
-            {/* СЕКЦИЯ: РУКОВОДИТЕЛЬ КОМАНДЫ */}
             <div className="bg-neutral-50 border border-neutral-100 rounded-xl p-5 space-y-4">
                 <p className={sectionTitle}>Руководитель команды</p>
                 <p className="text-xs text-neutral-600 leading-relaxed bg-white p-3 rounded-lg border border-neutral-200">
@@ -301,7 +293,6 @@ export function RegisterForm({ lang }: { lang: string }) {
                 </div>
             </div>
 
-            {/* СЕКЦИЯ: УЧАСТНИКИ */}
             <div className="space-y-3">
                 <p className={sectionTitle}>Участники</p>
 
@@ -337,7 +328,6 @@ export function RegisterForm({ lang }: { lang: string }) {
                 )}
             </div>
 
-            {/* ЧЕКБОКСЫ СОГЛАСИЯ */}
             <label className="flex items-start gap-3 cursor-pointer p-4 bg-neutral-50 rounded-xl border border-neutral-100">
                 <input type="checkbox" required className="mt-0.5 w-4 h-4 accent-[#172967] flex-shrink-0" />
                 <span className="text-xs text-neutral-500 leading-relaxed">
@@ -379,7 +369,6 @@ export function RegisterForm({ lang }: { lang: string }) {
                 </span>
             </label>
 
-            {/* КНОПКА ОТПРАВКИ */}
             <button
                 type="submit"
                 disabled={loading}

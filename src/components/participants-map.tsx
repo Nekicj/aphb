@@ -25,13 +25,11 @@ export default function ParticipantsMap({ locations, className = '' }: Participa
   useEffect(() => {
     if (!isClient || !mapRef.current || mapInstanceRef.current) return;
 
-    // Динамически импортируем Leaflet только на клиенте
     const initMap = async () => {
       const L = await import('leaflet');
       await import('leaflet/dist/leaflet.css');
       await import('./participants-map.css');
 
-      // Исправляем проблему с иконками маркеров в Leaflet
       delete (L.Icon.Default.prototype as any)._getIconUrl;
       L.Icon.Default.mergeOptions({
         iconRetinaUrl: 'https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.7.1/images/marker-icon-2x.png',
@@ -39,15 +37,13 @@ export default function ParticipantsMap({ locations, className = '' }: Participa
         shadowUrl: 'https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.7.1/images/marker-shadow.png',
       });
 
-      // Создаем карту
       const map = L.map(mapRef.current!, {
-        center: [43.2220, 76.8512], // Алматы как центр
+        center: [43.2220, 76.8512],
         zoom: 4,
         zoomControl: true,
         scrollWheelZoom: true,
       });
 
-      // Добавляем тайлы карты
       L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
         attribution: '© OpenStreetMap contributors',
         maxZoom: 18,
@@ -55,25 +51,22 @@ export default function ParticipantsMap({ locations, className = '' }: Participa
 
       mapInstanceRef.current = map;
 
-      // Добавляем маркеры для каждого местоположения
       locations.forEach((location) => {
-        // Функция для получения цвета по стране
         const getCountryColor = (country: string) => {
           const countryColors: Record<string, string> = {
-            'Казахстан': '#1D4ED8',    // Синий (бренд)
-            'Россия': '#ef4444',       // Красный
-            'Узбекистан': '#22c55e',   // Зеленый
-            'Кыргызстан': '#f59e0b',   // Оранжевый
-            'Таджикистан': '#8b5cf6',  // Фиолетовый
-            'Беларусь': '#06b6d4',     // Голубой
+            'Казахстан': '#1D4ED8', 
+            'Россия': '#ef4444', 
+            'Узбекистан': '#22c55e',   
+            'Кыргызстан': '#f59e0b',  
+            'Таджикистан': '#8b5cf6',  
+            'Беларусь': '#06b6d4',  
           };
-          return countryColors[country] || '#6b7280'; // Серый по умолчанию
+          return countryColors[country] || '#6b7280';
         };
 
         const markerSize = 20;
         const markerColor = getCountryColor(location.country);
 
-        // Создаем кастомную иконку
         const customIcon = L.divIcon({
           className: 'custom-marker',
           html: `
@@ -100,7 +93,6 @@ export default function ParticipantsMap({ locations, className = '' }: Participa
 
         const marker = L.marker([location.lat, location.lng], { icon: customIcon }).addTo(map);
         
-        // Создаем popup с информацией
         const popupContent = `
           <div class="text-center p-3 min-w-[200px]">
             <h3 class="font-bold text-xl text-primary-900 mb-1">${location.city}</h3>
@@ -114,7 +106,6 @@ export default function ParticipantsMap({ locations, className = '' }: Participa
         });
       });
 
-      // Подгоняем карту под все маркеры
       if (locations.length > 0) {
         const group = new L.featureGroup(
           locations.map(loc => L.marker([loc.lat, loc.lng]))
@@ -141,7 +132,6 @@ export default function ParticipantsMap({ locations, className = '' }: Participa
         style={{ minHeight: '420px' }}
       />
 
-      {/* Показываем загрузку пока карта не инициализирована */}
       {!isClient && (
         <div className="absolute inset-0 bg-neutral-100 rounded-3xl flex items-center justify-center">
           <div className="text-center">
@@ -151,7 +141,6 @@ export default function ParticipantsMap({ locations, className = '' }: Participa
         </div>
       )}
 
-      {/* Легенда по странам */}
       <div className="absolute top-4 left-4 bg-white/95 backdrop-blur-sm border border-neutral-300 rounded-2xl p-4 shadow-lg z-[1000]">
         <h4 className="font-bold text-xs uppercase tracking-wide text-primary-900 mb-3">Страны участников</h4>
         <div className="space-y-2">
