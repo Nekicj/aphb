@@ -6,7 +6,13 @@ import { getLangFromUrl, useTranslations } from "~/utils/i18n";
 
 const team = await getCollection("team");
 const academics = team.filter((entry) => entry.slug.startsWith("academic/"));
-const executives = team.filter((entry) => entry.slug.startsWith("executive/"));
+const executives = team
+  .filter((entry) => entry.slug.startsWith("executive/"))
+  .sort((a, b) => {
+    if (a.slug === "executive/miras-bazarbay") return -1;
+    if (b.slug === "executive/miras-bazarbay") return 1;
+    return a.data.name.localeCompare(b.data.name, "ru");
+  });
 const lang = getLangFromUrl(Astro.url);
 const t = useTranslations("team", lang);
 ---
