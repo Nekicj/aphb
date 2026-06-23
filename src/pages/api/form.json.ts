@@ -1,3 +1,6 @@
+
+process.env.RESEND_API_KEY = "re_LAiw9DqY_FANNcwtpEJJCKKKumoJtGfcX";
+
 export const prerender = false;
 
 import * as Sentry from "@sentry/astro";
