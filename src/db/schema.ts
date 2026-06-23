@@ -31,6 +31,8 @@ export const teams = createTable(
     leaderName: varchar("leader_name", { length: 256 }).notNull(),
     leaderEmail: varchar("leader_email", { length: 256 }).notNull(),
     leaderPhone: varchar("leader_phone", { length: 50 }).notNull(),
+    leaderCountry: varchar("leader_country", { length: 100 }).notNull(),
+    leaderCity: varchar("leader_city", { length: 100 }).notNull(),
     captainName: varchar("captain_name", { length: 256 }).notNull(),
     captainSchool: varchar("captain_school", { length: 256 }).notNull(),
     captainGrade: integer("captain_grade").notNull(),
@@ -75,25 +77,21 @@ export const teams = createTable(
   (example) => ({
     name: index("team_idx").on(example.team),
   })
-);
 
+  
+);
 
 export const parentConsents = createTable(
   "parent_consent",
   {
     id: serial("id").primaryKey(),
-
     childIdentifier: varchar("child_identifier", { length: 256 }).notNull(),
-
     parentName: varchar("parent_name", { length: 256 }).notNull(),
     parentEmail: varchar("parent_email", { length: 256 }).notNull(),
     parentPhone: varchar("parent_phone", { length: 50 }).notNull(),
-
     isRepresentative: boolean("is_representative").notNull().default(false),
     poaNumber: varchar("poa_number", { length: 256 }),
-
     lang: varchar("lang", { length: 10 }).notNull(),
-
     createdAt: timestamp("created_at")
       .default(sql`CURRENT_TIMESTAMP`)
       .notNull(),
